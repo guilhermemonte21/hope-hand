@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\6352573355\\Desktop\\HopeHand\\ApiHopeHand\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{C795A484-D257-41E3-9AA7-E0F21693FF97}|ApiHopeHand.csproj|c:\\users\\6352573355\\desktop\\hopehand\\apihopehand\\interfaces\\iongrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C795A484-D257-41E3-9AA7-E0F21693FF97}|ApiHopeHand.csproj|solutionrelative:interfaces\\iongrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C795A484-D257-41E3-9AA7-E0F21693FF97}|ApiHopeHand.csproj|c:\\users\\6352573355\\desktop\\hopehand\\apihopehand\\repositories\\enderecorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C795A484-D257-41E3-9AA7-E0F21693FF97}|ApiHopeHand.csproj|solutionrelative:repositories\\enderecorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C795A484-D257-41E3-9AA7-E0F21693FF97}|ApiHopeHand.csproj|c:\\users\\6352573355\\desktop\\hopehand\\apihopehand\\interfaces\\iusuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C795A484-D257-41E3-9AA7-E0F21693FF97}|ApiHopeHand.csproj|solutionrelative:interfaces\\iusuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -13,14 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{C795A484-D257-41E3-9AA7-E0F21693FF97}|ApiHopeHand.csproj|c:\\users\\6352573355\\desktop\\hopehand\\apihopehand\\repositories\\ongrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C795A484-D257-41E3-9AA7-E0F21693FF97}|ApiHopeHand.csproj|solutionrelative:repositories\\ongrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C795A484-D257-41E3-9AA7-E0F21693FF97}|ApiHopeHand.csproj|c:\\users\\6352573355\\desktop\\hopehand\\apihopehand\\repositories\\enderecorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C795A484-D257-41E3-9AA7-E0F21693FF97}|ApiHopeHand.csproj|solutionrelative:repositories\\enderecorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C795A484-D257-41E3-9AA7-E0F21693FF97}|ApiHopeHand.csproj|c:\\users\\6352573355\\desktop\\hopehand\\apihopehand\\interfaces\\iongrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C795A484-D257-41E3-9AA7-E0F21693FF97}|ApiHopeHand.csproj|solutionrelative:interfaces\\iongrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C795A484-D257-41E3-9AA7-E0F21693FF97}|ApiHopeHand.csproj|c:\\users\\6352573355\\desktop\\hopehand\\apihopehand\\interfaces\\ienderecorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -62,24 +62,27 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "IUsuarioRepository.cs",
               "DocumentMoniker": "C:\\Users\\6352573355\\Desktop\\HopeHand\\ApiHopeHand\\Interfaces\\IUsuarioRepository.cs",
               "RelativeDocumentMoniker": "Interfaces\\IUsuarioRepository.cs",
               "ToolTip": "C:\\Users\\6352573355\\Desktop\\HopeHand\\ApiHopeHand\\Interfaces\\IUsuarioRepository.cs",
               "RelativeToolTip": "Interfaces\\IUsuarioRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-27T19:30:27.622Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-27T19:30:27.622Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "IOngRepository.cs",
               "DocumentMoniker": "C:\\Users\\6352573355\\Desktop\\HopeHand\\ApiHopeHand\\Interfaces\\IOngRepository.cs",
               "RelativeDocumentMoniker": "Interfaces\\IOngRepository.cs",
@@ -100,8 +103,7 @@
               "RelativeToolTip": "Interfaces\\IEnderecoRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAABDAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-27T19:29:36.889Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-27T19:29:36.889Z"
             },
             {
               "$type": "Document",
@@ -113,38 +115,35 @@
               "RelativeToolTip": "Domains\\UsuarioDomain.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-27T19:27:33.332Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-27T19:27:33.332Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "EnderecoRepository.cs",
               "DocumentMoniker": "C:\\Users\\6352573355\\Desktop\\HopeHand\\ApiHopeHand\\Repositories\\EnderecoRepository.cs",
               "RelativeDocumentMoniker": "Repositories\\EnderecoRepository.cs",
               "ToolTip": "C:\\Users\\6352573355\\Desktop\\HopeHand\\ApiHopeHand\\Repositories\\EnderecoRepository.cs",
               "RelativeToolTip": "Repositories\\EnderecoRepository.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAUAAAAyAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAyAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-27T19:29:05.366Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-27T19:29:05.366Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "OngRepository.cs",
               "DocumentMoniker": "C:\\Users\\6352573355\\Desktop\\HopeHand\\ApiHopeHand\\Repositories\\OngRepository.cs",
               "RelativeDocumentMoniker": "Repositories\\OngRepository.cs",
               "ToolTip": "C:\\Users\\6352573355\\Desktop\\HopeHand\\ApiHopeHand\\Repositories\\OngRepository.cs",
               "RelativeToolTip": "Repositories\\OngRepository.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAUAAAAmAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAIBJwAUAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-27T19:28:25.179Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-27T19:28:25.179Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "UsuarioRepository.cs",
               "DocumentMoniker": "C:\\Users\\6352573355\\Desktop\\HopeHand\\ApiHopeHand\\Repositories\\UsuarioRepository.cs",
               "RelativeDocumentMoniker": "Repositories\\UsuarioRepository.cs",
@@ -152,8 +151,7 @@
               "RelativeToolTip": "Repositories\\UsuarioRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-27T19:28:43.535Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-27T19:28:43.535Z"
             },
             {
               "$type": "Document",
@@ -178,10 +176,6 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-27T19:27:23.257Z"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             },
             {
               "$type": "Document",
