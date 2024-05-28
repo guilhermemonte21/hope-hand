@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\41365718875\\Desktop\\ApiHopeHand\\ApiHopeHand.csproj": {}
+    "C:\\Users\\41365718875\\Desktop\\HopeHand\\ApiHopeHand\\ApiHopeHand.csproj": {}
   },
   "projects": {
-    "C:\\Users\\41365718875\\Desktop\\ApiHopeHand\\ApiHopeHand.csproj": {
+    "C:\\Users\\41365718875\\Desktop\\HopeHand\\ApiHopeHand\\ApiHopeHand.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\41365718875\\Desktop\\ApiHopeHand\\ApiHopeHand.csproj",
+        "projectUniqueName": "C:\\Users\\41365718875\\Desktop\\HopeHand\\ApiHopeHand\\ApiHopeHand.csproj",
         "projectName": "ApiHopeHand",
-        "projectPath": "C:\\Users\\41365718875\\Desktop\\ApiHopeHand\\ApiHopeHand.csproj",
+        "projectPath": "C:\\Users\\41365718875\\Desktop\\HopeHand\\ApiHopeHand\\ApiHopeHand.csproj",
         "packagesPath": "C:\\Users\\41365718875\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\41365718875\\Desktop\\ApiHopeHand\\obj\\",
+        "outputPath": "C:\\Users\\41365718875\\Desktop\\HopeHand\\ApiHopeHand\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\41365718875\\AppData\\Roaming\\NuGet\\NuGet.Config",
