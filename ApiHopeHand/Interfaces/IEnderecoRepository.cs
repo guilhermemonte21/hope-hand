@@ -4,9 +4,9 @@ namespace ApiHopeHand.Interfaces
 {
     public interface IEnderecoRepository
     {
-        public void Cadastrar(EnderecoDomain endereco);
-        public EnderecoDomain AtualizarEndereco(Guid id, EnderecoDomain endereco);
+        public void Cadastrar(Endereco endereco);
+        public Endereco AtualizarEndereco(Guid id, Endereco endereco);
 
-        public List<EnderecoDomain> ListarPorCidade(string endereco);
+        public List<Endereco> ListarPorCidade(string endereco);
     }
 }

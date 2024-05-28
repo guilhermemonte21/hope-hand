@@ -4,11 +4,11 @@ namespace ApiHopeHand.Interfaces
 {
     public interface IUsuarioRepository
     {
-        void Cadastrar(UsuarioDomain usuario);
+        void Cadastrar(Usuario usuario);
 
-        UsuarioDomain BuscarPorId(Guid id);
+        Usuario BuscarPorId(Guid id);
 
-        UsuarioDomain BuscarPorEmailESenha(string email, string senha);
+        Usuario BuscarPorEmailESenha(string email, string senha);
 
         bool AlterarSenha(string email, string senhaNova);
 

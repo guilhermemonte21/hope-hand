@@ -428,27 +428,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\6352573355\\.nuget\\packages\\": {}
+    "C:\\Users\\41365718875\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
-      "projectUniqueName": "C:\\Users\\41365718875\\Desktop\\HopeHand\\ApiHopeHand\\ApiHopeHand.csproj",
+      "projectUniqueName": "C:\\Users\\41365718875\\Documents\\HopeHand\\ApiHopeHand\\ApiHopeHand.csproj",
       "projectName": "ApiHopeHand",
-      "projectPath": "C:\\Users\\41365718875\\Desktop\\HopeHand\\ApiHopeHand\\ApiHopeHand.csproj",
+      "projectPath": "C:\\Users\\41365718875\\Documents\\HopeHand\\ApiHopeHand\\ApiHopeHand.csproj",
       "packagesPath": "C:\\Users\\41365718875\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\41365718875\\Desktop\\HopeHand\\ApiHopeHand\\obj\\",
-=======
-      "projectUniqueName": "C:\\Users\\6352573355\\Desktop\\HopeHand\\ApiHopeHand\\ApiHopeHand.csproj",
-      "projectName": "ApiHopeHand",
-      "projectPath": "C:\\Users\\6352573355\\Desktop\\HopeHand\\ApiHopeHand\\ApiHopeHand.csproj",
-      "packagesPath": "C:\\Users\\6352573355\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\6352573355\\Desktop\\HopeHand\\ApiHopeHand\\obj\\",
->>>>>>> origin/develop
+      "outputPath": "C:\\Users\\41365718875\\Documents\\HopeHand\\ApiHopeHand\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\6352573355\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\41365718875\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -468,11 +460,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -503,8 +490,16 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problema ao ler o arquivo de cache C:\\Users\\41365718875\\Documents\\HopeHand\\ApiHopeHand\\obj\\project.nuget.cache: Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
