@@ -428,19 +428,27 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\41365718875\\.nuget\\packages\\": {}
+    "C:\\Users\\6352573355\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\41365718875\\Desktop\\HopeHand\\ApiHopeHand\\ApiHopeHand.csproj",
       "projectName": "ApiHopeHand",
       "projectPath": "C:\\Users\\41365718875\\Desktop\\HopeHand\\ApiHopeHand\\ApiHopeHand.csproj",
       "packagesPath": "C:\\Users\\41365718875\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\41365718875\\Desktop\\HopeHand\\ApiHopeHand\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\6352573355\\Desktop\\HopeHand\\ApiHopeHand\\ApiHopeHand.csproj",
+      "projectName": "ApiHopeHand",
+      "projectPath": "C:\\Users\\6352573355\\Desktop\\HopeHand\\ApiHopeHand\\ApiHopeHand.csproj",
+      "packagesPath": "C:\\Users\\6352573355\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\6352573355\\Desktop\\HopeHand\\ApiHopeHand\\obj\\",
+>>>>>>> origin/develop
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\41365718875\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\6352573355\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -460,6 +468,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -490,7 +503,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
