@@ -7,7 +7,7 @@ namespace ApiHopeHand.Context
     {
         public HopeContext()
         {
-            
+
         }
         public HopeContext(DbContextOptions<HopeContext> options) : base(options) { }
 
@@ -18,12 +18,10 @@ namespace ApiHopeHand.Context
             {
                 optionsBuilder.UseSqlServer("Data Source = NOTE02-SALA19; initial catalog = HopeHand;user id=sa; pwd = Senai@134; TrustServerCertificate = true;"); //
             }
-
-
-
         }
-        public DbSet<OngDomain> Ong { get; set; }
-        public DbSet<UsuarioDomain> Usuario { get; set; }
-        public DbSet<EnderecoDomain> Endereco { get; set; }
+
+        public DbSet<Ong> Ongs { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Endereco> Enderecos { get; set; }
     }
 }
