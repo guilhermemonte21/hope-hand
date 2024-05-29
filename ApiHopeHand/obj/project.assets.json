@@ -898,11 +898,7 @@
           "lib/netcoreapp2.0/_._": {}
         }
       },
-<<<<<<< HEAD
       "Microsoft.Data.SqlClient/5.1.0": {
-=======
-      "Microsoft.Data.SqlClient/5.1.1": {
->>>>>>> origin/guilherme
         "type": "package",
         "dependencies": {
           "Azure.Identity": "1.7.0",
@@ -1005,7 +1001,6 @@
           }
         }
       },
-<<<<<<< HEAD
       "Microsoft.EntityFrameworkCore/8.0.0-preview.1.23111.4": {
         "type": "package",
         "dependencies": {
@@ -1017,32 +1012,15 @@
         },
         "compile": {
           "lib/net6.0/Microsoft.EntityFrameworkCore.dll": {
-=======
-      "Microsoft.EntityFrameworkCore/8.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore.Abstractions": "8.0.0",
-          "Microsoft.EntityFrameworkCore.Analyzers": "8.0.0",
-          "Microsoft.Extensions.Caching.Memory": "8.0.0",
-          "Microsoft.Extensions.Logging": "8.0.0"
-        },
-        "compile": {
-          "lib/net8.0/Microsoft.EntityFrameworkCore.dll": {
->>>>>>> origin/guilherme
             "related": ".xml"
           }
         },
         "runtime": {
-<<<<<<< HEAD
           "lib/net6.0/Microsoft.EntityFrameworkCore.dll": {
-=======
-          "lib/net8.0/Microsoft.EntityFrameworkCore.dll": {
->>>>>>> origin/guilherme
             "related": ".xml"
           }
         },
         "build": {
-<<<<<<< HEAD
           "buildTransitive/net6.0/Microsoft.EntityFrameworkCore.props": {}
         }
       },
@@ -1050,33 +1028,16 @@
         "type": "package",
         "compile": {
           "lib/net6.0/Microsoft.EntityFrameworkCore.Abstractions.dll": {
-=======
-          "buildTransitive/net8.0/Microsoft.EntityFrameworkCore.props": {}
-        }
-      },
-      "Microsoft.EntityFrameworkCore.Abstractions/8.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll": {
->>>>>>> origin/guilherme
             "related": ".xml"
           }
         },
         "runtime": {
-<<<<<<< HEAD
           "lib/net6.0/Microsoft.EntityFrameworkCore.Abstractions.dll": {
-=======
-          "lib/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll": {
->>>>>>> origin/guilherme
             "related": ".xml"
           }
         }
       },
-<<<<<<< HEAD
       "Microsoft.EntityFrameworkCore.Analyzers/8.0.0-preview.1.23111.4": {
-=======
-      "Microsoft.EntityFrameworkCore.Analyzers/8.0.0": {
->>>>>>> origin/guilherme
         "type": "package",
         "compile": {
           "lib/netstandard2.0/_._": {}
@@ -1085,7 +1046,6 @@
           "lib/netstandard2.0/_._": {}
         }
       },
-<<<<<<< HEAD
       "Microsoft.EntityFrameworkCore.Design/8.0.0-preview.1.23111.4": {
         "type": "package",
         "dependencies": {
@@ -1096,21 +1056,10 @@
         },
         "compile": {
           "lib/net6.0/_._": {
-=======
-      "Microsoft.EntityFrameworkCore.Relational/8.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore": "8.0.0",
-          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0"
-        },
-        "compile": {
-          "lib/net8.0/Microsoft.EntityFrameworkCore.Relational.dll": {
->>>>>>> origin/guilherme
             "related": ".xml"
           }
         },
         "runtime": {
-<<<<<<< HEAD
           "lib/net6.0/Microsoft.EntityFrameworkCore.Design.dll": {
             "related": ".xml"
           }
@@ -1127,35 +1076,15 @@
         },
         "compile": {
           "lib/net6.0/Microsoft.EntityFrameworkCore.Relational.dll": {
-=======
-          "lib/net8.0/Microsoft.EntityFrameworkCore.Relational.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "Microsoft.EntityFrameworkCore.SqlServer/8.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Data.SqlClient": "5.1.1",
-          "Microsoft.EntityFrameworkCore.Relational": "8.0.0"
-        },
-        "compile": {
-          "lib/net8.0/Microsoft.EntityFrameworkCore.SqlServer.dll": {
->>>>>>> origin/guilherme
             "related": ".xml"
           }
         },
         "runtime": {
-<<<<<<< HEAD
           "lib/net6.0/Microsoft.EntityFrameworkCore.Relational.dll": {
-=======
-          "lib/net8.0/Microsoft.EntityFrameworkCore.SqlServer.dll": {
->>>>>>> origin/guilherme
             "related": ".xml"
           }
         }
       },
-<<<<<<< HEAD
       "Microsoft.EntityFrameworkCore.SqlServer/8.0.0-preview.1.23111.4": {
         "type": "package",
         "dependencies": {
@@ -1185,8 +1114,6 @@
           "lib/net6.0/_._": {}
         }
       },
-=======
->>>>>>> origin/guilherme
       "Microsoft.Extensions.ApiDescription.Server/6.0.5": {
         "type": "package",
         "build": {
@@ -1198,17 +1125,10 @@
           "buildMultiTargeting/Microsoft.Extensions.ApiDescription.Server.targets": {}
         }
       },
-<<<<<<< HEAD
       "Microsoft.Extensions.Caching.Abstractions/8.0.0-preview.1.23110.8": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Primitives": "8.0.0-preview.1.23110.8"
-=======
-      "Microsoft.Extensions.Caching.Abstractions/8.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Primitives": "8.0.0"
->>>>>>> origin/guilherme
         },
         "compile": {
           "lib/net8.0/Microsoft.Extensions.Caching.Abstractions.dll": {
@@ -1224,7 +1144,6 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-<<<<<<< HEAD
       "Microsoft.Extensions.Caching.Memory/8.0.0-preview.1.23110.8": {
         "type": "package",
         "dependencies": {
@@ -1233,16 +1152,6 @@
           "Microsoft.Extensions.Logging.Abstractions": "8.0.0-preview.1.23110.8",
           "Microsoft.Extensions.Options": "8.0.0-preview.1.23110.8",
           "Microsoft.Extensions.Primitives": "8.0.0-preview.1.23110.8"
-=======
-      "Microsoft.Extensions.Caching.Memory/8.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Caching.Abstractions": "8.0.0",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
-          "Microsoft.Extensions.Logging.Abstractions": "8.0.0",
-          "Microsoft.Extensions.Options": "8.0.0",
-          "Microsoft.Extensions.Primitives": "8.0.0"
->>>>>>> origin/guilherme
         },
         "compile": {
           "lib/net8.0/Microsoft.Extensions.Caching.Memory.dll": {
@@ -1258,17 +1167,10 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-<<<<<<< HEAD
       "Microsoft.Extensions.Configuration.Abstractions/8.0.0-preview.1.23110.8": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Primitives": "8.0.0-preview.1.23110.8"
-=======
-      "Microsoft.Extensions.Configuration.Abstractions/8.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Primitives": "8.0.0"
->>>>>>> origin/guilherme
         },
         "compile": {
           "lib/net8.0/Microsoft.Extensions.Configuration.Abstractions.dll": {
@@ -1284,17 +1186,10 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-<<<<<<< HEAD
       "Microsoft.Extensions.DependencyInjection/8.0.0-preview.1.23110.8": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0-preview.1.23110.8"
-=======
-      "Microsoft.Extensions.DependencyInjection/8.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0"
->>>>>>> origin/guilherme
         },
         "compile": {
           "lib/net8.0/Microsoft.Extensions.DependencyInjection.dll": {
@@ -1310,11 +1205,7 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-<<<<<<< HEAD
       "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.0-preview.1.23110.8": {
-=======
-      "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.0": {
->>>>>>> origin/guilherme
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
@@ -1330,7 +1221,6 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-<<<<<<< HEAD
       "Microsoft.Extensions.DependencyModel/8.0.0-preview.1.23110.8": {
         "type": "package",
         "dependencies": {
@@ -1358,14 +1248,6 @@
           "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0-preview.1.23110.8",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.0-preview.1.23110.8",
           "Microsoft.Extensions.Options": "8.0.0-preview.1.23110.8"
-=======
-      "Microsoft.Extensions.Logging/8.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.DependencyInjection": "8.0.0",
-          "Microsoft.Extensions.Logging.Abstractions": "8.0.0",
-          "Microsoft.Extensions.Options": "8.0.0"
->>>>>>> origin/guilherme
         },
         "compile": {
           "lib/net8.0/Microsoft.Extensions.Logging.dll": {
@@ -1381,16 +1263,8 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-<<<<<<< HEAD
       "Microsoft.Extensions.Logging.Abstractions/8.0.0-preview.1.23110.8": {
         "type": "package",
-=======
-      "Microsoft.Extensions.Logging.Abstractions/8.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0"
-        },
->>>>>>> origin/guilherme
         "compile": {
           "lib/net8.0/Microsoft.Extensions.Logging.Abstractions.dll": {
             "related": ".xml"
@@ -1405,19 +1279,11 @@
           "buildTransitive/net6.0/Microsoft.Extensions.Logging.Abstractions.targets": {}
         }
       },
-<<<<<<< HEAD
       "Microsoft.Extensions.Options/8.0.0-preview.1.23110.8": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0-preview.1.23110.8",
           "Microsoft.Extensions.Primitives": "8.0.0-preview.1.23110.8"
-=======
-      "Microsoft.Extensions.Options/8.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
-          "Microsoft.Extensions.Primitives": "8.0.0"
->>>>>>> origin/guilherme
         },
         "compile": {
           "lib/net8.0/Microsoft.Extensions.Options.dll": {
@@ -1430,17 +1296,10 @@
           }
         },
         "build": {
-<<<<<<< HEAD
           "buildTransitive/net6.0/_._": {}
         }
       },
       "Microsoft.Extensions.Primitives/8.0.0-preview.1.23110.8": {
-=======
-          "buildTransitive/net6.0/Microsoft.Extensions.Options.targets": {}
-        }
-      },
-      "Microsoft.Extensions.Primitives/8.0.0": {
->>>>>>> origin/guilherme
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.Extensions.Primitives.dll": {
@@ -1836,7 +1695,6 @@
           }
         }
       },
-<<<<<<< HEAD
       "Mono.TextTemplating/2.2.1": {
         "type": "package",
         "dependencies": {
@@ -1849,8 +1707,6 @@
           "lib/netstandard2.0/Mono.TextTemplating.dll": {}
         }
       },
-=======
->>>>>>> origin/guilherme
       "NETStandard.Library/1.6.1": {
         "type": "package",
         "dependencies": {
@@ -2323,7 +2179,6 @@
           "lib/netstandard1.1/System.Buffers.dll": {}
         }
       },
-<<<<<<< HEAD
       "System.CodeDom/4.4.0": {
         "type": "package",
         "compile": {
@@ -2335,8 +2190,6 @@
           "lib/netstandard2.0/System.CodeDom.dll": {}
         }
       },
-=======
->>>>>>> origin/guilherme
       "System.Collections/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -3693,50 +3546,28 @@
           }
         }
       },
-<<<<<<< HEAD
       "System.Text.Encodings.Web/8.0.0-preview.1.23110.8": {
         "type": "package",
         "compile": {
           "lib/net8.0/System.Text.Encodings.Web.dll": {
-=======
-      "System.Text.Encodings.Web/6.0.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
-        },
-        "compile": {
-          "lib/net6.0/System.Text.Encodings.Web.dll": {
->>>>>>> origin/guilherme
             "related": ".xml"
           }
         },
         "runtime": {
-<<<<<<< HEAD
           "lib/net8.0/System.Text.Encodings.Web.dll": {
-=======
-          "lib/net6.0/System.Text.Encodings.Web.dll": {
->>>>>>> origin/guilherme
             "related": ".xml"
           }
         },
         "build": {
-<<<<<<< HEAD
           "buildTransitive/net6.0/_._": {}
         },
         "runtimeTargets": {
           "runtimes/browser/lib/net8.0/System.Text.Encodings.Web.dll": {
-=======
-          "buildTransitive/netcoreapp3.1/_._": {}
-        },
-        "runtimeTargets": {
-          "runtimes/browser/lib/net6.0/System.Text.Encodings.Web.dll": {
->>>>>>> origin/guilherme
             "assetType": "runtime",
             "rid": "browser"
           }
         }
       },
-<<<<<<< HEAD
       "System.Text.Json/8.0.0-preview.1.23110.8": {
         "type": "package",
         "dependencies": {
@@ -3744,34 +3575,16 @@
         },
         "compile": {
           "lib/net8.0/System.Text.Json.dll": {
-=======
-      "System.Text.Json/6.0.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Runtime.CompilerServices.Unsafe": "6.0.0",
-          "System.Text.Encodings.Web": "6.0.0"
-        },
-        "compile": {
-          "lib/net6.0/System.Text.Json.dll": {
->>>>>>> origin/guilherme
             "related": ".xml"
           }
         },
         "runtime": {
-<<<<<<< HEAD
           "lib/net8.0/System.Text.Json.dll": {
-=======
-          "lib/net6.0/System.Text.Json.dll": {
->>>>>>> origin/guilherme
             "related": ".xml"
           }
         },
         "build": {
-<<<<<<< HEAD
           "buildTransitive/net6.0/System.Text.Json.targets": {}
-=======
-          "buildTransitive/netcoreapp3.1/_._": {}
->>>>>>> origin/guilherme
         }
       },
       "System.Text.RegularExpressions/4.3.0": {
@@ -4976,17 +4789,10 @@
         "version.txt"
       ]
     },
-<<<<<<< HEAD
     "Microsoft.Data.SqlClient/5.1.0": {
       "sha512": "wA+a+7niwImfbAsPo6cDiQaqbpDzVGRDuZtQpSBiO3JPOTPQkR8xNYKH+c16Nz9RE2AyjtyvQdGokOrhxORBKQ==",
       "type": "package",
       "path": "microsoft.data.sqlclient/5.1.0",
-=======
-    "Microsoft.Data.SqlClient/5.1.1": {
-      "sha512": "MW5E9HFvCaV069o8b6YpuRDPBux8s96qDnOJ+4N9QNUCs7c5W3KxwQ+ftpAjbMUlImL+c9WR+l+f5hzjkqhu2g==",
-      "type": "package",
-      "path": "microsoft.data.sqlclient/5.1.1",
->>>>>>> origin/guilherme
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -5013,11 +4819,7 @@
         "lib/netstandard2.1/Microsoft.Data.SqlClient.dll",
         "lib/netstandard2.1/Microsoft.Data.SqlClient.pdb",
         "lib/netstandard2.1/Microsoft.Data.SqlClient.xml",
-<<<<<<< HEAD
         "microsoft.data.sqlclient.5.1.0.nupkg.sha512",
-=======
-        "microsoft.data.sqlclient.5.1.1.nupkg.sha512",
->>>>>>> origin/guilherme
         "microsoft.data.sqlclient.nuspec",
         "ref/net462/Microsoft.Data.SqlClient.dll",
         "ref/net462/Microsoft.Data.SqlClient.pdb",
@@ -5096,22 +4898,14 @@
         "microsoft.dotnet.scaffolding.shared.nuspec"
       ]
     },
-<<<<<<< HEAD
     "Microsoft.EntityFrameworkCore/8.0.0-preview.1.23111.4": {
       "sha512": "5YurDGo9XCSLWZCPKRGqZoV5kFFJrLqg80LAqAYxo2sGECaLL8lzn/bRmMGMUTPuE+EVH8vDrSGPZlzEs5RJHw==",
       "type": "package",
       "path": "microsoft.entityframeworkcore/8.0.0-preview.1.23111.4",
-=======
-    "Microsoft.EntityFrameworkCore/8.0.0": {
-      "sha512": "SoODat83pGQUpWB9xULdMX6tuKpq/RTXDuJ2WeC1ldUKcKzLkaFJD1n+I0nOLY58odez/e7z8b6zdp235G/kyg==",
-      "type": "package",
-      "path": "microsoft.entityframeworkcore/8.0.0",
->>>>>>> origin/guilherme
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
-<<<<<<< HEAD
         "buildTransitive/net6.0/Microsoft.EntityFrameworkCore.props",
         "lib/net6.0/Microsoft.EntityFrameworkCore.dll",
         "lib/net6.0/Microsoft.EntityFrameworkCore.xml",
@@ -5123,24 +4917,10 @@
       "sha512": "J4Bl/r0KDoiz1S+Fd1nnw1R/pIQsf4KkRP98tFupkanQ2/nIqKctV4OqLfrRSq49VPOBshXpwOVabWvntmGfJg==",
       "type": "package",
       "path": "microsoft.entityframeworkcore.abstractions/8.0.0-preview.1.23111.4",
-=======
-        "buildTransitive/net8.0/Microsoft.EntityFrameworkCore.props",
-        "lib/net8.0/Microsoft.EntityFrameworkCore.dll",
-        "lib/net8.0/Microsoft.EntityFrameworkCore.xml",
-        "microsoft.entityframeworkcore.8.0.0.nupkg.sha512",
-        "microsoft.entityframeworkcore.nuspec"
-      ]
-    },
-    "Microsoft.EntityFrameworkCore.Abstractions/8.0.0": {
-      "sha512": "VR22s3+zoqlVI7xauFKn1znSIFHO8xuILT+noSwS8bZCKcHz0ydkTDQMuaxSa5WBaQrZmwtTz9rmRvJ7X8mSPQ==",
-      "type": "package",
-      "path": "microsoft.entityframeworkcore.abstractions/8.0.0",
->>>>>>> origin/guilherme
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
-<<<<<<< HEAD
         "lib/net6.0/Microsoft.EntityFrameworkCore.Abstractions.dll",
         "lib/net6.0/Microsoft.EntityFrameworkCore.Abstractions.xml",
         "microsoft.entityframeworkcore.abstractions.8.0.0-preview.1.23111.4.nupkg.sha512",
@@ -5151,25 +4931,12 @@
       "sha512": "xQ+vn8mw2+k9qm53eAFVr3yskFsmC2VMn67i7zZD7fyW5uDw47WKwoP8le6QeylJPtPBAPAPpZRFrebk8o+Kzw==",
       "type": "package",
       "path": "microsoft.entityframeworkcore.analyzers/8.0.0-preview.1.23111.4",
-=======
-        "lib/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll",
-        "lib/net8.0/Microsoft.EntityFrameworkCore.Abstractions.xml",
-        "microsoft.entityframeworkcore.abstractions.8.0.0.nupkg.sha512",
-        "microsoft.entityframeworkcore.abstractions.nuspec"
-      ]
-    },
-    "Microsoft.EntityFrameworkCore.Analyzers/8.0.0": {
-      "sha512": "ZXxEeLs2zoZ1TA+QoMMcw4f3Tirf8PzgdDax8RoWo0dxI2KmqiEGWYjhm2B/XyWfglc6+mNRyB8rZiQSmxCpeg==",
-      "type": "package",
-      "path": "microsoft.entityframeworkcore.analyzers/8.0.0",
->>>>>>> origin/guilherme
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "analyzers/dotnet/cs/Microsoft.EntityFrameworkCore.Analyzers.dll",
         "lib/netstandard2.0/_._",
-<<<<<<< HEAD
         "microsoft.entityframeworkcore.analyzers.8.0.0-preview.1.23111.4.nupkg.sha512",
         "microsoft.entityframeworkcore.analyzers.nuspec"
       ]
@@ -5178,21 +4945,10 @@
       "sha512": "Krw0uMiHO2BFWSS3U52ZMKIHSOGmXqSuT/nGe5adSZKs73RmpWe98jfhm3jGjHm2YqrkEjYaVlVFF5gcdJZhuQ==",
       "type": "package",
       "path": "microsoft.entityframeworkcore.design/8.0.0-preview.1.23111.4",
-=======
-        "microsoft.entityframeworkcore.analyzers.8.0.0.nupkg.sha512",
-        "microsoft.entityframeworkcore.analyzers.nuspec"
-      ]
-    },
-    "Microsoft.EntityFrameworkCore.Relational/8.0.0": {
-      "sha512": "fFKkr24cYc7Zw5T6DC4tEyOEPgPbq23BBmym1r9kn4ET9F3HKaetpOeQtV2RryYyUxEeNkJuxgfiZHTisqZc+A==",
-      "type": "package",
-      "path": "microsoft.entityframeworkcore.relational/8.0.0",
->>>>>>> origin/guilherme
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
-<<<<<<< HEAD
         "build/net6.0/Microsoft.EntityFrameworkCore.Design.props",
         "lib/net6.0/Microsoft.EntityFrameworkCore.Design.dll",
         "lib/net6.0/Microsoft.EntityFrameworkCore.Design.xml",
@@ -5218,23 +4974,10 @@
       "sha512": "TMFz7fwj6cdCQ0mTotW1OS91ueF+UFFqISUKvHGHTy13O9bN1kyOSKOIdrHFHv0PHzslPX70Ycn/XtSfKdTkkg==",
       "type": "package",
       "path": "microsoft.entityframeworkcore.sqlserver/8.0.0-preview.1.23111.4",
-=======
-        "lib/net8.0/Microsoft.EntityFrameworkCore.Relational.dll",
-        "lib/net8.0/Microsoft.EntityFrameworkCore.Relational.xml",
-        "microsoft.entityframeworkcore.relational.8.0.0.nupkg.sha512",
-        "microsoft.entityframeworkcore.relational.nuspec"
-      ]
-    },
-    "Microsoft.EntityFrameworkCore.SqlServer/8.0.0": {
-      "sha512": "GeOmafQn64HyQtYcI/Omv/D/YVHd1zEkWbP3zNQu4oC+usE9K0qOp0R8KgWWFEf8BU4tXuYbok40W0SjfbaK/A==",
-      "type": "package",
-      "path": "microsoft.entityframeworkcore.sqlserver/8.0.0",
->>>>>>> origin/guilherme
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
-<<<<<<< HEAD
         "lib/net6.0/Microsoft.EntityFrameworkCore.SqlServer.dll",
         "lib/net6.0/Microsoft.EntityFrameworkCore.SqlServer.xml",
         "microsoft.entityframeworkcore.sqlserver.8.0.0-preview.1.23111.4.nupkg.sha512",
@@ -5266,14 +5009,6 @@
         "tools/netcoreapp2.0/any/ef.runtimeconfig.json"
       ]
     },
-=======
-        "lib/net8.0/Microsoft.EntityFrameworkCore.SqlServer.dll",
-        "lib/net8.0/Microsoft.EntityFrameworkCore.SqlServer.xml",
-        "microsoft.entityframeworkcore.sqlserver.8.0.0.nupkg.sha512",
-        "microsoft.entityframeworkcore.sqlserver.nuspec"
-      ]
-    },
->>>>>>> origin/guilherme
     "Microsoft.Extensions.ApiDescription.Server/6.0.5": {
       "sha512": "Ckb5EDBUNJdFWyajfXzUIMRkhf52fHZOQuuZg/oiu8y7zDCVwD0iHhew6MnThjHmevanpxL3f5ci2TtHQEN6bw==",
       "type": "package",
@@ -5505,26 +5240,15 @@
         "tools/netcoreapp2.1/System.Diagnostics.DiagnosticSource.dll"
       ]
     },
-<<<<<<< HEAD
     "Microsoft.Extensions.Caching.Abstractions/8.0.0-preview.1.23110.8": {
       "sha512": "NEPjKEi+yAXcmdSpZl5HAI1QLyo+E52xFmFLd3kbfzSLHeQIeYjkkDCmutV68Co7CV/jdp/sBEzKs321w7z5Dg==",
       "type": "package",
       "path": "microsoft.extensions.caching.abstractions/8.0.0-preview.1.23110.8",
-=======
-    "Microsoft.Extensions.Caching.Abstractions/8.0.0": {
-      "sha512": "3KuSxeHoNYdxVYfg2IRZCThcrlJ1XJqIXkAWikCsbm5C/bCjv7G0WoKDyuR98Q+T607QT2Zl5GsbGRkENcV2yQ==",
-      "type": "package",
-      "path": "microsoft.extensions.caching.abstractions/8.0.0",
->>>>>>> origin/guilherme
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "LICENSE.TXT",
-<<<<<<< HEAD
-=======
-        "PACKAGE.md",
->>>>>>> origin/guilherme
         "THIRD-PARTY-NOTICES.TXT",
         "buildTransitive/net461/Microsoft.Extensions.Caching.Abstractions.targets",
         "buildTransitive/net462/_._",
@@ -5540,35 +5264,20 @@
         "lib/net8.0/Microsoft.Extensions.Caching.Abstractions.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Caching.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Caching.Abstractions.xml",
-<<<<<<< HEAD
         "microsoft.extensions.caching.abstractions.8.0.0-preview.1.23110.8.nupkg.sha512",
-=======
-        "microsoft.extensions.caching.abstractions.8.0.0.nupkg.sha512",
->>>>>>> origin/guilherme
         "microsoft.extensions.caching.abstractions.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-<<<<<<< HEAD
     "Microsoft.Extensions.Caching.Memory/8.0.0-preview.1.23110.8": {
       "sha512": "kOjqAuq2WeWjgjI7WXAqKHYnB2550tFdlWcHn5Hc1AMi6dCP/Jd8sVOge/CvvpDwInCZlziPIX42cvWpdK+hrw==",
       "type": "package",
       "path": "microsoft.extensions.caching.memory/8.0.0-preview.1.23110.8",
-=======
-    "Microsoft.Extensions.Caching.Memory/8.0.0": {
-      "sha512": "7pqivmrZDzo1ADPkRwjy+8jtRKWRCPag9qPI+p7sgu7Q4QreWhcvbiWXsbhP+yY8XSiDvZpu2/LWdBv7PnmOpQ==",
-      "type": "package",
-      "path": "microsoft.extensions.caching.memory/8.0.0",
->>>>>>> origin/guilherme
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "LICENSE.TXT",
-<<<<<<< HEAD
-=======
-        "PACKAGE.md",
->>>>>>> origin/guilherme
         "THIRD-PARTY-NOTICES.TXT",
         "buildTransitive/net461/Microsoft.Extensions.Caching.Memory.targets",
         "buildTransitive/net462/_._",
@@ -5584,26 +5293,15 @@
         "lib/net8.0/Microsoft.Extensions.Caching.Memory.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Caching.Memory.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Caching.Memory.xml",
-<<<<<<< HEAD
         "microsoft.extensions.caching.memory.8.0.0-preview.1.23110.8.nupkg.sha512",
-=======
-        "microsoft.extensions.caching.memory.8.0.0.nupkg.sha512",
->>>>>>> origin/guilherme
         "microsoft.extensions.caching.memory.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-<<<<<<< HEAD
     "Microsoft.Extensions.Configuration.Abstractions/8.0.0-preview.1.23110.8": {
       "sha512": "oL9dd5NLcxjfs4xzDtS7dzUjO9IoB2t0VO/nx+5kw6ZKElGM+7AgoDIqFSgpMGCjBZazshACY9s8GwgqwCzhcQ==",
       "type": "package",
       "path": "microsoft.extensions.configuration.abstractions/8.0.0-preview.1.23110.8",
-=======
-    "Microsoft.Extensions.Configuration.Abstractions/8.0.0": {
-      "sha512": "3lE/iLSutpgX1CC0NOW70FJoGARRHbyKmG7dc0klnUZ9Dd9hS6N/POPWhKhMLCEuNN5nXEY5agmlFtH562vqhQ==",
-      "type": "package",
-      "path": "microsoft.extensions.configuration.abstractions/8.0.0",
->>>>>>> origin/guilherme
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -5625,35 +5323,20 @@
         "lib/net8.0/Microsoft.Extensions.Configuration.Abstractions.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.xml",
-<<<<<<< HEAD
         "microsoft.extensions.configuration.abstractions.8.0.0-preview.1.23110.8.nupkg.sha512",
-=======
-        "microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",
->>>>>>> origin/guilherme
         "microsoft.extensions.configuration.abstractions.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-<<<<<<< HEAD
     "Microsoft.Extensions.DependencyInjection/8.0.0-preview.1.23110.8": {
       "sha512": "jy9e1IujAMK9LT4eRCY9OZB9aAL8vJgpZJT3OTPrRiBASuKZRzLqwoXfBJGNW69RybOafHcImK4jhkTX/Chezg==",
       "type": "package",
       "path": "microsoft.extensions.dependencyinjection/8.0.0-preview.1.23110.8",
-=======
-    "Microsoft.Extensions.DependencyInjection/8.0.0": {
-      "sha512": "V8S3bsm50ig6JSyrbcJJ8bW2b9QLGouz+G1miK3UTaOWmMtFwNNNzUf4AleyDWUmTrWMLNnFSLEQtxmxgNQnNQ==",
-      "type": "package",
-      "path": "microsoft.extensions.dependencyinjection/8.0.0",
->>>>>>> origin/guilherme
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "LICENSE.TXT",
-<<<<<<< HEAD
-=======
-        "PACKAGE.md",
->>>>>>> origin/guilherme
         "THIRD-PARTY-NOTICES.TXT",
         "buildTransitive/net461/Microsoft.Extensions.DependencyInjection.targets",
         "buildTransitive/net462/_._",
@@ -5671,35 +5354,20 @@
         "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.xml",
         "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.dll",
         "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.xml",
-<<<<<<< HEAD
         "microsoft.extensions.dependencyinjection.8.0.0-preview.1.23110.8.nupkg.sha512",
-=======
-        "microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
->>>>>>> origin/guilherme
         "microsoft.extensions.dependencyinjection.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-<<<<<<< HEAD
     "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.0-preview.1.23110.8": {
       "sha512": "ZGI9B2g/FiWwgkaHcvQ3kz4Db0FhZmDV4BQW7ToorZ0hn3DK0euvN2Law61h51M81Iz2AnkYJ6ghhazPzrRgEg==",
       "type": "package",
       "path": "microsoft.extensions.dependencyinjection.abstractions/8.0.0-preview.1.23110.8",
-=======
-    "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.0": {
-      "sha512": "cjWrLkJXK0rs4zofsK4bSdg+jhDLTaxrkXu4gS6Y7MAlCvRyNNgwY/lJi5RDlQOnSZweHqoyvgvbdvQsRIW+hg==",
-      "type": "package",
-      "path": "microsoft.extensions.dependencyinjection.abstractions/8.0.0",
->>>>>>> origin/guilherme
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "LICENSE.TXT",
-<<<<<<< HEAD
-=======
-        "PACKAGE.md",
->>>>>>> origin/guilherme
         "THIRD-PARTY-NOTICES.TXT",
         "buildTransitive/net461/Microsoft.Extensions.DependencyInjection.Abstractions.targets",
         "buildTransitive/net462/_._",
@@ -5717,26 +5385,15 @@
         "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
         "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
         "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
-<<<<<<< HEAD
         "microsoft.extensions.dependencyinjection.abstractions.8.0.0-preview.1.23110.8.nupkg.sha512",
-=======
-        "microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
->>>>>>> origin/guilherme
         "microsoft.extensions.dependencyinjection.abstractions.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-<<<<<<< HEAD
     "Microsoft.Extensions.DependencyModel/8.0.0-preview.1.23110.8": {
       "sha512": "aK37HTt3UT1mKT3l/Tc5BFEhlqAIFGAsr2Cq1cGNPSoTyzdFsOSCsT/DQqPh0TSlHbCqi925hZmtlJ/u7bsLwA==",
       "type": "package",
       "path": "microsoft.extensions.dependencymodel/8.0.0-preview.1.23110.8",
-=======
-    "Microsoft.Extensions.Logging/8.0.0": {
-      "sha512": "tvRkov9tAJ3xP51LCv3FJ2zINmv1P8Hi8lhhtcKGqM+ImiTCC84uOPEI4z8Cdq2C3o9e+Aa0Gw0rmrsJD77W+w==",
-      "type": "package",
-      "path": "microsoft.extensions.logging/8.0.0",
->>>>>>> origin/guilherme
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -5744,7 +5401,6 @@
         "LICENSE.TXT",
         "PACKAGE.md",
         "THIRD-PARTY-NOTICES.TXT",
-<<<<<<< HEAD
         "buildTransitive/net461/Microsoft.Extensions.DependencyModel.targets",
         "buildTransitive/net462/_._",
         "buildTransitive/net6.0/_._",
@@ -5774,8 +5430,6 @@
         "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
-=======
->>>>>>> origin/guilherme
         "buildTransitive/net461/Microsoft.Extensions.Logging.targets",
         "buildTransitive/net462/_._",
         "buildTransitive/net6.0/_._",
@@ -5792,35 +5446,20 @@
         "lib/netstandard2.0/Microsoft.Extensions.Logging.xml",
         "lib/netstandard2.1/Microsoft.Extensions.Logging.dll",
         "lib/netstandard2.1/Microsoft.Extensions.Logging.xml",
-<<<<<<< HEAD
         "microsoft.extensions.logging.8.0.0-preview.1.23110.8.nupkg.sha512",
-=======
-        "microsoft.extensions.logging.8.0.0.nupkg.sha512",
->>>>>>> origin/guilherme
         "microsoft.extensions.logging.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-<<<<<<< HEAD
     "Microsoft.Extensions.Logging.Abstractions/8.0.0-preview.1.23110.8": {
       "sha512": "lLm4zKYdOdarUU6/NnMOPqUF7yrYjNq89zU/7Lvqp1EAzJvW5FjI9qKNV25fSYaFkuH7jQWuGhOZTIii0BdiZw==",
       "type": "package",
       "path": "microsoft.extensions.logging.abstractions/8.0.0-preview.1.23110.8",
-=======
-    "Microsoft.Extensions.Logging.Abstractions/8.0.0": {
-      "sha512": "arDBqTgFCyS0EvRV7O3MZturChstm50OJ0y9bDJvAcmEPJm0FFpFyjU/JLYyStNGGey081DvnQYlncNX5SJJGA==",
-      "type": "package",
-      "path": "microsoft.extensions.logging.abstractions/8.0.0",
->>>>>>> origin/guilherme
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "LICENSE.TXT",
-<<<<<<< HEAD
-=======
-        "PACKAGE.md",
->>>>>>> origin/guilherme
         "THIRD-PARTY-NOTICES.TXT",
         "analyzers/dotnet/roslyn3.11/cs/Microsoft.Extensions.Logging.Generators.dll",
         "analyzers/dotnet/roslyn3.11/cs/cs/Microsoft.Extensions.Logging.Generators.resources.dll",
@@ -5879,60 +5518,25 @@
         "lib/net8.0/Microsoft.Extensions.Logging.Abstractions.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.xml",
-<<<<<<< HEAD
         "microsoft.extensions.logging.abstractions.8.0.0-preview.1.23110.8.nupkg.sha512",
-=======
-        "microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512",
->>>>>>> origin/guilherme
         "microsoft.extensions.logging.abstractions.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-<<<<<<< HEAD
     "Microsoft.Extensions.Options/8.0.0-preview.1.23110.8": {
       "sha512": "G202b4Eoa0KH2lDeuei6GLNE0ic5+SBM7Mng8qEuAMQ8352ifJBVcHb+fPe66/WcBepQ3Dfvm2+iiIiLKmOKCw==",
       "type": "package",
       "path": "microsoft.extensions.options/8.0.0-preview.1.23110.8",
-=======
-    "Microsoft.Extensions.Options/8.0.0": {
-      "sha512": "JOVOfqpnqlVLUzINQ2fox8evY2SKLYJ3BV8QDe/Jyp21u1T7r45x/R/5QdteURMR5r01GxeJSBBUOCOyaNXA3g==",
-      "type": "package",
-      "path": "microsoft.extensions.options/8.0.0",
->>>>>>> origin/guilherme
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "LICENSE.TXT",
-<<<<<<< HEAD
         "THIRD-PARTY-NOTICES.TXT",
         "buildTransitive/net461/Microsoft.Extensions.Options.targets",
         "buildTransitive/net462/_._",
         "buildTransitive/net6.0/_._",
         "buildTransitive/netcoreapp2.0/Microsoft.Extensions.Options.targets",
-=======
-        "PACKAGE.md",
-        "THIRD-PARTY-NOTICES.TXT",
-        "analyzers/dotnet/roslyn4.4/cs/Microsoft.Extensions.Options.SourceGeneration.dll",
-        "analyzers/dotnet/roslyn4.4/cs/cs/Microsoft.Extensions.Options.SourceGeneration.resources.dll",
-        "analyzers/dotnet/roslyn4.4/cs/de/Microsoft.Extensions.Options.SourceGeneration.resources.dll",
-        "analyzers/dotnet/roslyn4.4/cs/es/Microsoft.Extensions.Options.SourceGeneration.resources.dll",
-        "analyzers/dotnet/roslyn4.4/cs/fr/Microsoft.Extensions.Options.SourceGeneration.resources.dll",
-        "analyzers/dotnet/roslyn4.4/cs/it/Microsoft.Extensions.Options.SourceGeneration.resources.dll",
-        "analyzers/dotnet/roslyn4.4/cs/ja/Microsoft.Extensions.Options.SourceGeneration.resources.dll",
-        "analyzers/dotnet/roslyn4.4/cs/ko/Microsoft.Extensions.Options.SourceGeneration.resources.dll",
-        "analyzers/dotnet/roslyn4.4/cs/pl/Microsoft.Extensions.Options.SourceGeneration.resources.dll",
-        "analyzers/dotnet/roslyn4.4/cs/pt-BR/Microsoft.Extensions.Options.SourceGeneration.resources.dll",
-        "analyzers/dotnet/roslyn4.4/cs/ru/Microsoft.Extensions.Options.SourceGeneration.resources.dll",
-        "analyzers/dotnet/roslyn4.4/cs/tr/Microsoft.Extensions.Options.SourceGeneration.resources.dll",
-        "analyzers/dotnet/roslyn4.4/cs/zh-Hans/Microsoft.Extensions.Options.SourceGeneration.resources.dll",
-        "analyzers/dotnet/roslyn4.4/cs/zh-Hant/Microsoft.Extensions.Options.SourceGeneration.resources.dll",
-        "buildTransitive/net461/Microsoft.Extensions.Options.targets",
-        "buildTransitive/net462/Microsoft.Extensions.Options.targets",
-        "buildTransitive/net6.0/Microsoft.Extensions.Options.targets",
-        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.Options.targets",
-        "buildTransitive/netstandard2.0/Microsoft.Extensions.Options.targets",
->>>>>>> origin/guilherme
         "lib/net462/Microsoft.Extensions.Options.dll",
         "lib/net462/Microsoft.Extensions.Options.xml",
         "lib/net6.0/Microsoft.Extensions.Options.dll",
@@ -5945,35 +5549,20 @@
         "lib/netstandard2.0/Microsoft.Extensions.Options.xml",
         "lib/netstandard2.1/Microsoft.Extensions.Options.dll",
         "lib/netstandard2.1/Microsoft.Extensions.Options.xml",
-<<<<<<< HEAD
         "microsoft.extensions.options.8.0.0-preview.1.23110.8.nupkg.sha512",
-=======
-        "microsoft.extensions.options.8.0.0.nupkg.sha512",
->>>>>>> origin/guilherme
         "microsoft.extensions.options.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-<<<<<<< HEAD
     "Microsoft.Extensions.Primitives/8.0.0-preview.1.23110.8": {
       "sha512": "d3J7o+4G8X2h2mndQn2rzU9Dq31wbMARRThsv4XUKhAYmyxslhFJtAPRmIEs9xKqEHaHICVWPv19VMMG8Cl78g==",
       "type": "package",
       "path": "microsoft.extensions.primitives/8.0.0-preview.1.23110.8",
-=======
-    "Microsoft.Extensions.Primitives/8.0.0": {
-      "sha512": "bXJEZrW9ny8vjMF1JV253WeLhpEVzFo1lyaZu1vQ4ZxWUlVvknZ/+ftFgVheLubb4eZPSwwxBeqS1JkCOjxd8g==",
-      "type": "package",
-      "path": "microsoft.extensions.primitives/8.0.0",
->>>>>>> origin/guilherme
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "LICENSE.TXT",
-<<<<<<< HEAD
-=======
-        "PACKAGE.md",
->>>>>>> origin/guilherme
         "THIRD-PARTY-NOTICES.TXT",
         "buildTransitive/net461/Microsoft.Extensions.Primitives.targets",
         "buildTransitive/net462/_._",
@@ -5989,11 +5578,7 @@
         "lib/net8.0/Microsoft.Extensions.Primitives.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Primitives.xml",
-<<<<<<< HEAD
         "microsoft.extensions.primitives.8.0.0-preview.1.23110.8.nupkg.sha512",
-=======
-        "microsoft.extensions.primitives.8.0.0.nupkg.sha512",
->>>>>>> origin/guilherme
         "microsoft.extensions.primitives.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -6900,7 +6485,6 @@
         "useSharedDesignerContext.txt"
       ]
     },
-<<<<<<< HEAD
     "Mono.TextTemplating/2.2.1": {
       "sha512": "KZYeKBET/2Z0gY1WlTAK7+RHTl7GSbtvTLDXEZZojUdAPqpQNDL6tHv7VUpqfX5VEOh+uRGKaZXkuD253nEOBQ==",
       "type": "package",
@@ -6914,8 +6498,6 @@
         "mono.texttemplating.nuspec"
       ]
     },
-=======
->>>>>>> origin/guilherme
     "NETStandard.Library/1.6.1": {
       "sha512": "WcSp3+vP+yHNgS8EV5J7pZ9IRpeDuARBPN28by8zqff1wJQXm26PVU8L3/fYLBJVU7BtDyqNVWq2KlCVvSSR4A==",
       "type": "package",
@@ -7492,7 +7074,6 @@
         "system.buffers.nuspec"
       ]
     },
-<<<<<<< HEAD
     "System.CodeDom/4.4.0": {
       "sha512": "2sCCb7doXEwtYAbqzbF/8UAeDRMNmPaQbU2q50Psg1J9KzumyVVCgKQY8s53WIPTufNT0DpSe9QRvVjOzfDWBA==",
       "type": "package",
@@ -7514,8 +7095,6 @@
         "version.txt"
       ]
     },
-=======
->>>>>>> origin/guilherme
     "System.Collections/4.3.0": {
       "sha512": "3Dcj85/TBdVpL5Zr+gEEBUuFe2icOnLalmEh9hfck1PTYbbyWuZgh4fmm2ysCLTrqLQw6t3TgTyJ+VLp+Qb+Lw==",
       "type": "package",
@@ -10783,24 +10362,16 @@
         "system.text.encoding.extensions.nuspec"
       ]
     },
-<<<<<<< HEAD
     "System.Text.Encodings.Web/8.0.0-preview.1.23110.8": {
       "sha512": "/mPzObxniVbJp8ij8GPbOQfKjGkEH1Drz4PUaD14ZMqqb2D5yi10yKcl9HzQedqKCwvfLwu20eGf02AFh4pl7Q==",
       "type": "package",
       "path": "system.text.encodings.web/8.0.0-preview.1.23110.8",
-=======
-    "System.Text.Encodings.Web/6.0.0": {
-      "sha512": "Vg8eB5Tawm1IFqj4TVK1czJX89rhFxJo9ELqc/Eiq0eXy13RK00eubyU6TJE6y+GQXjyV5gSfiewDUZjQgSE0w==",
-      "type": "package",
-      "path": "system.text.encodings.web/6.0.0",
->>>>>>> origin/guilherme
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
-<<<<<<< HEAD
         "buildTransitive/net461/System.Text.Encodings.Web.targets",
         "buildTransitive/net462/_._",
         "buildTransitive/net6.0/_._",
@@ -10813,53 +10384,29 @@
         "lib/net7.0/System.Text.Encodings.Web.xml",
         "lib/net8.0/System.Text.Encodings.Web.dll",
         "lib/net8.0/System.Text.Encodings.Web.xml",
-=======
-        "buildTransitive/netcoreapp2.0/System.Text.Encodings.Web.targets",
-        "buildTransitive/netcoreapp3.1/_._",
-        "lib/net461/System.Text.Encodings.Web.dll",
-        "lib/net461/System.Text.Encodings.Web.xml",
-        "lib/net6.0/System.Text.Encodings.Web.dll",
-        "lib/net6.0/System.Text.Encodings.Web.xml",
-        "lib/netcoreapp3.1/System.Text.Encodings.Web.dll",
-        "lib/netcoreapp3.1/System.Text.Encodings.Web.xml",
->>>>>>> origin/guilherme
         "lib/netstandard2.0/System.Text.Encodings.Web.dll",
         "lib/netstandard2.0/System.Text.Encodings.Web.xml",
         "runtimes/browser/lib/net6.0/System.Text.Encodings.Web.dll",
         "runtimes/browser/lib/net6.0/System.Text.Encodings.Web.xml",
-<<<<<<< HEAD
         "runtimes/browser/lib/net7.0/System.Text.Encodings.Web.dll",
         "runtimes/browser/lib/net7.0/System.Text.Encodings.Web.xml",
         "runtimes/browser/lib/net8.0/System.Text.Encodings.Web.dll",
         "runtimes/browser/lib/net8.0/System.Text.Encodings.Web.xml",
         "system.text.encodings.web.8.0.0-preview.1.23110.8.nupkg.sha512",
-=======
-        "system.text.encodings.web.6.0.0.nupkg.sha512",
->>>>>>> origin/guilherme
         "system.text.encodings.web.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-<<<<<<< HEAD
     "System.Text.Json/8.0.0-preview.1.23110.8": {
       "sha512": "s/llr/mWK+yc0KWHGvVWqgervD32hsTlXykrvvfE/9O4cCsUErWqQ+ZnbIbKTqShGn3YfruBED5uZMoYOOzAYw==",
       "type": "package",
       "path": "system.text.json/8.0.0-preview.1.23110.8",
-=======
-    "System.Text.Json/6.0.0": {
-      "sha512": "zaJsHfESQvJ11vbXnNlkrR46IaMULk/gHxYsJphzSF+07kTjPHv+Oc14w6QEOfo3Q4hqLJgStUaYB9DBl0TmWg==",
-      "type": "package",
-      "path": "system.text.json/6.0.0",
->>>>>>> origin/guilherme
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "LICENSE.TXT",
-<<<<<<< HEAD
         "PACKAGE.md",
-=======
->>>>>>> origin/guilherme
         "THIRD-PARTY-NOTICES.TXT",
         "analyzers/dotnet/roslyn3.11/cs/System.Text.Json.SourceGeneration.dll",
         "analyzers/dotnet/roslyn3.11/cs/cs/System.Text.Json.SourceGeneration.resources.dll",
@@ -10889,7 +10436,6 @@
         "analyzers/dotnet/roslyn4.0/cs/tr/System.Text.Json.SourceGeneration.resources.dll",
         "analyzers/dotnet/roslyn4.0/cs/zh-Hans/System.Text.Json.SourceGeneration.resources.dll",
         "analyzers/dotnet/roslyn4.0/cs/zh-Hant/System.Text.Json.SourceGeneration.resources.dll",
-<<<<<<< HEAD
         "analyzers/dotnet/roslyn4.4/cs/System.Text.Json.SourceGeneration.dll",
         "analyzers/dotnet/roslyn4.4/cs/cs/System.Text.Json.SourceGeneration.resources.dll",
         "analyzers/dotnet/roslyn4.4/cs/de/System.Text.Json.SourceGeneration.resources.dll",
@@ -10920,20 +10466,6 @@
         "lib/netstandard2.0/System.Text.Json.dll",
         "lib/netstandard2.0/System.Text.Json.xml",
         "system.text.json.8.0.0-preview.1.23110.8.nupkg.sha512",
-=======
-        "build/System.Text.Json.targets",
-        "buildTransitive/netcoreapp2.0/System.Text.Json.targets",
-        "buildTransitive/netcoreapp3.1/_._",
-        "lib/net461/System.Text.Json.dll",
-        "lib/net461/System.Text.Json.xml",
-        "lib/net6.0/System.Text.Json.dll",
-        "lib/net6.0/System.Text.Json.xml",
-        "lib/netcoreapp3.1/System.Text.Json.dll",
-        "lib/netcoreapp3.1/System.Text.Json.xml",
-        "lib/netstandard2.0/System.Text.Json.dll",
-        "lib/netstandard2.0/System.Text.Json.xml",
-        "system.text.json.6.0.0.nupkg.sha512",
->>>>>>> origin/guilherme
         "system.text.json.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -11446,14 +10978,9 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-<<<<<<< HEAD
       "Microsoft.EntityFrameworkCore >= 8.0.0-preview.1.23111.4",
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.0-preview.1.23111.4",
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.0-preview.1.23111.4",
-=======
-      "Microsoft.EntityFrameworkCore >= 8.0.0",
-      "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.0",
->>>>>>> origin/guilherme
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 7.0.6",
       "Swashbuckle.AspNetCore >= 6.4.0"
     ]
@@ -11464,19 +10991,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\41365718875\\Documents\\HopeHand\\ApiHopeHand\\ApiHopeHand.csproj",
       "projectName": "ApiHopeHand",
       "projectPath": "C:\\Users\\41365718875\\Documents\\HopeHand\\ApiHopeHand\\ApiHopeHand.csproj",
       "packagesPath": "C:\\Users\\41365718875\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\41365718875\\Documents\\HopeHand\\ApiHopeHand\\obj\\",
-=======
-      "projectUniqueName": "C:\\Users\\6352573355\\Desktop\\HopeHand\\ApiHopeHand\\ApiHopeHand.csproj",
-      "projectName": "ApiHopeHand",
-      "projectPath": "C:\\Users\\6352573355\\Desktop\\HopeHand\\ApiHopeHand\\ApiHopeHand.csproj",
-      "packagesPath": "C:\\Users\\6352573355\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\6352573355\\Desktop\\HopeHand\\ApiHopeHand\\obj\\",
->>>>>>> origin/guilherme
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\41365718875\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -11507,7 +11026,6 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
-<<<<<<< HEAD
             "version": "[8.0.0-preview.1.23111.4, )"
           },
           "Microsoft.EntityFrameworkCore.SqlServer": {
@@ -11519,13 +11037,6 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[8.0.0-preview.1.23111.4, )"
-=======
-            "version": "[8.0.0, )"
-          },
-          "Microsoft.EntityFrameworkCore.SqlServer": {
-            "target": "Package",
-            "version": "[8.0.0, )"
->>>>>>> origin/guilherme
           },
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",

@@ -1,7 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
     "C:\\Users\\41365718875\\Documents\\HopeHand\\ApiHopeHand\\ApiHopeHand.csproj": {}
   },
   "projects": {
@@ -13,19 +12,6 @@
         "projectPath": "C:\\Users\\41365718875\\Documents\\HopeHand\\ApiHopeHand\\ApiHopeHand.csproj",
         "packagesPath": "C:\\Users\\41365718875\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\41365718875\\Documents\\HopeHand\\ApiHopeHand\\obj\\",
-=======
-    "C:\\Users\\6352573355\\Desktop\\HopeHand\\ApiHopeHand\\ApiHopeHand.csproj": {}
-  },
-  "projects": {
-    "C:\\Users\\6352573355\\Desktop\\HopeHand\\ApiHopeHand\\ApiHopeHand.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\6352573355\\Desktop\\HopeHand\\ApiHopeHand\\ApiHopeHand.csproj",
-        "projectName": "ApiHopeHand",
-        "projectPath": "C:\\Users\\6352573355\\Desktop\\HopeHand\\ApiHopeHand\\ApiHopeHand.csproj",
-        "packagesPath": "C:\\Users\\6352573355\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\6352573355\\Desktop\\HopeHand\\ApiHopeHand\\obj\\",
->>>>>>> origin/guilherme
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\41365718875\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -56,7 +42,6 @@
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-<<<<<<< HEAD
               "version": "[8.0.0-preview.1.23111.4, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
@@ -68,13 +53,6 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.0-preview.1.23111.4, )"
-=======
-              "version": "[8.0.0, )"
-            },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[8.0.0, )"
->>>>>>> origin/guilherme
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
