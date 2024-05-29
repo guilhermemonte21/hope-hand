@@ -5,12 +5,12 @@ namespace ApiHopeHand.Interfaces
 {
     public interface IOngRepository
     {
-        public void Cadastrar(OngDomain ong);
+        public void Cadastrar(Ong ong);
 
-        public void Deletar(OngDomain ong);
+        public void Deletar(Ong ong);
 
-        public List<OngDomain> Listar();
+        public List<Ong> Listar();
 
-        public OngDomain BuscarPorId(Guid id);
+        public Ong BuscarPorId(Guid id);
     }
 }

@@ -5,17 +5,17 @@ namespace ApiHopeHand.Repositories
 {
     public class EnderecoRepository : IEnderecoRepository
     {
-        public EnderecoDomain AtualizarEndereco(Guid id, EnderecoDomain endereco)
+        public Endereco AtualizarEndereco(Guid id, Endereco endereco)
         {
             throw new NotImplementedException();
         }
 
-        public void Cadastrar(EnderecoDomain endereco)
+        public void Cadastrar(Endereco endereco)
         {
             throw new NotImplementedException();
         }
 
-        public List<EnderecoDomain> ListarPorCidade(string endereco)
+        public List<Endereco> ListarPorCidade(string endereco)
         {
             throw new NotImplementedException();
         }

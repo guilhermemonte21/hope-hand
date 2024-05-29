@@ -22,8 +22,8 @@ namespace ApiHopeHand.Context
 
 
         }
-        public DbSet<OngDomain> Ong { get; set; }
-        public DbSet<UsuarioDomain> Usuario { get; set; }
-        public DbSet<EnderecoDomain> Endereco { get; set; }
+        public DbSet<Ong> Ong { get; set; }
+        public DbSet<Usuario> Usuario { get; set; }
+        public DbSet<Endereco> Endereco { get; set; }
     }
 }
