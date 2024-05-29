@@ -5,24 +5,22 @@ namespace ApiHopeHand.Repositories
 {
     public class OngRepository : IOngRepository
     {
-
-
-        public Ong BuscarPorId(Guid id)
+        public OngDomain BuscarPorId(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public void Cadastrar(Ong ong)
+        public void Cadastrar(OngDomain ong)
         {
             throw new NotImplementedException();
         }
 
-        public void Deletar(Ong ong)
+        public void Deletar(OngDomain ong)
         {
             throw new NotImplementedException();
         }
 
-        public List<Ong> Listar()
+        public List<OngDomain> Listar()
         {
             throw new NotImplementedException();
         }

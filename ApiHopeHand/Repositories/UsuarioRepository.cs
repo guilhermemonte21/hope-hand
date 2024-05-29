@@ -15,17 +15,17 @@ namespace ApiHopeHand.Repositories
             throw new NotImplementedException();
         }
 
-        public Usuario BuscarPorEmailESenha(string email, string senha)
+        public UsuarioDomain BuscarPorEmailESenha(string email, string senha)
         {
             throw new NotImplementedException();
         }
 
-        public Usuario BuscarPorId(Guid id)
+        public UsuarioDomain BuscarPorId(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public void Cadastrar(Usuario usuario)
+        public void Cadastrar(UsuarioDomain usuario)
         {
             throw new NotImplementedException();
         }
