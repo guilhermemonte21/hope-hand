@@ -1,5 +1,6 @@
 ﻿using WebApiHopeHand.Interfaces;
 using WebApiHopeHand.Domains;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace WebApiHopeHand.Repositories
 {
@@ -7,7 +8,15 @@ namespace WebApiHopeHand.Repositories
     {
         public Ong BuscarPorId(Guid id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return null;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public void Cadastrar(Ong ong)

@@ -12,7 +12,7 @@ using WebApiHopeHand.Context;
 namespace WebApiHopeHand.Migrations
 {
     [DbContext(typeof(HopeContext))]
-    [Migration("20240603174755_InitialCreate")]
+    [Migration("20240603193456_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
