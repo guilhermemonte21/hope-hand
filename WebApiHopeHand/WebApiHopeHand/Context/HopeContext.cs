@@ -16,13 +16,14 @@ namespace WebApiHopeHand.Context
             // Se NÃO estiver configurado
             if (!optionsBuilder.IsConfigured)
             {
-                //optionsBuilder.UseSqlServer("Data Source = NOTE02-SALA19; initial catalog = HopeHand;user id=sa; pwd = Senai@134; TrustServerCertificate = true;");
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-84UMQCT\\SQLEXPRESS; Initial Catalog=HopeHand; User Id=sa; pwd=Senai@134; TrustServerCertificate = true;");
+                //optionsBuilder.UseSqlServer("Data Source=NOTE02-SALA19; initial catalog=HopeHand;user id=sa; pwd=Senai@134; TrustServerCertificate = true;");
+                optionsBuilder.UseSqlServer("Data Source=NOTE02-SALA19; Initial Catalog=HopeHand; User Id=sa; pwd=Senai@134; TrustServerCertificate = true;");
+                //optionsBuilder.UseSqlServer("Data Source=DESKTOP-84UMQCT\\SQLEXPRESS; Initial Catalog=HopeHand; User Id=sa; pwd=Senai@134; TrustServerCertificate = true;");
             }
         }
 
-        public DbSet<Ong> Ong { get; set; }
-        public DbSet<Usuario> Usuario { get; set; }
-        public DbSet<Endereco> Endereco { get; set; }
+        public DbSet<Ong> Ongs { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Endereco> Enderecos { get; set; }
     }
 }

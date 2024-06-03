@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebApiHopeHand")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2f9c4c547676df5f819cb1894091e89d1ba30d37")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+49e94ba0b04ae59545ab84bc216d69bdb5e3b8b9")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebApiHopeHand")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebApiHopeHand")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

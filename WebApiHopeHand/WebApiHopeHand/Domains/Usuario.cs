@@ -12,7 +12,7 @@ namespace WebApiHopeHand.Domains
     public class Usuario
     {
         [Key]
-        public Guid Id { get; set; } = Guid.NewGuid();
+        public Guid? Id { get; set; } = Guid.NewGuid();
 
         [Column(TypeName = "VARCHAR(100)")]
         [Required(ErrorMessage = "O nome do usuário é obrigatório!")]
@@ -46,9 +46,9 @@ namespace WebApiHopeHand.Domains
 
 
         [Required(ErrorMessage = "A ONG é obrigatória!")]
-        public Guid IdOng { get; set; }
+        public Guid? IdOng { get; set; }
 
         [ForeignKey(nameof(IdOng))]
-        public Ong Ong { get; }
+        public Ong? Ong { get; }
     }
 }

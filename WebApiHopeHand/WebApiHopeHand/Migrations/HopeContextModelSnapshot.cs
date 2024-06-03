@@ -24,7 +24,7 @@ namespace WebApiHopeHand.Migrations
 
             modelBuilder.Entity("WebApiHopeHand.Domains.Endereco", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -38,7 +38,8 @@ namespace WebApiHopeHand.Migrations
                     b.Property<string>("City")
                         .HasColumnType("VARCHAR(100)");
 
-                    b.Property<Guid>("IdOng")
+                    b.Property<Guid?>("IdOng")
+                        .IsRequired()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Number")
@@ -56,7 +57,7 @@ namespace WebApiHopeHand.Migrations
 
             modelBuilder.Entity("WebApiHopeHand.Domains.Ong", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -87,7 +88,7 @@ namespace WebApiHopeHand.Migrations
 
             modelBuilder.Entity("WebApiHopeHand.Domains.Usuario", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -103,7 +104,8 @@ namespace WebApiHopeHand.Migrations
                         .IsRequired()
                         .HasColumnType("VARCHAR(70)");
 
-                    b.Property<Guid>("IdOng")
+                    b.Property<Guid?>("IdOng")
+                        .IsRequired()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
