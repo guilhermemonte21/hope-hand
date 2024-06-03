@@ -13,8 +13,8 @@ export const Route = () => {
         <NavigationContainer>
             <Stack.Navigator>
                 <Stack.Screen
-                    name="Login"
-                    component={Login}
+                    name="Perfil"
+                    component={Perfil}
                 />
             </Stack.Navigator>
         </NavigationContainer>
