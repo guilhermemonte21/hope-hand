@@ -8,7 +8,7 @@ namespace WebApiHopeHand.Domains
     public class Ong
     {
         [Key]
-        public Guid Id { get; set; } = Guid.NewGuid();
+        public Guid? Id { get; set; } = Guid.NewGuid();
 
         [Column(TypeName = "VARCHAR(100)")]
         [Required(ErrorMessage = "O nome da ONG é obrigatório!")]
@@ -32,6 +32,6 @@ namespace WebApiHopeHand.Domains
         public Guid? UserId { get; set; }
 
         [ForeignKey(nameof(UserId))]
-        public Usuario Usuario { get; set; }
+        public Usuario? Usuario { get; set; }
     }
 }
