@@ -1,6 +1,0 @@
-@ApiHopeHand_HostAddress = http://localhost:5210
-
-GET {{ApiHopeHand_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
