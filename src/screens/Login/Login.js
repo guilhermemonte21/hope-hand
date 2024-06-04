@@ -6,7 +6,7 @@ export const Login = ({ navigation }) => {
     return (
         <Container>
             <Logo
-                source={require("../../assets/images/logo-whand.png")}
+                // source={require("../../assets/images/logo-whand.png")}
             />
 
             <Titulo
