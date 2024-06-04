@@ -9,7 +9,6 @@ namespace WebApiHopeHand.Repositories
     {
         private HopeContext _context = new HopeContext();
 
-
         /// <summary>
         /// Altera um Endereco existente do banco de dados
         /// </summary>
