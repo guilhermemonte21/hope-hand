@@ -5,10 +5,9 @@ export const BotaoVoltar = ({
     route,
 }) => {
     return (
-        // <IconBox onPress={() => navigation.replace("Login")}>
-        <IconBox> 
+        <IconBox onPress={() => navigation.replace(route)}>
             <Icon
-                // source={require("../../assets/images/btvoltar.png")}
+                source={require("../../assets/images/btvoltar.png")}
             />
         </IconBox>
     )
