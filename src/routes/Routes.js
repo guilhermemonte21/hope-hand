@@ -13,6 +13,7 @@ import { Navigation } from "../screens/Navigation/Navigation";
 import { Home } from "../screens/Home/Home";
 import { Inicio } from "./../screens/Inicio/Inicio";
 import { ListaOngs } from "../screens/ListaOngs/ListaOngs";
+import { Sobre } from "../screens/Sobre/Sobre";
 
 //instância do StackNavigator
 const Stack = createNativeStackNavigator();
@@ -41,6 +42,7 @@ export const Route = () => {
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Inicio" component={Inicio} />
         <Stack.Screen name="ListaOngs" component={ListaOngs} />
+        <Stack.Screen name="Sobre" component={Sobre} />
       </Stack.Navigator>
     </NavigationContainer>
   );

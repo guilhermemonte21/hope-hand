@@ -19,11 +19,14 @@ export const NoticiaTitle = styled.Text`
   position: absolute;
   bottom: 10px;
   left: 10px;
+  font-size: 16px;
   color: white;
   font-family: "Kanit_400Regular";
   text-shadow: 1px 1px 5px black;
 `;
 
 export const NoticiaImage = styled.Image`
-  border-radius: 18px;
+  border-radius: 10px;
+  left: 0;
+  position: absolute;
 `;
