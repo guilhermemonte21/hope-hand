@@ -11,45 +11,32 @@ import { RecuperarSenha } from "../screens/RecuperarSenha/RecuperarSenha";
 import { VerificarCodigo } from "../screens/VerificarCodigo/VerificarCodigo";
 import { Navigation } from "../screens/Navigation/Navigation";
 import { Home } from "../screens/Home/Home";
-import { Inicio } from './../screens/Inicio/Inicio';
+import { Inicio } from "./../screens/Inicio/Inicio";
 import { ListaOngs } from "../screens/ListaOngs/ListaOngs";
 
 //instância do StackNavigator
 const Stack = createNativeStackNavigator();
 
 export const Route = () => {
-  {/* TELA DE NAVEGACAO PARA TESTES */}
-    return (
-        <NavigationContainer>
-            <Stack.Navigator screenOptions={{
-                animation: "fade_from_bottom"
-            }}>
-                <Stack.Screen
-                    name="Perfil"
-                    component={Perfil}
-                />
-                <Stack.Screen
-                    name="Login"
-                    component={Login}
-                />
-
-                <Stack.Screen
-                    name="Cadastro"
-                    component={Cadastro}
-                />
-
-                <Stack.Screen
-                    name="RecuperarSenha"
-                    component={RecuperarSenha}
-                />
-
-                <Stack.Screen
-                    name="VerificarCodigo"
-                    component={VerificarCodigo}
-                />
-
-        
+  {
+    /* TELA DE NAVEGACAO PARA TESTES */
+  }
+  return (
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          animation: "fade_from_bottom",
+        }}
+      >
         <Stack.Screen name="Navigation" component={Navigation} />
+        <Stack.Screen name="Perfil" component={Perfil} />
+
+        <Stack.Screen name="Cadastro" component={Cadastro} />
+
+        <Stack.Screen name="RecuperarSenha" component={RecuperarSenha} />
+
+        <Stack.Screen name="VerificarCodigo" component={VerificarCodigo} />
+
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Inicio" component={Inicio} />

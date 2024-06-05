@@ -1,7 +1,6 @@
 import { Botao } from "../../components/Botao/Index"
 import { BotaoVoltar } from "../../components/BotaoVoltar/Index"
 import { Container } from "../../components/Container/Style"
-import { Group } from "../../components/Group/Index"
 import { Logo } from "../../components/Logo/Style"
 import { Subtitulo } from "../../components/Subtitulo/Index"
 import { Titulo } from "../../components/Titulo/Index"
@@ -28,10 +27,6 @@ export const VerificarCodigo = ({
             <Subtitulo
                 text={"Digite o código enviado no seu Email"}
             />
-
-            <Group>
-                
-            </Group>
 
             <Botao
                 navigation={navigation}

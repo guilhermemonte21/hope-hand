@@ -1,7 +1,7 @@
 import { BackHandler, Image } from "react-native";
 import { Botao } from "../../components/Botao/Index";
 import { Container } from "../../components/Container/Style";
-import { Group } from "./../../components/Group/Index";
+import { Group } from "../../components/Group";
 
 export const Inicio = ({ navigation }) => {
   return (
@@ -10,7 +10,7 @@ export const Inicio = ({ navigation }) => {
         source={require("../../assets/images/logo-whand.png")}
         style={{ width: 200, height: 100 }}
       />
-      <Group >
+      <Group>
         <Botao
           height={80}
           text={"Entrar como ONG"}

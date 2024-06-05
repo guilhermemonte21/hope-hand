@@ -7,7 +7,23 @@ export const Navigation = ({ navigation }) => {
       <Button title="Inicio" onPress={() => navigation.navigate("Inicio")} />
       <Button title="Login" onPress={() => navigation.navigate("Login")} />
       <Button title="Home" onPress={() => navigation.navigate("Home")} />
-      <Button title="ListaOngs" onPress={() => navigation.navigate("ListaOngs")} />
+      <Button
+        title="ListaOngs"
+        onPress={() => navigation.navigate("ListaOngs")}
+      />
+      <Button
+        title="RecuperarSenha"
+        onPress={() => navigation.navigate("RecuperarSenha")}
+      />
+      <Button
+        title="VerificarCodigo"
+        onPress={() => navigation.navigate("VerificarCodigo")}
+      />
+      <Button
+        title="Cadastro"
+        onPress={() => navigation.navigate("Cadastro")}
+      />
+      <Button title="Perfil" onPress={() => navigation.navigate("Perfil")} />
     </View>
   );
 };

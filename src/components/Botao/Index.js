@@ -16,6 +16,7 @@ export const Botao = ({
         borderRadius: radius,
         maxWidth: width,
         minHeight: height,
+        maxHeight: height,
       }}
       onPress={onPress}
     >

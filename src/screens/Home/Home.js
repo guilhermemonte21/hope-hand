@@ -1,12 +1,12 @@
 import { Image } from "react-native";
 import { Container, ContainerMargin } from "./../../components/Container/Style";
 import { Noticia } from "./../../components/Noticia/Index";
-import { Group } from "../../components/Group";
 import { Botao } from "./../../components/Botao/Index";
 
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { Titulo } from "./../../components/Titulo/Index";
+import { Group } from "../../components/Group";
 
 export const Home = ({ navigation }) => {
   return (
