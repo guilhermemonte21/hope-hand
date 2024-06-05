@@ -5,6 +5,7 @@ import { Route } from './src/routes/Routes';
 // fontes
 import {
   useFonts,
+  Kanit_300Light,
   Kanit_400Regular
 } from "@expo-google-fonts/kanit";
 import { Poppins_400Regular } from '@expo-google-fonts/poppins';

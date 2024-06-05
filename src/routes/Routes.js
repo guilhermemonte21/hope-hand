@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 // imports de componentes
+import { Perfil } from "../screens/Perfil/Perfil";
 import { Login } from "../screens/Login/Login";
 
 import { Cadastro } from "../screens/Cadastro/Cadastro";
@@ -23,6 +24,10 @@ export const Route = () => {
             <Stack.Navigator screenOptions={{
                 animation: "fade_from_bottom"
             }}>
+                <Stack.Screen
+                    name="Perfil"
+                    component={Perfil}
+                />
                 <Stack.Screen
                     name="Login"
                     component={Login}

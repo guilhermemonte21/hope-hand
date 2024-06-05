@@ -32,3 +32,18 @@ export const ContainerMargin = styled.View`
   width: 90%;
   min-height: auto;
 `;
+
+export const ContainerCard = styled.View.attrs({
+  alignItems: 'center',
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+})`
+  backgroundColor: #E8E8E8;
+  padding: 15px;
+  borderRadius: 12px;
+  width: 80%;
+  height: 75px;
+  gap: 0px;
+`;
+
+
