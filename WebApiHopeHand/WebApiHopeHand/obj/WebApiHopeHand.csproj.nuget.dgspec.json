@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\41365718875\\Desktop\\HopeHand\\WebApiHopeHand\\WebApiHopeHand\\WebApiHopeHand.csproj": {}
+    "C:\\Users\\41365718875\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\WebApiHopeHand.csproj": {}
   },
   "projects": {
-    "C:\\Users\\41365718875\\Desktop\\HopeHand\\WebApiHopeHand\\WebApiHopeHand\\WebApiHopeHand.csproj": {
+    "C:\\Users\\41365718875\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\WebApiHopeHand.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\41365718875\\Desktop\\HopeHand\\WebApiHopeHand\\WebApiHopeHand\\WebApiHopeHand.csproj",
+        "projectUniqueName": "C:\\Users\\41365718875\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\WebApiHopeHand.csproj",
         "projectName": "WebApiHopeHand",
-        "projectPath": "C:\\Users\\41365718875\\Desktop\\HopeHand\\WebApiHopeHand\\WebApiHopeHand\\WebApiHopeHand.csproj",
+        "projectPath": "C:\\Users\\41365718875\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\WebApiHopeHand.csproj",
         "packagesPath": "C:\\Users\\41365718875\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\41365718875\\Desktop\\HopeHand\\WebApiHopeHand\\WebApiHopeHand\\obj\\",
+        "outputPath": "C:\\Users\\41365718875\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\41365718875\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "MailKit": {
+              "target": "Package",
+              "version": "[4.6.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.6, )"
@@ -59,6 +63,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.6, )"
+            },
+            "MimeKit": {
+              "target": "Package",
+              "version": "[4.6.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
