@@ -3,7 +3,7 @@ import styled from "styled-components/native";
 const ContainersStyle = `
 flex: 1;
 flex-basis: auto;
-background-color: white;
+
 align-items: center;
 gap: 20px;
 `;
@@ -33,17 +33,14 @@ export const ContainerMargin = styled.View`
   min-height: auto;
 `;
 
-export const ContainerCard = styled.View.attrs({
-  alignItems: 'center',
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-})`
-  backgroundColor: #E8E8E8;
-  padding: 15px;
-  borderRadius: 12px;
+export const ViewRow = styled.View.attrs({
+}
+)`
+  border: 1px solid red;
   width: 80%;
   height: 75px;
-  gap: 0px;
+  flexDirection: row;
+  justifyContent: space-between;
+  gap: 20px;
 `;
-
 

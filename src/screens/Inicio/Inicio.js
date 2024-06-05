@@ -1,7 +1,7 @@
 import { BackHandler, Image } from "react-native";
 import { Botao } from "../../components/Botao/Index";
 import { Container } from "../../components/Container/Style";
-import { Group } from "../../components/Group";
+import { Group } from "../../components/Group/Index";
 
 export const Inicio = ({ navigation }) => {
   return (
