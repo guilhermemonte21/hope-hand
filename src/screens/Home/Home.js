@@ -6,7 +6,7 @@ import { Botao } from "./../../components/Botao/Index";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { Titulo } from "./../../components/Titulo/Index";
-import { Group } from "../../components/Group";
+import { Group } from "../../components/Group/Index";
 
 export const Home = ({ navigation }) => {
   return (

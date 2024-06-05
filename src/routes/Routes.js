@@ -13,6 +13,8 @@ import { Navigation } from "../screens/Navigation/Navigation";
 import { Home } from "../screens/Home/Home";
 import { Inicio } from "./../screens/Inicio/Inicio";
 import { ListaOngs } from "../screens/ListaOngs/ListaOngs";
+import { AlterarSenha } from "../screens/AlterarSenha/AlterarSenha";
+import { Mapa } from "../screens/Mapa/Mapa";
 
 //instância do StackNavigator
 const Stack = createNativeStackNavigator();
@@ -28,19 +30,60 @@ export const Route = () => {
           animation: "fade_from_bottom",
         }}
       >
-        <Stack.Screen name="Navigation" component={Navigation} />
-        <Stack.Screen name="Perfil" component={Perfil} />
+        <Stack.Screen
+          name="Navigation"
+          component={Navigation}
+        />
 
-        <Stack.Screen name="Cadastro" component={Cadastro} />
+        <Stack.Screen
+          name="Perfil"
+          component={Perfil}
+        />
 
-        <Stack.Screen name="RecuperarSenha" component={RecuperarSenha} />
+        <Stack.Screen
+          name="Cadastro"
+          component={Cadastro}
+        />
 
-        <Stack.Screen name="VerificarCodigo" component={VerificarCodigo} />
+        <Stack.Screen
+          name="RecuperarSenha"
+          component={RecuperarSenha}
+        />
 
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Inicio" component={Inicio} />
-        <Stack.Screen name="ListaOngs" component={ListaOngs} />
+        <Stack.Screen
+          name="VerificarCodigo"
+          component={VerificarCodigo}
+        />
+
+        <Stack.Screen
+          name="AlterarSenha"
+          component={AlterarSenha}
+        />
+
+        <Stack.Screen
+          name="Login"
+          component={Login}
+        />
+
+        <Stack.Screen
+          name="Home"
+          component={Home}
+        />
+
+        <Stack.Screen
+          name="Inicio"
+          component={Inicio}
+        />
+
+        <Stack.Screen
+          name="ListaOngs"
+          component={ListaOngs}
+        />
+
+        <Stack.Screen
+          name="Mapa"
+          component={Mapa}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
