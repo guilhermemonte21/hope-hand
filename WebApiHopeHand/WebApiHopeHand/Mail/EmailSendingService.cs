@@ -43,7 +43,6 @@
         private string GetHtmlEmailContentRecovery(int code)
         {
             string Response = @"
-<p style=""""color: #666666;font-size: 24px; text-align: center;"""">Código de confirmação <strong>"" + code + @""</strong></p>
         <div style=""width:100%; background-color:rgba(96, 191, 197, 1); padding: 20px;"">
             <div style=""max-width: 600px; margin: 0 auto; background-color:#FFFFFF; border-radius: 10px; padding: 20px;"">
                 <h1 style=""color: #333333;text-align: center;"">Recuperação de senha</h1>

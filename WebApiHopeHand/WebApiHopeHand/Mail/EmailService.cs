@@ -8,10 +8,10 @@ namespace WebApiHopeHand.Mail
     public class EmailService : IEmailService
     {
         // Objeto que guarda as configurações/propriedades do Email
-        private readonly Email _emailSettings;
+        private readonly EmailSettings _emailSettings;
 
         // Construtor com a injeção de dependência do Email
-        public EmailService(IOptions<Email> options)
+        public EmailService(IOptions<EmailSettings> options)
         {
             _emailSettings = options.Value;
         }

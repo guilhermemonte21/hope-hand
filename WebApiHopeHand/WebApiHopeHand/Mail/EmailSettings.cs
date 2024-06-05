@@ -1,6 +1,6 @@
 ﻿namespace WebApiHopeHand.Mail
 {
-    public class Email
+    public class EmailSettings
     {
         // email do remetente
         public string? SenderEmail { get; set; }
