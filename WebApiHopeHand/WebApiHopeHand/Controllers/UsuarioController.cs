@@ -61,6 +61,7 @@ namespace WebApiHopeHand.Controllers
                 user.Cpf = usuario.Cpf;
                 user.Rg = usuario.Rg;
                 user.Birth = usuario.Birth;
+                user.CodRecupSenha = usuario.CodRecupSenha;
 
                 //cadastra o usuario
                 usuarioRepository.Cadastrar(user);

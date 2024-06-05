@@ -8,11 +8,8 @@
     ".NETCoreApp,Version=v8.0": {
       "WebApiHopeHand/1.0.0": {
         "dependencies": {
-<<<<<<< HEAD
           "BCrypt.Net-Next": "4.0.3",
-=======
           "MailKit": "4.6.0",
->>>>>>> develop
           "Microsoft.EntityFrameworkCore": "8.0.6",
           "Microsoft.EntityFrameworkCore.Design": "8.0.6",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.6",
@@ -58,19 +55,19 @@
           }
         }
       },
-<<<<<<< HEAD
       "BCrypt.Net-Next/4.0.3": {
         "runtime": {
           "lib/net6.0/BCrypt.Net-Next.dll": {
             "assemblyVersion": "4.0.3.0",
             "fileVersion": "4.0.3.0"
-=======
+          }
+        }
+      },
       "BouncyCastle.Cryptography/2.3.1": {
         "runtime": {
           "lib/net6.0/BouncyCastle.Cryptography.dll": {
             "assemblyVersion": "2.0.0.0",
             "fileVersion": "2.3.1.17862"
->>>>>>> develop
           }
         }
       },
@@ -978,21 +975,19 @@
       "path": "azure.identity/1.10.3",
       "hashPath": "azure.identity.1.10.3.nupkg.sha512"
     },
-<<<<<<< HEAD
     "BCrypt.Net-Next/4.0.3": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-W+U9WvmZQgi5cX6FS5GDtDoPzUCV4LkBLkywq/kRZhuDwcbavOzcDAr3LXJFqHUi952Yj3LEYoWW0jbEUQChsA==",
       "path": "bcrypt.net-next/4.0.3",
       "hashPath": "bcrypt.net-next.4.0.3.nupkg.sha512"
-=======
+    },
     "BouncyCastle.Cryptography/2.3.1": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-buwoISwecYke3CmgG1AQSg+sNZjJeIb93vTAtJiHZX35hP/teYMxsfg0NDXGUKjGx6BKBTNKc77O2M3vKvlXZQ==",
       "path": "bouncycastle.cryptography/2.3.1",
       "hashPath": "bouncycastle.cryptography.2.3.1.nupkg.sha512"
->>>>>>> develop
     },
     "Humanizer.Core/2.14.1": {
       "type": "package",
