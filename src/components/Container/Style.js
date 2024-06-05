@@ -10,7 +10,7 @@ gap: 20px;
 
 export const Container = styled.SafeAreaView`
   ${ContainersStyle}
-  padding: 40px 0 20px 0;
+  padding: 20px 0 20px 0;
 `;
 
 export const ContainerScroll = styled.ScrollView.attrs({

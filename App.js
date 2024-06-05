@@ -8,6 +8,7 @@ import {
   Kanit_400Regular
 } from "@expo-google-fonts/kanit";
 import { Poppins_400Regular } from '@expo-google-fonts/poppins';
+import { Rodape } from './src/components/Rodape/Index';
 
 export default function App() {
   const [fontsLoaded, fontsError] = useFonts({
@@ -24,6 +25,7 @@ export default function App() {
       <StatusBar translucent backgroundColor="transparent" />
 
       <Route />
+      <Rodape/> 
     </>
   );
 }
