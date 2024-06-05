@@ -8,7 +8,7 @@ namespace WebApiHopeHand.Domains
     public class Endereco
     {
         [Key]
-        public Guid? Id { get; set; } = Guid.NewGuid();
+        public Guid Id { get; set; } = Guid.NewGuid();
 
 
         [Required(ErrorMessage = "A ONG deste endereço é obrigatória!")]

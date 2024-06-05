@@ -44,11 +44,7 @@ namespace WebApiHopeHand.Domains
         [StringLength(16, MinimumLength = 6, ErrorMessage = "A senha deve conter entre 6 a 16 caracteres")]
         public string? Password { get; set; }
 
-
-        [Required(ErrorMessage = "A ONG é obrigatória!")]
-        public Guid? IdOng { get; set; }
-
-        [ForeignKey(nameof(IdOng))]
-        public Ong? Ong { get; }
+        [Column(TypeName = "INT")]
+        public int? CodRecupSenha { get; set; }
     }
 }

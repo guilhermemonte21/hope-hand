@@ -22,8 +22,8 @@ namespace WebApiHopeHand.Context
             }
         }
 
-        public DbSet<Ong> Ongs { get; set; }
-        public DbSet<Usuario> Usuarios { get; set; }
-        public DbSet<Endereco> Enderecos { get; set; }
+        public virtual DbSet<Ong> Ongs { get; set; }
+        public virtual DbSet<Usuario> Usuarios { get; set; }
+        public virtual DbSet<Endereco> Enderecos { get; set; }
     }
 }
