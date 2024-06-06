@@ -12,7 +12,7 @@ import { InputLong, PerfilInput } from "../../components/Input/Style";
 import { Input } from "../../components/Input/Index";
 import { CardCause } from "../../components/CardCause/Index";
 import { SubtitleCard, TitleCard } from "../../components/CardCause/Style";
-import { Botao } from "../../components/Botao/Index";
+import { Botao } from "./../../components/Botao/Index";
 import { Group } from "../../components/Group/Index"
 
 export const Perfil = ({ navigation }) => {
