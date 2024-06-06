@@ -19,6 +19,9 @@ namespace WebApiHopeHand.Domains
         [Required(ErrorMessage = "O CNPJ da ONG é obrigatório!")]
         public string? Cnpj { get; set; }
 
+        [Column(TypeName = "VARCHAR(MAX)")]
+        public string? Link { get; set; }
+
 
         [Column(TypeName = "VARCHAR(MAX)")]
         public string? Photo { get; set; }
