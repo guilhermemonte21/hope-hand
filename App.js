@@ -14,7 +14,9 @@ import { Rodape } from "./src/components/Rodape/Index";
 export default function App() {
   const [fontsLoaded, fontsError] = useFonts({
     Kanit_400Regular,
+    Kanit_300Light,
     Poppins_400Regular,
+
   });
 
   if (!fontsLoaded) {
@@ -23,10 +25,11 @@ export default function App() {
     return (
       <>
         <StatusBar translucent backgroundColor="transparent" />
+      
+      <Route />
+      
+      <Rodape/> 
+    </>
+  );
 
-        <Route />
-        <Rodape />
-      </>
-    );
-  }
 }

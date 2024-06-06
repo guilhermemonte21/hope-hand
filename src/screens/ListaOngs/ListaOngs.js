@@ -22,7 +22,12 @@ const ongs = [
 export const ListaOngs = ({ navigation }) => {
   return (
     <Container>
-      <Titulo text={"LISTA DE ONGS"} fontSize={20} />
+      <Titulo
+        text={"Lista de ongs"}
+        fontSize={20}
+        textTransform={"uppercase"}
+      />
+
       <FlatList
         contentContainerStyle={{ gap: 20, alignItems: "center", width: "100%", padding: "5%" }}
         data={ongs}

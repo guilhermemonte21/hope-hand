@@ -1,32 +1,25 @@
-import { Botao } from "../../components/Botao/Index"
-import { BotaoVoltar } from "../../components/BotaoVoltar/Index"
 import { Container } from "../../components/Container/Style"
-import { Input } from "../../components/Input/Index"
+import { BotaoVoltar } from "../../components/BotaoVoltar/Index"
 import { Logo } from "../../components/Logo/Style"
 import { Titulo } from "../../components/Titulo/Index"
+import { Input } from "../../components/Input/Index"
+import { Botao } from "../../components/Botao/Index"
 
-export const Cadastro = ({
+export const AlterarSenha = ({
     navigation
 }) => {
     return (
         <Container>
-            <BotaoVoltar
-                navigation={navigation}
-                route={"Login"}
-            />
+            <BotaoVoltar />
 
             <Logo
                 source={require("../../assets/images/logo-whand.png")}
             />
 
             <Titulo
-                text={"Cadastro"}
+                text={"Alterar senha"}
                 fontSize={18}
                 textTransform={"uppercase"}
-            />
-
-            <Input
-                placeholder={"Email:"}
             />
 
             <Input

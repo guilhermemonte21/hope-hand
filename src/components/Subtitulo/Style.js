@@ -1,8 +1,6 @@
 import styled from "styled-components/native";
 
 export const TextBox = styled.View`
-    margin-top: -40px;
-    margin-bottom: 40px;
 `
 
 export const Subtitle = styled.Text`

@@ -5,12 +5,20 @@ import {
 
 export const Input = ({
     placeholder,
-    
+    width = "85%",
+    editable,
+    fontFamily = "Poppins_400Regular"
 }) => {
     return (
-        <BoxInput>
+        <BoxInput
+            style={{
+                width: width,
+                fontFamily: fontFamily
+            }}
+        >
             <InputStyled
                 placeholder={placeholder}
+                editable={editable}
             />
         </BoxInput>
     )
