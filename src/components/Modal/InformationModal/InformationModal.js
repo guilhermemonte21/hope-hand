@@ -38,7 +38,7 @@ export const InformationModal = ({
                     <PayModal
                     navigation={navigation}
                     visible={showModalPay}
-                    setShowModalStethoscope={setShowModalPay}
+                    setShowInformationModal={setShowModalPay}
                     />
 
                     <Botao
@@ -50,8 +50,7 @@ export const InformationModal = ({
                 </ModalForm>
 
                 <BotaoVoltar
-                navigation={navigation}
-                route={"Perfil"}
+                onPress={() => setShowInformationModal(false)}
                 />
             </InfoModal>
         </Modal>

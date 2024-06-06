@@ -1,19 +1,16 @@
-import { Container, ContainerCard, ContainerMargin, ViewRow } from "../../components/Container/Style";
-import { SubtitleStyled, TituloStyled } from "../../components/Titulo/Style";
-import { PerfilImageWhite } from "../../components/Perfil/Perfil";
-import {
-  ButtonShort,
-  ButtonStyled,
-  TextButton,
-} from "../../components/Botao/Style";
+import { Container, ContainerMargin } from "../../components/Container/Style";
+import { PerfilImageWhite } from "../../components/Perfil/ImagePerfil";
+import { ButtonUploadImage } from "../../components/Botao/Style";
 import { useState } from "react";
 import { InformationModal } from "../../components/Modal/InformationModal/InformationModal";
-import { InputLong, PerfilInput } from "../../components/Input/Style";
 import { Input } from "../../components/Input/Index";
 import { CardCause } from "../../components/CardCause/Index";
 import { SubtitleCard, TitleCard } from "../../components/CardCause/Style";
 import { Botao } from "./../../components/Botao/Index";
 import { Group } from "../../components/Group/Index"
+import { ViewImageCircle } from "../../components/Perfil/ImagePerfil";
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { BotaoVoltar } from "../../components/BotaoVoltar/Index";
 
 export const Perfil = ({ navigation }) => {
   const [logado, setLogado] = useState(false);
@@ -23,11 +20,18 @@ export const Perfil = ({ navigation }) => {
     <Container>
 
       {/* Botão */}
-
-      {/* Imagem da Ong */}
-      <PerfilImageWhite
-        source={require("../../assets/images/Perfil-White.png")}
+      <BotaoVoltar
+      onPress={() => navigation.replace("Home")}
       />
+      {/* Imagem da Ong */}
+      <ViewImageCircle>
+      <PerfilImageWhite source={require("../../assets/images/Perfil-White.png")}/>
+      </ViewImageCircle>
+
+      <ButtonUploadImage>
+        <MaterialCommunityIcons name="camera-enhance" size={22} color="white" />
+      </ButtonUploadImage>
+      
       {/* Nome da Ong */}
       <TitleCard>Nome da ONG</TitleCard>
 

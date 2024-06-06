@@ -44,3 +44,10 @@ export const ViewRow = styled.View.attrs({
   gap: 20px;
 `;
 
+export const ViewCenter = styled.View.attrs({
+}
+)`
+margin: 150px;
+justifyContent: center;
+alignItems: center;
+`;

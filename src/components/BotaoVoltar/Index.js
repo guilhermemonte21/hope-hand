@@ -1,11 +1,10 @@
 import { Icon, IconBox } from "./Style"
 
 export const BotaoVoltar = ({
-    navigation,
-    route,
+    onPress
 }) => {
     return (
-        <IconBox onPress={() => navigation.replace(route)}>
+        <IconBox onPress={onPress}>
             <Icon
                 source={require("../../assets/images/btvoltar.png")}
             />
