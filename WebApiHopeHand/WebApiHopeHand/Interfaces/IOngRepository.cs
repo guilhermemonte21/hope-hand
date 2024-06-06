@@ -12,6 +12,6 @@ namespace WebApiHopeHand.Interfaces
 
         public List<OngEnderecoViewModel> Listar();
 
-        public Ong BuscarPorId(Guid id);
+        public OngEnderecoViewModel BuscarPorId(Guid id);
     }
 }

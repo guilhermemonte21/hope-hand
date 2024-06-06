@@ -15,9 +15,13 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 <<<<<<< HEAD
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f624aec1f369b8300c97ad7c34acd663e8d1ed1f")]
 =======
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8941e2076c766399608d205a9164dea6fa3db984")]
+>>>>>>> origin/guilherme
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+62926f23c092fe6e7583d7277a9ac57fa5e6afdd")]
 >>>>>>> origin/guilherme
 [assembly: System.Reflection.AssemblyProductAttribute("WebApiHopeHand")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebApiHopeHand")]

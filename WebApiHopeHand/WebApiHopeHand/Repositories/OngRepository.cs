@@ -11,17 +11,20 @@ namespace WebApiHopeHand.Repositories
     public class OngRepository : IOngRepository
     {
         private HopeContext _context = new HopeContext();
-        public Ong BuscarPorId(Guid id)
+        public OngEnderecoViewModel BuscarPorId(Guid id)
         {
-            try
-            {
-                return null;
-            }
-            catch (Exception)
-            {
+           
+            
+                 Ong ongSearch = _context.Ongs.FirstOrDefault(c => c.Id == id);
+                 Endereco EnderecoSearch = _context.Enderecos.FirstOrDefault(c => c.IdOng == id);
 
-                throw;
-            }
+                OngEnderecoViewModel ongEnderecoViewModel = new OngEnderecoViewModel()
+                {
+                    Ong = ongSearch,
+                    Endereco = EnderecoSearch
+                };
+                return ongEnderecoViewModel;
+           
         }
 
         public void Cadastrar(Ong ong)
@@ -40,37 +43,25 @@ namespace WebApiHopeHand.Repositories
             List<OngEnderecoViewModel> ongEnderecos = [];
 
             List<Ong>? ongList = _context.Ongs.ToList();
+            List<Endereco>? EnderecoList = _context.Enderecos.ToList();
 
             foreach (var item in ongList)
             {
                 // Insere uma ong da lista
                 ongEnderecos.Add(new OngEnderecoViewModel
                 {
-                    Ong = item
+                    Ong = item,
+                   Endereco = EnderecoList.FirstOrDefault(c => c.IdOng == item.Id),
+                    
                 });
             }
 
 
 
-            //await _context.Ongs.ForEachAsync(o => ongEnderecos.Add(new OngEnderecoViewModel
-            //{
-            //    Ong = new Ong
-            //    {
-            //        Name = o.Name,
-            //        Cnpj = o.Cnpj,
-            //        Description = o.Description,
-            //        Id = o.Id,
-            //        Photo = o.Photo,
-            //        UserId = o.UserId,
 
-            //    }
 
-            //}));
-            //ongEnderecos.ForEach(o =>
-            //{
-            //    o.Endereco = _context.Enderecos.FirstOrDefault(x => x.IdOng == o.Ong.Id);
 
-            //});
+
             return ongEnderecos;
         }
     }

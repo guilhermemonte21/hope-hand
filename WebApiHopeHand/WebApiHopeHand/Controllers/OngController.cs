@@ -12,30 +12,43 @@ namespace WebApiHopeHand.Controllers
     public class OngController : ControllerBase
     {
         private IOngRepository ongRepository { get; set; }
+        private IEnderecoRepository enderecoRepository { get; set; }
         public OngController()
         {
             ongRepository = new OngRepository();
+            enderecoRepository = new EnderecoRepository();
         }
         [HttpPost("CadastrarOng")]
-        public IActionResult PostOng(Ong ong)
+        public IActionResult PostOng(OngEnderecoViewModel novaOng)
         {
             try
             {
+                
+
                 Ong newong = new Ong();
 
-                newong.Name = ong.Name;
-                newong.Cnpj = ong.Cnpj;
-                newong.Id = ong.Id;
-                newong.Photo = ong.Photo;
-                newong.Description = ong.Description;
-                newong.UserId = ong.UserId;
-                newong.Cnpj = ong.Cnpj;
+                newong.Name = novaOng.Ong.Name;
+                newong.Cnpj = novaOng.Ong.Cnpj;
+                newong.Photo = novaOng.Ong.Photo;
+                newong.Description = novaOng.Ong.Description;
+                newong.UserId = novaOng.Ong.UserId;
+                newong.Cnpj = novaOng.Ong.Cnpj;
+
+
+                Endereco endereco = new Endereco();
+
+                endereco.Address = novaOng.Endereco.Address;
+                endereco.Cep = novaOng.Endereco.Cep;
+                endereco.Number = novaOng.Endereco.Number;
+                endereco.City = novaOng.Endereco.City;
+                endereco.State = novaOng.Endereco.State;
+                endereco.IdOng = newong.Id;
 
 
 
+                ongRepository.Cadastrar(newong);
+                enderecoRepository.Cadastrar(endereco);
 
-
-                ongRepository.Cadastrar(ong);
                 return Ok(newong);
 
 
@@ -57,6 +70,19 @@ namespace WebApiHopeHand.Controllers
             catch (Exception ex)
             {
 
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpGet("BuscarPorId")]
+        public IActionResult GetById(Guid id)
+        {
+            try
+            {
+                return Ok(ongRepository.BuscarPorId(id));
+
+            }
+            catch (Exception ex)
+            {
                 return BadRequest(ex.Message);
             }
         }
