@@ -13,7 +13,7 @@ export const Login = ({
         <Container>
             <BotaoVoltar
                 navigation={navigation}
-                route={"Login"}
+                route={"Inicio"}
             />
 
             <Logo
@@ -23,6 +23,7 @@ export const Login = ({
             <Titulo
                 text={"Login"}
                 fontSize={18}
+                textTransform={"uppercase"}
             />
 
             <Input
@@ -41,10 +42,9 @@ export const Login = ({
             />
 
             <Botao
-                navigation={navigation}
-                route={"Login"}
                 text={"Entrar"}
                 bgColor={"#7BCAF7"}
+                onPress={() => navigation.replace("Home")}
             />
 
             <Link

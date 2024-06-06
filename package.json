@@ -15,11 +15,14 @@
     "@react-navigation/native-stack": "^6.9.26",
     "expo": "~51.0.9",
     "expo-font": "~12.0.6",
+    "expo-location": "^17.0.1",
     "expo-status-bar": "~1.12.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-native": "0.74.1",
     "react-native-confirmation-code-field": "^7.4.0",
+    "react-native-maps": "^1.15.6",
+    "react-native-maps-directions": "^1.9.0",
     "styled-components": "^6.1.11"
   },
   "devDependencies": {

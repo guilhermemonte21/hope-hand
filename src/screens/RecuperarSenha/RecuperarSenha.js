@@ -23,6 +23,7 @@ export const RecuperarSenha = ({
             <Titulo
                 text={"Recuperar Senha"}
                 fontSize={18}
+                textTransform={"uppercase"}
             />
 
             <Subtitulo
@@ -34,10 +35,9 @@ export const RecuperarSenha = ({
             />
 
             <Botao
-                navigation={navigation}
-                route={"VerificarCodigo"}
                 text={"Continuar"}
                 bgColor={"#7BCAF7"}
+                onPress={() => navigation.replace("VerificarCodigo")}
             />
         </Container>
     )

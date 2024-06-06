@@ -28,5 +28,4 @@ export const InputStyled = styled.TextInput.attrs({
 })`
   text-align: start;
   font-size: 13px;
-  font-family: "Poppins_400Regular";
 `;

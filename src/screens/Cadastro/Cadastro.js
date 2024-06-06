@@ -22,6 +22,7 @@ export const Cadastro = ({
             <Titulo
                 text={"Cadastro"}
                 fontSize={18}
+                textTransform={"uppercase"}
             />
 
             <Input
@@ -37,10 +38,9 @@ export const Cadastro = ({
             />
 
             <Botao
-                navigation={navigation}
-                route={"Login"}
                 text={"Cadastrar"}
                 bgColor={"#7BCAF7"}
+                onPress={() => navigation.replace("Login")}
             />
         </Container>
     )
