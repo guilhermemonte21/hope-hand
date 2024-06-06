@@ -12,6 +12,6 @@ namespace WebApiHopeHand.Interfaces
 
         bool AlterarSenha(string email, string senhaNova);
 
-        public void AtualizarFoto(Guid id, string novaUrlFoto);
+       
     }
 }
