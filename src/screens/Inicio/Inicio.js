@@ -5,13 +5,13 @@ import { Group } from "../../components/Group/Index";
 
 export const Inicio = ({ navigation }) => {
   return (
-    <Container>
+    <Container style={{ justifyContent: "space-between" }}>
       <Image
         source={require("../../assets/images/logo-whand.png")}
         style={{ width: 200, height: 100 }}
       />
 
-      <Group>
+      <Group gap={20}>
         <Botao
           height={80}
           text={"Entrar como ONG"}

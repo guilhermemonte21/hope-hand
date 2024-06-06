@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const NoticiaStyled = styled.Pressable`
+export const NoticiaStyled = styled.TouchableOpacity`
   border-radius: 18px;
   flex-grow: 1;
 `;
@@ -26,7 +26,7 @@ export const NoticiaTitle = styled.Text`
 `;
 
 export const NoticiaImage = styled.Image`
-  border-radius: 10px;
-  left: 0;
-  position: absolute;
+  border-radius: 18px;
+  width: 100%;
+  height: 100%;
 `;

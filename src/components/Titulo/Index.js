@@ -5,7 +5,8 @@ export const Titulo = ({
   fontSize,
   textTransform,
   color,
-  alignSelf
+  alignSelf,
+  bold = false,
 }) => {
 
   return (
@@ -15,7 +16,7 @@ export const Titulo = ({
         textTransform: textTransform,
         color: color,
         alignSelf: alignSelf,
-
+        fontWeight: bold ? "bold" : "normal"
       }}
     >
       {text}

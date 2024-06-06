@@ -23,9 +23,8 @@ export const ListaOngs = ({ navigation }) => {
   return (
     <Container>
       <Titulo
-        text={"Lista de ongs"}
+        text={"Escolha uma ONG para doar"}
         fontSize={20}
-        textTransform={"uppercase"}
       />
 
       <FlatList
@@ -33,7 +32,7 @@ export const ListaOngs = ({ navigation }) => {
         data={ongs}
         keyExtractor={(item) => item.nome}
         renderItem={({ item }) => (
-          <CardOng nome={item.nome} image={item.image} />
+          <CardOng navigation={navigation} nome={item.nome} image={item.image} />
         )}
       />
     </Container>
