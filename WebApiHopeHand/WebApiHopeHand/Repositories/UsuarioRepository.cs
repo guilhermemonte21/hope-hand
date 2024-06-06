@@ -56,7 +56,7 @@ namespace WebApiHopeHand.Repositories
                 //caso o user seja nulo ele ira retornar nulo
                 if (user == null) return null!;
 
-                //compara o hash da senha inserida, com a senha do banco
+                //compara o hash da senha inserida, com a senha do bancok
                 if (!Criptografia.CompararHash(senha, user.Password!)) return null!;
 
                 return user;

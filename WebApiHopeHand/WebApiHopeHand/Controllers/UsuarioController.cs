@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApiHopeHand.Domains;
 using WebApiHopeHand.Interfaces;
@@ -19,7 +20,7 @@ namespace WebApiHopeHand.Controllers
         }
 
         [HttpPut("AlterarSenha")]
-        public IActionResult UpdatePassword(string email, string password) 
+        public IActionResult UpdatePassword(string email, string password)
         {
             try
             {
@@ -33,8 +34,9 @@ namespace WebApiHopeHand.Controllers
             }
         }
 
+        [Authorize()]
         [HttpGet("BuscarPorId")]
-        public IActionResult GetById(Guid id) 
+        public IActionResult GetById(Guid id)
         {
             try
             {
@@ -47,7 +49,7 @@ namespace WebApiHopeHand.Controllers
             }
         }
         [HttpPost("CriarConta")]
-        public IActionResult Post (Usuario usuario) 
+        public IActionResult Post(Usuario usuario)
         {
             try
             {
@@ -80,7 +82,7 @@ namespace WebApiHopeHand.Controllers
         {
             try
             {
-                return Ok(usuarioRepository.BuscarPorEmailESenha(email,password));
+                return Ok(usuarioRepository.BuscarPorEmailESenha(email, password));
             }
             catch (Exception ex)
             {
@@ -89,5 +91,5 @@ namespace WebApiHopeHand.Controllers
             }
         }
     }
-    }
+}
 

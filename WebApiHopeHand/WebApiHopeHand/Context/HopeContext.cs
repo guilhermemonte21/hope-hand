@@ -17,7 +17,7 @@ namespace WebApiHopeHand.Context
             if (!optionsBuilder.IsConfigured)
             {
                 //optionsBuilder.UseSqlServer("Data Source=NOTE02-SALA19; Initial Catalog=HopeHand; User Id=sa; pwd=Senai@134; TrustServerCertificate = true;");
-                optionsBuilder.UseSqlServer("Data Source=NOTE03-SALA19; Initial Catalog=HopeHand; User Id=sa; pwd=Senai@134; TrustServerCertificate = true;");
+                optionsBuilder.UseSqlServer("Data Source=NOTE02-SALA19; Initial Catalog=HopeHand; User Id=sa; pwd=Senai@134; TrustServerCertificate = true;");
                 //optionsBuilder.UseSqlServer("Data Source=DESKTOP-84UMQCT\\SQLEXPRESS; Initial Catalog=HopeHand; User Id=sa; pwd=Senai@134; TrustServerCertificate = true;");
             }
         }

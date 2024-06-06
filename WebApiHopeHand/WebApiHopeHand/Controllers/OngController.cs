@@ -23,8 +23,6 @@ namespace WebApiHopeHand.Controllers
         {
             try
             {
-                
-
                 Ong newong = new Ong();
 
                 newong.Name = novaOng.Ong.Name;
