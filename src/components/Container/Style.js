@@ -1,11 +1,11 @@
 import styled from "styled-components/native";
 
 const ContainersStyle = `
-flex: 1;
-flex-basis: auto;
+  flex: 1;
+  flex-basis: auto;
 
-align-items: center;
-gap: 20px;
+  align-items: center;
+  gap: 20px;
 `;
 
 export const Container = styled.SafeAreaView`
@@ -15,7 +15,7 @@ export const Container = styled.SafeAreaView`
 
 export const ContainerScroll = styled.ScrollView.attrs({
   contentContainerStyle: {
-    paddingBottom: 20, 
+    paddingBottom: 20,
     paddingTop: 20,
     gap: 20,
   },
@@ -39,8 +39,8 @@ export const ViewRow = styled.View.attrs({
   border: 1px solid red;
   width: 80%;
   height: 75px;
-  flexDirection: row;
-  justifyContent: space-between;
+  flex-direction: row;
+  justify-content: space-between;
   gap: 20px;
 `;
 
