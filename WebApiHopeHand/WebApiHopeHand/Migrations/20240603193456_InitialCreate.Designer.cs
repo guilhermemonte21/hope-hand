@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApiHopeHand.Context;
 
@@ -11,9 +12,11 @@ using WebApiHopeHand.Context;
 namespace WebApiHopeHand.Migrations
 {
     [DbContext(typeof(HopeContext))]
-    partial class HopeContextModelSnapshot : ModelSnapshot
+    [Migration("20240603193456_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,7 +27,7 @@ namespace WebApiHopeHand.Migrations
 
             modelBuilder.Entity("WebApiHopeHand.Domains.Endereco", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -96,9 +99,6 @@ namespace WebApiHopeHand.Migrations
                         .IsRequired()
                         .HasColumnType("DATETIME");
 
-                    b.Property<int?>("CodRecupSenha")
-                        .HasColumnType("INT");
-
                     b.Property<string>("Cpf")
                         .IsRequired()
                         .HasColumnType("VARCHAR(11)");
@@ -107,6 +107,10 @@ namespace WebApiHopeHand.Migrations
                         .IsRequired()
                         .HasColumnType("VARCHAR(70)");
 
+                    b.Property<Guid?>("IdOng")
+                        .IsRequired()
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("VARCHAR(100)");
@@ -114,7 +118,7 @@ namespace WebApiHopeHand.Migrations
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasMaxLength(16)
-                        .HasColumnType("VARCHAR(MAX)");
+                        .HasColumnType("VARCHAR(20)");
 
                     b.Property<string>("Rg")
                         .IsRequired()

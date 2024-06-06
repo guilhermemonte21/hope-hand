@@ -12,8 +12,8 @@ using WebApiHopeHand.Context;
 namespace WebApiHopeHand.Migrations
 {
     [DbContext(typeof(HopeContext))]
-    [Migration("20240603174755_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240605182334_ChangePasswordLimit")]
+    partial class ChangePasswordLimit
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,7 +27,7 @@ namespace WebApiHopeHand.Migrations
 
             modelBuilder.Entity("WebApiHopeHand.Domains.Endereco", b =>
                 {
-                    b.Property<Guid?>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -99,6 +99,9 @@ namespace WebApiHopeHand.Migrations
                         .IsRequired()
                         .HasColumnType("DATETIME");
 
+                    b.Property<int?>("CodRecupSenha")
+                        .HasColumnType("INT");
+
                     b.Property<string>("Cpf")
                         .IsRequired()
                         .HasColumnType("VARCHAR(11)");
@@ -107,10 +110,6 @@ namespace WebApiHopeHand.Migrations
                         .IsRequired()
                         .HasColumnType("VARCHAR(70)");
 
-                    b.Property<Guid?>("IdOng")
-                        .IsRequired()
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("VARCHAR(100)");
@@ -118,7 +117,7 @@ namespace WebApiHopeHand.Migrations
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasMaxLength(16)
-                        .HasColumnType("VARCHAR(20)");
+                        .HasColumnType("VARCHAR(MAX)");
 
                     b.Property<string>("Rg")
                         .IsRequired()

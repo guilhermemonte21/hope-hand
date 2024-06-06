@@ -1,4 +1,5 @@
 ﻿using WebApiHopeHand.Domains;
+using WebApiHopeHand.ViewModel;
 
 
 namespace WebApiHopeHand.Interfaces
@@ -9,8 +10,8 @@ namespace WebApiHopeHand.Interfaces
 
         public void Deletar(Ong ong);
 
-        public List<Ong> Listar();
+        public List<OngEnderecoViewModel> Listar();
 
-        public Ong BuscarPorId(Guid id);
+        public OngEnderecoViewModel BuscarPorId(Guid id);
     }
 }
