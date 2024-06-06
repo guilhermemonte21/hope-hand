@@ -7,6 +7,7 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { Titulo } from "./../../components/Titulo/Index";
 
+
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 import { Group } from "../../components/Group/Index";

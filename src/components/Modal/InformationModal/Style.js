@@ -11,11 +11,12 @@ export const ModalForm = styled.SafeAreaView`
   width: 90%;
   height: 80%;
   borderRadius: 20px;
+  backgroundColor: #FFFFFF;
 `;
 
 export const InfoModal = styled.View`
     flex: 1;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.60);
+    background-color: rgba(0, 0, 0, 0.30);
 `

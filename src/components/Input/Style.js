@@ -6,27 +6,19 @@ width: 80%;
 height: 65px;
 borderRadius: 12px;
 color: #323030;
-padding: 15px;
-`;
-
-export const InputLong = styled.TextInput`
-  ${Input}
-`;
-
-export const InputMedium = styled.TextInput`
-  ${Input}
-`;
-
-export const InputShort = styled.TextInput`
-  ${Input}
+// padding: 15px;
 `;
 
 export const BoxInput = styled.View`
-  height: 45px;
+  width: 100%;
+  height: 100%;
+
+  flex-shrink: 1;
 
   justify-content: center;
   padding: 10px;
 
+  
   border: 1px solid #7ccfff;
   border-radius: 12px;
 `;
