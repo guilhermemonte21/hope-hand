@@ -33,6 +33,7 @@ namespace WebApiHopeHand.Controllers
                 newong.Description = novaOng.Ong.Description;
                 newong.UserId = novaOng.Ong.UserId;
                 newong.Cnpj = novaOng.Ong.Cnpj;
+                newong.Link = novaOng.Ong.Link;
 
 
                 Endereco endereco = new Endereco();
@@ -84,6 +85,20 @@ namespace WebApiHopeHand.Controllers
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
+            }
+        }
+        [HttpDelete("DeletarOng")]
+        public IActionResult Delete(Guid id)
+        {
+            try
+            {
+                ongRepository.Deletar(id);
+                return Ok();
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
     }
