@@ -4,14 +4,18 @@ export const Titulo = ({
   text,
   fontSize,
   textTransform,
-  color
+  color,
+  alignSelf
 }) => {
+
   return (
     <TituloStyled
       style={{
         fontSize: fontSize,
         textTransform: textTransform,
-        color: color
+        color: color,
+        alignSelf: alignSelf,
+
       }}
     >
       {text}

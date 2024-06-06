@@ -1,6 +1,7 @@
 import { CardStyled, CardImage, CardTitle } from "./Style";
 import { Botao } from "./../Botao/Index";
-import { Group } from "../Group/Index";
+import { Group } from "./../Group/Index";
+
 
 export const CardOng = ({ nome, image }) => {
   return (

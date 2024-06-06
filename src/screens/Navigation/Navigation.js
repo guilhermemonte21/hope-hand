@@ -44,6 +44,7 @@ export const Navigation = ({ navigation }) => {
         onPress={() => navigation.navigate("Cadastro")}
       />
 
+
       <Button
         title="Perfil"
         onPress={() => navigation.navigate("Perfil")}
@@ -53,6 +54,8 @@ export const Navigation = ({ navigation }) => {
         title="Mapa"
         onPress={() => navigation.navigate("Mapa")}
       />
+      <Button title="Sobre" onPress={() => navigation.navigate("Sobre")} />
+
     </View>
   );
 };

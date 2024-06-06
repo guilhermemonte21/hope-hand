@@ -13,8 +13,12 @@ import { Navigation } from "../screens/Navigation/Navigation";
 import { Home } from "../screens/Home/Home";
 import { Inicio } from "./../screens/Inicio/Inicio";
 import { ListaOngs } from "../screens/ListaOngs/ListaOngs";
+
 import { AlterarSenha } from "../screens/AlterarSenha/AlterarSenha";
 import { Mapa } from "../screens/Mapa/Mapa";
+
+import { Sobre } from "../screens/Sobre/Sobre";
+
 
 //instância do StackNavigator
 const Stack = createNativeStackNavigator();
@@ -50,6 +54,7 @@ export const Route = () => {
           component={RecuperarSenha}
         />
 
+
         <Stack.Screen
           name="VerificarCodigo"
           component={VerificarCodigo}
@@ -84,6 +89,9 @@ export const Route = () => {
           name="Mapa"
           component={Mapa}
         />
+
+        <Stack.Screen name="Sobre" component={Sobre} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
