@@ -4,13 +4,37 @@ import { Logo } from "../../components/Logo/Style"
 import { Titulo } from "../../components/Titulo/Index"
 import { Input } from "../../components/Input/Index"
 import { Botao } from "../../components/Botao/Index"
+import { useState } from "react"
 
 export const AlterarSenha = ({
     navigation
 }) => {
+    // CONSTS
+    const [carregando, setCarregando] = useState(false);
+
+
+    // FUNCTIONS
+    const AlterarSenha = () => {
+        setCarregando(true);
+
+        setTimeout(() => {
+            setCarregando(false);
+
+            navigation.replace("Login");
+        }, 1000);
+    }
+
+
+    // EFFECTS
+
+
+
     return (
         <Container>
-            <BotaoVoltar />
+            <BotaoVoltar
+                navigation={navigation}
+                route={"Login"}
+            />
 
             <Logo
                 source={require("../../assets/images/logo-whand.png")}
@@ -31,9 +55,10 @@ export const AlterarSenha = ({
             />
 
             <Botao
-                text={"Cadastrar"}
+                text={"Continuar"}
                 bgColor={"#7BCAF7"}
-                onPress={() => navigation.replace("Login")}
+                onPress={() => AlterarSenha()}
+                carregando={carregando}
             />
         </Container>
     )

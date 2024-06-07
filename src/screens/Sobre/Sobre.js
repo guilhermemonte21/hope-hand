@@ -4,7 +4,7 @@ import { Titulo } from "./../../components/Titulo/Index";
 import { ContainerMargin } from "./../../components/Container/Style";
 import { Botao } from './../../components/Botao/Index';
 
-export const Sobre = ({navigation}) => {
+export const Sobre = ({ navigation }) => {
   return (
     <Container>
       <Image
@@ -24,7 +24,7 @@ export const Sobre = ({navigation}) => {
 
         <Titulo text={"Email: contato@hopehand.org\nTelefone: +55 (XX) XXXX-XXXX\nEndereço: Rua Exemplo, 123, Bairro, Cidade, Estado."} alignSelf={"flex-start"} />
 
-        <Botao text={"Voltar"} onPress={() => navigation.goBack()}/>
+        <Botao text={"Voltar"} onPress={() => navigation.goBack()} />
       </ContainerMargin>
     </Container>
   );

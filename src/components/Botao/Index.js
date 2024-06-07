@@ -1,3 +1,4 @@
+import { ActivityIndicator } from "react-native";
 import { ButtonStyled, TextButton } from "./Style";
 
 export const Botao = ({
@@ -8,9 +9,11 @@ export const Botao = ({
   width = "85%",
   height = 45,
   textColor = "white",
+  carregando = false
 }) => {
   return (
     <ButtonStyled
+      disabled={carregando}
       style={{
         backgroundColor: bgColor,
         borderRadius: radius,
@@ -20,7 +23,17 @@ export const Botao = ({
       }}
       onPress={onPress}
     >
-      <TextButton style={{ color: textColor }}>{text}</TextButton>
+      <TextButton style={{ color: textColor }}>
+        {
+          carregando ?
+            <ActivityIndicator
+              color={"#FFF"}
+              size={24}
+            />
+            :
+            text
+        }
+      </TextButton>
     </ButtonStyled>
   );
 };

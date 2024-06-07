@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Botao } from "../../components/Botao/Index";
 import { BotaoVoltar } from "../../components/BotaoVoltar/Index";
 import { Container } from "../../components/Container/Style";
@@ -9,6 +10,31 @@ import { Titulo } from "../../components/Titulo/Index";
 export const Login = ({
     navigation
 }) => {
+    // CONSTS
+    const [carregando, setCarregando] = useState(false);
+
+
+    // FUNCTIONS
+    const Login = async () => {
+        setCarregando(true);
+
+        try {
+            setTimeout(() => {
+                setCarregando(false);
+
+                navigation.replace("Home");
+            }, 1000)
+
+        } catch (error) {
+
+        }
+    }
+
+
+    // EFFECTS
+
+
+
     return (
         <Container>
             <BotaoVoltar
@@ -44,7 +70,8 @@ export const Login = ({
             <Botao
                 text={"Entrar"}
                 bgColor={"#7BCAF7"}
-                onPress={() => navigation.replace("Home")}
+                onPress={() => Login()}
+                carregando={carregando}
             />
 
             <Link

@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { Botao } from "../../components/Botao/Index"
 import { BotaoVoltar } from "../../components/BotaoVoltar/Index"
 import { Container } from "../../components/Container/Style"
@@ -8,6 +9,25 @@ import { Titulo } from "../../components/Titulo/Index"
 export const Cadastro = ({
     navigation
 }) => {
+    // CONSTS
+    const [carregando, setCarregando] = useState(false);
+
+
+    // FUNCTIONS
+    const Cadastrar = () => {
+        setCarregando(true);
+
+        setTimeout(() => {
+            setCarregando(false)
+
+            navigation.replace("Login");
+        }, 1000);
+    }
+
+    // EFFECTS
+
+
+
     return (
         <Container>
             <BotaoVoltar
@@ -40,7 +60,8 @@ export const Cadastro = ({
             <Botao
                 text={"Cadastrar"}
                 bgColor={"#7BCAF7"}
-                onPress={() => navigation.replace("Login")}
+                onPress={() => Cadastrar()}
+                carregando={carregando}
             />
         </Container>
     )
