@@ -1,5 +1,5 @@
 import { ButtonStyled, TextButton } from "../../components/CardCause/Style";
-import { Container, ViewCenter } from "../../components/Container/Style";
+import { Container, ViewCenter, ViewEnd } from "../../components/Container/Style";
 import { Titulo } from "./../../components/Titulo/Index";
 import { FontAwesome5 } from '@expo/vector-icons';
 
@@ -14,9 +14,11 @@ export const ConfirmarPagamento = ({ navigation }) => {
         <FontAwesome5 name="check-circle" size={90} color="#3FA7E4" />
         </ViewCenter>
 
+        <ViewEnd>
         <ButtonStyled onPress={() => navigation.replace("Home")}>
         <TextButton>Voltar</TextButton>
         </ButtonStyled>
+        </ViewEnd>
         </Container>
     );
 };

@@ -20,6 +20,15 @@ export const ContainerCard = styled.View.attrs({
   font-family: "Kanit_400Regular";
 `
 
+  export const TitleSpace = styled.Text`
+  margin: 10px;
+  color: #323030;
+  fontSize: 16px;
+  font-family: "Kanit_400Regular";
+  marginTop: 20px;
+  marginBottom: 20px;
+`
+
 export const SubtitleCard = styled.Text`
     lineHeight: 18px;
     text-align: justify;
@@ -34,6 +43,7 @@ export const TextButton = styled.Text`
 `;
 
 export const ButtonStyled = styled.TouchableOpacity`
+  margin: 5px;
   width: 30%;
   height: 40px;
   backgroundColor: #7BCAF7;
