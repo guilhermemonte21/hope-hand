@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApiHopeHand.Domains;
 using WebApiHopeHand.Interfaces;
@@ -18,6 +19,8 @@ namespace WebApiHopeHand.Controllers
             ongRepository = new OngRepository();
             enderecoRepository = new EnderecoRepository();
         }
+
+        [Authorize()]
         [HttpPost("CadastrarOng")]
         public IActionResult PostOng(OngEnderecoViewModel novaOng)
         {

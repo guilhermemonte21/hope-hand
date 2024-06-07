@@ -34,7 +34,6 @@ namespace WebApiHopeHand.Controllers
             }
         }
 
-        [Authorize()]
         [HttpGet("BuscarPorId")]
         public IActionResult GetById(Guid id)
         {
@@ -54,16 +53,17 @@ namespace WebApiHopeHand.Controllers
             try
             {
                 // Objeto a ser cadastrado
-                Usuario user = new Usuario();
-
-                // Recebe os valores e preenche as propriedades do objeto
-                user.Name = usuario.Name;
-                user.Email = usuario.Email;
-                user.Password = usuario.Password;
-                user.Cpf = usuario.Cpf;
-                user.Rg = usuario.Rg;
-                user.Birth = usuario.Birth;
-                user.CodRecupSenha = usuario.CodRecupSenha;
+                Usuario user = new()
+                {
+                    // Recebe os valores e preenche as propriedades do objeto
+                    Name = usuario.Name,
+                    Email = usuario.Email,
+                    Password = usuario.Password,
+                    Cpf = usuario.Cpf,
+                    Rg = usuario.Rg,
+                    Birth = usuario.Birth,
+                    CodRecupSenha = usuario.CodRecupSenha
+                };
 
                 //cadastra o usuario
                 usuarioRepository.Cadastrar(user);

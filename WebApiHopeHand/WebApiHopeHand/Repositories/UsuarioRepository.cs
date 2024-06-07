@@ -17,7 +17,7 @@ namespace WebApiHopeHand.Repositories
                 var user = _context.Usuarios.FirstOrDefault(x => x.Email == email);
 
                 //Caso nao encontre ira retornar false
-                if (user == null) return false; 
+                if (user == null) return false;
 
                 //Gera um hash a partir da senha informada pelo usuario
                 user.Password = Criptografia.GerarHash(senhaNova);
@@ -37,7 +37,7 @@ namespace WebApiHopeHand.Repositories
             }
         }
 
-        
+
         public Usuario BuscarPorEmailESenha(string email, string senha)
         {
             try
@@ -48,8 +48,11 @@ namespace WebApiHopeHand.Repositories
                     Id = u.Id,
                     Email = u.Email,
                     Password = u.Password,
+                    Birth = u.Birth,
+                    Cpf = u.Cpf,
+                    Rg = u.Rg,
                     Name = u.Name,
-                    
+
                 }).FirstOrDefault
                 (x => x.Email == email);
 
@@ -66,18 +69,18 @@ namespace WebApiHopeHand.Repositories
                 throw;
             }
         }
-    
+
 
         public Usuario BuscarPorId(Guid id)
         {
             try
             {
-            //busca o usuario na context e define o metodo de busca por id
+                //busca o usuario na context e define o metodo de busca por id
                 var user = _context.Usuarios.FirstOrDefault(x => x.Id == id)!;
 
-             //verifica se o user é nulo
-            if (user == null) return null!;
-            return user;
+                //verifica se o user é nulo
+                if (user == null) return null!;
+                return user;
             }
             catch (Exception)
             {
@@ -101,5 +104,6 @@ namespace WebApiHopeHand.Repositories
                 throw;
             }
         }
-    }}
+    }
+}
 
