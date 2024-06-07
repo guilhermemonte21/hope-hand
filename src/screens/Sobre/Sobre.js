@@ -2,12 +2,13 @@ import { Image } from "react-native";
 import { Container } from "../../components/Container/Style";
 import { Titulo } from "./../../components/Titulo/Index";
 import { ContainerMargin } from "./../../components/Container/Style";
-import { Botao } from "./../../components/Botao/Index";
 import { Rodape } from "./../../components/Rodape/Index";
+import { BotaoVoltar } from './../../components/BotaoVoltar/Index';
 
 export const Sobre = ({ navigation }) => {
   return (
     <Container>
+      <BotaoVoltar onPress={() => navigation.goBack()} />
       <Image
         source={require("../../assets/images/logo-whand.png")}
         style={{ width: 70, height: 35 }}
@@ -34,7 +35,6 @@ export const Sobre = ({ navigation }) => {
           alignSelf={"flex-start"}
         />
 
-        <Botao text={"Voltar"} onPress={() => navigation.goBack()} />
       </ContainerMargin>
       <Rodape />
     </Container>

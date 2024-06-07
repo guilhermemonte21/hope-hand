@@ -16,7 +16,7 @@ import { Group } from "./../../components/Group/Index";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Header } from "../../components/Header/Index";
-import Carousel from "react-native-reanimated-carousel";
+import PagerView from "react-native-pager-view";
 
 export const Home = ({ navigation }) => {
   const [noticias, setNoticias] = useState([]);
@@ -80,32 +80,24 @@ export const Home = ({ navigation }) => {
             </Group>
           </Group>
           <Titulo bold fontSize={20} text={"Notícias IBGE"} />
-          {noticias.length > 0 ? ( null
-            // <Carousel
-            //   style={{ width: "90%", height: 250 }}
-            //   loop
-            //   width={"100%"}
-            //   height={250}
-            //   autoPlay={true}
-            //   data={noticias}
-            //   scrollAnimationDuration={1000}
-            //   onSnapToItem={(index) => console.log("current index:", index)}
-            //   renderItem={({ noticia }) => (
-            //     <Noticia
-            //       key={noticia.id}
-            //       link={noticia.link}
-            //       title={noticia.titulo}
-            //       height={150}
-            //       image={{
-            //         uri: `https://agenciadenoticias.ibge.gov.br/${
-            //           JSON.parse(noticia.imagens).image_intro
-            //         }`,
-            //       }}
-            //     />
-            //   )}
-            // />
+          {noticias.length > 0 ? (
+            <Group>
+              {noticias.map((noticia) => (
+                <Noticia
+                  key={noticia.id}
+                  link={noticia.link}
+                  title={noticia.titulo}
+                  height={150}
+                  image={{
+                    uri: `https://agenciadenoticias.ibge.gov.br/${
+                      JSON.parse(noticia.imagens).image_intro
+                    }`,
+                  }}
+                />
+              ))}
+            </Group>
           ) : (
-            <ActivityIndicator />
+            <ActivityIndicator style={{ height: 200 }} color={"#7bcaf7"} />
           )}
         </ContainerMargin>
       </ContainerScroll>
