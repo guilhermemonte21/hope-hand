@@ -696,3 +696,7 @@ C:\Users\6352573355\Desktop\hope-hand\WebApiHopeHand\WebApiHopeHand\obj\Debug\ne
 C:\Users\6352573355\Desktop\hope-hand\WebApiHopeHand\WebApiHopeHand\obj\Debug\net8.0\ref\WebApiHopeHand.dll
 C:\Users\41365718875\Desktop\hope-hand\WebApiHopeHand\WebApiHopeHand\bin\Debug\net8.0\BCrypt.Net-Next.dll
 C:\Users\41365718875\Desktop\hope-hand\WebApiHopeHand\WebApiHopeHand\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\41365718875\Desktop\hope-hand\WebApiHopeHand\WebApiHopeHand\bin\Debug\net8.0\Azure.Storage.Blobs.dll
+C:\Users\41365718875\Desktop\hope-hand\WebApiHopeHand\WebApiHopeHand\bin\Debug\net8.0\Azure.Storage.Common.dll
+C:\Users\41365718875\Desktop\hope-hand\WebApiHopeHand\WebApiHopeHand\bin\Debug\net8.0\System.ClientModel.dll
+C:\Users\41365718875\Desktop\hope-hand\WebApiHopeHand\WebApiHopeHand\bin\Debug\net8.0\System.IO.Hashing.dll
