@@ -102,5 +102,19 @@ namespace WebApiHopeHand.Controllers
                 throw;
             }
         }
+        [HttpPut("Editar")]
+        public IActionResult Put(OngEnderecoViewModel ong)
+        {
+            try
+            {
+                ongRepository.EditarOng(ong);
+
+                return Ok();
+            }
+            catch(Exception ex)
+            { 
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

@@ -3,44 +3,44 @@
   "WorkspaceRootPath": "C:\\Users\\6352573355\\Desktop\\hope-hand\\WebApiHopeHand\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1F841D5E-B329-4533-93B4-1B63419B841C}|WebApiHopeHand\\WebApiHopeHand.csproj|c:\\users\\6352573355\\desktop\\hope-hand\\webapihopehand\\webapihopehand\\controllers\\ongcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1F841D5E-B329-4533-93B4-1B63419B841C}|WebApiHopeHand\\WebApiHopeHand.csproj|solutionrelative:webapihopehand\\controllers\\ongcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1F841D5E-B329-4533-93B4-1B63419B841C}|WebApiHopeHand\\WebApiHopeHand.csproj|c:\\users\\6352573355\\desktop\\hope-hand\\webapihopehand\\webapihopehand\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1F841D5E-B329-4533-93B4-1B63419B841C}|WebApiHopeHand\\WebApiHopeHand.csproj|solutionrelative:webapihopehand\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1F841D5E-B329-4533-93B4-1B63419B841C}|WebApiHopeHand\\WebApiHopeHand.csproj|c:\\users\\6352573355\\desktop\\hope-hand\\webapihopehand\\webapihopehand\\repositories\\ongrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1F841D5E-B329-4533-93B4-1B63419B841C}|WebApiHopeHand\\WebApiHopeHand.csproj|solutionrelative:webapihopehand\\repositories\\ongrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1F841D5E-B329-4533-93B4-1B63419B841C}|WebApiHopeHand\\WebApiHopeHand.csproj|c:\\users\\6352573355\\desktop\\hope-hand\\webapihopehand\\webapihopehand\\repositories\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1F841D5E-B329-4533-93B4-1B63419B841C}|WebApiHopeHand\\WebApiHopeHand.csproj|solutionrelative:webapihopehand\\repositories\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1F841D5E-B329-4533-93B4-1B63419B841C}|WebApiHopeHand\\WebApiHopeHand.csproj|c:\\users\\6352573355\\desktop\\hope-hand\\webapihopehand\\webapihopehand\\repositories\\enderecorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1F841D5E-B329-4533-93B4-1B63419B841C}|WebApiHopeHand\\WebApiHopeHand.csproj|solutionrelative:webapihopehand\\repositories\\enderecorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1F841D5E-B329-4533-93B4-1B63419B841C}|WebApiHopeHand\\WebApiHopeHand.csproj|c:\\users\\6352573355\\desktop\\hope-hand\\webapihopehand\\webapihopehand\\domains\\ong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1F841D5E-B329-4533-93B4-1B63419B841C}|WebApiHopeHand\\WebApiHopeHand.csproj|solutionrelative:webapihopehand\\domains\\ong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1F841D5E-B329-4533-93B4-1B63419B841C}|WebApiHopeHand\\WebApiHopeHand.csproj|c:\\users\\6352573355\\desktop\\hope-hand\\webapihopehand\\webapihopehand\\controllers\\ongcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1F841D5E-B329-4533-93B4-1B63419B841C}|WebApiHopeHand\\WebApiHopeHand.csproj|solutionrelative:webapihopehand\\controllers\\ongcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1F841D5E-B329-4533-93B4-1B63419B841C}|WebApiHopeHand\\WebApiHopeHand.csproj|c:\\users\\6352573355\\desktop\\hope-hand\\webapihopehand\\webapihopehand\\interfaces\\iongrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1F841D5E-B329-4533-93B4-1B63419B841C}|WebApiHopeHand\\WebApiHopeHand.csproj|solutionrelative:webapihopehand\\interfaces\\iongrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{1F841D5E-B329-4533-93B4-1B63419B841C}|WebApiHopeHand\\WebApiHopeHand.csproj|c:\\users\\6352573355\\desktop\\hope-hand\\webapihopehand\\webapihopehand\\domains\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1F841D5E-B329-4533-93B4-1B63419B841C}|WebApiHopeHand\\WebApiHopeHand.csproj|solutionrelative:webapihopehand\\domains\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1F841D5E-B329-4533-93B4-1B63419B841C}|WebApiHopeHand\\WebApiHopeHand.csproj|c:\\users\\6352573355\\desktop\\hope-hand\\webapihopehand\\webapihopehand\\domains\\ong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1F841D5E-B329-4533-93B4-1B63419B841C}|WebApiHopeHand\\WebApiHopeHand.csproj|solutionrelative:webapihopehand\\domains\\ong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1F841D5E-B329-4533-93B4-1B63419B841C}|WebApiHopeHand\\WebApiHopeHand.csproj|c:\\users\\6352573355\\desktop\\hope-hand\\webapihopehand\\webapihopehand\\repositories\\enderecorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1F841D5E-B329-4533-93B4-1B63419B841C}|WebApiHopeHand\\WebApiHopeHand.csproj|solutionrelative:webapihopehand\\repositories\\enderecorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1F841D5E-B329-4533-93B4-1B63419B841C}|WebApiHopeHand\\WebApiHopeHand.csproj|c:\\users\\6352573355\\desktop\\hope-hand\\webapihopehand\\webapihopehand\\domains\\endereco.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1F841D5E-B329-4533-93B4-1B63419B841C}|WebApiHopeHand\\WebApiHopeHand.csproj|solutionrelative:webapihopehand\\domains\\endereco.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{1F841D5E-B329-4533-93B4-1B63419B841C}|WebApiHopeHand\\WebApiHopeHand.csproj|c:\\users\\6352573355\\desktop\\hope-hand\\webapihopehand\\webapihopehand\\repositories\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1F841D5E-B329-4533-93B4-1B63419B841C}|WebApiHopeHand\\WebApiHopeHand.csproj|solutionrelative:webapihopehand\\repositories\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1F841D5E-B329-4533-93B4-1B63419B841C}|WebApiHopeHand\\WebApiHopeHand.csproj|c:\\users\\6352573355\\desktop\\hope-hand\\webapihopehand\\webapihopehand\\viewmodel\\ongenderecoviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1F841D5E-B329-4533-93B4-1B63419B841C}|WebApiHopeHand\\WebApiHopeHand.csproj|solutionrelative:webapihopehand\\viewmodel\\ongenderecoviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1F841D5E-B329-4533-93B4-1B63419B841C}|WebApiHopeHand\\WebApiHopeHand.csproj|c:\\users\\6352573355\\desktop\\hope-hand\\webapihopehand\\webapihopehand\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1F841D5E-B329-4533-93B4-1B63419B841C}|WebApiHopeHand\\WebApiHopeHand.csproj|solutionrelative:webapihopehand\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1F841D5E-B329-4533-93B4-1B63419B841C}|WebApiHopeHand\\WebApiHopeHand.csproj|c:\\users\\6352573355\\desktop\\hope-hand\\webapihopehand\\webapihopehand\\domains\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1F841D5E-B329-4533-93B4-1B63419B841C}|WebApiHopeHand\\WebApiHopeHand.csproj|solutionrelative:webapihopehand\\domains\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1F841D5E-B329-4533-93B4-1B63419B841C}|WebApiHopeHand\\WebApiHopeHand.csproj|c:\\users\\6352573355\\desktop\\hope-hand\\webapihopehand\\webapihopehand\\interfaces\\iusuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -65,7 +65,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
@@ -75,68 +75,40 @@
               "RelativeDocumentMoniker": "WebApiHopeHand\\Repositories\\OngRepository.cs",
               "ToolTip": "C:\\Users\\6352573355\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\Repositories\\OngRepository.cs",
               "RelativeToolTip": "WebApiHopeHand\\Repositories\\OngRepository.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAzwDgAAAAeAAAA",
+              "ViewState": "AQIAADEAAAAAAAAAAAA5wEQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-03T20:18:23.811Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "OngController.cs",
               "DocumentMoniker": "C:\\Users\\6352573355\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\Controllers\\OngController.cs",
               "RelativeDocumentMoniker": "WebApiHopeHand\\Controllers\\OngController.cs",
               "ToolTip": "C:\\Users\\6352573355\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\Controllers\\OngController.cs",
               "RelativeToolTip": "WebApiHopeHand\\Controllers\\OngController.cs",
-              "ViewState": "AQIAABkAAAAAAAAAAAAkwCMAAAAvAAAA",
+              "ViewState": "AQIAAF8AAAAAAAAAAADwv2gAAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-05T18:47:28.678Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Ong.cs",
               "DocumentMoniker": "C:\\Users\\6352573355\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\Domains\\Ong.cs",
               "RelativeDocumentMoniker": "WebApiHopeHand\\Domains\\Ong.cs",
               "ToolTip": "C:\\Users\\6352573355\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\Domains\\Ong.cs",
               "RelativeToolTip": "WebApiHopeHand\\Domains\\Ong.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAA0wBUAAAAIAAAA",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAIwBUAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-05T18:54:29.518Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "IOngRepository.cs",
-              "DocumentMoniker": "C:\\Users\\6352573355\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\Interfaces\\IOngRepository.cs",
-              "RelativeDocumentMoniker": "WebApiHopeHand\\Interfaces\\IOngRepository.cs",
-              "ToolTip": "C:\\Users\\6352573355\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\Interfaces\\IOngRepository.cs",
-              "RelativeToolTip": "WebApiHopeHand\\Interfaces\\IOngRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAoAAAAjAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-05T19:44:39.466Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "OngEnderecoViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\6352573355\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\ViewModel\\OngEnderecoViewModel.cs",
-              "RelativeDocumentMoniker": "WebApiHopeHand\\ViewModel\\OngEnderecoViewModel.cs",
-              "ToolTip": "C:\\Users\\6352573355\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\ViewModel\\OngEnderecoViewModel.cs",
-              "RelativeToolTip": "WebApiHopeHand\\ViewModel\\OngEnderecoViewModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-05T19:22:50.513Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 8,
               "Title": "UsuarioRepository.cs",
               "DocumentMoniker": "C:\\Users\\6352573355\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\Repositories\\UsuarioRepository.cs",
               "RelativeDocumentMoniker": "WebApiHopeHand\\Repositories\\UsuarioRepository.cs",
@@ -144,25 +116,23 @@
               "RelativeToolTip": "WebApiHopeHand\\Repositories\\UsuarioRepository.cs",
               "ViewState": "AQIAADYAAAAAAAAAAAAYwAoAAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-03T18:11:19.547Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-03T18:11:19.547Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "EnderecoRepository.cs",
               "DocumentMoniker": "C:\\Users\\6352573355\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\Repositories\\EnderecoRepository.cs",
               "RelativeDocumentMoniker": "WebApiHopeHand\\Repositories\\EnderecoRepository.cs",
               "ToolTip": "C:\\Users\\6352573355\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\Repositories\\EnderecoRepository.cs",
               "RelativeToolTip": "WebApiHopeHand\\Repositories\\EnderecoRepository.cs",
-              "ViewState": "AQIAAEMAAAAAAAAAAAApwC8AAAAZAAAA",
+              "ViewState": "AQIAABQAAAAAAAAAAAAlwC8AAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-06T18:18:35.566Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-06T18:18:35.566Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Endereco.cs",
               "DocumentMoniker": "C:\\Users\\6352573355\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\Domains\\Endereco.cs",
               "RelativeDocumentMoniker": "WebApiHopeHand\\Domains\\Endereco.cs",
@@ -174,15 +144,52 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 4,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\Users\\6352573355\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\Domains\\Usuario.cs",
+              "RelativeDocumentMoniker": "WebApiHopeHand\\Domains\\Usuario.cs",
+              "ToolTip": "C:\\Users\\6352573355\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\Domains\\Usuario.cs",
+              "RelativeToolTip": "WebApiHopeHand\\Domains\\Usuario.cs",
+              "ViewState": "AQIAAB0AAAAAAAAAAAAgwCYAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-05T18:07:38.423Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "UsuarioController.cs",
               "DocumentMoniker": "C:\\Users\\6352573355\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\Controllers\\UsuarioController.cs",
               "RelativeDocumentMoniker": "WebApiHopeHand\\Controllers\\UsuarioController.cs",
               "ToolTip": "C:\\Users\\6352573355\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\Controllers\\UsuarioController.cs",
               "RelativeToolTip": "WebApiHopeHand\\Controllers\\UsuarioController.cs",
-              "ViewState": "AQIAABcAAAAAAAAAAAAgwAAAAAAAAAAA",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-05T18:55:03.75Z"
+              "WhenOpened": "2024-06-05T18:55:03.75Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IOngRepository.cs",
+              "DocumentMoniker": "C:\\Users\\6352573355\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\Interfaces\\IOngRepository.cs",
+              "RelativeDocumentMoniker": "WebApiHopeHand\\Interfaces\\IOngRepository.cs",
+              "ToolTip": "C:\\Users\\6352573355\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\Interfaces\\IOngRepository.cs",
+              "RelativeToolTip": "WebApiHopeHand\\Interfaces\\IOngRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAA2AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-05T19:44:39.466Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "OngEnderecoViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\6352573355\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\ViewModel\\OngEnderecoViewModel.cs",
+              "RelativeDocumentMoniker": "WebApiHopeHand\\ViewModel\\OngEnderecoViewModel.cs",
+              "ToolTip": "C:\\Users\\6352573355\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\ViewModel\\OngEnderecoViewModel.cs",
+              "RelativeToolTip": "WebApiHopeHand\\ViewModel\\OngEnderecoViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-05T19:22:50.513Z"
             },
             {
               "$type": "Document",
@@ -207,18 +214,6 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2024-06-05T18:05:00.892Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Usuario.cs",
-              "DocumentMoniker": "C:\\Users\\6352573355\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\Domains\\Usuario.cs",
-              "RelativeDocumentMoniker": "WebApiHopeHand\\Domains\\Usuario.cs",
-              "ToolTip": "C:\\Users\\6352573355\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\Domains\\Usuario.cs",
-              "RelativeToolTip": "WebApiHopeHand\\Domains\\Usuario.cs",
-              "ViewState": "AQIAACEAAAAAAAAAAAA7wCYAAAAqAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-05T18:07:38.423Z"
             },
             {
               "$type": "Document",
