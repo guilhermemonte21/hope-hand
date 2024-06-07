@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApiHopeHand.Domains;
 using WebApiHopeHand.Repositories;
@@ -16,6 +17,7 @@ namespace WebApiHopeHand.Controllers
         /// </summary>
         /// <param name="enderecoInserido">Objeto Endereco</param>
         /// <returns>ActionResult com objeto Endereco</returns>
+        [Authorize()]
         [HttpPost]
         public IActionResult Post(Endereco enderecoInserido)
         {
@@ -40,6 +42,7 @@ namespace WebApiHopeHand.Controllers
         /// </summary>
         /// <param name="addressInserted">Objeto Endereco</param>
         /// <returns>ActionResult com objeto Endereco</returns>
+        [Authorize()]
         [HttpPut("AtualizarEndereco")]
         public IActionResult Put(Endereco addressInserted)
         {
