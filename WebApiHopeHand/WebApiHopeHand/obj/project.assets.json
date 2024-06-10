@@ -4672,19 +4672,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\6352573355\\.nuget\\packages\\": {}
+    "C:\\Users\\41365718875\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\6352573355\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\WebApiHopeHand.csproj",
+      "projectUniqueName": "C:\\Users\\41365718875\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\WebApiHopeHand.csproj",
       "projectName": "WebApiHopeHand",
-      "projectPath": "C:\\Users\\6352573355\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\WebApiHopeHand.csproj",
-      "packagesPath": "C:\\Users\\6352573355\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\6352573355\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\obj\\",
+      "projectPath": "C:\\Users\\41365718875\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\WebApiHopeHand.csproj",
+      "packagesPath": "C:\\Users\\41365718875\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\41365718875\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\6352573355\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\41365718875\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4704,11 +4704,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -4783,8 +4778,16 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problema ao ler o arquivo de cache C:\\Users\\41365718875\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\obj\\project.nuget.cache: Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

@@ -135,7 +135,6 @@ namespace WebApiHopeHand.Controllers
                 throw;
             }
         }
-<<<<<<< HEAD
         [HttpPut("Editar")]
         public IActionResult Put(OngEnderecoViewModel ong)
         {
@@ -150,7 +149,6 @@ namespace WebApiHopeHand.Controllers
                 return BadRequest(ex.Message);
             }
         }
-=======
 
 
         /// <summary>
@@ -191,6 +189,5 @@ namespace WebApiHopeHand.Controllers
             }
         }
 
->>>>>>> lucas
     }
 }
