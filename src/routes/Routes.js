@@ -32,6 +32,7 @@ export const Route = () => {
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
+          // headerShown: false,
           animation: "fade_from_bottom",
         }}
       >

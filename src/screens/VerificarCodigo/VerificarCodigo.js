@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { Botao } from "../../components/Botao/Index"
 import { BotaoVoltar } from "../../components/BotaoVoltar/Index"
 import { Container } from "../../components/Container/Style"
@@ -8,7 +9,28 @@ import { Titulo } from "../../components/Titulo/Index"
 
 export const VerificarCodigo = ({
     navigation
-}) => { 
+}) => {
+    // CONSTS
+    const [carregando, setCarregando] = useState(false);
+
+
+
+    // FUNTIONS
+    const VerificarCodigo = () => {
+        setCarregando(true);
+
+        setTimeout(() => {
+            setCarregando(false)
+
+            navigation.replace("AlterarSenha")
+        }, 1000);
+    }
+
+
+    // EFFECTS
+
+
+
     return (
         <Container>
             <BotaoVoltar
@@ -36,7 +58,8 @@ export const VerificarCodigo = ({
                 route={"Login"}
                 text={"Confirmar"}
                 bgColor={"#7BCAF7"}
-                onPress={() => navigation.replace("AlterarSenha")}
+                onPress={() => VerificarCodigo()}
+                carregando={carregando}
             />
 
             <Botao
