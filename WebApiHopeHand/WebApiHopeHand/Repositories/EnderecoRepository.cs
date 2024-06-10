@@ -34,6 +34,12 @@ namespace WebApiHopeHand.Repositories
             if (insertedAddress.Address != null)
                 searchedAddress.Address = insertedAddress.Address;
 
+            if (insertedAddress.Latitude != null)
+                searchedAddress.Latitude = insertedAddress.Latitude;
+
+            if (insertedAddress.Longitude != null)
+                searchedAddress.Longitude = insertedAddress.Longitude;
+
             _context.Enderecos.Update(searchedAddress!);
             _context.SaveChanges();
 

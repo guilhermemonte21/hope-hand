@@ -39,5 +39,11 @@ namespace WebApiHopeHand.Domains
 
         [Column(TypeName = "VARCHAR(100)")]
         public string? Address { get; set; }
+
+        [Column(TypeName = "VARCHAR(30)")]
+        public string? Latitude { get; set; }
+
+        [Column(TypeName = "VARCHAR(30)")]
+        public string? Longitude { get;set; }
     }
 }

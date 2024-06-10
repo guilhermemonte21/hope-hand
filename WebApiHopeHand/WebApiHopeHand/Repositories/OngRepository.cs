@@ -49,17 +49,20 @@ namespace WebApiHopeHand.Repositories
 
         public void EditarOng(OngEnderecoViewModel ong)
         {
-            
+             //Acha a Ong pelo ID
                 Ong buscada = _context.Ongs.Find(ong.Ong.Id);
 
+                //Acha suas propriedades dessas ongs
                 buscada.Cnpj = ong.Ong.Cnpj;
                 buscada.Photo = ong.Ong.Photo;
                 buscada.Name = ong.Ong.Name;
                 buscada.Link = ong.Ong.Link;
                 buscada.Description = ong.Ong.Description;
 
-                Endereco buscado = _context.Enderecos.Find(ong.Endereco.Id);
+                //Acha o endereco pelo ID
+                 Endereco buscado = _context.Enderecos.Find(ong.Endereco.Id);
 
+                //Acha suas propriedades 
                 buscado.Address = ong.Endereco.Address;
                 buscado.City = ong.Endereco.City;
                 buscado.Cep = ong.Endereco.Cep;
@@ -68,7 +71,7 @@ namespace WebApiHopeHand.Repositories
             
 
 
-                
+                //comando para atualizar esses enderecos e ongs buscada
                 _context.Update(buscada);
                _context.Update(buscado);
                 _context.SaveChanges();
