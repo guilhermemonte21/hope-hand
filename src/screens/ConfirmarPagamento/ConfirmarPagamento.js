@@ -14,11 +14,9 @@ export const ConfirmarPagamento = ({ navigation }) => {
         <FontAwesome5 name="check-circle" size={90} color="#3FA7E4" />
         </ViewCenter>
 
-        <ViewEnd>
         <ButtonStyled onPress={() => navigation.replace("Home")}>
         <TextButton>Voltar</TextButton>
         </ButtonStyled>
-        </ViewEnd>
         </Container>
     );
 };

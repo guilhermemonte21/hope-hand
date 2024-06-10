@@ -53,7 +53,7 @@ export const ViewRow = styled.View.attrs({
 export const ViewCenter = styled.View.attrs({
 }
 )`
-margin: 150px;
+margin: 160px;
 justifyContent: center;
 alignItems: center;
 `;
