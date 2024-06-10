@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApiHopeHand.Context;
 
@@ -11,9 +12,11 @@ using WebApiHopeHand.Context;
 namespace WebApiHopeHand.Migrations
 {
     [DbContext(typeof(HopeContext))]
-    partial class HopeContextModelSnapshot : ModelSnapshot
+    [Migration("20240610190248_PropsLongitudeELatitudeInserted")]
+    partial class PropsLongitudeELatitudeInserted
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

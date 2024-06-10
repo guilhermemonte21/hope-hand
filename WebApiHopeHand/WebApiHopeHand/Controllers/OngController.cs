@@ -121,6 +121,7 @@ namespace WebApiHopeHand.Controllers
         /// </summary>
         /// <param name="id">Id da ONG</param>
         /// <returns>StatusCode</returns>
+        [Authorize()]
         [HttpDelete("DeletarOng")]
         public IActionResult Delete(Guid id)
         {
@@ -135,6 +136,8 @@ namespace WebApiHopeHand.Controllers
                 throw;
             }
         }
+
+        [Authorize()]
         [HttpPut("Editar")]
         public IActionResult Put(OngEnderecoViewModel ong)
         {
@@ -144,8 +147,8 @@ namespace WebApiHopeHand.Controllers
 
                 return Ok();
             }
-            catch(Exception ex)
-            { 
+            catch (Exception ex)
+            {
                 return BadRequest(ex.Message);
             }
         }
@@ -156,6 +159,7 @@ namespace WebApiHopeHand.Controllers
         /// </summary>
         /// <param name="photoViewModel">ChangePhotoViewModel(IdOng, Arquivo)</param>
         /// <returns>StatusCode/uriFotoSalvaAzure</returns>
+        [Authorize()]
         [HttpPut("AlterarFoto")]
         public async Task<IActionResult> PutPhoto([FromForm] ChangePhotoViewModel photoViewModel)
         {
@@ -179,7 +183,7 @@ namespace WebApiHopeHand.Controllers
                 string photoUrl = await AzureBlobStorageHelper.UploadImageBlobAsync(photoViewModel.Arquivo!, connectionString, containerName);
                 // Fim da lógica para upload de imagem
 
-                ongRepository.AlterarFoto(photoViewModel.IdOng, photoViewModel.Photo!);
+                ongRepository.AlterarFoto(photoViewModel.IdOng, photoUrl!);
 
                 return Ok(photoUrl);
             }

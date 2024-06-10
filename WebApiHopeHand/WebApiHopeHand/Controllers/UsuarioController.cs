@@ -85,9 +85,7 @@ namespace WebApiHopeHand.Controllers
 
                 //cadastra o usuario
                 usuarioRepository.Cadastrar(user);
-                return Ok();
-
-
+                return Ok("Usuário cadastrado com sucesso!");
             }
             catch (Exception ex)
             {
