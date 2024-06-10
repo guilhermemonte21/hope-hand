@@ -33,7 +33,7 @@
     "expo-camera": "~15.0.10",
     "expo-media-library": "~16.0.3",
     "expo-image-picker": "~15.0.5",
-    "react-native-gesture-handler": "~2.16.1"
+    "react-native-gesture-handler": "~2.16.1",
     "react-native-pager-view": "6.3.0"
 
   },
