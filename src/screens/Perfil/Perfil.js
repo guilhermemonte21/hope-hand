@@ -1,4 +1,7 @@
-import { ContainerMargin, ContainerScroll } from "../../components/Container/Style";
+import {
+  ContainerMargin,
+  ContainerScroll,
+} from "../../components/Container/Style";
 import { PerfilImageWhite } from "../../components/Perfil/ImagePerfil";
 import { ButtonUploadImage } from "../../components/Botao/Style";
 import { useState } from "react";
@@ -7,9 +10,9 @@ import { Input } from "../../components/Input/Index";
 import { CardCause } from "../../components/CardCause/Index";
 import { SubtitleCard, TitleCard } from "../../components/CardCause/Style";
 import { Botao } from "./../../components/Botao/Index";
-import { Group } from "../../components/Group/Index"
+import { Group } from "../../components/Group/Index";
 import { ViewImageCircle } from "../../components/Perfil/ImagePerfil";
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { BotaoVoltar } from "../../components/BotaoVoltar/Index";
 import { CameraModal } from "../../components/Camera/CameraModal";
 
@@ -17,22 +20,21 @@ export const Perfil = ({ navigation }) => {
   const [logado, setLogado] = useState(false);
   const [showInformationModal, setShowInformationModal] = useState(false);
 
-  const [photo, setPhoto] = useState(null)
+  const [photo, setPhoto] = useState(null);
 
   const [uriCameraCapture, setUriCameraCapture] = useState("");
   const [showCameraModal, setShowCameraModal] = useState(false);
 
   return (
     <ContainerScroll>
-
       {/* Botão */}
-      <BotaoVoltar
-        onPress={() => navigation.replace("Home")}
-      />
+      <BotaoVoltar onPress={() => navigation.replace("Home")} />
 
       {/* Imagem da Ong */}
       <ViewImageCircle>
-        <PerfilImageWhite source={require("../../assets/images/Perfil-White.png")} />
+        <PerfilImageWhite
+          source={require("../../assets/images/Perfil-White.png")}
+        />
       </ViewImageCircle>
 
       <ButtonUploadImage onPress={() => setShowCameraModal(true)}>
@@ -45,30 +47,46 @@ export const Perfil = ({ navigation }) => {
       {/* Subtitullo da Ong */}
       <ContainerMargin>
         <SubtitleCard>
-          Acreditamos que todos merecem a chance de viver uma vida plena e digna.
-          Trabalhamos incansavelmente para criar oportunidades que permitam que
-          indivíduos e comunidades superem desafios e alcancem seu potencial
-          máximo. Através de nossas iniciativas, buscamos reduzir a desigualdade,
-          promover a justiça social e garantir que cada pessoa tenha acesso aos
-          recursos necessários para uma vida digna e saudável.
+          Acreditamos que todos merecem a chance de viver uma vida plena e
+          digna. Trabalhamos incansavelmente para criar oportunidades que
+          permitam que indivíduos e comunidades superem desafios e alcancem seu
+          potencial máximo. Através de nossas iniciativas, buscamos reduzir a
+          desigualdade, promover a justiça social e garantir que cada pessoa
+          tenha acesso aos recursos necessários para uma vida digna e saudável.
         </SubtitleCard>
-
-
 
         {logado == false ? (
           <Group>
-            <CardCause />
-            <CardCause />
-            <CardCause />
+            <CardCause onPress={() => navigation.replace("Mapa")} />
           </Group>
         ) : (
           <Group>
-            <Input placeholder="Nome: " width="100%" border={false} height={65} />
-            <Input placeholder="CNPJ: " width="100%" border={false} height={65} />
+            <Input
+              placeholder="Nome: "
+              width="100%"
+              border={false}
+              height={65}
+            />
+            <Input
+              placeholder="CNPJ: "
+              width="100%"
+              border={false}
+              height={65}
+            />
 
-            <Group row >
-              <Input placeholder="CEP: " width="100%" border={false} height={75} />
-              <Input placeholder="UF: " width="100%" border={false} height={75} />
+            <Group row>
+              <Input
+                placeholder="CEP: "
+                width="100%"
+                border={false}
+                height={75}
+              />
+              <Input
+                placeholder="UF: "
+                width="100%"
+                border={false}
+                height={75}
+              />
             </Group>
 
             <Botao
@@ -86,10 +104,8 @@ export const Perfil = ({ navigation }) => {
               text={"Sair da Conta"}
               bgColor={"#7BCAF7"}
             />
-
           </Group>
         )}
-
       </ContainerMargin>
 
       <InformationModal
