@@ -15,11 +15,11 @@ namespace WebApiHopeHand.Controllers
         /// <summary>
         /// Cadastra um novo Endereço
         /// </summary>
-        /// <param name="enderecoInserido">Objeto Endereco</param>
+        /// <param name="addressInserted">Objeto Endereco</param>
         /// <returns>ActionResult com objeto Endereco</returns>
         [Authorize()]
         [HttpPost]
-        public IActionResult Post(Endereco enderecoInserido)
+        public IActionResult Post(Endereco addressInserted)
         {
             try
             {

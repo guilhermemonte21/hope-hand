@@ -6,7 +6,7 @@ namespace WebApiHopeHand.Interfaces
 {
     public interface IOngRepository
     {
-        public void Cadastrar(Endereco endereco);
+        public void Cadastrar(Ong ong);
 
         public void Deletar(Guid id);
 

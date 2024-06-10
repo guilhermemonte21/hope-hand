@@ -20,6 +20,11 @@ namespace WebApiHopeHand.Controllers
             _emailSendingService = emailSendingService;
         }
 
+        /// <summary>
+        /// Gera o código de recuperação de senha e envia no email do usuário
+        /// </summary>
+        /// <param name="email">Email do usuário</param>
+        /// <returns>StatusCode</returns>
         [HttpPost]
         public async Task<IActionResult> SendRecoveryCode(string email)
         {
@@ -52,6 +57,12 @@ namespace WebApiHopeHand.Controllers
             }
         }
 
+        /// <summary>
+        /// Valida o código inserido pelo usuário com o gerado e salvo no banco
+        /// </summary>
+        /// <param name="email">Email do usuário</param>
+        /// <param name="code">Código inserido pelo usuário</param>
+        /// <returns>StatusCode</returns>
         [HttpPost("ValidarCodigoRecuperacaoSenha")]
         public async Task<IActionResult> VerifyPasswordRecoveryCode(string email, int code)
         {

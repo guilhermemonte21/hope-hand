@@ -29,19 +29,10 @@ namespace WebApiHopeHand.Repositories
 
         }
 
-        //public void Cadastrar(Ong ong)
-        //{
-        //    //Adiciona a ong
-        //    _context.Ongs.Add(ong);
-        //    //Salva as mudancas
-        //    _context.SaveChanges();
-        //}
-
-        public void Cadastrar(Endereco endereco)
+        public void Cadastrar(Ong ong)
         {
             //Adiciona a ong
-            _context.Ongs.Add(endereco.Ong);
-            _context.Enderecos.Add(endereco);
+            _context.Ongs.Add(ong);
             //Salva as mudancas
             _context.SaveChanges();
         }

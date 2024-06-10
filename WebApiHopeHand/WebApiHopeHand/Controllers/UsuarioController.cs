@@ -20,6 +20,12 @@ namespace WebApiHopeHand.Controllers
             usuarioRepository = new UsuarioRepository();
         }
 
+        /// <summary>
+        /// Altera a senha do usuário
+        /// </summary>
+        /// <param name="email">Email do usuário</param>
+        /// <param name="password">Senha do usuário</param>
+        /// <returns>StatusCode</returns>
         [HttpPut("AlterarSenha")]
         public IActionResult UpdatePassword(string email, string password)
         {
@@ -35,6 +41,11 @@ namespace WebApiHopeHand.Controllers
             }
         }
 
+        /// <summary>
+        /// Busca um usuário por seu ID
+        /// </summary>
+        /// <param name="id">Id do usuário</param>
+        /// <returns>StatusCode</returns>
         [HttpGet("BuscarPorId")]
         public IActionResult GetById(Guid id)
         {
@@ -48,6 +59,12 @@ namespace WebApiHopeHand.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        /// <summary>
+        /// Cadastra um novo usuário no banco
+        /// </summary>
+        /// <param name="usuario">Objeto do tipo Usuario</param>
+        /// <returns>StatusCode</returns>
         [HttpPost("CriarConta")]
         public IActionResult Post(Usuario usuario)
         {
@@ -78,6 +95,13 @@ namespace WebApiHopeHand.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        /// <summary>
+        /// Busca um usuário por email e senha
+        /// </summary>
+        /// <param name="email">Email do usuário</param>
+        /// <param name="password">Senha inserida</param>
+        /// <returns>StatusCode</returns>
         [HttpGet("BuscarPorEmailESenha")]
         public IActionResult GetByEmailAndPassword(string email, string password)
         {

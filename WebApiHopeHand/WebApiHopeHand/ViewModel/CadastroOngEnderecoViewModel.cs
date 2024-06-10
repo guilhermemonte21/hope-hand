@@ -33,7 +33,6 @@ namespace WebApiHopeHand.ViewModel
 
         // Propriedades do Endereco
 
-        [Required(ErrorMessage = "A ONG deste endereço é obrigatória!")]
         public Guid? IdOngFK { get; set; }
 
         [Required(ErrorMessage = "O número do endereço é obrigatório!")]
