@@ -18,6 +18,7 @@ import { AlterarSenha } from "../screens/AlterarSenha/AlterarSenha";
 import { Mapa } from "../screens/Mapa/Mapa";
 
 import { Sobre } from "../screens/Sobre/Sobre";
+import { ConfirmarPagamento } from "../screens/ConfirmarPagamento/ConfirmarPagamento";
 
 
 //instância do StackNavigator
@@ -89,6 +90,11 @@ export const Route = () => {
         <Stack.Screen
           name="Mapa"
           component={Mapa}
+        />
+
+        <Stack.Screen
+          name="ConfirmarPagamento"
+          component={ConfirmarPagamento}
         />
 
         <Stack.Screen name="Sobre" component={Sobre} />

@@ -3,7 +3,6 @@ import styled from "styled-components/native";
 const Modal = `
 background-color: #D9D9D9;
 align-items: center;
-justifyContent: 'center';
 `;
 
 export const ModalForm = styled.SafeAreaView`
