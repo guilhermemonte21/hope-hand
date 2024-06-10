@@ -13,20 +13,32 @@ namespace WebApiHopeHand.Repositories
         private HopeContext _context = new HopeContext();
         public OngEnderecoViewModel BuscarPorId(Guid id)
         {
-           
-                //busca a ong pelo ID
-                 Ong ongSearch = _context.Ongs.FirstOrDefault(c => c.Id == id);
-                 //busca o endereco pelo Id
-                 Endereco EnderecoSearch = _context.Enderecos.FirstOrDefault(c => c.IdOng == id);
 
-                //cria um novo objeto e passa os valores do que foi buscado
-                OngEnderecoViewModel ongEnderecoViewModel = new OngEnderecoViewModel()
-                {
-                    Ong = ongSearch,
-                    Endereco = EnderecoSearch
-                };
-                return ongEnderecoViewModel;
-           
+            //busca a ong pelo ID
+            Ong ongSearch = _context.Ongs.FirstOrDefault(c => c.Id == id)!;
+            //busca o endereco pelo Id
+            Endereco EnderecoSearch = _context.Enderecos.FirstOrDefault(c => c.IdOng == id)!;
+
+            //cria um novo objeto e passa os valores do que foi buscado
+            OngEnderecoViewModel ongEnderecoViewModel = new()
+            {
+                Ong = ongSearch,
+                Endereco = EnderecoSearch
+            };
+            return ongEnderecoViewModel;
+
+        }
+
+        public void AlterarFoto(Guid ongId, string newPhotoUri)
+        {
+            Ong ongSearched = _context.Ongs.FirstOrDefault(ong => ong.Id == ongId)!;
+
+            if (ongSearched != null)
+            {
+                // Altera a foto da ONG
+                ongSearched.Photo = newPhotoUri;
+            }
+            _context.SaveChanges();
         }
 
         public void Cadastrar(Ong ong)
@@ -40,7 +52,7 @@ namespace WebApiHopeHand.Repositories
         public void Deletar(Guid id)
         {
             //busca pelo id o perfil desejado para ser deletado
-            Ong ong = _context.Ongs.FirstOrDefault(x => x.Id == id);
+            Ong ong = _context.Ongs.FirstOrDefault(x => x.Id == id)!;
             //deleta o perfil
             _context.Ongs.Remove(ong);
             //salva as mudancas
@@ -96,17 +108,10 @@ namespace WebApiHopeHand.Repositories
                 ongEnderecos.Add(new OngEnderecoViewModel
                 {
                     Ong = item,
-                   Endereco = EnderecoList.FirstOrDefault(c => c.IdOng == item.Id),
-                    
+                    Endereco = EnderecoList.FirstOrDefault(c => c.IdOng == item.Id)!,
+
                 });
             }
-
-
-
-
-
-
-
             return ongEnderecos;
         }
     }

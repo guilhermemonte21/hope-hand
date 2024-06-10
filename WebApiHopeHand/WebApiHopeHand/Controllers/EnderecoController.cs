@@ -10,20 +10,20 @@ namespace WebApiHopeHand.Controllers
     [ApiController]
     public class EnderecoController : ControllerBase
     {
-        private readonly EnderecoRepository _enderecoRepository = new EnderecoRepository();
+        private readonly EnderecoRepository _enderecoRepository = new();
 
         /// <summary>
         /// Cadastra um novo Endereço
         /// </summary>
-        /// <param name="enderecoInserido">Objeto Endereco</param>
+        /// <param name="addressInserted">Objeto Endereco</param>
         /// <returns>ActionResult com objeto Endereco</returns>
         [Authorize()]
         [HttpPost]
-        public IActionResult Post(Endereco enderecoInserido)
+        public IActionResult Post(Endereco addressInserted)
         {
             try
             {
-                Endereco enderecoRetornado = _enderecoRepository.Cadastrar(enderecoInserido)!;
+                Endereco enderecoRetornado = _enderecoRepository.Cadastrar(addressInserted)!;
 
                 if (enderecoRetornado == null)
                 {

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using WebApiHopeHand.Domains;
 using WebApiHopeHand.Interfaces;
 using WebApiHopeHand.Repositories;
+using WebApiHopeHand.Utils.BlobStorage;
 using WebApiHopeHand.ViewModel;
 
 namespace WebApiHopeHand.Controllers
@@ -20,40 +21,55 @@ namespace WebApiHopeHand.Controllers
             enderecoRepository = new EnderecoRepository();
         }
 
+        /// <summary>
+        /// Realiza o cadastro de uma nova ONG com seu respectivo Endereço
+        /// </summary>
+        /// <param name="ongInserted">Objeto CadastroOngEnderecoViewModel</param>
+        /// <returns>StatusCode</returns>
         [Authorize()]
         [HttpPost("CadastrarOng")]
-        public IActionResult PostOng(OngEnderecoViewModel novaOng)
+        public async Task<IActionResult> PostOng([FromForm] CadastroOngEnderecoViewModel ongInserted)
         {
             try
             {
-                Ong newong = new Ong();
+                // Pega os valores da ONG
+                Ong newOng = new()
+                {
+                    Name = ongInserted.Name,
+                    Cnpj = ongInserted.Cnpj,
+                    Photo = ongInserted.Photo,
+                    Description = ongInserted.Description,
+                    Arquivo = ongInserted.Arquivo,
+                    Link = ongInserted.Link,
+                    UserId = ongInserted.UserId,
+                };
 
-                newong.Name = novaOng.Ong.Name;
-                newong.Cnpj = novaOng.Ong.Cnpj;
-                newong.Photo = novaOng.Ong.Photo;
-                newong.Description = novaOng.Ong.Description;
-                newong.UserId = novaOng.Ong.UserId;
-                newong.Cnpj = novaOng.Ong.Cnpj;
-                newong.Link = novaOng.Ong.Link;
+                // Pega os valores do endereço da ONG
+                Endereco newOngAddress = new Endereco()
+                {
+                    Address = ongInserted.Address,
+                    Cep = ongInserted.Cep,
+                    Number = ongInserted.Number,
+                    City = ongInserted.City,
+                    State = ongInserted.State,
+                    IdOng = newOng.Id
+                };
 
+                //define o nome do container do blob
+                var containerName = "hopehandcontainer";
 
-                Endereco endereco = new Endereco();
+                //define a string de conexão
+                var connectionString = "DefaultEndpointsProtocol=https;AccountName=hopehandarmazenamento;AccountKey=x174GS2yRKB6v9tZ/mRkHspQRhUhCl0L1DzxkeX0MIl55pJEs6arJml8Kg2KuRElMBkisTHSBw87+AStnsXnPg==;EndpointSuffix=core.windows.net";
 
-                endereco.Address = novaOng.Endereco.Address;
-                endereco.Cep = novaOng.Endereco.Cep;
-                endereco.Number = novaOng.Endereco.Number;
-                endereco.City = novaOng.Endereco.City;
-                endereco.State = novaOng.Endereco.State;
-                endereco.IdOng = newong.Id;
+                //aqui vamos chamar o método para upload da imagem
+                newOng.Photo = await AzureBlobStorageHelper.UploadImageBlobAsync(newOng.Arquivo!, connectionString, containerName);
 
+                // Cadastra a ONG
+                ongRepository.Cadastrar(newOng);
+                // Cadastra o Endereço da ONG
+                enderecoRepository.Cadastrar(newOngAddress);
 
-
-                ongRepository.Cadastrar(newong);
-                enderecoRepository.Cadastrar(endereco);
-
-                return Ok(newong);
-
-
+                return Ok("ONG cadastrada com sucesso!");
             }
             catch (Exception ex)
             {
@@ -61,6 +77,11 @@ namespace WebApiHopeHand.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        /// <summary>
+        /// Retorna todas as ONGs do banco
+        /// </summary>
+        /// <returns>Lista de objetos tipo Ong</returns>
         [HttpGet("Listar")]
         public IActionResult Get()
         {
@@ -75,6 +96,12 @@ namespace WebApiHopeHand.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        /// <summary>
+        /// Busca uma ong por ID
+        /// </summary>
+        /// <param name="id">Id da ONG</param>
+        /// <returns>StatusCode</returns>
         [HttpGet("BuscarPorId")]
         public IActionResult GetById(Guid id)
         {
@@ -88,13 +115,19 @@ namespace WebApiHopeHand.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        /// <summary>
+        /// Deleta uma ONG do banco por Id
+        /// </summary>
+        /// <param name="id">Id da ONG</param>
+        /// <returns>StatusCode</returns>
         [HttpDelete("DeletarOng")]
         public IActionResult Delete(Guid id)
         {
             try
             {
                 ongRepository.Deletar(id);
-                return Ok();
+                return Ok("ONG");
             }
             catch (Exception)
             {
@@ -102,6 +135,7 @@ namespace WebApiHopeHand.Controllers
                 throw;
             }
         }
+<<<<<<< HEAD
         [HttpPut("Editar")]
         public IActionResult Put(OngEnderecoViewModel ong)
         {
@@ -116,5 +150,47 @@ namespace WebApiHopeHand.Controllers
                 return BadRequest(ex.Message);
             }
         }
+=======
+
+
+        /// <summary>
+        /// Altera uma ONG do banco
+        /// </summary>
+        /// <param name="photoViewModel">ChangePhotoViewModel(IdOng, Arquivo)</param>
+        /// <returns>StatusCode/uriFotoSalvaAzure</returns>
+        [HttpPut("AlterarFoto")]
+        public async Task<IActionResult> PutPhoto([FromForm] ChangePhotoViewModel photoViewModel)
+        {
+            try
+            {
+                var searchedOng = ongRepository.BuscarPorId(photoViewModel.IdOng);
+
+                if (searchedOng == null)
+                {
+                    return NotFound();
+                }
+
+                // Lógica para o upload de imagem
+                //define o nome do container do blob
+                var containerName = "hopehandcontainer";
+
+                //define a string de conexão
+                var connectionString = "DefaultEndpointsProtocol=https;AccountName=hopehandarmazenamento;AccountKey=x174GS2yRKB6v9tZ/mRkHspQRhUhCl0L1DzxkeX0MIl55pJEs6arJml8Kg2KuRElMBkisTHSBw87+AStnsXnPg==;EndpointSuffix=core.windows.net";
+
+                // Realiza o upload de imagem e guarda a url da imagem na variável
+                string photoUrl = await AzureBlobStorageHelper.UploadImageBlobAsync(photoViewModel.Arquivo!, connectionString, containerName);
+                // Fim da lógica para upload de imagem
+
+                ongRepository.AlterarFoto(photoViewModel.IdOng, photoViewModel.Photo!);
+
+                return Ok(photoUrl);
+            }
+            catch (Exception exc)
+            {
+                return BadRequest(exc.Message);
+            }
+        }
+
+>>>>>>> lucas
     }
 }

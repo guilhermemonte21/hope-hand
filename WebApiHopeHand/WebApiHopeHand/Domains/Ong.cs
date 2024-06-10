@@ -1,6 +1,7 @@
 ﻿using WebApiHopeHand.Domains;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace WebApiHopeHand.Domains
 {
@@ -23,8 +24,14 @@ namespace WebApiHopeHand.Domains
         public string? Link { get; set; }
 
 
+
+        [NotMapped]
+        [JsonIgnore]
+        public IFormFile? Arquivo { get; set; }
         [Column(TypeName = "VARCHAR(MAX)")]
         public string? Photo { get; set; }
+
+
 
 
         [Column(TypeName = "TEXT")]
