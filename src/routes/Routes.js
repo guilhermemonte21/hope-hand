@@ -42,8 +42,13 @@ export const Route = () => {
         />
 
         <Stack.Screen
-          name="Perfil"
-          component={Perfil}
+          name="Inicio"
+          component={Inicio}
+        />
+
+        <Stack.Screen
+          name="Login"
+          component={Login}
         />
 
         <Stack.Screen
@@ -56,7 +61,6 @@ export const Route = () => {
           component={RecuperarSenha}
         />
 
-
         <Stack.Screen
           name="VerificarCodigo"
           component={VerificarCodigo}
@@ -68,18 +72,13 @@ export const Route = () => {
         />
 
         <Stack.Screen
-          name="Login"
-          component={Login}
-        />
-
-        <Stack.Screen
           name="Home"
           component={Home}
         />
 
         <Stack.Screen
-          name="Inicio"
-          component={Inicio}
+          name="Perfil"
+          component={Perfil}
         />
 
         <Stack.Screen
@@ -97,7 +96,10 @@ export const Route = () => {
           component={ConfirmarPagamento}
         />
 
-        <Stack.Screen name="Sobre" component={Sobre} />
+        <Stack.Screen
+          name="Sobre"
+          component={Sobre}
+        />
 
       </Stack.Navigator>
     </NavigationContainer>

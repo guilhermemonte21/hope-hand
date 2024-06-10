@@ -15,13 +15,8 @@ export const Navigation = ({ navigation }) => {
       />
 
       <Button
-        title="Home"
-        onPress={() => navigation.navigate("Home")}
-      />
-
-      <Button
-        title="ListaOngs"
-        onPress={() => navigation.navigate("ListaOngs")}
+        title="Cadastro"
+        onPress={() => navigation.navigate("Cadastro")}
       />
 
       <Button
@@ -40,10 +35,9 @@ export const Navigation = ({ navigation }) => {
       />
 
       <Button
-        title="Cadastro"
-        onPress={() => navigation.navigate("Cadastro")}
+        title="Home"
+        onPress={() => navigation.navigate("Home")}
       />
-
 
       <Button
         title="Perfil"
@@ -51,10 +45,19 @@ export const Navigation = ({ navigation }) => {
       />
 
       <Button
+        title="ListaOngs"
+        onPress={() => navigation.navigate("ListaOngs")}
+      />
+
+      <Button
         title="Mapa"
         onPress={() => navigation.navigate("Mapa")}
       />
-      <Button title="Sobre" onPress={() => navigation.navigate("Sobre")} />
+
+      <Button
+        title="Sobre"
+        onPress={() => navigation.navigate("Sobre")}
+      />
 
       <Button
         title="ConfirmarPagamento"

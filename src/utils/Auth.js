@@ -1,7 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { jwtDecode } from "jwt-decode";
 import { encode, decode } from "base-64";
-import api from "../service/service";
+import api from "../service/Service";
 
 if (!global.atob) {
   global.atob = decode;
