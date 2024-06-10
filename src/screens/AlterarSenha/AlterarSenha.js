@@ -5,25 +5,46 @@ import { Titulo } from "../../components/Titulo/Index"
 import { Input } from "../../components/Input/Index"
 import { Botao } from "../../components/Botao/Index"
 import { useState } from "react"
+import api from "../../service/Service"
 
 export const AlterarSenha = ({
-    navigation
+    navigation,
+    email = 'lucas.notes@gmail.com'
 }) => {
     // CONSTS
     const [carregando, setCarregando] = useState(false);
+    const [senha, setSenha] = useState(null);
+    const [senhaConfirmacao, setSenhaConfirmacao] = useState(null);
 
 
     // FUNCTIONS
-    const AlterarSenha = () => {
+    const AlterarSenha = async () => {
         setCarregando(true);
 
-        setTimeout(() => {
-            setCarregando(false);
+        // Verifica se a senha e a confirmação de senha são iguais
+        if (senha === senhaConfirmacao && senha != null && senhaConfirmacao != null) {
+            console.log(`/Usuario/AlterarSenha?email=${email}&password=${senha}`);
+            await api.put(`/Usuario/AlterarSenha?email=${email}&password=${senha}`)
+                .then((response) => {
+                    // Se a senha for alterada com sucesso
+                    if (response.data.sucesso) {
+                        // retorna para a Login
+                        setTimeout(() => {
+                            setCarregando(false);
 
-            navigation.replace("Login");
-        }, 1000);
+                            navigation.replace("Login");
+                        }, 1000);
+                    }
+                })
+                .catch((erro) => {
+                    console.log(erro);
+                });
+        } else {
+            alert("As senhas não coincidem!");
+        }
+
+        setCarregando(false);
     }
-
 
     // EFFECTS
 
@@ -48,10 +69,32 @@ export const AlterarSenha = ({
 
             <Input
                 placeholder={"Senha:"}
+                value={senha}
+                onChangeText={(text) => {
+                    setSenha(text);
+                }}
+            />
+
+            {/* APAGAR DEPOIS */}
+            <Titulo
+                text={senha}
+                fontSize={12}
+                textTransform={"uppercase"}
             />
 
             <Input
                 placeholder={"Confirme a senha:"}
+                value={senhaConfirmacao}
+                onChangeText={(text) => {
+                    setSenhaConfirmacao(text);
+                }}
+            />
+
+            {/* APAGAR DEPOIS */}
+            <Titulo
+                text={senhaConfirmacao}
+                fontSize={12}
+                textTransform={"uppercase"}
             />
 
             <Botao

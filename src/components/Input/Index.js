@@ -7,7 +7,9 @@ export const Input = ({
   editable,
   border = true,
   fontFamily = "Poppins_400Regular",
-  placeholderTextColor = "rgba(50,48,48, 0.5)"
+  placeholderTextColor = "rgba(50,48,48, 0.5)",
+  onChangeText,
+  value
 }) => {
   return (
     <BoxInput
@@ -20,7 +22,7 @@ export const Input = ({
         fontFamily: fontFamily,
       }}
     >
-      <InputStyled placeholder={placeholder} editable={editable}  placeholderTextColor={placeholderTextColor} />
+      <InputStyled onChangeText={onChangeText} value={value} placeholder={placeholder} editable={editable}  placeholderTextColor={placeholderTextColor} />
     </BoxInput>
   );
 };
