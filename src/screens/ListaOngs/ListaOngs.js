@@ -1,10 +1,10 @@
 import { Container } from "../../components/Container/Style";
 import { Titulo } from "./../../components/Titulo/Index";
 import { CardOng } from "./../../components/CardOng/Index";
-import { ContainerMargin } from "./../../components/Container/Style";
-import { FlatList } from "react-native";
+import { ActivityIndicator, FlatList } from "react-native";
+import { useState } from "react";
 
-const ongs = [
+const listaOngs = [
   {
     nome: "ONG 1",
     image: require("../../assets/images/logo-whand.png"),
@@ -20,22 +20,41 @@ const ongs = [
 ];
 
 export const ListaOngs = ({ navigation }) => {
+  const [carregando, setCarregando] = useState(true);
+
+  const [ongs, setOngs] = useState();
+
+  async function getOngs() {
+    try {
+    } catch (error) {}
+    setCarregando(false);
+  }
+
   return (
     <Container>
-      <Titulo
-        text={"Lista de ongs"}
-        fontSize={20}
-        textTransform={"uppercase"}
-      />
+      <Titulo text={"Escolha uma ONG para doar"} fontSize={20} />
 
-      <FlatList
-        contentContainerStyle={{ gap: 20, alignItems: "center", width: "100%", padding: "5%" }}
-        data={ongs}
-        keyExtractor={(item) => item.nome}
-        renderItem={({ item }) => (
-          <CardOng nome={item.nome} image={item.image} />
-        )}
-      />
+      {carregando ? (
+        <ActivityIndicator />
+      ) : (
+        <FlatList
+          contentContainerStyle={{
+            gap: 20,
+            alignItems: "center",
+            width: "100%",
+            padding: "5%",
+          }}
+          data={listaOngs}
+          keyExtractor={(item) => item.nome}
+          renderItem={({ item }) => (
+            <CardOng
+              navigation={navigation}
+              nome={item.nome}
+              image={item.image}
+            />
+          )}
+        />
+      )}
     </Container>
   );
 };

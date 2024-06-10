@@ -5,10 +5,12 @@ flex: 1;
 flex-basis: auto;
 
 gap: 20px;
+background-color: white;
 `;
 
 export const Container = styled.SafeAreaView`
   ${ContainersStyle}
+  align-items: center;
   padding: 20px 0 20px 0;
   alignItems: center;
 `;
@@ -17,6 +19,7 @@ export const ContainerScroll = styled.ScrollView.attrs({
   contentContainerStyle: {
     paddingBottom: 20, 
     paddingTop: 20,
+    alignItems: "center",
     gap: 20,
     alignItems: "center"
   },

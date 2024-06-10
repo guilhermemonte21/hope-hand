@@ -1,4 +1,4 @@
-import { Icon, IconBox } from "./Style"
+import { Icon, IconBox } from "./Style";
 
 export const BotaoVoltar = ({
     onPress
@@ -11,3 +11,4 @@ export const BotaoVoltar = ({
         </IconBox>
     )
 }
+
