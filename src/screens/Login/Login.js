@@ -100,7 +100,7 @@ export const Login = ({
                 color={"#7BCAF7"}
                 text={"Não tem conta? Crie uma agora mesmo!"}
                 navigation={navigation}
-                route={"Cadastro"}
+                route={"CadastroUsuario"}
             />
         </Container>
     );

@@ -1,3 +1,4 @@
+// import de componentes
 import { useState } from "react"
 import { Botao } from "../../components/Botao/Index"
 import { BotaoVoltar } from "../../components/BotaoVoltar/Index"
@@ -6,33 +7,19 @@ import { Input } from "../../components/Input/Index"
 import { Logo } from "../../components/Logo/Style"
 import { Titulo } from "../../components/Titulo/Index"
 
-export const Cadastro = ({
+export const CadastroOng = ({
     navigation
 }) => {
     // CONSTS
+    const [erro, setErro] = useState(false);
     const [carregando, setCarregando] = useState(false);
-
-
-    // FUNCTIONS
-    const Cadastrar = () => {
-        setCarregando(true);
-
-        setTimeout(() => {
-            setCarregando(false)
-
-            navigation.replace("Login");
-        }, 1000);
-    }
-
-    // EFFECTS
 
 
 
     return (
         <Container>
             <BotaoVoltar
-                navigation={navigation}
-                route={"Login"}
+                onPress={() => navigation.replace("Login")}
             />
 
             <Logo
@@ -40,21 +27,30 @@ export const Cadastro = ({
             />
 
             <Titulo
-                text={"Cadastro"}
+                text={"Cadastro - ong"}
                 fontSize={18}
                 textTransform={"uppercase"}
             />
 
             <Input
                 placeholder={"Email:"}
+                autoCapitalize={"none"}
+                erro={erro}
+                onChangeText={(txt) => setEmail(txt)}
             />
 
             <Input
                 placeholder={"Senha:"}
+                autoCapitalize={"none"}
+                erro={erro}
+                onChangeText={(txt) => setSenha(txt)}
             />
 
             <Input
                 placeholder={"Confirme a senha:"}
+                autoCapitalize={"none"}
+                erro={erro}
+                onChangeText={(txt) => setConfirmaSenha(txt)}
             />
 
             <Botao

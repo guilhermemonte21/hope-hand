@@ -15,8 +15,13 @@ export const Navigation = ({ navigation }) => {
       />
 
       <Button
-        title="Cadastro"
-        onPress={() => navigation.navigate("Cadastro")}
+        title="CadastroUsuario"
+        onPress={() => navigation.navigate("CadastroUsuario")}
+      />
+
+      <Button
+      title="CadastroOng"
+      onPress={() => navigation.navigate("CadastroOng")}
       />
 
       <Button

@@ -13,6 +13,7 @@ export const Input = ({
   onChangeText,
   autoCapitalize,
   erro,
+  keyboardType,
 }) => {
   return (
     <BoxInput
@@ -32,6 +33,7 @@ export const Input = ({
         placeholderTextColor={placeholderTextColor}
         value={value}
         onChangeText={onChangeText}
+        keyboardType={keyboardType}
         autoCapitalize={autoCapitalize}
       />
     </BoxInput>

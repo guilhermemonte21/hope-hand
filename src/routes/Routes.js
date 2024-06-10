@@ -6,7 +6,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Perfil } from "../screens/Perfil/Perfil";
 import { Login } from "../screens/Login/Login";
 
-import { Cadastro } from "../screens/Cadastro/Cadastro";
+import { CadastroUsuario } from "../screens/Cadastro/CadastroUsuario";
 import { RecuperarSenha } from "../screens/RecuperarSenha/RecuperarSenha";
 import { VerificarCodigo } from "../screens/VerificarCodigo/VerificarCodigo";
 import { Navigation } from "../screens/Navigation/Navigation";
@@ -19,6 +19,7 @@ import { Mapa } from "../screens/Mapa/Mapa";
 
 import { Sobre } from "../screens/Sobre/Sobre";
 import { ConfirmarPagamento } from "../screens/ConfirmarPagamento/ConfirmarPagamento";
+import { CadastroOng } from "../screens/Cadastro/CadastroOng";
 
 
 //instância do StackNavigator
@@ -52,8 +53,13 @@ export const Route = () => {
         />
 
         <Stack.Screen
-          name="Cadastro"
-          component={Cadastro}
+          name="CadastroUsuario"
+          component={CadastroUsuario}
+        />
+
+        <Stack.Screen
+          name="CadastroOng"
+          component={CadastroOng}
         />
 
         <Stack.Screen
