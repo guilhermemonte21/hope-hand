@@ -25,7 +25,12 @@
     "react-native-maps": "^1.15.6",
     "react-native-maps-directions": "^1.9.0",
     "styled-components": "^6.1.11",
+    "expo-camera": "~15.0.10",
+    "expo-media-library": "~16.0.3",
+    "expo-image-picker": "~15.0.5",
+    "react-native-gesture-handler": "~2.16.1"
     "react-native-pager-view": "6.3.0"
+
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

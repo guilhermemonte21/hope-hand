@@ -56,6 +56,10 @@ export const Navigation = ({ navigation }) => {
       />
       <Button title="Sobre" onPress={() => navigation.navigate("Sobre")} />
 
+      <Button
+        title="ConfirmarPagamento"
+        onPress={() => navigation.navigate("ConfirmarPagamento")}
+      />
     </View>
   );
 };

@@ -12,6 +12,7 @@ export const Container = styled.SafeAreaView`
   ${ContainersStyle}
   align-items: center;
   padding: 20px 0 20px 0;
+  alignItems: center;
 `;
 
 export const ContainerScroll = styled.ScrollView.attrs({
@@ -20,6 +21,7 @@ export const ContainerScroll = styled.ScrollView.attrs({
     paddingTop: 20,
     alignItems: "center",
     gap: 20,
+    alignItems: "center"
   },
 })`
   ${ContainersStyle}
@@ -46,3 +48,21 @@ export const ViewRow = styled.View.attrs({
   gap: 20px;
 `;
 
+export const ViewCenter = styled.View.attrs({
+}
+)`
+margin: 150px;
+justifyContent: center;
+alignItems: center;
+`;
+
+export const ViewEnd = styled.View.attrs({
+}
+)`
+gap: 20px;
+width: 100%;
+top: 160px;
+bottom: 0px;
+alignItems: center;
+justifyContent: center;
+`;

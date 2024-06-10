@@ -23,9 +23,7 @@ export const BoxInput = styled.View`
   border-radius: 12px;
 `;
 
-export const InputStyled = styled.TextInput.attrs({
-  placeholderTextColor: "rgba(50,48,48, 0.5)",
-})`
+export const InputStyled = styled.TextInput`
   text-align: start;
   font-size: 13px;
 `;
