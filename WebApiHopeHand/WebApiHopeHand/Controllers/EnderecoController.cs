@@ -10,7 +10,7 @@ namespace WebApiHopeHand.Controllers
     [ApiController]
     public class EnderecoController : ControllerBase
     {
-        private readonly EnderecoRepository _enderecoRepository = new EnderecoRepository();
+        private readonly EnderecoRepository _enderecoRepository = new();
 
         /// <summary>
         /// Cadastra um novo Endereço
@@ -23,7 +23,7 @@ namespace WebApiHopeHand.Controllers
         {
             try
             {
-                Endereco enderecoRetornado = _enderecoRepository.Cadastrar(enderecoInserido)!;
+                Endereco enderecoRetornado = _enderecoRepository.Cadastrar(addressInserted)!;
 
                 if (enderecoRetornado == null)
                 {

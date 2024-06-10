@@ -135,5 +135,45 @@ namespace WebApiHopeHand.Controllers
                 throw;
             }
         }
+
+
+        /// <summary>
+        /// Altera uma ONG do banco
+        /// </summary>
+        /// <param name="photoViewModel">ChangePhotoViewModel(IdOng, Arquivo)</param>
+        /// <returns>StatusCode/uriFotoSalvaAzure</returns>
+        [HttpPut("AlterarFoto")]
+        public async Task<IActionResult> PutPhoto([FromForm] ChangePhotoViewModel photoViewModel)
+        {
+            try
+            {
+                var searchedOng = ongRepository.BuscarPorId(photoViewModel.IdOng);
+
+                if (searchedOng == null)
+                {
+                    return NotFound();
+                }
+
+                // Lógica para o upload de imagem
+                //define o nome do container do blob
+                var containerName = "hopehandcontainer";
+
+                //define a string de conexão
+                var connectionString = "DefaultEndpointsProtocol=https;AccountName=hopehandarmazenamento;AccountKey=x174GS2yRKB6v9tZ/mRkHspQRhUhCl0L1DzxkeX0MIl55pJEs6arJml8Kg2KuRElMBkisTHSBw87+AStnsXnPg==;EndpointSuffix=core.windows.net";
+
+                // Realiza o upload de imagem e guarda a url da imagem na variável
+                string photoUrl = await AzureBlobStorageHelper.UploadImageBlobAsync(photoViewModel.Arquivo!, connectionString, containerName);
+                // Fim da lógica para upload de imagem
+
+                ongRepository.AlterarFoto(photoViewModel.IdOng, photoViewModel.Photo!);
+
+                return Ok(photoUrl);
+            }
+            catch (Exception exc)
+            {
+                return BadRequest(exc.Message);
+            }
+        }
+
     }
 }
