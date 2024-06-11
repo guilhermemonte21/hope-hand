@@ -15,8 +15,7 @@ import {
 
 const numeroCelulas = 4;
 
-export const InputCode = () => {
-    const [value, setValue] = useState('');
+export const InputCode = ({value, setValue}) => {
     const ref = useBlurOnFulfill({ value, cellCount: numeroCelulas });
     const [props, getCellOnLayoutHandler] = useClearByFocusCell({
         value,
@@ -30,7 +29,7 @@ export const InputCode = () => {
                 {...props}
                 // Use `caretHidden={false}` when users can't paste a text value, because context menu doesn't appear
                 value={value}
-                onChangeText={setValue}
+                onChangeText={(txt) => setValue(txt)}
                 cellCount={numeroCelulas}
                 keyboardType="number-pad"
                 textContentType="oneTimeCode"

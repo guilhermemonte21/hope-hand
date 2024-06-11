@@ -6,25 +6,29 @@ import { Input } from "../../components/Input/Index"
 import { Logo } from "../../components/Logo/Style.js"
 import { Subtitulo } from "../../components/Subtitulo/Index.js"
 import { Titulo } from "../../components/Titulo/Index"
+import api from "../../service/Service.js"
 
 export const RecuperarSenha = ({
     navigation
 }) => {
     // CONSTS
     const [carregando, setCarregando] = useState(false);
+    const [email, setEmail] = useState("")
 
 
     // FUNTIONS
-    const RecuperarSenha = () => {
+    async function RecuperarSenha() {
         setCarregando(true);
+        try {
+            await api.post(`/RecuperarSenha?email=${email}`)
+            navigation.replace("VerificarCodigo", { email: email })
+        } catch (error) {
+            console.log(error);
+        }
 
-        setTimeout(() => {
-            setCarregando(false)
+        setCarregando(false)
 
-            navigation.replace("VerificarCodigo")
-        }, 1000);
     }
-
 
     // EFFECTS
 
@@ -52,7 +56,7 @@ export const RecuperarSenha = ({
             />
 
             <Input
-                placeholder={"Email"}
+                placeholder={"Email"} value={email} onChangeText={(txt) => setEmail(txt)}
             />
 
             <Botao
