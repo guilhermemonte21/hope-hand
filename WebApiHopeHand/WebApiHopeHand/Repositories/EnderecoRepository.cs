@@ -75,15 +75,15 @@ namespace WebApiHopeHand.Repositories
         }
 
         /// <summary>
-        /// Busca todos os Endereços por Cidade
+        /// Busca todos os Endereços por Ong
         /// </summary>
-        /// <param name="city">Nome cidade</param>
+        /// <param name="idOng">Id da Ong</param>
         /// <returns>Lista de objetos Endereco</returns>
-        public List<Endereco> ListarPorCidade(string city)
+        public List<Endereco> ListarPorOng(Guid idOng)
         {
             List<Endereco> searchedAddresses = _context.Enderecos
                 .Include(x => x.Ong)
-                .Where(address => address.City.ToLower() == city.ToLower())
+                .Where(address => address.IdOng == idOng)
                 .ToList();
             return searchedAddresses;
         }

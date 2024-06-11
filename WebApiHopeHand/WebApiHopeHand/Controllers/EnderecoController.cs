@@ -58,16 +58,16 @@ namespace WebApiHopeHand.Controllers
         }
 
         /// <summary>
-        /// Busca todos os endereços de uma determinada cidade
+        /// Busca todos os endereços de uma determinada Ong
         /// </summary>
-        /// <param name="city">Nome da cidade a ser buscada</param>
+        /// <param name="idOng">Id da Ong a ser filtrada</param>
         /// <returns>ActionResult com lista de objetos Endereco</returns>
-        [HttpGet("ListarPorCidade")]
-        public IActionResult GetAllByCity(string city)
+        [HttpGet("ListarPorOng")]
+        public IActionResult GetAllByOng(Guid idOng)
         {
             try
             {
-                List<Endereco> addresses = _enderecoRepository.ListarPorCidade(city);
+                List<Endereco> addresses = _enderecoRepository.ListarPorOng(idOng);
                 return Ok(addresses);
             }
             catch (Exception exc)
