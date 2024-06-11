@@ -15,13 +15,14 @@ import {
   GestureHandlerRootView,
   PinchGestureHandler,
 } from "react-native-gesture-handler";
-import { Image } from "react-native";
+import { Image, Modal, View } from "react-native";
 
 const CloseCamera = styled(AntDesign)`
   position: absolute;
   top: 10px;
   right: 10px;
   z-index: 10;
+  marginTop: 10px;
 `;
 
 const ToggleCamera = styled.TouchableOpacity`
@@ -29,11 +30,12 @@ const ToggleCamera = styled.TouchableOpacity`
   top: 10px;
   left: 10px;
   z-index: 10;
+  marginTop: 10px;
 `;
 
 const TakePhoto = styled.TouchableOpacity`
   position: absolute;
-  bottom: 10px;
+  bottom: 40px;
   left: 50%;
   margin-left: -25px;
   z-index: 10;
@@ -43,6 +45,7 @@ const FlashIcon = styled(Ionicons)`
   top: 10px;
   margin-left: -20px;
   z-index: 10;
+  marginTop: 10px;
 `;
 
 const LastPhoto = styled.TouchableOpacity`
@@ -53,12 +56,15 @@ const LastPhoto = styled.TouchableOpacity`
 `;
 
 export const CameraModal = ({
-  setIsPhotoSaved = () => {},
+  navigation,
+  setIsPhotoSaved = () => { },
   setPhoto,
-  setInCamera,
+  photo,
   setModalOpen,
+  setInCamera,
   inCamera,
   getMediaLibrary = false,
+
 }) => {
   const cameraRef = useRef(null);
 
@@ -108,14 +114,15 @@ export const CameraModal = ({
       };
 
       const fotoTirada = await cameraRef.current.takePictureAsync(options);
-
       await setPhoto(fotoTirada.uri);
+      console.log("teste");
+      setInCamera(false)
+      setModalOpen(true)
 
-      setInCamera(false);
-      setModalOpen(true);
       scrollTo(750, 0);
     }
   }
+
 
   async function SelectImageGallery() {
     const result = await ImagePicker.launchImageLibraryAsync({
@@ -156,11 +163,10 @@ export const CameraModal = ({
         >
           <CloseCamera
             name="closecircle"
-            size={40}
-            color="white"
+            size={30}
+            color="#3FA7E4"
             onPress={() => {
               setInCamera(false);
-              setModalOpen(false);
             }}
           />
           <ToggleCamera
@@ -170,7 +176,7 @@ export const CameraModal = ({
               )
             }
           >
-            <FontAwesome6 name="camera-rotate" size={40} color="white" />
+            <FontAwesome6 name="camera-rotate" size={30} color="#3FA7E4" />
           </ToggleCamera>
           <FlashIcon
             onPress={() =>
@@ -178,19 +184,19 @@ export const CameraModal = ({
                 flash === Camera.Constants.FlashMode.off
                   ? Camera.Constants.FlashMode.on
                   : flash === Camera.Constants.FlashMode.on
-                  ? Camera.Constants.FlashMode.torch
-                  : Camera.Constants.FlashMode.off
+                    ? Camera.Constants.FlashMode.torch
+                    : Camera.Constants.FlashMode.off
               )
             }
             name={
               flash === Camera.Constants.FlashMode.off
                 ? "flash-off"
                 : flash === Camera.Constants.FlashMode.torch
-                ? "flashlight"
-                : "flash"
+                  ? "flashlight"
+                  : "flash"
             }
-            size={40}
-            color="white"
+            size={30}
+            color="#3FA7E4"
           />
           <TakePhoto
             onPress={() => {
@@ -198,7 +204,7 @@ export const CameraModal = ({
               setIsPhotoSaved(false);
             }}
           >
-            <FontAwesome name="camera" size={50} color="white" />
+            <FontAwesome name="camera" size={50} color="#3FA7E4" />
           </TakePhoto>
           {lastPhoto != null ? (
             <LastPhoto onPress={() => SelectImageGallery()}>
@@ -206,6 +212,7 @@ export const CameraModal = ({
                 borderRadius={5}
                 width={60}
                 height={60}
+                marginBottom={20}
                 source={{ uri: lastPhoto }}
               />
             </LastPhoto>
@@ -213,5 +220,6 @@ export const CameraModal = ({
         </Camera>
       </PinchGestureHandler>
     </GestureHandlerRootView>
+
   );
 };

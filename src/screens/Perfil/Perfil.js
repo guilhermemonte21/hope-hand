@@ -15,36 +15,46 @@ import { ViewImageCircle } from "../../components/Perfil/ImagePerfil";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { BotaoVoltar } from "../../components/BotaoVoltar/Index";
 import { CameraModal } from "../../components/Camera/CameraModal";
+import { ModalPhoto } from "../../components/Camera/ModalPhoto/ModalPhoto";
 
 export const Perfil = ({ navigation }) => {
   const [logado, setLogado] = useState(false);
   const [showInformationModal, setShowInformationModal] = useState(false);
 
   const [photo, setPhoto] = useState(null);
-
   const [uriCameraCapture, setUriCameraCapture] = useState("");
-  const [showCameraModal, setShowCameraModal] = useState(false);
+  const [showCamera, setShowCamera] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
-  return (
+  return showCamera ? (
+    <CameraModal
+      photo={photo}
+      setModalOpen={setModalOpen}
+      setPhoto={setPhoto}
+      getMediaLibrary={true}
+      visible={showCamera}
+      inCamera={showCamera}
+      setUriCameraCapture={setUriCameraCapture}
+      setInCamera={setShowCamera}
+    />
+  ) : (
     <ContainerScroll>
-      {/* Botão */}
+
       <BotaoVoltar onPress={() => navigation.replace("Home")} />
 
-      {/* Imagem da Ong */}
       <ViewImageCircle>
-        <PerfilImageWhite
-          source={require("../../assets/images/Perfil-White.png")}
-        />
+        {photo != null ? (
+          <PerfilImageWhite source={{uri:photo}}/>
+        ) : (
+          <PerfilImageWhite source={require("../../assets/images/Perfil-White.png")} />
+        )}
+
       </ViewImageCircle>
 
-      <ButtonUploadImage onPress={() => setShowCameraModal(true)}>
+      <ButtonUploadImage onPress={() => setShowCamera(true)}>
         <MaterialCommunityIcons name="camera-enhance" size={22} color="white" />
       </ButtonUploadImage>
-
-      {/* Nome da Ong */}
       <TitleCard>Nome da ONG</TitleCard>
-
-      {/* Subtitullo da Ong */}
       <ContainerMargin>
         <SubtitleCard>
           Acreditamos que todos merecem a chance de viver uma vida plena e
@@ -55,71 +65,36 @@ export const Perfil = ({ navigation }) => {
           tenha acesso aos recursos necessários para uma vida digna e saudável.
         </SubtitleCard>
 
-        {logado == false ? (
+        {logado == true ? (
+
           <Group>
             <CardCause onPress={() => navigation.replace("Mapa")} />
           </Group>
         ) : (
           <Group>
-            <Input
-              placeholder="Nome: "
-              width="100%"
-              border={false}
-              height={65}
-            />
-            <Input
-              placeholder="CNPJ: "
-              width="100%"
-              border={false}
-              height={65}
-            />
 
+            <Input placeholder="Nome:" editable={false} width="100%" border={false} height={65} />
+            <Input placeholder="CNPJ: " editable={false} width="100%" border={false} height={65} />
             <Group row>
-              <Input
-                placeholder="CEP: "
-                width="100%"
-                border={false}
-                height={75}
-              />
-              <Input
-                placeholder="UF: "
-                width="100%"
-                border={false}
-                height={75}
-              />
+              <Input placeholder="CEP: " editable={false} width="100%" border={false} height={75} />
+              <Input placeholder="UF: " editable={false} width="100%" border={false} height={75} />
             </Group>
+            <Botao width="100%" text={"Editar"} bgColor={"#7BCAF7"} />
+            <Botao width="100%" text={"Sair da Conta"} bgColor={"#7BCAF7"} />
 
-            <Botao
-              // navigation={navigation}
-              // route={"Login"}
-              width="100%"
-              text={"Editar"}
-              bgColor={"#7BCAF7"}
-            />
-
-            <Botao
-              // navigation={navigation}
-              // route={"Login"}
-              width="100%"
-              text={"Sair da Conta"}
-              bgColor={"#7BCAF7"}
-            />
           </Group>
         )}
       </ContainerMargin>
-
       <InformationModal
         navigation={navigation}
         visible={showInformationModal}
         setShowModalStethoscope={setShowInformationModal}
       />
-
-      <CameraModal
-        setPhoto={setPhoto}
-        getMediaLibrary={true}
-        visible={showCameraModal}
-        setUriCameraCapture={setUriCameraCapture}
-        setShowModalCancel={setShowCameraModal}
+      <ModalPhoto
+      photo={photo} 
+      setInCamera={setShowCamera}
+      visible={modalOpen}
+      setOpenModal={setModalOpen}
       />
     </ContainerScroll>
   );
