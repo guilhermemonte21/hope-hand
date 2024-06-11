@@ -9,7 +9,13 @@ export const Input = ({
   onChangeText,
   border = true,
   fontFamily = "Poppins_400Regular",
-  placeholderTextColor = "rgba(50,48,48, 0.5)"
+  placeholderTextColor = "rgba(50,48,48, 0.5)",
+  color = "rgba(50,48,48, 1)",
+  value,
+  onChangeText,
+  autoCapitalize,
+  erro,
+  keyboardType,
 }) => {
   return (
     <BoxInput
@@ -18,12 +24,20 @@ export const Input = ({
         minHeight: height,
         maxHeight: height,
         backgroundColor: border ? "transparent" : "#E8E8E8",
-        borderColor: border ? "#7ccfff" : "transparent",
+        borderColor: erro ? "#E34949" : border ? "#7ccfff" : "transparent",
+        color: color,
         fontFamily: fontFamily,
       }}
     >
-      <InputStyled 
-       onChangeText={onChangeText} value={value} placeholder={placeholder} editable={editable}  placeholderTextColor={placeholderTextColor} />
+      <InputStyled
+        placeholder={placeholder}
+        editable={editable}
+        placeholderTextColor={placeholderTextColor}
+        value={value}
+        onChangeText={onChangeText}
+        keyboardType={keyboardType}
+        autoCapitalize={autoCapitalize}
+      />
     </BoxInput>
   );
 };

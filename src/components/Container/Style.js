@@ -35,7 +35,7 @@ export const ContainerMargin = styled.View`
   align-items: center;
   flex-grow: 0;
   margin: 0 auto;
-  width: 90%;
+  width: 85%;
   min-height: auto;
 `;
 
