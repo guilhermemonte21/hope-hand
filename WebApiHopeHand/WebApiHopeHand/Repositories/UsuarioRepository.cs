@@ -8,7 +8,7 @@ namespace WebApiHopeHand.Repositories
 {
     public class UsuarioRepository : IUsuarioRepository
     {
-          private HopeContext _context = new HopeContext();
+        private HopeContext _context = new HopeContext();
         public bool AlterarSenha(string email, string senhaNova)
         {
             try
@@ -88,7 +88,7 @@ namespace WebApiHopeHand.Repositories
             }
         }
 
-        public void Cadastrar(Usuario usuario)
+        public Usuario Cadastrar(Usuario usuario)
         {
             try
             {
@@ -98,6 +98,8 @@ namespace WebApiHopeHand.Repositories
                 _context.Add(usuario);
                 //Salva as mudancas da context
                 _context.SaveChanges();
+
+                return usuario;
             }
             catch (Exception)
             {
