@@ -23,22 +23,27 @@ export const AlterarSenha = ({
 
         // Verifica se a senha e a confirmação de senha são iguais
         if (senha === senhaConfirmacao && senha != null && senhaConfirmacao != null) {
-            console.log(`/Usuario/AlterarSenha?email=${email}&password=${senha}`);
-            await api.put(`/Usuario/AlterarSenha?email=${email}&password=${senha}`)
-                .then((response) => {
-                    // Se a senha for alterada com sucesso
-                    if (response.data.sucesso) {
-                        // retorna para a Login
-                        setTimeout(() => {
-                            setCarregando(false);
+            if (senha.length >= 6 && senha.length <= 16) {
 
-                            navigation.replace("Login");
-                        }, 1000);
-                    }
-                })
-                .catch((erro) => {
-                    console.log(erro);
-                });
+                await api.put(`/Usuario/AlterarSenha?email=${email}&password=${senha}`)
+                    .then((response) => {
+                        // Se a senha for alterada com sucesso
+                        if (response.status === 200) {
+                            // retorna para a Login
+                            setTimeout(() => {
+                                setCarregando(false);
+
+                                alert("FOI COM SUCESSO!");
+                                navigation.replace("Login");
+                            }, 1000);
+                        }
+                    })
+                    .catch((erro) => {
+                        console.log(erro);
+                    });
+            } else {
+                alert("A senha deve conter de 6 a 16 caracteres.")
+            }
         } else {
             alert("As senhas não coincidem!");
         }
@@ -75,26 +80,12 @@ export const AlterarSenha = ({
                 }}
             />
 
-            {/* APAGAR DEPOIS */}
-            <Titulo
-                text={senha}
-                fontSize={12}
-                textTransform={"uppercase"}
-            />
-
             <Input
                 placeholder={"Confirme a senha:"}
                 value={senhaConfirmacao}
                 onChangeText={(text) => {
                     setSenhaConfirmacao(text);
                 }}
-            />
-
-            {/* APAGAR DEPOIS */}
-            <Titulo
-                text={senhaConfirmacao}
-                fontSize={12}
-                textTransform={"uppercase"}
             />
 
             <Botao
