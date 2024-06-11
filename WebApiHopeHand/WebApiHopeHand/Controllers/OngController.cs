@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using WebApiHopeHand.Domains;
 using WebApiHopeHand.Interfaces;
 using WebApiHopeHand.Repositories;
@@ -37,9 +38,7 @@ namespace WebApiHopeHand.Controllers
                 {
                     Name = ongInserted.Name,
                     Cnpj = ongInserted.Cnpj,
-                    Photo = ongInserted.Photo == null || String.IsNullOrWhiteSpace(ongInserted.Photo)
-                    ? "https://hopehandarmazenamento.blob.core.windows.net/hopehandcontainer/default-perfil.png"
-                    : ongInserted.Photo,
+                    Photo = ongInserted.Photo,
                     Description = ongInserted.Description,
                     Arquivo = ongInserted.Arquivo,
                     Link = ongInserted.Link,
@@ -57,21 +56,31 @@ namespace WebApiHopeHand.Controllers
                     IdOng = newOng.Id
                 };
 
-                //define o nome do container do blob
-                var containerName = "hopehandcontainer";
 
-                //define a string de conexão
-                var connectionString = "DefaultEndpointsProtocol=https;AccountName=hopehandarmazenamento;AccountKey=x174GS2yRKB6v9tZ/mRkHspQRhUhCl0L1DzxkeX0MIl55pJEs6arJml8Kg2KuRElMBkisTHSBw87+AStnsXnPg==;EndpointSuffix=core.windows.net";
+                // Se não inserir imagem alguma
+                if (ongInserted.Arquivo == null)
+                {
+                    // Salva imagem default
+                    newOng.Photo = "https://hopehandarmazenamento.blob.core.windows.net/hopehandcontainer/default-perfil.png";
+                }
+                else
+                {
+                    //define o nome do container do blob
+                    var containerName = "hopehandcontainer";
 
-                //aqui vamos chamar o método para upload da imagem
-                newOng.Photo = await AzureBlobStorageHelper.UploadImageBlobAsync(newOng.Arquivo!, connectionString, containerName);
+                    //define a string de conexão
+                    var connectionString = "DefaultEndpointsProtocol=https;AccountName=hopehandarmazenamento;AccountKey=x174GS2yRKB6v9tZ/mRkHspQRhUhCl0L1DzxkeX0MIl55pJEs6arJml8Kg2KuRElMBkisTHSBw87+AStnsXnPg==;EndpointSuffix=core.windows.net";
+
+                    //aqui vamos chamar o método para upload da imagem
+                    newOng.Photo = await AzureBlobStorageHelper.UploadImageBlobAsync(newOng.Arquivo!, connectionString, containerName);
+                }
 
                 // Cadastra a ONG
                 ongRepository.Cadastrar(newOng);
                 // Cadastra o Endereço da ONG
                 enderecoRepository.Cadastrar(newOngAddress);
 
-                return Ok("ONG cadastrada com sucesso!");
+                return Ok($"ONG cadastrada com sucesso! {ongInserted.Photo}");
             }
             catch (Exception ex)
             {
