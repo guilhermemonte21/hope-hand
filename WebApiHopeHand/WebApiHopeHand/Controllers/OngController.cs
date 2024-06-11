@@ -37,7 +37,9 @@ namespace WebApiHopeHand.Controllers
                 {
                     Name = ongInserted.Name,
                     Cnpj = ongInserted.Cnpj,
-                    Photo = ongInserted.Photo,
+                    Photo = ongInserted.Photo == null || String.IsNullOrWhiteSpace(ongInserted.Photo)
+                    ? "https://hopehandarmazenamento.blob.core.windows.net/hopehandcontainer/default-perfil.png"
+                    : ongInserted.Photo,
                     Description = ongInserted.Description,
                     Arquivo = ongInserted.Arquivo,
                     Link = ongInserted.Link,

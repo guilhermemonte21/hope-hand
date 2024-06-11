@@ -4677,11 +4677,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\41365718875\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\WebApiHopeHand.csproj",
+      "projectUniqueName": "C:\\Users\\41365718875\\Desktop\\PROJETO HOPEHAND\\api\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\WebApiHopeHand.csproj",
       "projectName": "WebApiHopeHand",
-      "projectPath": "C:\\Users\\41365718875\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\WebApiHopeHand.csproj",
+      "projectPath": "C:\\Users\\41365718875\\Desktop\\PROJETO HOPEHAND\\api\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\WebApiHopeHand.csproj",
       "packagesPath": "C:\\Users\\41365718875\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\41365718875\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\obj\\",
+      "outputPath": "C:\\Users\\41365718875\\Desktop\\PROJETO HOPEHAND\\api\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\41365718875\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -4781,13 +4781,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problema ao ler o arquivo de cache C:\\Users\\41365718875\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\obj\\project.nuget.cache: Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }

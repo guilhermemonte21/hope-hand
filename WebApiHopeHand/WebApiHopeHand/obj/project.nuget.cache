@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JcuKzX+FjA+L98AIOr3puJ5g7zqxZDyCO3K1WR1/6KLzgwOeMKY6n3hKFG7DW54WpAU18aWUegv9LBNX9HlWmQ==",
+  "dgSpecHash": "GINai30t48yTfgqwkOTbMBFHvni1kJcSmZyQoDg7citx/IgndrM2buDNL5tlUupKbXPTJqHHgy9LLZLTnDMxwg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\41365718875\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\WebApiHopeHand.csproj",
+  "projectFilePath": "C:\\Users\\41365718875\\Desktop\\PROJETO HOPEHAND\\api\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\WebApiHopeHand.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\41365718875\\.nuget\\packages\\azure.core\\1.39.0\\azure.core.1.39.0.nupkg.sha512",
     "C:\\Users\\41365718875\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
@@ -92,12 +92,5 @@
     "C:\\Users\\41365718875\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\41365718875\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problema ao ler o arquivo de cache C:\\Users\\41365718875\\Desktop\\hope-hand\\WebApiHopeHand\\WebApiHopeHand\\obj\\project.nuget.cache: Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  "logs": []
 }
