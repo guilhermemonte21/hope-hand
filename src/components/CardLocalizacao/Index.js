@@ -1,7 +1,7 @@
 import React from "react";
 import { ButtonStyled, ContainerCard, TextButton, TitleCard } from "./Style";
 
-export const CardCause = ({ onPress }) => {
+export const CardLocalizacao = ({ onPress }) => {
   return (
     <ContainerCard>
       <TitleCard>Rio Grande do Sul</TitleCard>

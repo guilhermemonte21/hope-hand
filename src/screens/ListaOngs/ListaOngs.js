@@ -40,7 +40,8 @@ export const ListaOngs = ({ navigation }) => {
             padding: "5%",
           }}
           data={ongs}
-          keyExtractor={(item) => item.nome}
+          key={(item) => item.ong.id}
+          keyExtractor={(item) => item.ong.id}
           renderItem={({ item }) => (
             <CardOng
               key={item.ong.id}

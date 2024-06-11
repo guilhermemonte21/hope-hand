@@ -7,8 +7,11 @@ import { ButtonUploadImage } from "../../components/Botao/Style";
 import { useState } from "react";
 import { InformationModal } from "../../components/Modal/InformationModal/InformationModal";
 import { Input } from "../../components/Input/Index";
-import { CardCause } from "../../components/CardCause/Index";
-import { SubtitleCard, TitleCard } from "../../components/CardCause/Style";
+import { CardCause } from "../../components/CardLocalizacao/Index";
+import {
+  SubtitleCard,
+  TitleCard,
+} from "../../components/CardLocalizacao/Style";
 import { Botao } from "./../../components/Botao/Index";
 import { Group } from "../../components/Group/Index";
 import { ViewImageCircle } from "../../components/Perfil/ImagePerfil";
@@ -16,6 +19,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { BotaoVoltar } from "../../components/BotaoVoltar/Index";
 import { CameraModal } from "../../components/Camera/CameraModal";
 import { ModalPhoto } from "../../components/Camera/ModalPhoto/ModalPhoto";
+import { FlatList } from "react-native";
 
 export const Perfil = ({ navigation }) => {
   const [logado, setLogado] = useState(false);
@@ -39,16 +43,16 @@ export const Perfil = ({ navigation }) => {
     />
   ) : (
     <ContainerScroll>
-
       <BotaoVoltar onPress={() => navigation.replace("Home")} />
 
       <ViewImageCircle>
         {photo != null ? (
-          <PerfilImageWhite source={{uri:photo}}/>
+          <PerfilImageWhite source={{ uri: photo }} />
         ) : (
-          <PerfilImageWhite source={require("../../assets/images/Perfil-White.png")} />
+          <PerfilImageWhite
+            source={require("../../assets/images/Perfil-White.png")}
+          />
         )}
-
       </ViewImageCircle>
 
       <ButtonUploadImage onPress={() => setShowCamera(true)}>
@@ -65,23 +69,55 @@ export const Perfil = ({ navigation }) => {
           tenha acesso aos recursos necessários para uma vida digna e saudável.
         </SubtitleCard>
 
-        {logado == true ? (
-
-          <Group>
-            <CardCause onPress={() => navigation.replace("Mapa")} />
-          </Group>
+        {logado == false ? (
+          <FlatList
+            contentContainerStyle={{
+              gap: 20,
+              alignItems: "center",
+              width: "100%",
+              padding: "5%",
+            }}
+            data={ongs}
+            key={(item) => item.id}
+            keyExtractor={(item) => item.id}
+            renderItem={() => (
+              <CardCause onPress={() => navigation.replace("Login")} />
+            )}
+          />
         ) : (
           <Group>
-
-            <Input placeholder="Nome:" editable={false} width="100%" border={false} height={65} />
-            <Input placeholder="CNPJ: " editable={false} width="100%" border={false} height={65} />
+            <Input
+              placeholder="Nome:"
+              editable={false}
+              width="100%"
+              border={false}
+              height={65}
+            />
+            <Input
+              placeholder="CNPJ: "
+              editable={false}
+              width="100%"
+              border={false}
+              height={65}
+            />
             <Group row>
-              <Input placeholder="CEP: " editable={false} width="100%" border={false} height={75} />
-              <Input placeholder="UF: " editable={false} width="100%" border={false} height={75} />
+              <Input
+                placeholder="CEP: "
+                editable={false}
+                width="100%"
+                border={false}
+                height={75}
+              />
+              <Input
+                placeholder="UF: "
+                editable={false}
+                width="100%"
+                border={false}
+                height={75}
+              />
             </Group>
             <Botao width="100%" text={"Editar"} bgColor={"#7BCAF7"} />
             <Botao width="100%" text={"Sair da Conta"} bgColor={"#7BCAF7"} />
-
           </Group>
         )}
       </ContainerMargin>
@@ -91,10 +127,10 @@ export const Perfil = ({ navigation }) => {
         setShowModalStethoscope={setShowInformationModal}
       />
       <ModalPhoto
-      photo={photo} 
-      setInCamera={setShowCamera}
-      visible={modalOpen}
-      setOpenModal={setModalOpen}
+        photo={photo}
+        setInCamera={setShowCamera}
+        visible={modalOpen}
+        setOpenModal={setModalOpen}
       />
     </ContainerScroll>
   );
