@@ -9,7 +9,7 @@ import api from "../../service/Service"
 
 export const AlterarSenha = ({
     navigation,
-    email = 'lucas.notes@gmail.com'
+    route
 }) => {
     // CONSTS
     const [carregando, setCarregando] = useState(false);
@@ -23,9 +23,10 @@ export const AlterarSenha = ({
 
         // Verifica se a senha e a confirmação de senha são iguais
         if (senha === senhaConfirmacao && senha != null && senhaConfirmacao != null) {
+            // Verifica se a senha tem de 6 a 16 caracteres
             if (senha.length >= 6 && senha.length <= 16) {
 
-                await api.put(`/Usuario/AlterarSenha?email=${email}&password=${senha}`)
+                await api.put(`/Usuario/AlterarSenha?email=${route.params.email}&password=${senha}`)
                     .then((response) => {
                         // Se a senha for alterada com sucesso
                         if (response.status === 200) {
