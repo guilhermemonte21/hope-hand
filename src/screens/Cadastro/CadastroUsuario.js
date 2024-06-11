@@ -8,7 +8,7 @@ import { Titulo } from "../../components/Titulo/Index"
 
 // imports importantes
 import { useState } from "react"
-import DatePicker from 'react-native-date-picker';
+// import DatePicker from 'react-native-date-picker';
 
 // importe da api
 import api from "../../service/Service"

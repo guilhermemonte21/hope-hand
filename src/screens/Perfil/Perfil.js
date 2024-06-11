@@ -49,7 +49,7 @@ export const Perfil = ({ navigation }) => {
       if (token.role != null) {
         const response = await api.get(`Ong/BuscarPorId?id=${token.id}`);
         setGetOng(response.data)
-      } else{
+      } else {
         console.log("Deu Else, falha na Get Ong (Perfil.js)")
       }
     } catch (error) {
@@ -62,10 +62,10 @@ export const Perfil = ({ navigation }) => {
     const token = await userDecodeToken();
 
     try {
-      if (ong.role != null) {
+      if (token.role != null) {
         const response = await api.put(`Ong/Editar?id=${token.id}`);
         setPutOng(response.data)
-      } else{
+      } else {
         console.log("Deu Else, falha na Put Ong (Perfil.js)")
       }
     } catch (error) {
@@ -99,6 +99,7 @@ export const Perfil = ({ navigation }) => {
 
   useEffect(() => {
     profileLoad();
+    GetOng();
   }, []);
 
   useEffect(() => {
@@ -177,13 +178,17 @@ export const Perfil = ({ navigation }) => {
             width="100%"
             text={"Editar"}
             bgColor={"#7BCAF7"}
-            onPress={() => setEdit(!edit)}
+            onPress={() => { setEdit(!edit), PutOng(); }} // Deve Mudar os inputs e Editar os Dados do Usuário
           />
 
           <Botao
             width="100%"
             text={"Sair da Conta"}
             bgColor={"#7BCAF7"}
+            onPress={() => {
+              // userTokenLogout(); Deve Deslogar
+              navigation.replace("Login"); // Deve Voltar a Página de Login
+            }}
           />
 
         </Group>
