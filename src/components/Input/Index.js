@@ -5,6 +5,8 @@ export const Input = ({
   width = "85%",
   height = 45,
   editable,
+  value,
+  onChangeText,
   border = true,
   fontFamily = "Poppins_400Regular",
   placeholderTextColor = "rgba(50,48,48, 0.5)",

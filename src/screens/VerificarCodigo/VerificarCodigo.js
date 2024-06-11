@@ -12,11 +12,15 @@ export const VerificarCodigo = ({
 }) => {
     // CONSTS
     const [carregando, setCarregando] = useState(false);
+    const [code, setCode] = useState("")
 
 
 
     // FUNTIONS
     const VerificarCodigo = () => {
+        async function ValidateCode(){
+            await api.post(`/RecuperarSenha/ValidarCodigoRecuperacaoSenha?email=${route.params.email}&code=${code}`)
+          }
         setCarregando(true);
 
         setTimeout(() => {
@@ -52,7 +56,7 @@ export const VerificarCodigo = ({
                 text={"Digite o código enviado no seu Email"}
             />
 
-            <InputCode />
+            <InputCode  />
 
             <Botao
                 route={"Login"}
