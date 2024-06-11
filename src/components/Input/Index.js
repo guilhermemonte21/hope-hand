@@ -11,8 +11,6 @@ export const Input = ({
   fontFamily = "Poppins_400Regular",
   placeholderTextColor = "rgba(50,48,48, 0.5)",
   color = "rgba(50,48,48, 1)",
-  value,
-  onChangeText,
   autoCapitalize,
   erro,
   keyboardType,
