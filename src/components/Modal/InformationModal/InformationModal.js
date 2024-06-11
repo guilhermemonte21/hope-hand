@@ -1,22 +1,20 @@
 import { Modal } from "react-native";
-import { Container, ContainerMargin, ViewEnd } from "../../Container/Style";
-import { TituloStyled } from "../../Titulo/Style";
+import { ContainerMargin, ViewEnd } from "../../Container/Style";
 import { BotaoVoltar } from "../../BotaoVoltar/Index";
-import { InfoModal, ModalForm } from "./Style"
-import { SubtitleCard, TitleCard, TitleSpace } from "../../CardCause/Style";
+import { InfoModal, ModalForm } from "./Style";
+import { SubtitleCard, TitleSpace } from "../../CardCause/Style";
 import { Botao } from "../../Botao/Index";
 import { useState } from "react";
 import { PayModal } from "../PayModal/PayModal";
 
 export const InformationModal = ({
-    navigation,
-    visible,
-    setShowInformationModal = null,
-    ...rest
+  navigation,
+  visible,
+  setShowInformationModal = null,
+  ...rest
 }) => {
-
-    const [showModalPay, setShowModalPay] = useState(false);
-
+  const [showModalPay, setShowModalPay] = useState(false);
+  
     return (
         <Modal {...rest} visible={visible} transparent={true} animationType="fade">
             <InfoModal>

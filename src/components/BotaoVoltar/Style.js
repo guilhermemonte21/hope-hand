@@ -10,8 +10,8 @@ export const IconBox = styled.TouchableOpacity`
     border-radius: 20px;
 
     position: absolute;
-    top: 30px;
-    left: 30px;
+    top: 20px;
+    left: 20px;
 `
 
 export const Icon = styled.Image`
