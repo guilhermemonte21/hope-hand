@@ -46,8 +46,7 @@ export const ListaOngs = ({ navigation }) => {
             <CardOng
               key={item.ong.id}
               navigation={navigation}
-              nome={item.ong.name}
-              image={item.ong.photo}
+              ong={item.ong}
             />
           )}
         />

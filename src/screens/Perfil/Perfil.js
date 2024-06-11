@@ -4,10 +4,10 @@ import {
 } from "../../components/Container/Style";
 import { PerfilImageWhite } from "../../components/Perfil/ImagePerfil";
 import { ButtonUploadImage } from "../../components/Botao/Style";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { InformationModal } from "../../components/Modal/InformationModal/InformationModal";
 import { Input } from "../../components/Input/Index";
-import { CardCause } from "../../components/CardLocalizacao/Index";
+import { CardLocalizacao } from "../../components/CardLocalizacao/Index";
 import {
   SubtitleCard,
   TitleCard,
@@ -20,8 +20,9 @@ import { BotaoVoltar } from "../../components/BotaoVoltar/Index";
 import { CameraModal } from "../../components/Camera/CameraModal";
 import { ModalPhoto } from "../../components/Camera/ModalPhoto/ModalPhoto";
 import { FlatList } from "react-native";
+import api from "../../service/Service";
 
-export const Perfil = ({ navigation }) => {
+export const Perfil = ({ navigation, route }) => {
   const [logado, setLogado] = useState(false);
   const [showInformationModal, setShowInformationModal] = useState(false);
 
@@ -29,6 +30,24 @@ export const Perfil = ({ navigation }) => {
   const [uriCameraCapture, setUriCameraCapture] = useState("");
   const [showCamera, setShowCamera] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
+
+  const [locais, setLocais] = useState([]);
+
+  const ongId = route.params.ongId;
+
+  async function getLocais() {
+    try {
+      const response = await api.get(`/Endereco/ListarPorOng?idOng=${ongId}`);
+      console.log(response.data);
+      setLocais(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    getLocais();
+  }, []);
 
   return showCamera ? (
     <CameraModal
@@ -77,11 +96,11 @@ export const Perfil = ({ navigation }) => {
               width: "100%",
               padding: "5%",
             }}
-            data={ongs}
+            data={locais}
             key={(item) => item.id}
             keyExtractor={(item) => item.id}
-            renderItem={() => (
-              <CardCause onPress={() => navigation.replace("Login")} />
+            renderItem={({item}) => (
+              <CardLocalizacao local={item} onPress={() => navigation.replace("Mapa", { local: item })} />
             )}
           />
         ) : (
