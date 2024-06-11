@@ -4,7 +4,7 @@ namespace WebApiHopeHand.Interfaces
 {
     public interface IUsuarioRepository
     {
-        void Cadastrar(Usuario usuario);
+        Usuario Cadastrar(Usuario usuario);
 
         Usuario BuscarPorId(Guid id);
 
