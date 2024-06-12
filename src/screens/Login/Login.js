@@ -1,4 +1,4 @@
-import { useState } from "react";
+// imports de componentes
 import { Botao } from "../../components/Botao/Index";
 import { BotaoVoltar } from "../../components/BotaoVoltar/Index";
 import { Container } from "../../components/Container/Style";
@@ -7,11 +7,22 @@ import { Link } from "../../components/Link/Index";
 import { Logo } from "../../components/Logo/Style";
 import { Titulo } from "../../components/Titulo/Index";
 
+// imports importantes
+import { useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+// import da api
+import api from "../../service/Service";
+
 export const Login = ({
     navigation
 }) => {
     // CONSTS
-    const [carregando, setCarregando] = useState(false);
+    const [email, setEmail] = useState(""); // email do usuário
+    const [senha, setSenha] = useState(""); // senha do usuário
+    const [carregando, setCarregando] = useState(false); // ativa o spinner do botão
+    const [erro, setErro] = useState(false); // muda a cor dos inputs quando dá algum erro
+    const [erroTexto, setErroTexto] = useState(""); // diz qual é o erro que está ocorrendo
 
 
     // FUNCTIONS
@@ -19,27 +30,31 @@ export const Login = ({
         setCarregando(true);
 
         try {
-            setTimeout(() => {
-                setCarregando(false);
+            await api.post("/Login", {
+                email: email,
+                password: senha
+            }).then(async response => {
+                setErro(false);
+
+                await AsyncStorage.setItem("token", JSON.stringify(response.data));
 
                 navigation.replace("Home");
-            }, 1000)
-
+            })
         } catch (error) {
+            setErro(true);
 
+            console.log(error);
         }
+
+        setCarregando(false);
     }
-
-
-    // EFFECTS
 
 
 
     return (
         <Container>
             <BotaoVoltar
-                navigation={navigation}
-                route={"Inicio"}
+                onPress={() => navigation.replace("Inicio")}
             />
 
             <Logo
@@ -54,10 +69,18 @@ export const Login = ({
 
             <Input
                 placeholder={"Email:"}
+                value={email}
+                onChangeText={(txt) => setEmail(txt)}
+                autoCapitalize={"none"}
+                erro={erro}
             />
 
             <Input
                 placeholder={"Senha:"}
+                value={senha}
+                onChangeText={(txt) => setSenha(txt)}
+                autoCapitalize={"none"}
+                erro={erro}
             />
 
             <Link
@@ -78,7 +101,7 @@ export const Login = ({
                 color={"#7BCAF7"}
                 text={"Não tem conta? Crie uma agora mesmo!"}
                 navigation={navigation}
-                route={"Cadastro"}
+                route={"CadastroUsuario"}
             />
         </Container>
     );

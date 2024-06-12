@@ -2,40 +2,35 @@ import { Container } from "../../components/Container/Style";
 import { Titulo } from "./../../components/Titulo/Index";
 import { CardOng } from "./../../components/CardOng/Index";
 import { ActivityIndicator, FlatList } from "react-native";
-import { useState } from "react";
-
-const listaOngs = [
-  {
-    nome: "ONG 1",
-    image: require("../../assets/images/logo-whand.png"),
-  },
-  {
-    nome: "ONG 2",
-    image: require("../../assets/images/logo-whand.png"),
-  },
-  {
-    nome: "ONG 3",
-    image: require("../../assets/images/logo-whand.png"),
-  },
-];
+import { useEffect, useState } from "react";
+import api from "./../../service/Service";
 
 export const ListaOngs = ({ navigation }) => {
-  const [carregando, setCarregando] = useState(true);
+  const [carregando, setCarregando] = useState(false);
 
   const [ongs, setOngs] = useState();
 
   async function getOngs() {
     try {
-    } catch (error) {}
+      const response = await api.get("/Ong/Listar");
+
+      setOngs(response.data);
+    } catch (error) {
+      console.log(error);
+    }
     setCarregando(false);
   }
+
+  useEffect(() => {
+    getOngs();
+  }, []);
 
   return (
     <Container>
       <Titulo text={"Escolha uma ONG para doar"} fontSize={20} />
 
       {carregando ? (
-        <ActivityIndicator />
+        <ActivityIndicator style={{ flex: 1 }} />
       ) : (
         <FlatList
           contentContainerStyle={{
@@ -44,13 +39,14 @@ export const ListaOngs = ({ navigation }) => {
             width: "100%",
             padding: "5%",
           }}
-          data={listaOngs}
-          keyExtractor={(item) => item.nome}
+          data={ongs}
+          key={(item) => item.ong.id}
+          keyExtractor={(item) => item.ong.id}
           renderItem={({ item }) => (
             <CardOng
+              key={item.ong.id}
               navigation={navigation}
-              nome={item.nome}
-              image={item.image}
+              ong={item.ong}
             />
           )}
         />

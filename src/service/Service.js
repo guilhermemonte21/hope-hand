@@ -14,7 +14,7 @@ const apiUrllocal = `http://${ipLucas}:${portaApiLucas}/api`;
 
 // Trazer a configuração do axios
 const api = axios.create({
-    baseURL: apiUrllocal,
+  baseURL: apiUrllocal,
 });
 
 export default api;
