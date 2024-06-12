@@ -1,5 +1,4 @@
 // import de componentes
-import { useState } from "react"
 import { Botao } from "../../components/Botao/Index"
 import { BotaoVoltar } from "../../components/BotaoVoltar/Index"
 import { Container, ContainerMargin, ContainerScroll } from "../../components/Container/Style"
@@ -8,6 +7,11 @@ import { Logo } from "../../components/Logo/Style"
 import { Titulo } from "../../components/Titulo/Index"
 import { Group } from "../../components/Group/Index"
 import { Circle } from "react-native-maps"
+
+// imports importantes
+import { useEffect, useState } from "react"
+
+// api importada
 import api from "../../service/Service"
 
 export const CadastroOng = ({
@@ -28,7 +32,7 @@ export const CadastroOng = ({
     const nome = route.params.nome; // nome do usuário
     const dataNascimento = route.params.dataNascimento; // data de nascimento do usuário
     const cpf = route.params.cpf; // cpf do usuário
-    const rg = route.params.cpf; // rg do usuário
+    const rg = route.params.rg; // rg do usuário
     const email = route.params.email; // email do usuário
     const senha = route.params.senha; // senha do usuário
 
@@ -38,42 +42,77 @@ export const CadastroOng = ({
     const Cadastrar = async () => {
         setCarregando(true);
 
-        try {
-            await api.post("/Usuario/CriarConta", {
-                name: nome,
-                birth: dataNascimento,
-                cpf: cpf,
-                rg: rg,
-                email: email,
-                password: senha,
-                codRecupSenha: 0
-            })
-        } catch (error) {
-
-        }
-
-        var form = new FormData();
-        form.append("Name", nomeOng);
-        form.append("Cnpj", cnpj);
-        form.append("Number", numero);
-        form.append("Cep", cep);
-        form.append("UserId", "1D4A3206-2538-471D-ADD1-255DF7A48295");
-
-        try {
-            await api.post("Ong/CadastrarOng", form, {
-                headers: {
-                    "Content-Type": "multipart/form-data",
-                },
-            })
-                .then(() => {
-                    console.log("Sucesso!");
-                })
-        } catch (error) {
+        if (nomeOng == "") {
             setErro(true);
 
-            setErroTexto("Erro ao cadastrar, tente novamente");
+            setErroTexto("ONG precisa de um nome")
+        }
+        else if (cnpj.length != 14) {
+            setErro(true);
 
-            console.log(error);
+            setErroTexto("O CNPJ completo é obrigatório, tente novamente")
+        }
+        else if (cep.length != 8) {
+            setErro(true);
+
+            setErroTexto("CEP inválido, tente novamente")
+        }
+        else if (numero == "") {
+            setErro(true);
+
+            setErroTexto("Informe o número do local da ONG")
+        }
+        else {
+            try {
+                await api.post("/Usuario/CriarConta", {
+                    "name": nome,
+                    "birth": dataNascimento,
+                    "cpf": cpf,
+                    "rg": rg,
+                    "email": email,
+                    "password": senha,
+                    "codRecupSenha": 0
+                }).then(async response => {
+                    setErro(false);
+
+                    console.log(response.data.id);
+
+                    var form = new FormData();
+                    form.append("Name", nomeOng);
+                    form.append("Cnpj", cnpj);
+                    form.append("Number", numero);
+                    form.append("Cep", cep);
+                    form.append("UserId", response.data.id);
+                    console.log(form);
+
+                    try {
+                        await api.post("Ong/CadastrarOng", form, {
+                            headers: {
+                                "Content-Type": "multipart/form-data",
+                            },
+                        })
+                            .then(() => {
+                                setErro(false);
+
+                                console.log("Sucesso!");
+
+                                navigation.replace("Login");
+                            })
+                    } catch (error) {
+                        setErro(true);
+
+                        setErroTexto("Erro ao cadastrar, tente novamente");
+
+                        console.log(error);
+                    }
+                })
+            } catch (error) {
+                console.log(error);
+
+                setErro(true);
+
+                setErroTexto("Informações do usuário inválidas, tente cadastrar novamente");
+            }
         }
 
         setCarregando(false);
@@ -83,7 +122,7 @@ export const CadastroOng = ({
 
     // EFFECTS
 
-
+    
 
     return (
         <Container>
@@ -94,7 +133,7 @@ export const CadastroOng = ({
                 showsVerticalScrollIndicator={false}
             >
                 <BotaoVoltar
-                    onPress={() => navigation.replace("Login")}
+                    onPress={() => navigation.replace("CadastroUsuario")}
                 />
 
                 <Logo
@@ -110,7 +149,7 @@ export const CadastroOng = ({
                 <ContainerMargin>
                     <Input
                         width="100%"
-                        placeholder={"Nome da ong:"}
+                        placeholder={"Nome da ONG:"}
                         erro={erro}
                         onChangeText={(txt) => setNomeOng(txt)}
                         value={nomeOng}
@@ -123,6 +162,7 @@ export const CadastroOng = ({
                         erro={erro}
                         onChangeText={(txt) => setCnpj(txt)}
                         value={cnpj}
+                        maxLength={14}
                     />
 
                     <Group
@@ -169,6 +209,17 @@ export const CadastroOng = ({
                             value={uf}
                         />
                     </Group>
+
+                    {
+                        erro ?
+                            <Titulo
+                                text={erroTexto}
+                                color={"#E34949"}
+                                textAlign={"center"}
+                            />
+                            :
+                            null
+                    }
 
                     <Botao
                         text={"Cadastrar"}

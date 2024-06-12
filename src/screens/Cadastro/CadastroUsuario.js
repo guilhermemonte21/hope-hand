@@ -58,10 +58,10 @@ export const CadastroUsuario = ({
 
             setErroTexto("Insira um email válido!")
         }
-        else if (senha.length < 6) {
+        else if (senha.length < 6 || senha.length > 16) {
             setErro(true);
 
-            setErroTexto("Senha deve ter mais de 6 dígitos")
+            setErroTexto("Senha deve conter 6 a 16 dígitos!")
         }
         else if (senha != confirmaSenha) {
             setErro(true);
