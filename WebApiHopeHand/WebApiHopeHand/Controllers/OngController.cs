@@ -27,7 +27,6 @@ namespace WebApiHopeHand.Controllers
         /// </summary>
         /// <param name="ongInserted">Objeto CadastroOngEnderecoViewModel</param>
         /// <returns>StatusCode</returns>
-        [Authorize()]
         [HttpPost("CadastrarOng")]
         public async Task<IActionResult> PostOng([FromForm] CadastroOngEnderecoViewModel ongInserted)
         {
