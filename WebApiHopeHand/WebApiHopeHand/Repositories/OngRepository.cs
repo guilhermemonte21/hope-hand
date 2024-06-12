@@ -59,37 +59,31 @@ namespace WebApiHopeHand.Repositories
             _context.SaveChanges();
         }
 
-        public void EditarOng(OngEnderecoViewModel ong)
+        public void EditarOng(AlterarOngViewModel ong)
         {
-             //Acha a Ong pelo ID
-                Ong buscada = _context.Ongs.Find(ong.Ong.Id);
+            //Acha a Ong pelo ID
+            Ong ongSearched = _context.Ongs.FirstOrDefault(o => o.Id == ong.Id)!;
 
-                //Acha suas propriedades dessas ongs
-                buscada.Cnpj = ong.Ong.Cnpj;
-                buscada.Photo = ong.Ong.Photo;
-                buscada.Name = ong.Ong.Name;
-                buscada.Link = ong.Ong.Link;
-                buscada.Description = ong.Ong.Description;
+            // Verifica se a ONG buscada existe
+            if (ongSearched != null)
+            {
+                // Insere as propriedades da ong
+                if (ong.Cnpj != null)
+                    ongSearched.Cnpj = ong.Cnpj;
 
-                //Acha o endereco pelo ID
-                 Endereco buscado = _context.Enderecos.Find(ong.Endereco.Id);
+                if (ong.Name != null)
+                    ongSearched.Name = ong.Name;
 
-                //Acha suas propriedades 
-                buscado.Address = ong.Endereco.Address;
-                buscado.City = ong.Endereco.City;
-                buscado.Cep = ong.Endereco.Cep;
-                buscado.Number = ong.Endereco.Number;
-                buscado.State = ong.Endereco.State;
-            
+                if (ong.Link != null)
+                    ongSearched.Link = ong.Link;
 
+                if (ong.Description != null)
+                    ongSearched.Description = ong.Description;
+            }
 
-                //comando para atualizar esses enderecos e ongs buscada
-                _context.Update(buscada);
-               _context.Update(buscado);
-                _context.SaveChanges();
-
-            
-           
+            //comando para atualizar esses enderecos e ongs buscada
+            _context.Ongs.Update(ongSearched!);
+            _context.SaveChanges();
         }
 
         public List<OngEnderecoViewModel> Listar()

@@ -143,20 +143,18 @@ namespace WebApiHopeHand.Controllers
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
 
         [Authorize()]
         [HttpPut("Editar")]
-        public IActionResult Put(OngEnderecoViewModel ong)
+        public IActionResult Put(AlterarOngViewModel ong)
         {
             try
             {
                 ongRepository.EditarOng(ong);
-
-                return Ok();
+                return Ok("ONG atualizada com sucesso!");
             }
             catch (Exception ex)
             {

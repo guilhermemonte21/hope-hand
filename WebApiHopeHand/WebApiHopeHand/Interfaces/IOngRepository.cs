@@ -9,7 +9,7 @@ namespace WebApiHopeHand.Interfaces
         public void Cadastrar(Ong ong);
 
         public void Deletar(Guid id);
-        public void EditarOng(OngEnderecoViewModel ong);
+        public void EditarOng(AlterarOngViewModel ong);
 
         public List<OngEnderecoViewModel> Listar();
 
