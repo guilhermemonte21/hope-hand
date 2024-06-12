@@ -2,7 +2,7 @@ import { Modal } from "react-native";
 import { ContainerMargin, ViewEnd } from "../../Container/Style";
 import { BotaoVoltar } from "../../BotaoVoltar/Index";
 import { InfoModal, ModalForm } from "./Style";
-import { SubtitleCard, TitleSpace } from "../../CardCause/Style";
+import { SubtitleCard, TitleSpace } from "../../CardLocalizacao/Style";
 import { Botao } from "../../Botao/Index";
 import { useState } from "react";
 import { PayModal } from "../PayModal/PayModal";

@@ -4,8 +4,11 @@ import { ButtonUploadImage } from "../../components/Botao/Style";
 import { useEffect, useState } from "react";
 import { InformationModal } from "../../components/Modal/InformationModal/InformationModal";
 import { Input } from "../../components/Input/Index";
-import { CardCause } from "../../components/CardCause/Index";
-import { SubtitleCard, TitleCard } from "../../components/CardCause/Style";
+import { CardLocalizacao } from "../../components/CardLocalizacao/Index";
+import {
+  SubtitleCard,
+  TitleCard,
+} from "../../components/CardLocalizacao/Style";
 import { Botao } from "./../../components/Botao/Index";
 import { Group } from "../../components/Group/Index"
 import { ViewImageCircle } from "../../components/Perfil/ImagePerfil";
@@ -14,8 +17,10 @@ import { BotaoVoltar } from "../../components/BotaoVoltar/Index";
 import { CameraModal } from "../../components/Camera/CameraModal";
 import { ModalPhoto } from "../../components/Camera/ModalPhoto/ModalPhoto";
 import { userDecodeToken } from "../../utils/Auth";
+import { FlatList } from "react-native";
+import api from "../../service/Service";
 
-export const Perfil = ({ navigation }) => {
+export const Perfil = ({ navigation, route }) => {
   const [logado, setLogado] = useState(false);
   const [edit, setEdit] = useState(false);
   const [showInformationModal, setShowInformationModal] = useState(false);
@@ -23,7 +28,6 @@ export const Perfil = ({ navigation }) => {
   const [uriCameraCapture, setUriCameraCapture] = useState("");
   const [showCamera, setShowCamera] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
-
   const [getOng, setGetOng] = useState({});
   const [putOng, setPutOng] = useState({});
 
@@ -36,6 +40,7 @@ export const Perfil = ({ navigation }) => {
 
     if (token != null) {
       setOng(token);
+      setLogado(true)
     }
     else {
       console.log("Falha na Profile Load (Perfil.js)")
@@ -106,6 +111,24 @@ export const Perfil = ({ navigation }) => {
     console.log(ong)
   }, [ong]);
 
+  const [locais, setLocais] = useState([]);
+
+  const ongId = route.params.ongId;
+
+  async function getLocais() {
+    try {
+      const response = await api.get(`/Endereco/ListarPorOng?idOng=${ongId}`);
+      console.log(response.data);
+      setLocais(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    getLocais();
+  }, []);
+
   return showCamera ? (
     <CameraModal
       photo={photo}
@@ -125,7 +148,9 @@ export const Perfil = ({ navigation }) => {
         {photo != null ? (
           <PerfilImageWhite source={{ uri: photo }} />
         ) : (
-          <PerfilImageWhite source={require("../../assets/images/Perfil-White.png")} />
+          <PerfilImageWhite
+            source={require("../../assets/images/Perfil-White.png")}
+          />
         )}
       </ViewImageCircle>
 
@@ -142,35 +167,34 @@ export const Perfil = ({ navigation }) => {
           promover a justiça social e garantir que cada pessoa tenha acesso aos
           recursos necessários para uma vida digna e saudável.
         </SubtitleCard>
-        {logado == true ? (
-          <Group>
-            <CardCause />
-            <CardCause />
-            <CardCause />
-          </Group>
-        ) : (
-          <>
-            {edit == false ? (
-              <Group>
-                <Input placeholder="Nome:" editable={false} width="100%" border={false} height={65} />
-                <Input placeholder="CNPJ: " editable={false} width="100%" border={false} height={65} />
-                <Group row>
-                  <Input placeholder="CEP: " editable={false} width="100%" border={false} height={75} />
-                  <Input placeholder="UF: " editable={false} width="100%" border={false} height={75} />
-                </Group>
-              </Group>
-            ) : (
-              <Group>
-                <Input placeholder="Nome:" editable={true} width="100%" border={true} height={65} />
-                <Input placeholder="CNPJ: " editable={true} width="100%" border={true} height={65} />
-                <Group row>
-                  <Input placeholder="CEP: " editable={true} width="100%" border={true} height={75} />
-                  <Input placeholder="UF: " editable={true} width="100%" border={true} height={75} />
-                </Group>
-              </Group>
 
+        {logado == false ? (
+          <FlatList
+            contentContainerStyle={{
+              gap: 20,
+              alignItems: "center",
+              width: "100%",
+              padding: "5%",
+            }}
+            data={locais}
+            key={(item) => item.id}
+            keyExtractor={(item) => item.id}
+            renderItem={({item}) => (
+              <CardLocalizacao local={item} onPress={() => navigation.replace("Mapa", { local: item })} />
             )}
-          </>
+          />
+        ) : (
+          
+           
+              <Group>
+                <Input placeholder="Nome:" editable={false} width="100%" border={edit} height={65} />
+                <Input placeholder="CNPJ: " editable={false} width="100%" border={edit} height={65} />
+                <Group row>
+                  <Input placeholder="CEP: " editable={false} width="100%" border={edit} height={75} />
+                  <Input placeholder="UF: " editable={false} width="100%" border={edit} height={75} />
+                </Group>
+              </Group>
+            
         )}
         <Group>
 
