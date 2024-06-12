@@ -4,6 +4,7 @@ import { CardOng } from "./../../components/CardOng/Index";
 import { ActivityIndicator, FlatList } from "react-native";
 import { useEffect, useState } from "react";
 import api from "./../../service/Service";
+import { ContainerMargin } from "./../../components/Container/Style";
 
 export const ListaOngs = ({ navigation }) => {
   const [carregando, setCarregando] = useState(false);
@@ -27,7 +28,15 @@ export const ListaOngs = ({ navigation }) => {
 
   return (
     <Container>
-      <Titulo text={"Escolha uma ONG para doar"} fontSize={20} />
+      <ContainerMargin>
+        <Titulo text={"Escolha uma ONG para doar"} fontSize={20} />
+        <Titulo color={"gray"} textAlign={"center"}
+          text={
+            "Essas são as Ongs que optaram por usar o nosso aplicativo para impulsionar suas doações"
+          }
+          fontSize={14}
+        />
+      </ContainerMargin>
 
       {carregando ? (
         <ActivityIndicator style={{ flex: 1 }} />
@@ -43,11 +52,7 @@ export const ListaOngs = ({ navigation }) => {
           key={(item) => item.ong.id}
           keyExtractor={(item) => item.ong.id}
           renderItem={({ item }) => (
-            <CardOng
-              key={item.ong.id}
-              navigation={navigation}
-              ong={item.ong}
-            />
+            <CardOng key={item.ong.id} navigation={navigation} ong={item.ong} />
           )}
         />
       )}

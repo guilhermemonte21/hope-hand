@@ -30,6 +30,9 @@ export const Input = ({
       }}
     >
       <InputStyled
+      style={{
+        color: color,
+      }}
         placeholder={placeholder}
         editable={editable}
         placeholderTextColor={placeholderTextColor}

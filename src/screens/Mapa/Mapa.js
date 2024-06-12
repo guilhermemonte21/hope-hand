@@ -21,6 +21,11 @@ export const Mapa = ({ navigation, route }) => {
   const mapReference = useRef(null);
   const [initialPosition, setInitialPosition] = useState(null);
 
+  const finalPosition = {
+    latitude: Number(route.params.local.latitude),
+    longitude: Number(route.params.local.longitude),
+  };
+
   // FUNCTIONS
   const CapturarLocalizacao = async () => {
     const { granted } = await requestForegroundPermissionsAsync();
@@ -31,7 +36,6 @@ export const Mapa = ({ navigation, route }) => {
       setInitialPosition(currentPosition);
       RecarregarVisualizacaoMapa();
     }
-
   };
 
   const RecarregarVisualizacaoMapa = async () => {
@@ -43,16 +47,16 @@ export const Mapa = ({ navigation, route }) => {
             longitude: initialPosition.coords.longitude,
           },
           {
-            latitude: route.params.local.latitude,
-            longitude: route.params.local.longitude,
+            latitude: finalPosition.latitude,
+            longitude: finalPosition.longitude,
           },
         ],
         {
           edgePadding: {
-            top: 0,
-            right: 0,
-            bottom: 0,
-            left: 0,
+            top: 50,
+            right: 50,
+            bottom: 50,
+            left: 50,
             animated: true,
           },
         }
@@ -99,16 +103,16 @@ export const Mapa = ({ navigation, route }) => {
           provider={PROVIDER_GOOGLE}
           style={styles.map}
           initialRegion={{
-            latitude: -23.6151292,
-            longitude: -46.5711113,
-            latitudeDelta: 0.005,
-            longitudeDelta: 0.005,
+            latitude: initialPosition.coords.latitude,
+            longitude: initialPosition.coords.longitude,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
           }}
         >
           <Marker
             coordinate={{
-              latitude: -23.6151292,
-              longitude: -46.5711113,
+              latitude: initialPosition.coords.latitude,
+              longitude: initialPosition.coords.longitude,
             }}
             title="Localização atual"
             description="Você está aqui"
@@ -116,8 +120,8 @@ export const Mapa = ({ navigation, route }) => {
 
           <Marker
             coordinate={{
-              latitude: -23.6151392,
-              longitude: -46.6713113,
+              latitude: finalPosition.latitude,
+              longitude: finalPosition.longitude,
             }}
             title="Localização atual"
             description="Você está aqui"
@@ -126,8 +130,8 @@ export const Mapa = ({ navigation, route }) => {
           <MapViewDirections
             origin={initialPosition.coords}
             destination={{
-              latitude: -23.6151392,
-              longitude: -46.6713113,
+              latitude: finalPosition.latitude,
+              longitude: finalPosition.longitude,
               latitudeDelta: 0.005,
               longitudeDelta: 0.005,
             }}
@@ -156,43 +160,60 @@ export const Mapa = ({ navigation, route }) => {
           <Input
             width="100%"
             editable={false}
-            placeholder={"CEP: #####-###"}
+            value={route.params.local.cep}
             fontFamily={"Kanit_400Regular"}
           />
 
           <Input
             width="100%"
             editable={false}
-            placeholder={"UF: ##"}
+            value={route.params.local.number.toString()}
             fontFamily={"Kanit_400Regular"}
           />
         </Group>
-
         <Input
           width="100%"
           editable={false}
-          placeholder={"Cidade:"}
+          value={route.params.local.state}
           fontFamily={"Kanit_400Regular"}
         />
 
         <Input
           width="100%"
           editable={false}
-          placeholder={"Logradouro"}
+          value={route.params.local.city}
+          fontFamily={"Kanit_400Regular"}
+        />
+
+        <Input
+          width="100%"
+          editable={false}
+          value={route.params.local.address}
           fontFamily={"Kanit_400Regular"}
         />
 
         <Botao width="100%" radius={20} text={"Doar"} />
 
-        <Botao
-          onPress={() => {
-            navigation.replace("Perfil");
-          }}
-          width="50%"
-          text={"Voltar"}
-          bgColor="#B0B0B0"
-          radius={20}
-        />
+        <Group row>
+          <Botao
+            onPress={() => {
+              navigation.replace("Perfil");
+            }}
+            width="50%"
+            text={"Voltar"}
+            bgColor="#B0B0B0"
+            radius={20}
+          />
+          <Botao
+            onPress={() => {
+              navigation.replace("Perfil");
+            }}
+            width="50%"
+            text={"Voltar"}
+            bgColor="#B0B0B0"
+            radius={20}
+          />
+        </Group>
       </ContainerMargin>
     </Container>
   );
