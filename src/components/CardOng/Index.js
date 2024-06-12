@@ -2,14 +2,19 @@ import { CardStyled, CardImage, CardTitle } from "./Style";
 import { Botao } from "./../Botao/Index";
 
 import { Group } from "../Group/Index";
+import { Titulo } from './../Titulo/Index';
 
-export const CardOng = ({ nome, image, navigation }) => {
+export const CardOng = ({ ong, navigation }) => {
   return (
     <CardStyled>
-      <CardImage source={image} />
+      <CardImage source={ong.photo} />
       <Group>
-        <CardTitle>{nome}</CardTitle>
-        <Botao onPress={() => navigation.navigate("Perfil")} text={"Ver mais"} radius={20} />
+        <CardTitle>{ong.name}</CardTitle>
+        <Botao
+          onPress={() => navigation.navigate("Perfil", { ongId: ong.id })}
+          text={"Ver mais"}
+          radius={20}
+        />
       </Group>
     </CardStyled>
   );

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { BoxInput, InputStyled } from "./Style";
 
 export const Input = ({
@@ -14,6 +15,7 @@ export const Input = ({
   autoCapitalize,
   erro,
   keyboardType,
+  maxLength
 }) => {
   return (
     <BoxInput
@@ -35,6 +37,7 @@ export const Input = ({
         onChangeText={onChangeText}
         keyboardType={keyboardType}
         autoCapitalize={autoCapitalize}
+        maxLength={maxLength}
       />
     </BoxInput>
   );

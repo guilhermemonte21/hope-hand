@@ -22,6 +22,7 @@ export const Login = ({
     const [senha, setSenha] = useState(""); // senha do usuário
     const [carregando, setCarregando] = useState(false); // ativa o spinner do botão
     const [erro, setErro] = useState(false); // muda a cor dos inputs quando dá algum erro
+    const [erroTexto, setErroTexto] = useState(""); // diz qual é o erro que está ocorrendo
 
 
     // FUNCTIONS

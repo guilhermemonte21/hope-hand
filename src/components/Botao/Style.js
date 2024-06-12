@@ -32,5 +32,4 @@ export const ButtonUploadImage = styled(ButtonStyled)`
 export const TextButton = styled.Text`
   font-size: 14px;
   font-family: "Kanit_400Regular";
-  text-transform: uppercase;
 `;

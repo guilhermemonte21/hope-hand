@@ -1,4 +1,4 @@
-import { ButtonStyled, TextButton } from "../../components/CardCause/Style";
+import { ButtonStyled, TextButton } from "../../components/CardLocalizacao/Style";
 import { Container, ViewCenter, ViewEnd } from "../../components/Container/Style";
 import { Titulo } from "./../../components/Titulo/Index";
 import { FontAwesome5 } from '@expo/vector-icons';

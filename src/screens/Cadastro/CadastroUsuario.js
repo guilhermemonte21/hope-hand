@@ -5,14 +5,12 @@ import { Container, ContainerMargin, ContainerScroll } from "../../components/Co
 import { Input } from "../../components/Input/Index"
 import { Logo } from "../../components/Logo/Style"
 import { Titulo } from "../../components/Titulo/Index"
-
-// imports importantes
-import { useState } from "react"
-import DatePicker from 'react-native-date-picker';
+import { useEffect, useState } from "react"
 
 // importe da api
 import api from "../../service/Service"
 import { Group } from "../../components/Group/Index"
+import { Text } from "react-native"
 
 export const CadastroUsuario = ({
     navigation
@@ -23,10 +21,11 @@ export const CadastroUsuario = ({
     const [nome, setNome] = useState(""); // nome do usuário
     const [email, setEmail] = useState(""); // email do usuário
     const [senha, setSenha] = useState(""); // senha do usuário
-    const [dataNascimento, setDataNascimento] = useState(new Date()); // data de nascimento do usuário
+    const [dataNascimento, setDataNascimento] = useState(); // data de nascimento do usuário
     const [confirmaSenha, setConfirmaSenha] = useState(""); // confirmação de senha
     const [carregando, setCarregando] = useState(false); // ativa o spinner do botão
     const [erro, setErro] = useState(false); // muda a cor dos inputs quando dá algum erro
+    const [erroTexto, setErroTexto] = useState(""); // diz qual é o erro que está ocorrendo
 
 
 
@@ -34,33 +33,47 @@ export const CadastroUsuario = ({
     const Cadastrar = async () => {
         setCarregando(true);
 
-        if (senha == confirmaSenha) {
-            try {
-                await api.post("/Usuario/CriarConta", {
-                    email: email,
-                    password: senha
-                })
-            } catch (error) {
+        if (senha.length >= 5) {
+            if (senha == confirmaSenha) {
+                try {
+                    await api.post("/Usuario/CriarConta", {
+                        name: nome,
+                        birth: "2005-10-17",
+                        cpf: cpf,
+                        rg: rg,
+                        email: email,
+                        password: senha,
+                        codRecupSenha: 0
+                    })
+                        .then(response => {
+                            setErro(false);
+
+                            navigation.replace("CadastroOng", {
+
+                            })
+                        })
+                } catch (error) {
+                    setErro(true);
+
+                    setErroTexto("Falha no cadastro, verifique se as informações estão preenchidas corretamente e tente novamente")
+
+                    console.log(error);
+                }
+            } else {
                 setErro(true);
 
-                console.log(error);
+                setErroTexto("As senhas devem ser iguais, tente novamente")
             }
         } else {
+            setErro(true);
 
+            setErroTexto("Senha deve ter mais de 5 dígitos")
         }
 
         setCarregando(false);
     }
 
-    const HandleDateChange = (selectedDate) => {
-        // Formata a data no formato YYYY-MM-DD
-        const formattedDate = `${selectedDate.getFullYear()}-${String(selectedDate.getMonth() + 1).padStart(2, '0')}-${String(selectedDate.getDate()).padStart(2, '0')}`;
-        setDate(formattedDate);
-    }
-
     // EFFECTS
-
-
 
     return (
         <Container>
@@ -90,22 +103,20 @@ export const CadastroUsuario = ({
                     >
                         <Input
                             placeholder={"RG:"}
-                            autoCapitalize={"none"}
                             erro={erro}
                             value={rg}
                             onChangeText={(txt) => setRg(txt)}
                             width="45%"
-                            keyboardType={"phone-pad"}
+                            keyboardType={"number-pad"}
                         />
 
                         <Input
                             placeholder={"CPF:"}
-                            autoCapitalize={"none"}
                             erro={erro}
                             value={cpf}
                             onChangeText={(txt) => setCpf(txt)}
                             width="45%"
-                            keyboardType={"phone-pad"}
+                            keyboardType={"number-pad"}
                         />
                     </Group>
 
@@ -118,10 +129,13 @@ export const CadastroUsuario = ({
                         width="100%"
                     />
 
-                    <DatePicker
-                        date={dataNascimento}
-                        mode="date"
-                        onDateChange={HandleDateChange}
+                    <Input
+                        placeholder={"Data de nascimento:"}
+                        width="100%"
+                        value={dataNascimento}
+                        onChangeText={(txt) => setDataNascimento(txt)}
+                        erro={erro}
+                        maxLength={10}
                     />
 
                     <Input
@@ -151,6 +165,17 @@ export const CadastroUsuario = ({
                         onChangeText={(txt) => setConfirmaSenha(txt)}
                         width="100%"
                     />
+
+                    {
+                        erro ?
+                            <Titulo
+                                text={erroTexto}
+                                color={"#E34949"}
+                                textAlign={"center"}
+                            />
+                            :
+                            null
+                    }
 
                     <Botao
                         text={"Prosseguir"}
