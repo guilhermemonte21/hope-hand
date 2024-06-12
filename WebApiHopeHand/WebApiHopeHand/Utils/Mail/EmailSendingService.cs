@@ -43,14 +43,14 @@
         private string GetHtmlEmailContentRecovery(int code)
         {
             string Response = @"
-                <div style=""width:100%; background-color:rgba(96, 191, 197, 1); padding: 20px;"">
-                    <div style=""max-width: 600px; margin: 0 auto; background-color:#FFFFFF; border-radius: 10px; padding: 20px;display: flex;flex-direction: column;justify-content: center;"">
-                        <h1 style=""color: #333333;text-align: center;"">Recuperação de senha</h1>
-                        <img id=""img-logo"" src=""https://hopehandarmazenamento.blob.core.windows.net/hopehandcontainer/logo-bhand.png"" alt=""Logotipo da Aplicação"" />
-                        <p style=""color: #666666;font-size: 24px; text-align: center;"">Olá, este é seu código de verificação: </p>
-                        <p style=""color: #666666;font-size: 24px; text-align: center;""><strong>" + code + @"</strong></p>
-                    </div>
-                </div>"
+<div style=""width:100%; background-color:rgba(124, 207, 255, 1); padding: 20px;"">
+        <div style=""display: block; width: 500px; height: 100%; max-width: 600px; margin: 0 auto; background-color: #FFFFFF; border-radius: 10px; padding: 20px;"">
+            <h1 style="" color: #333333;text-align: center;"">Recuperação de senha</h1>
+            <img style=""display: block; margin-left: auto; margin-right: auto; width: 50%;"" src=""https://hopehandarmazenamento.blob.core.windows.net/hopehandcontainer/logo-azul-hopehand.png"" />
+            <p style="" color: #666666;font-size: 24px; text-align: center;font: normal;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"">Olá, este é seu código de verificação:</p>
+            <p style="" color: #666666;font-size: 24px; text-align: center;font: normal;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"" id=""p-text""><strong>" + code + @"</strong></p>
+        </div>
+    </div>"
              ;
 
             // Retorna o conteúdo HTML do e-mail
