@@ -143,7 +143,6 @@ namespace WebApiHopeHand.Controllers
             }
             catch (Exception)
             {
-
                 throw;
             }
         }

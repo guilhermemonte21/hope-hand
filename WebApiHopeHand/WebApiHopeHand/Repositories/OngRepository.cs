@@ -71,9 +71,6 @@ namespace WebApiHopeHand.Repositories
                 if (ong.Cnpj != null)
                     ongSearched.Cnpj = ong.Cnpj;
 
-                if (ong.Photo != null)
-                    ongSearched.Photo = ong.Photo;
-
                 if (ong.Name != null)
                     ongSearched.Name = ong.Name;
 

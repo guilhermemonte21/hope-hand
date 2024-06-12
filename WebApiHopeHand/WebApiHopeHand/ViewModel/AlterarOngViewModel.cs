@@ -11,7 +11,6 @@ namespace WebApiHopeHand.ViewModel
         public string? Name { get; set; }
         public string? Cnpj { get; set; }
         public string? Link { get; set; }
-        public string? Photo { get; set; }
         public string? Description { get; set; }
     }
 }
