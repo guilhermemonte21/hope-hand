@@ -23,7 +23,7 @@ export const CadastroUsuario = ({
     const [nome, setNome] = useState(""); // nome do usuário
     const [email, setEmail] = useState(""); // email do usuário
     const [senha, setSenha] = useState(""); // senha do usuário
-    const [dataNascimento, setDataNascimento] = useState(); // data de nascimento do usuário
+    const [dataNascimento, setDataNascimento] = useState(""); // data de nascimento do usuário
     const [confirmaSenha, setConfirmaSenha] = useState(""); // confirmação de senha
     const [carregando, setCarregando] = useState(false); // ativa o spinner do botão
     const [erro, setErro] = useState(false); // muda a cor dos inputs quando dá algum erro
@@ -35,41 +35,50 @@ export const CadastroUsuario = ({
     const Cadastrar = async () => {
         setCarregando(true);
 
-        if (senha.length >= 5) {
-            if (senha == confirmaSenha) {
-                try {
-                    await api.post("/Usuario/CriarConta", {
-                        name: nome,
-                        birth: "2005-10-17",
-                        cpf: cpf,
-                        rg: rg,
-                        email: email,
-                        password: senha,
-                        codRecupSenha: 0
-                    })
-                        .then(response => {
-                            setErro(false);
-
-                            navigation.replace("CadastroOng", {
-
-                            })
-                        })
-                } catch (error) {
-                    setErro(true);
-
-                    setErroTexto("Falha no cadastro, verifique se as informações estão preenchidas corretamente e tente novamente")
-
-                    console.log(error);
-                }
-            } else {
-                setErro(true);
-
-                setErroTexto("As senhas devem ser iguais, tente novamente")
-            }
-        } else {
+        if (rg.length != 9) {
             setErro(true);
 
-            setErroTexto("Senha deve ter mais de 5 dígitos")
+            setErroTexto("RG incompleto, tente novamente")
+        }
+        else if (cpf.length != 11) {
+            setErro(true);
+
+            setErroTexto("CPF incompleto, tente novamente")
+        }
+        else if (nome == "") {
+            setErro(true);
+
+            setErroTexto("Usuário deve conter um nome")
+        }
+        else if (dataNascimento == "") {
+            setErro(true);
+
+            setErroTexto("Insira sua data de nascimento e tente novamente")
+        }
+        else if (email == "") {
+            setErro(true);
+
+            setErroTexto("Insira um email válido!")
+        }
+        else if (senha.length < 6) {
+            setErro(true);
+
+            setErroTexto("Senha deve ter mais de 6 dígitos")
+        }
+        else if (senha != confirmaSenha) {
+            setErro(true);
+
+            setErroTexto("As senhas devem ser iguais, tente novamente")
+        }
+        else {
+            navigation.replace("CadastroOng", {
+                nome: nome,
+                dataNascimento: dataNascimento,
+                cpf: cpf,
+                rg: rg,
+                email: email,
+                senha: senha
+            })
         }
 
         setCarregando(false);
@@ -109,13 +118,14 @@ export const CadastroUsuario = ({
                             value={rg}
                             onChangeText={(txt) => setRg(txt)}
                             width="45%"
-                            keyboardType={"number-pad"}
+                            maxLength={9}
                         />
 
                         <Input
                             placeholder={"CPF:"}
                             erro={erro}
                             value={cpf}
+                            maxLength={11}
                             onChangeText={(txt) => setCpf(txt)}
                             width="45%"
                             keyboardType={"number-pad"}

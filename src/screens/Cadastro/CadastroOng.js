@@ -15,7 +15,7 @@ export const CadastroOng = ({
     route
 }) => {
     // CONSTS
-    const [nome, setNome] = useState(""); // nome da ong
+    const [nomeOng, setNomeOng] = useState(""); // nome da ong
     const [cnpj, setCnpj] = useState(""); // cnpj da ong
     const [numero, setNumero] = useState(""); // número do local
     const [cep, setCep] = useState(""); // cep do local
@@ -25,14 +25,35 @@ export const CadastroOng = ({
     const [erro, setErro] = useState(false); // muda a cor dos inputs quando dá algum erro
     const [erroTexto, setErroTexto] = useState(""); // diz qual é o erro que está ocorrendo
 
+    const nome = route.params.nome; // nome do usuário
+    const dataNascimento = route.params.dataNascimento; // data de nascimento do usuário
+    const cpf = route.params.cpf; // cpf do usuário
+    const rg = route.params.cpf; // rg do usuário
+    const email = route.params.email; // email do usuário
+    const senha = route.params.senha; // senha do usuário
+
 
 
     // FUNCTIONS
     const Cadastrar = async () => {
         setCarregando(true);
 
+        try {
+            await api.post("/Usuario/CriarConta", {
+                name: nome,
+                birth: dataNascimento,
+                cpf: cpf,
+                rg: rg,
+                email: email,
+                password: senha,
+                codRecupSenha: 0
+            })
+        } catch (error) {
+
+        }
+
         var form = new FormData();
-        form.append("Name", nome);
+        form.append("Name", nomeOng);
         form.append("Cnpj", cnpj);
         form.append("Number", numero);
         form.append("Cep", cep);
@@ -91,8 +112,8 @@ export const CadastroOng = ({
                         width="100%"
                         placeholder={"Nome da ong:"}
                         erro={erro}
-                        onChangeText={(txt) => setNome(txt)}
-                        value={nome}
+                        onChangeText={(txt) => setNomeOng(txt)}
+                        value={nomeOng}
                     />
 
                     <Input
