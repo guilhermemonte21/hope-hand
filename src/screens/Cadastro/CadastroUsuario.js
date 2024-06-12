@@ -5,8 +5,6 @@ import { Container, ContainerMargin, ContainerScroll } from "../../components/Co
 import { Input } from "../../components/Input/Index"
 import { Logo } from "../../components/Logo/Style"
 import { Titulo } from "../../components/Titulo/Index"
-
-// imports importantes
 import { useEffect, useState } from "react"
 
 // importe da api

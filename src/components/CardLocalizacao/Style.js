@@ -5,16 +5,15 @@ export const ContainerCard = styled.View.attrs({
     flexDirection: 'row',
     justifyContent: 'space-between',
   })`
-    backgroundColor: #E8E8E8;
+    background-color: #E8E8E8;
     padding: 15px;
-    borderRadius: 12px;
+    border-radius: 12px;
     width: 100%;
     height: 75px;
     gap: 0px;
   `;
 
   export const TitleCard = styled.Text`
-  margin: 10px;
   color: #323030;
   fontSize: 16px;
   font-family: "Kanit_400Regular";

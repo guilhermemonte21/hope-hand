@@ -1,6 +1,6 @@
 import { Modal } from "react-native";
 import { InfoModal, ModalForm } from "./Style";
-import { TitleSpace } from "../../CardCause/Style";
+import { TitleSpace } from "../../CardLocalizacao/Style";
 import { BotaoVoltar } from "../../BotaoVoltar/Index";
 import { Input } from "../../Input/Index";
 import { Group } from "../../Group/Index";
