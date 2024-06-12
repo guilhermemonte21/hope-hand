@@ -24,7 +24,7 @@ export const VerificarCodigo = ({
 
         try {
             await api.post(`RecuperarSenha/ValidarCodigoRecuperacaoSenha?email=${route.params.email}&code=${code}`)
-            navigation.replace("AlterarSenha")
+            navigation.replace("AlterarSenha", { email: route.params.email })
         } catch (error) {
             console.log(error)
         }
