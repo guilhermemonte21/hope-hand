@@ -2,8 +2,12 @@ import { Modal, Image } from "react-native";
 import { ContainerMargin } from "../../Container/Style";
 import { InfoModal, ModalForm } from "./Style";
 import { Botao } from "../../Botao/Index";
+import { useEffect } from "react";
 
-export const ModalPhoto = ({ visible, photo, setInCamera, setOpenModal, ...rest }) => {
+export const ModalPhoto = ({ visible, photo, setInCamera, setOpenModal, OngPhoto, ...rest }) => {
+    useEffect(() => {
+        console.log(photo);
+    },[])
     return (
         <Modal {...rest} visible={visible} transparent={true} animationType="fade">
             <InfoModal>
@@ -14,7 +18,7 @@ export const ModalPhoto = ({ visible, photo, setInCamera, setOpenModal, ...rest 
                             width="100%"
                             text={"Confirmar"}
                             bgColor={"#7BCAF7"}
-                            onPress={() => setOpenModal(false)}
+                            onPress={() => {setOpenModal(false); OngPhoto()}}
                         />
                         <Botao
                             width="100%"

@@ -15,7 +15,7 @@ import {
   GestureHandlerRootView,
   PinchGestureHandler,
 } from "react-native-gesture-handler";
-import { Image, Modal, View } from "react-native";
+import { ActivityIndicator, Image, Modal, View } from "react-native";
 
 const CloseCamera = styled(AntDesign)`
   position: absolute;
@@ -76,6 +76,8 @@ export const CameraModal = ({
 
   const [lastPhoto, setLastPhoto] = useState(null);
 
+  const [carregando, setCarregando] = useState(false); // ativa o spinner do botão
+
   useEffect(() => {
     setPhoto(null);
 
@@ -115,9 +117,10 @@ export const CameraModal = ({
 
       const fotoTirada = await cameraRef.current.takePictureAsync(options);
       await setPhoto(fotoTirada.uri);
-      console.log("teste");
+      console.log(photo);
       setInCamera(false)
-      setModalOpen(true)
+      setModalOpen(true);
+      setCarregando(false);
 
       scrollTo(750, 0);
     }
@@ -200,11 +203,21 @@ export const CameraModal = ({
           />
           <TakePhoto
             onPress={() => {
+              setCarregando(true);
               CapturePhoto();
               setIsPhotoSaved(false);
             }}
+          // carregando={carregando}
           >
-            <FontAwesome name="camera" size={50} color="#3FA7E4" />
+            {
+              carregando ?
+                <ActivityIndicator
+                  color={"#3FA7E4"}
+                  size={24}
+                />
+                :
+                <FontAwesome name="camera" size={50} color="#3FA7E4" />
+            }
           </TakePhoto>
           {lastPhoto != null ? (
             <LastPhoto onPress={() => SelectImageGallery()}>

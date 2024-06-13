@@ -5,10 +5,7 @@ import { useEffect, useState } from "react";
 import { InformationModal } from "../../components/Modal/InformationModal/InformationModal";
 import { Input } from "../../components/Input/Index";
 import { CardLocalizacao } from "../../components/CardLocalizacao/Index";
-import {
-  SubtitleCard,
-  TitleCard,
-} from "../../components/CardLocalizacao/Style";
+import { SubtitleCard, TitleCard } from "../../components/CardLocalizacao/Style";
 import { Botao } from "./../../components/Botao/Index";
 import { Group } from "../../components/Group/Index"
 import { ViewImageCircle } from "../../components/Perfil/ImagePerfil";
@@ -19,112 +16,135 @@ import { ModalPhoto } from "../../components/Camera/ModalPhoto/ModalPhoto";
 import { userDecodeToken } from "../../utils/Auth";
 import { ActivityIndicator, FlatList } from "react-native";
 import api from "../../service/Service";
+import { Titulo } from "../../components/Titulo/Index";
 
 export const Perfil = ({ navigation, route }) => {
-  const [logado, setLogado] = useState(false);
-  const [edit, setEdit] = useState(false);
-  const [showInformationModal, setShowInformationModal] = useState(false);
-  const [photo, setPhoto] = useState(null);
-  const [uriCameraCapture, setUriCameraCapture] = useState("");
-  const [showCamera, setShowCamera] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
+  const [nome, setNome] = useState(""); // Exibe a Tela de Acordo com o Usuário
+  const [logado, setLogado] = useState(false); // Exibe a Tela de Acordo com o Usuário
+  const [edit, setEdit] = useState(false); // Muda os Inputs Caso sejam editaveis ou não
+  const [carregando, setCarregando] = useState(false); // ativa o spinner do botão
+  const [erro, setErro] = useState(false); // muda a cor dos inputs quando dá algum erro
+  const [erroTexto, setErroTexto] = useState(""); // diz qual é o erro que está ocorrendo
+
+  const [showInformationModal, setShowInformationModal] = useState(false); // Abre o modal de informações
+  const [photo, setPhoto] = useState(null); // Armazena a Foto 
+  const [showCamera, setShowCamera] = useState(false); // Abre o Modal de Camera
+  const [modalOpen, setModalOpen] = useState(false); // Muda a visibilidade do Modal de Camera
+  // Armazena os Dados
   const [inputs, setInputs] = useState({
     name: "",
     cnpj: "",
     link: "",
     description: ""
-  })
+  });
 
   const [locais, setLocais] = useState([]);
-
   const [ong, setOng] = useState(null);
 
   const ongId = route.params.ongId;
 
-  // Carrega e Armazena os dados da API
-  // async function profileLoad() {
-  //   const token = await userDecodeToken();
+  // Função de Verificação
+  const verificarInputs = () => {
+    if (inputs.name.trim().length < 2 || inputs.name.trim().length > 40) {
+      setErro(true);
+      setErroTexto("O Nome deve ter entre 2 e 40 caracteres!");
+      return false;
+    }
+    else if (inputs.cnpj.trim().length < 14) {
+      setErro(true);
+      setErroTexto("O CNPJ deve Conter 14 caracteres!");
+      return false;
+    }
+    else if (inputs.link.trim().length < 2 || inputs.link.trim().length > 40) {
+      setErro(true);
+      setErroTexto("O Link deve ter entre 2 e 40 caracteres");
+      return false;
+    }
+    else if (inputs.description.trim().length < 2 || inputs.description.trim().length > 500) {
+      setErro(true);
+      setErroTexto("A Descrição deve ter entre 2 e 500 caracteres");
+      return false;
+    }
 
-  //   if (token != null) {
-  //     setOng(token);
-  //     setLogado(true)
-  //   }
-  //   else {
-  //     console.log("Falha na Profile Load (Perfil.js)")
-  //   }
-  // }
+    // Adicione outras verificações conforme necessário
+    // ...
+    setCarregando(false);
+    setErro(false);
+    return true;
+  }
 
   // Buscar Dados da Ong Pelo ID
   async function GetOng() {
     try {
       const response = await api.get(`Ong/BuscarPorId?id=${ongId}`);
       console.log(response.data);
-      setInputs(response.data.ong)
+      setInputs(response.data.ong);
+      setPhoto(response.data.ong.photo); // Atualiza a URL da foto
     } catch (error) {
-      console.log("Deu Catch, falha na Get Ong (Perfil.js)")
+      console.log("Deu Catch, falha na Get Ong (Perfil.js)");
     }
   }
 
   // Edita os Dados Recebidos da Ong
   async function PutOng() {
+    if (!verificarInputs()) {
+      return;
+    }
+
     const token = await userDecodeToken();
 
     try {
-      await api.put(`Ong/Editar`, {
-        ong: {
-
-          id: ongId,
-          name: inputs.name,
-          cnpj: inputs.cnpj,
-          link: inputs.link,
-          descripition: inputs.description,
-        }
+      await api.put(`/Ong/Editar`, {
+        id: ongId,
+        name: inputs.name,
+        cnpj: inputs.cnpj,
+        link: inputs.link,
+        description: inputs.description,
       }, {
         headers: {
           'Authorization': `Bearer ${token.token}`
         }
       });
-      GetOng()
+      GetOng();
     } catch (error) {
       console.log(error);
-      console.log("Deu Catch, falha na Put Ong (Perfil.js)")
+      console.log("Deu Catch, falha na Put Ong (Perfil.js)");
     }
   }
 
   // Altera a Photo no Blob Storage
-  // async function OngPhoto() {
-  //   const formData = new FormData();
-  //   formData.append("Arquivo", {
-  //     uri: uriCameraCapture,
-  //     name: `image.${uriCameraCapture.split(".")[1]}`,
-  //     type: `image/${uriCameraCapture.split(".")[1]}`,
-  //   });
-  //   await api.put(`/Ong/AlterarFoto?id=${ongId}`, formData, {
-  //     headers: {
-  //       "Content-Type": "multipart/form-data"
-  //     }
-  //   }).then(async response => {
-  //     console.log(response)
-  //     setOng({
-  //       ...ong,
-  //       foto: uriCameraCapture
-  //     })
-  //   }).catch(error => {
-  //     console.log(error, "Deu Catch, falha na Ong Photo (Perfil.js)");
-  //   });
-  // }
+  async function OngPhoto() {
+    const token = await userDecodeToken();
+    try {
+      const formData = new FormData();
+      formData.append("IdOng", ongId)
+      formData.append("Arquivo", {
+        name: `image.${photo.split(".")[1]}`,
+        type: `image/${photo.split(".")[1]}`,
+        uri: photo,
+      });
 
+      await api.put(`/Ong/AlterarFoto`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          "Authorization": `Bearer ${token.token}`
+        }
+      });
+
+      GetOng()
+
+    } catch (error) {
+      console.error("Deu Catch, falha na Ong Photo (Perfil.js)", error);
+    }
+  }
 
   useEffect(() => {
-    // profileLoad();
     GetOng();
   }, []);
-
 
   async function getLocais() {
     try {
       const response = await api.get(`/Endereco/ListarPorOng?idOng=${ongId}`);
-      // console.log(response.data);
       setLocais(response.data);
     } catch (error) {
       console.log(error);
@@ -143,15 +163,14 @@ export const Perfil = ({ navigation, route }) => {
       getMediaLibrary={true}
       visible={showCamera}
       inCamera={showCamera}
-      setUriCameraCapture={setUriCameraCapture}
       setInCamera={setShowCamera}
     />
   ) : (
     <ContainerScroll>
       <BotaoVoltar onPress={() => navigation.replace("Home")} />
 
-      <ViewImageCircle>
-        {photo != null ? (
+      <ViewImageCircle style={{ borderColor: erro ? "#E34949" : "#3FA7E4" }}>
+        {photo ? (
           <PerfilImageWhite source={{ uri: photo }} />
         ) : (
           <PerfilImageWhite
@@ -163,7 +182,7 @@ export const Perfil = ({ navigation, route }) => {
       <ButtonUploadImage onPress={() => setShowCamera(true)}>
         <MaterialCommunityIcons name="camera-enhance" size={22} color="white" />
       </ButtonUploadImage>
-      <TitleCard>{inputs != null && inputs.name}</TitleCard>
+      <TitleCard>{inputs && inputs.name ? inputs.name : 'Nome não encontrado!'}</TitleCard>
       <ContainerMargin>
         <SubtitleCard>
           Acreditamos que todos merecem a chance de viver uma vida plena e digna.
@@ -174,7 +193,7 @@ export const Perfil = ({ navigation, route }) => {
           recursos necessários para uma vida digna e saudável.
         </SubtitleCard>
 
-        {logado == true ? (
+        {logado ? (
           <FlatList
             contentContainerStyle={{
               gap: 20,
@@ -191,23 +210,74 @@ export const Perfil = ({ navigation, route }) => {
           />
         ) :
 
-          inputs != null ? (<Group>
-            <Input value={inputs.name} onChangeText={(txt) => setInputs({ ...inputs, name: txt })} color={edit ? "black" : "gray"} editable={edit} width="100%" border={edit} height={65} />
-            <Input value={inputs.cnpj} onChangeText={(txt) => setInputs({ ...inputs, cnpj: txt })} color={edit ? "black" : "gray"} editable={edit} width="100%" border={edit} height={65} />
-            <Input value={inputs.link} onChangeText={(txt) => setInputs({ ...inputs, link: txt })} color={edit ? "black" : "gray"} editable={edit} width="100%" border={edit} height={75} />
-            <Input value={inputs.description} onChangeText={(txt) => setInputs({ ...inputs, description: txt })} color={edit ? "black" : "gray"} editable={edit} width="100%" border={edit} height={150} />
-          </Group>) : <ActivityIndicator style={{ height: 200 }} />
+          inputs ? (
+            <Group>
 
+              {
+                erro ?
+                  <Titulo
+                    text={erroTexto}
+                    color={"#E34949"}
+                    textAlign={"center"}
+                  />
+                  :
+                  null
+              }
 
+              <Input
+                placeholder={inputs.name || "Nome Indefinido!"}
+                value={inputs.name} 
+                onChangeText={(txt) => setInputs({ ...inputs, name: txt })}
+                color={edit ? "black" : "gray"}
+                editable={edit}
+                width="100%"
+                border={edit}
+                height={65}
+                erro={erro}
+              />
+
+              <Input
+                value={inputs.cnpj || "CNPJ Indefinido!"}
+                onChangeText={(txt) => setInputs({ ...inputs, cnpj: txt })}
+                color={edit ? "black" : "gray"}
+                editable={edit}
+                width="100%"
+                border={edit}
+                height={65}
+                erro={erro}
+              />
+
+              <Input
+                value={inputs.link || "Link Indefinido"}
+                onChangeText={(txt) => setInputs({ ...inputs, link: txt })}
+                color={edit ? "black" : "gray"}
+                editable={edit}
+                width="100%"
+                border={edit}
+                height={75}
+                erro={erro}
+              />
+              <Input
+                value={inputs.description || "Descrição Indefinida"}
+                onChangeText={(txt) => setInputs({ ...inputs, description: txt })}
+                color={edit ? "black" : "gray"}
+                editable={edit}
+                width="100%"
+                border={edit}
+                height={100}
+                erro={erro}
+              />
+            </Group>
+          ) : <ActivityIndicator style={{ height: 200 }} />
 
         }
         <Group>
-
           <Botao
             width="100%"
             text={"Editar"}
             bgColor={"#7BCAF7"}
             onPress={() => { setEdit(!edit); edit ? PutOng() : null }} // Deve Mudar os inputs e Editar os Dados do Usuário
+            carregando={carregando}
           />
 
           <Botao
@@ -219,19 +289,21 @@ export const Perfil = ({ navigation, route }) => {
               navigation.replace("Login"); // Deve Voltar a Página de Login
             }}
           />
-
         </Group>
       </ContainerMargin>
       <InformationModal
         navigation={navigation}
         visible={showInformationModal}
         setShowModalStethoscope={setShowInformationModal}
+        carregando={carregando}
       />
       <ModalPhoto
         photo={photo}
+        OngPhoto={OngPhoto}
         setInCamera={setShowCamera}
         visible={modalOpen}
         setOpenModal={setModalOpen}
+        carregando={carregando}
       />
     </ContainerScroll>
   );
