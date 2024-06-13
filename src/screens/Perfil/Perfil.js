@@ -17,7 +17,7 @@ import { BotaoVoltar } from "../../components/BotaoVoltar/Index";
 import { CameraModal } from "../../components/Camera/CameraModal";
 import { ModalPhoto } from "../../components/Camera/ModalPhoto/ModalPhoto";
 import { userDecodeToken } from "../../utils/Auth";
-import { FlatList } from "react-native";
+import { ActivityIndicator, FlatList } from "react-native";
 import api from "../../service/Service";
 
 export const Perfil = ({ navigation, route }) => {
@@ -28,35 +28,38 @@ export const Perfil = ({ navigation, route }) => {
   const [uriCameraCapture, setUriCameraCapture] = useState("");
   const [showCamera, setShowCamera] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
-  const [getOng, setGetOng] = useState({});
-  const [putOng, setPutOng] = useState({});
+  const [inputs, setInputs] = useState({
+    name: "",
+    cnpj: "",
+    link: "",
+    description: ""
+  })
 
+  const [locais, setLocais] = useState([]);
 
-  const [ong, setOng] = useState({});
+  const [ong, setOng] = useState(null);
+
+  const ongId = route.params.ongId;
 
   // Carrega e Armazena os dados da API
-  async function profileLoad() {
-    const token = await userDecodeToken();
+  // async function profileLoad() {
+  //   const token = await userDecodeToken();
 
-    if (token != null) {
-      setOng(token);
-      setLogado(true)
-    }
-    else {
-      console.log("Falha na Profile Load (Perfil.js)")
-    }
-  }
+  //   if (token != null) {
+  //     setOng(token);
+  //     setLogado(true)
+  //   }
+  //   else {
+  //     console.log("Falha na Profile Load (Perfil.js)")
+  //   }
+  // }
 
   // Buscar Dados da Ong Pelo ID
   async function GetOng() {
-    const token = await userDecodeToken();
     try {
-      if (token.role != null) {
-        const response = await api.get(`Ong/BuscarPorId?id=${token.id}`);
-        setGetOng(response.data)
-      } else {
-        console.log("Deu Else, falha na Get Ong (Perfil.js)")
-      }
+      const response = await api.get(`Ong/BuscarPorId?id=${ongId}`);
+      console.log(response.data);
+      setInputs(response.data.ong)
     } catch (error) {
       console.log("Deu Catch, falha na Get Ong (Perfil.js)")
     }
@@ -67,58 +70,61 @@ export const Perfil = ({ navigation, route }) => {
     const token = await userDecodeToken();
 
     try {
-      if (token.role != null) {
-        const response = await api.put(`Ong/Editar?id=${token.id}`);
-        setPutOng(response.data)
-      } else {
-        console.log("Deu Else, falha na Put Ong (Perfil.js)")
-      }
+      await api.put(`Ong/Editar`, {
+        ong: {
+
+          id: ongId,
+          name: inputs.name,
+          cnpj: inputs.cnpj,
+          link: inputs.link,
+          descripition: inputs.description,
+        }
+      }, {
+        headers: {
+          'Authorization': `Bearer ${token.token}`
+        }
+      });
+      GetOng()
     } catch (error) {
+      console.log(error);
       console.log("Deu Catch, falha na Put Ong (Perfil.js)")
     }
   }
 
   // Altera a Photo no Blob Storage
-  async function OngPhoto() {
-    const formData = new FormData();
-    formData.append("Arquivo", {
-      uri: uriCameraCapture,
-      name: `image.${uriCameraCapture.split(".")[1]}`,
-      type: `image/${uriCameraCapture.split(".")[1]}`,
-    });
-    await api.put(`/Ong/AlterarFoto?id=${ong.id}`, formData, {
-      headers: {
-        "Content-Type": "multipart/form-data"
-      }
-    }).then(async response => {
-      console.log(response)
-      await setOng({
-        ...ong,
-        foto: uriCameraCapture
-      })
-    }).catch(error => {
-      console.log(error, "Deu Catch, falha na Ong Photo (Perfil.js)");
-    });
-  }
+  // async function OngPhoto() {
+  //   const formData = new FormData();
+  //   formData.append("Arquivo", {
+  //     uri: uriCameraCapture,
+  //     name: `image.${uriCameraCapture.split(".")[1]}`,
+  //     type: `image/${uriCameraCapture.split(".")[1]}`,
+  //   });
+  //   await api.put(`/Ong/AlterarFoto?id=${ongId}`, formData, {
+  //     headers: {
+  //       "Content-Type": "multipart/form-data"
+  //     }
+  //   }).then(async response => {
+  //     console.log(response)
+  //     setOng({
+  //       ...ong,
+  //       foto: uriCameraCapture
+  //     })
+  //   }).catch(error => {
+  //     console.log(error, "Deu Catch, falha na Ong Photo (Perfil.js)");
+  //   });
+  // }
 
 
   useEffect(() => {
-    profileLoad();
+    // profileLoad();
     GetOng();
   }, []);
 
-  useEffect(() => {
-    console.log(ong)
-  }, [ong]);
-
-  const [locais, setLocais] = useState([]);
-
-  const ongId = route.params.ongId;
 
   async function getLocais() {
     try {
       const response = await api.get(`/Endereco/ListarPorOng?idOng=${ongId}`);
-      console.log(response.data);
+      // console.log(response.data);
       setLocais(response.data);
     } catch (error) {
       console.log(error);
@@ -126,7 +132,7 @@ export const Perfil = ({ navigation, route }) => {
   }
 
   useEffect(() => {
-    getLocais();
+    // getLocais();
   }, []);
 
   return showCamera ? (
@@ -157,7 +163,7 @@ export const Perfil = ({ navigation, route }) => {
       <ButtonUploadImage onPress={() => setShowCamera(true)}>
         <MaterialCommunityIcons name="camera-enhance" size={22} color="white" />
       </ButtonUploadImage>
-      <TitleCard>Nome da ONG</TitleCard>
+      <TitleCard>{inputs != null && inputs.name}</TitleCard>
       <ContainerMargin>
         <SubtitleCard>
           Acreditamos que todos merecem a chance de viver uma vida plena e digna.
@@ -168,7 +174,7 @@ export const Perfil = ({ navigation, route }) => {
           recursos necessários para uma vida digna e saudável.
         </SubtitleCard>
 
-        {logado == false ? (
+        {logado == true ? (
           <FlatList
             contentContainerStyle={{
               gap: 20,
@@ -179,30 +185,29 @@ export const Perfil = ({ navigation, route }) => {
             data={locais}
             key={(item) => item.id}
             keyExtractor={(item) => item.id}
-            renderItem={({item}) => (
+            renderItem={({ item }) => (
               <CardLocalizacao local={item} onPress={() => navigation.replace("Mapa", { local: item })} />
             )}
           />
-        ) : (
-          
-           
-              <Group>
-                <Input placeholder="Nome:" editable={false} width="100%" border={edit} height={65} />
-                <Input placeholder="CNPJ: " editable={false} width="100%" border={edit} height={65} />
-                <Group row>
-                  <Input placeholder="CEP: " editable={false} width="100%" border={edit} height={75} />
-                  <Input placeholder="UF: " editable={false} width="100%" border={edit} height={75} />
-                </Group>
-              </Group>
-            
-        )}
+        ) :
+
+          inputs != null ? (<Group>
+            <Input value={inputs.name} onChangeText={(txt) => setInputs({ ...inputs, name: txt })} color={edit ? "black" : "gray"} editable={edit} width="100%" border={edit} height={65} />
+            <Input value={inputs.cnpj} onChangeText={(txt) => setInputs({ ...inputs, cnpj: txt })} color={edit ? "black" : "gray"} editable={edit} width="100%" border={edit} height={65} />
+            <Input value={inputs.link} onChangeText={(txt) => setInputs({ ...inputs, link: txt })} color={edit ? "black" : "gray"} editable={edit} width="100%" border={edit} height={75} />
+            <Input value={inputs.description} onChangeText={(txt) => setInputs({ ...inputs, description: txt })} color={edit ? "black" : "gray"} editable={edit} width="100%" border={edit} height={150} />
+          </Group>) : <ActivityIndicator style={{ height: 200 }} />
+
+
+
+        }
         <Group>
 
           <Botao
             width="100%"
             text={"Editar"}
             bgColor={"#7BCAF7"}
-            onPress={() => { setEdit(!edit), PutOng(); }} // Deve Mudar os inputs e Editar os Dados do Usuário
+            onPress={() => { setEdit(!edit); edit ? PutOng() : null }} // Deve Mudar os inputs e Editar os Dados do Usuário
           />
 
           <Botao
