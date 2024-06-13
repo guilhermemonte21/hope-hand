@@ -1,1 +1,1 @@
-export const mapskey = "AIzaSyCWnxprDADWFUaorcBroJpFHEyL3-FUCKI";
+export const mapskey = "AIzaSyCz98rjEPdys96yLs0sXYvmesFqrBJQISY";

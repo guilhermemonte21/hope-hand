@@ -1,4 +1,7 @@
-import { ContainerMargin, ContainerScroll } from "../../components/Container/Style";
+import {
+  ContainerMargin,
+  ContainerScroll,
+} from "../../components/Container/Style";
 import { PerfilImageWhite } from "../../components/Perfil/ImagePerfil";
 import { ButtonUploadImage } from "../../components/Botao/Style";
 import { useEffect, useState } from "react";
@@ -10,9 +13,9 @@ import {
   TitleCard,
 } from "../../components/CardLocalizacao/Style";
 import { Botao } from "./../../components/Botao/Index";
-import { Group } from "../../components/Group/Index"
+import { Group } from "../../components/Group/Index";
 import { ViewImageCircle } from "../../components/Perfil/ImagePerfil";
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { BotaoVoltar } from "../../components/BotaoVoltar/Index";
 import { CameraModal } from "../../components/Camera/CameraModal";
 import { ModalPhoto } from "../../components/Camera/ModalPhoto/ModalPhoto";
@@ -32,8 +35,8 @@ export const Perfil = ({ navigation, route }) => {
     name: "",
     cnpj: "",
     link: "",
-    description: ""
-  })
+    description: "",
+  });
 
   const [locais, setLocais] = useState([]);
 
@@ -42,26 +45,25 @@ export const Perfil = ({ navigation, route }) => {
   const ongId = route.params.ongId;
 
   // Carrega e Armazena os dados da API
-  // async function profileLoad() {
-  //   const token = await userDecodeToken();
+  async function profileLoad() {
+    const token = await userDecodeToken();
 
-  //   if (token != null) {
-  //     setOng(token);
-  //     setLogado(true)
-  //   }
-  //   else {
-  //     console.log("Falha na Profile Load (Perfil.js)")
-  //   }
-  // }
+    if (token != null) {
+      setOng(token);
+      setLogado(true);
+    } else {
+      console.log("Falha na Profile Load (Perfil.js)");
+    }
+  }
 
   // Buscar Dados da Ong Pelo ID
   async function GetOng() {
     try {
       const response = await api.get(`Ong/BuscarPorId?id=${ongId}`);
       console.log(response.data);
-      setInputs(response.data.ong)
+      setInputs(response.data.ong);
     } catch (error) {
-      console.log("Deu Catch, falha na Get Ong (Perfil.js)")
+      console.log("Deu Catch, falha na Get Ong (Perfil.js)");
     }
   }
 
@@ -70,24 +72,27 @@ export const Perfil = ({ navigation, route }) => {
     const token = await userDecodeToken();
 
     try {
-      await api.put(`Ong/Editar`, {
-        ong: {
-
-          id: ongId,
-          name: inputs.name,
-          cnpj: inputs.cnpj,
-          link: inputs.link,
-          descripition: inputs.description,
+      await api.put(
+        `Ong/Editar`,
+        {
+          ong: {
+            id: ongId,
+            name: inputs.name,
+            cnpj: inputs.cnpj,
+            link: inputs.link,
+            descripition: inputs.description,
+          },
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token.token}`,
+          },
         }
-      }, {
-        headers: {
-          'Authorization': `Bearer ${token.token}`
-        }
-      });
-      GetOng()
+      );
+      GetOng();
     } catch (error) {
       console.log(error);
-      console.log("Deu Catch, falha na Put Ong (Perfil.js)")
+      console.log("Deu Catch, falha na Put Ong (Perfil.js)");
     }
   }
 
@@ -114,17 +119,15 @@ export const Perfil = ({ navigation, route }) => {
   //   });
   // }
 
-
   useEffect(() => {
-    // profileLoad();
+    profileLoad();
     GetOng();
   }, []);
-
 
   async function getLocais() {
     try {
       const response = await api.get(`/Endereco/ListarPorOng?idOng=${ongId}`);
-      // console.log(response.data);
+      console.log(response.data);
       setLocais(response.data);
     } catch (error) {
       console.log(error);
@@ -132,7 +135,7 @@ export const Perfil = ({ navigation, route }) => {
   }
 
   useEffect(() => {
-    // getLocais();
+    getLocais();
   }, []);
 
   return showCamera ? (
@@ -151,13 +154,7 @@ export const Perfil = ({ navigation, route }) => {
       <BotaoVoltar onPress={() => navigation.replace("Home")} />
 
       <ViewImageCircle>
-        {photo != null ? (
-          <PerfilImageWhite source={{ uri: photo }} />
-        ) : (
-          <PerfilImageWhite
-            source={require("../../assets/images/Perfil-White.png")}
-          />
-        )}
+        <PerfilImageWhite source={{ uri: photo }} />
       </ViewImageCircle>
 
       <ButtonUploadImage onPress={() => setShowCamera(true)}>
@@ -166,15 +163,15 @@ export const Perfil = ({ navigation, route }) => {
       <TitleCard>{inputs != null && inputs.name}</TitleCard>
       <ContainerMargin>
         <SubtitleCard>
-          Acreditamos que todos merecem a chance de viver uma vida plena e digna.
-          Trabalhamos incansavelmente para criar oportunidades que permitam que
-          indivíduos e comunidades superem desafios e alcancem seu potencial
-          máximo. Através de nossas iniciativas, buscamos reduzir a desigualdade,
-          promover a justiça social e garantir que cada pessoa tenha acesso aos
-          recursos necessários para uma vida digna e saudável.
+          Acreditamos que todos merecem a chance de viver uma vida plena e
+          digna. Trabalhamos incansavelmente para criar oportunidades que
+          permitam que indivíduos e comunidades superem desafios e alcancem seu
+          potencial máximo. Através de nossas iniciativas, buscamos reduzir a
+          desigualdade, promover a justiça social e garantir que cada pessoa
+          tenha acesso aos recursos necessários para uma vida digna e saudável.
         </SubtitleCard>
 
-        {logado == true ? (
+        {logado == false ? (
           <FlatList
             contentContainerStyle={{
               gap: 20,
@@ -186,41 +183,79 @@ export const Perfil = ({ navigation, route }) => {
             key={(item) => item.id}
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => (
-              <CardLocalizacao local={item} onPress={() => navigation.replace("Mapa", { local: item })} />
+              <CardLocalizacao
+                local={item}
+                onPress={() => navigation.replace("Mapa", { local: item })}
+              />
             )}
           />
-        ) :
+        ) : inputs != null ? (
+          <>
+            <Group>
+              <Input
+                value={inputs.name}
+                onChangeText={(txt) => setInputs({ ...inputs, name: txt })}
+                color={edit ? "black" : "gray"}
+                editable={edit}
+                width="100%"
+                border={edit}
+                height={65}
+              />
+              <Input
+                value={inputs.cnpj}
+                onChangeText={(txt) => setInputs({ ...inputs, cnpj: txt })}
+                color={edit ? "black" : "gray"}
+                editable={edit}
+                width="100%"
+                border={edit}
+                height={65}
+              />
+              <Input
+                value={inputs.link}
+                onChangeText={(txt) => setInputs({ ...inputs, link: txt })}
+                color={edit ? "black" : "gray"}
+                editable={edit}
+                width="100%"
+                border={edit}
+                height={75}
+              />
+              <Input
+                value={inputs.description}
+                onChangeText={(txt) =>
+                  setInputs({ ...inputs, description: txt })
+                }
+                color={edit ? "black" : "gray"}
+                editable={edit}
+                width="100%"
+                border={edit}
+                height={150}
+              />
+            </Group>
+            <Group>
+              <Botao
+                width="100%"
+                text={"Editar"}
+                bgColor={"#7BCAF7"}
+                onPress={() => {
+                  setEdit(!edit);
+                  edit ? PutOng() : null;
+                }} // Deve Mudar os inputs e Editar os Dados do Usuário
+              />
 
-          inputs != null ? (<Group>
-            <Input value={inputs.name} onChangeText={(txt) => setInputs({ ...inputs, name: txt })} color={edit ? "black" : "gray"} editable={edit} width="100%" border={edit} height={65} />
-            <Input value={inputs.cnpj} onChangeText={(txt) => setInputs({ ...inputs, cnpj: txt })} color={edit ? "black" : "gray"} editable={edit} width="100%" border={edit} height={65} />
-            <Input value={inputs.link} onChangeText={(txt) => setInputs({ ...inputs, link: txt })} color={edit ? "black" : "gray"} editable={edit} width="100%" border={edit} height={75} />
-            <Input value={inputs.description} onChangeText={(txt) => setInputs({ ...inputs, description: txt })} color={edit ? "black" : "gray"} editable={edit} width="100%" border={edit} height={150} />
-          </Group>) : <ActivityIndicator style={{ height: 200 }} />
-
-
-
-        }
-        <Group>
-
-          <Botao
-            width="100%"
-            text={"Editar"}
-            bgColor={"#7BCAF7"}
-            onPress={() => { setEdit(!edit); edit ? PutOng() : null }} // Deve Mudar os inputs e Editar os Dados do Usuário
-          />
-
-          <Botao
-            width="100%"
-            text={"Sair da Conta"}
-            bgColor={"#7BCAF7"}
-            onPress={() => {
-              // userTokenLogout(); Deve Deslogar
-              navigation.replace("Login"); // Deve Voltar a Página de Login
-            }}
-          />
-
-        </Group>
+              <Botao
+                width="100%"
+                text={"Sair da Conta"}
+                bgColor={"#7BCAF7"}
+                onPress={() => {
+                  // userTokenLogout(); Deve Deslogar
+                  navigation.replace("Login"); // Deve Voltar a Página de Login
+                }}
+              />
+            </Group>
+          </>
+        ) : (
+          <ActivityIndicator style={{ height: 200 }} />
+        )}
       </ContainerMargin>
       <InformationModal
         navigation={navigation}

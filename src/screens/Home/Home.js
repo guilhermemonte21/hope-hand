@@ -16,11 +16,11 @@ import { Group } from "./../../components/Group/Index";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Header } from "../../components/Header/Index";
-import PagerView from "react-native-pager-view";
 
 export const Home = ({ navigation }) => {
   const [noticias, setNoticias] = useState([]);
 
+  //OBTEM NOTICIA PELA API GRATUITA DO IBGE
   async function getNoticias() {
     try {
       const response = await axios.get(
@@ -41,6 +41,7 @@ export const Home = ({ navigation }) => {
       <Header navigation={navigation} />
       <ContainerScroll>
         <ContainerMargin style={{ marginTop: -20 }}>
+          {/* NOTICIA MOCKADA SOBRE O RIO GRANDE DO SUL */}
           <Noticia
             link={"https://sosenchentes.rs.gov.br/inicial"}
             height={200}

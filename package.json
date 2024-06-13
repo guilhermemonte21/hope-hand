@@ -33,6 +33,7 @@
     "react-native-maps": "^1.15.6",
     "react-native-maps-directions": "^1.9.0",
     "react-native-pager-view": "6.3.0",
+    "remask": "^1.2.2",
     "styled-components": "^6.1.11"
   },
   "devDependencies": {
