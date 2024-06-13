@@ -1,3 +1,4 @@
+// imports de componentes
 import { BackHandler, Image } from "react-native";
 import { Botao } from "../../components/Botao/Index";
 import { Container } from "../../components/Container/Style";
@@ -5,13 +6,17 @@ import { Group } from "../../components/Group/Index";
 
 export const Inicio = ({ navigation }) => {
   return (
-    <Container style={{ justifyContent: "space-between" }}>
+    <Container style={{
+      gap: 40
+    }}>
       <Image
         source={require("../../assets/images/logo-whand.png")}
         style={{ width: 200, height: 100 }}
       />
 
-      <Group gap={20}>
+      <Group
+        gap={20}
+      >
         <Botao
           height={80}
           text={"Entrar como ONG"}

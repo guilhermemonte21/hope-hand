@@ -88,8 +88,10 @@ export const CadastroUsuario = ({
         <Container>
             <ContainerScroll
                 style={{
-                    width: "100%"
-                }}
+                    width: "100%",
+                    paddingTop: 50
+                }
+            }
                 showsVerticalScrollIndicator={false}
             >
                 <BotaoVoltar
@@ -101,7 +103,7 @@ export const CadastroUsuario = ({
                 />
 
                 <Titulo
-                    text={"Cadastro - usuário"}
+                    text={"Cadastrar usuário"}
                     fontSize={18}
                     textTransform={"uppercase"}
                 />

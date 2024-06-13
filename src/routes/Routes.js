@@ -35,6 +35,7 @@ export const Route = () => {
         screenOptions={{
           // headerShown: false,
           animation: "fade_from_bottom",
+          headerShown: false
         }}
       >
         <Stack.Screen

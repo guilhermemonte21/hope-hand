@@ -137,7 +137,8 @@ export const CadastroOng = ({
         <Container>
             <ContainerScroll
                 style={{
-                    width: "100%"
+                    width: "100%",
+                    paddingTop: 50
                 }}
                 showsVerticalScrollIndicator={false}
             >
@@ -150,7 +151,7 @@ export const CadastroOng = ({
                 />
 
                 <Titulo
-                    text={"Cadastro - ong"}
+                    text={"Cadastrar ong"}
                     fontSize={18}
                     textTransform={"uppercase"}
                 />
