@@ -11,7 +11,7 @@ const ipLucas = "172.16.39.100";
 const ipSampaio = "192.168.21.115";
 
 // Definir URL padrão
-const apiUrllocal = `http://${ipSampaio}:${portaApiLucas}/api`;
+const apiUrllocal = `http://${ipLucas}:${portaApiLucas}/api`;
 
 // Trazer a configuração do axios
 const api = axios.create({
