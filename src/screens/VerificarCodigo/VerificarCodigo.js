@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Botao } from "../../components/Botao/Index"
 import { BotaoVoltar } from "../../components/BotaoVoltar/Index"
 import { Container } from "../../components/Container/Style"
@@ -6,34 +6,43 @@ import { InputCode } from "../../components/InputCode/Index"
 import { Logo } from "../../components/Logo/Style"
 import { Subtitulo } from "../../components/Subtitulo/Index"
 import { Titulo } from "../../components/Titulo/Index"
+import api from "../../service/Service"
+import { useInsertionEffect } from "react/cjs/react.development"
 
 export const VerificarCodigo = ({
-    navigation
+    navigation,
+    route
 }) => {
     // CONSTS
     const [carregando, setCarregando] = useState(false);
-    const [code, setCode] = useState("")
+    const [code, setCode] = useState("");
 
 
 
     // FUNTIONS
-    const VerificarCodigo = () => {
-        async function ValidateCode() {
-            await api.post(`/RecuperarSenha/ValidarCodigoRecuperacaoSenha?email=${route.params.email}&code=${code}`)
+    async function VerificarCodigo() {
+
+        try {
+            await api.post(`RecuperarSenha/ValidarCodigoRecuperacaoSenha?email=${route.params.email}&code=${code}`)
+            navigation.replace("AlterarSenha", { email: route.params.email })
+        } catch (error) {
+            console.log(error)
         }
+
         setCarregando(true);
 
         setTimeout(() => {
             setCarregando(false)
 
-            navigation.replace("AlterarSenha")
+
         }, 1000);
     }
 
-
     // EFFECTS
 
-
+    useEffect(() => {
+        console.log(code)
+    }, [code])
 
     return (
         <Container>
@@ -55,7 +64,9 @@ export const VerificarCodigo = ({
                 text={"Digite o código enviado no seu Email"}
             />
 
-            <InputCode />
+            <InputCode
+                value={code} setValue={setCode}
+            />
 
             <Botao
                 route={"Login"}

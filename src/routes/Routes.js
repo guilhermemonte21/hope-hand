@@ -25,10 +25,8 @@ import { CadastroOng } from "../screens/Cadastro/CadastroOng";
 //instância do StackNavigator
 const Stack = createNativeStackNavigator();
 
+// ROTAS DE TELAS DO APLICATIVO
 export const Route = () => {
-  {
-    /* TELA DE NAVEGACAO PARA TESTES */
-  }
   return (
     <NavigationContainer>
       <Stack.Navigator

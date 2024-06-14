@@ -20,8 +20,8 @@ export const Login = ({
     navigation
 }) => {
     // CONSTS
-    const [email, setEmail] = useState(""); // email do usuário
-    const [senha, setSenha] = useState(""); // senha do usuário
+    const [email, setEmail] = useState("mikaelsouza@gmail.com"); // email do usuário
+    const [senha, setSenha] = useState("Senai@134"); // senha do usuário
     const [carregando, setCarregando] = useState(false); // ativa o spinner do botão
     const [erro, setErro] = useState(false); // muda a cor dos inputs quando dá algum erro
     const [erroTexto, setErroTexto] = useState(""); // diz qual é o erro que está ocorrendo

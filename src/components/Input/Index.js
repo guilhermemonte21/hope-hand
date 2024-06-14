@@ -1,13 +1,13 @@
-import { useState } from "react";
 import { BoxInput, InputStyled } from "./Style";
 
+// COMPONENTE INPUT DINAMICO COM PROPS PARA ESTILIZAR
 export const Input = ({
   placeholder,
   width = "85%",
   height = 45,
   editable,
-  value,
   onChangeText,
+  value,
   border = true,
   fontFamily = "Poppins_400Regular",
   placeholderTextColor = "rgba(50,48,48, 0.5)",
@@ -15,7 +15,7 @@ export const Input = ({
   autoCapitalize,
   erro,
   keyboardType,
-  maxLength
+  maxLength,
 }) => {
   return (
     <BoxInput
@@ -30,6 +30,9 @@ export const Input = ({
       }}
     >
       <InputStyled
+        style={{
+          color: color,
+        }}
         placeholder={placeholder}
         editable={editable}
         placeholderTextColor={placeholderTextColor}
