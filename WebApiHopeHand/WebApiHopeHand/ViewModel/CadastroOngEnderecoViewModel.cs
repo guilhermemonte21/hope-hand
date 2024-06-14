@@ -18,6 +18,8 @@ namespace WebApiHopeHand.ViewModel
 
         public string? Description { get; set; }
 
+        public string? Photo { get; set; }
+
         [Required(ErrorMessage = "O usuário líder da ONG é obrigatório!")]
         public Guid? UserId { get; set; }
 

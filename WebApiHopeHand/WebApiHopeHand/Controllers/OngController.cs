@@ -40,6 +40,7 @@ namespace WebApiHopeHand.Controllers
                     Description = ongInserted.Description,
                     Link = ongInserted.Link,
                     UserId = ongInserted.UserId,
+                    Photo = "https://hopehandarmazenamento.blob.core.windows.net/hopehandcontainer/default-perfil.png"
                 };
 
                 // Pega os valores do endereço da ONG
