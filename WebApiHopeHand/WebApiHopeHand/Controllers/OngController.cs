@@ -28,7 +28,7 @@ namespace WebApiHopeHand.Controllers
         /// <param name="ongInserted">Objeto CadastroOngEnderecoViewModel</param>
         /// <returns>StatusCode</returns>
         [HttpPost("CadastrarOng")]
-        public async Task<IActionResult> PostOng([FromForm] CadastroOngEnderecoViewModel ongInserted)
+        public async Task<IActionResult> PostOng(CadastroOngEnderecoViewModel ongInserted)
         {
             try
             {
@@ -37,9 +37,7 @@ namespace WebApiHopeHand.Controllers
                 {
                     Name = ongInserted.Name,
                     Cnpj = ongInserted.Cnpj,
-                    Photo = ongInserted.Photo,
                     Description = ongInserted.Description,
-                    Arquivo = ongInserted.Arquivo,
                     Link = ongInserted.Link,
                     UserId = ongInserted.UserId,
                 };
@@ -55,31 +53,12 @@ namespace WebApiHopeHand.Controllers
                     IdOng = newOng.Id
                 };
 
-
-                // Se não inserir imagem alguma
-                if (ongInserted.Arquivo == null)
-                {
-                    // Salva imagem default
-                    newOng.Photo = "https://hopehandarmazenamento.blob.core.windows.net/hopehandcontainer/default-perfil.png";
-                }
-                else
-                {
-                    //define o nome do container do blob
-                    var containerName = "hopehandcontainer";
-
-                    //define a string de conexão
-                    var connectionString = "DefaultEndpointsProtocol=https;AccountName=hopehandarmazenamento;AccountKey=x174GS2yRKB6v9tZ/mRkHspQRhUhCl0L1DzxkeX0MIl55pJEs6arJml8Kg2KuRElMBkisTHSBw87+AStnsXnPg==;EndpointSuffix=core.windows.net";
-
-                    //aqui vamos chamar o método para upload da imagem
-                    newOng.Photo = await AzureBlobStorageHelper.UploadImageBlobAsync(newOng.Arquivo!, connectionString, containerName);
-                }
-
                 // Cadastra a ONG
                 ongRepository.Cadastrar(newOng);
                 // Cadastra o Endereço da ONG
                 enderecoRepository.Cadastrar(newOngAddress);
 
-                return Ok($"ONG cadastrada com sucesso! {ongInserted.Photo}");
+                return Ok($"ONG cadastrada com sucesso!");
             }
             catch (Exception ex)
             {

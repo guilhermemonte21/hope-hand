@@ -8,7 +8,6 @@ namespace WebApiHopeHand.ViewModel
     public class CadastroOngEnderecoViewModel
     {
         // Propriedades da ONG
-
         [Required(ErrorMessage = "O nome da ONG é obrigatório!")]
         public string? Name { get; set; }
 
@@ -16,12 +15,6 @@ namespace WebApiHopeHand.ViewModel
         public string? Cnpj { get; set; }
 
         public string? Link { get; set; }
-
-        [NotMapped]
-        [JsonIgnore]
-        public IFormFile? Arquivo { get; set; }
-        [Column(TypeName = "VARCHAR(MAX)")]
-        public string? Photo { get; set; }
 
         public string? Description { get; set; }
 
@@ -32,9 +25,6 @@ namespace WebApiHopeHand.ViewModel
 
 
         // Propriedades do Endereco
-
-        public Guid? IdOngFK { get; set; }
-
         [Required(ErrorMessage = "O número do endereço é obrigatório!")]
         public int Number { get; set; }
 
