@@ -5,7 +5,6 @@ import {
 import { PerfilImageWhite } from "../../components/Perfil/ImagePerfil";
 import { ButtonUploadImage } from "../../components/Botao/Style";
 import { useEffect, useState } from "react";
-import { InformationModal } from "../../components/Modal/InformationModal/InformationModal";
 import { Input } from "../../components/Input/Index";
 import { CardLocalizacao } from "../../components/CardLocalizacao/Index";
 import {
@@ -32,7 +31,6 @@ export const Perfil = ({ navigation, route }) => {
   const [erro, setErro] = useState(false); // muda a cor dos inputs quando dá algum erro
   const [erroTexto, setErroTexto] = useState(""); // diz qual é o erro que está ocorrendo
 
-  const [showInformationModal, setShowInformationModal] = useState(false); // Abre o modal de informações
   const [photo, setPhoto] = useState(null); // Armazena a Foto
   const [showCamera, setShowCamera] = useState(false); // Abre o Modal de Camera
   const [modalOpen, setModalOpen] = useState(false); // Muda a visibilidade do Modal de Camera
@@ -45,7 +43,6 @@ export const Perfil = ({ navigation, route }) => {
   });
 
   const [locais, setLocais] = useState([]);
-  const [ong, setOng] = useState(null);
 
   const ongId = route.params.ongId;
 
@@ -87,7 +84,6 @@ export const Perfil = ({ navigation, route }) => {
     const token = await userDecodeToken();
 
     if (token != null) {
-      setOng(token);
       setLogado(true);
     } else {
       console.log("Falha na Profile Load (Perfil.js)");
@@ -167,8 +163,10 @@ export const Perfil = ({ navigation, route }) => {
   useEffect(() => {
     profileLoad();
     GetOng();
+    getLocais();
   }, []);
 
+  //buscar locais da ong
   async function getLocais() {
     try {
       const response = await api.get(`/Endereco/ListarPorOng?idOng=${ongId}`);
@@ -178,10 +176,6 @@ export const Perfil = ({ navigation, route }) => {
       console.log(error);
     }
   }
-
-  useEffect(() => {
-    getLocais();
-  }, []);
 
   return showCamera ? (
     <CameraModal
@@ -194,8 +188,8 @@ export const Perfil = ({ navigation, route }) => {
       setInCamera={setShowCamera}
     />
   ) : (
-    <ContainerScroll>
-      <BotaoVoltar onPress={() => navigation.replace("Home")} />
+    <ContainerScroll style={{ paddingTop: 20 }}>
+      <BotaoVoltar onPress={() => !logado ? navigation.goBack() : navigation.goBack()} />
 
       <ViewImageCircle style={{ borderColor: erro ? "#E34949" : "#3FA7E4" }}>
         <PerfilImageWhite source={{ uri: photo }} />
@@ -207,7 +201,7 @@ export const Perfil = ({ navigation, route }) => {
       <TitleCard>
         {inputs && inputs.name ? inputs.name : "Nome não encontrado!"}
       </TitleCard>
-      <ContainerMargin>
+      <ContainerMargin style={{ paddingBottom: 30}}>
         <SubtitleCard>
           Acreditamos que todos merecem a chance de viver uma vida plena e
           digna. Trabalhamos incansavelmente para criar oportunidades que
@@ -319,12 +313,6 @@ export const Perfil = ({ navigation, route }) => {
           <ActivityIndicator style={{ height: 200 }} />
         )}
       </ContainerMargin>
-      <InformationModal
-        navigation={navigation}
-        visible={showInformationModal}
-        setShowModalStethoscope={setShowInformationModal}
-        carregando={carregando}
-      />
       <ModalPhoto
         photo={photo}
         OngPhoto={OngPhoto}

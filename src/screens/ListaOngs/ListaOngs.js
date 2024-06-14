@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import api from "./../../service/Service";
 import { ContainerMargin } from "./../../components/Container/Style";
 import { Input } from "../../components/Input/Index";
+import { BotaoVoltar } from './../../components/BotaoVoltar/Index';
 
 export const ListaOngs = ({ navigation }) => {
   const [carregando, setCarregando] = useState(false);
@@ -54,7 +55,8 @@ export const ListaOngs = ({ navigation }) => {
 
   return (
     <Container>
-      <ContainerMargin>
+        <BotaoVoltar onPress={() => navigation.goBack()}/>
+      <ContainerMargin style={{ paddingTop: 20 }}>
         <Titulo text={"Escolha uma ONG para doar"} fontSize={20} />
 
         <Input

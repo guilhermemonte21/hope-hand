@@ -31,7 +31,7 @@ export const Route = () => {
       <Stack.Navigator
         screenOptions={{
           animation: "fade_from_bottom",
-          headerShown: true,
+          headerShown: false,
         }}
       >
         <Stack.Screen name="Inicio" component={Inicio} />

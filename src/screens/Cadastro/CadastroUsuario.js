@@ -34,11 +34,11 @@ export const CadastroUsuario = ({ navigation }) => {
   const Cadastrar = async () => {
     setCarregando(true);
 
-    if (rg.length != 11) {
+    if (rg.length != 9) {
       setErro(true);
 
       setErroTexto("RG incompleto");
-    } else if (cpf.length != 14) {
+    } else if (cpf.length != 11) {
       setErro(true);
 
       setErroTexto("CPF incompleto");
@@ -65,7 +65,7 @@ export const CadastroUsuario = ({ navigation }) => {
     } else {
       navigation.replace("CadastroOng", {
         nome: nome,
-        dataNascimento: dataNascimento.split("/").reverse().join("-"),
+        dataNascimento: mask(dataNascimento, mascaras[2]).split("/").reverse().join("-"),
         cpf: cpf.split(".").join("").split("-").join(""),
         rg: rg.split(".").join("").split("-").join(""),
         email: email,
@@ -77,7 +77,8 @@ export const CadastroUsuario = ({ navigation }) => {
 
   // EFFECTS
   useEffect(() => {
-  })
+    console.log(rg.length);
+  },[])
 
 
   return (
@@ -102,7 +103,7 @@ export const CadastroUsuario = ({ navigation }) => {
             <Input
               placeholder={"RG:"}
               erro={erro}
-              value={rg}
+              value={mask(rg, mascaras[0])}
               onChangeText={(txt) => setRg(txt)}
               width="45%"
               maxLength={12}
@@ -111,7 +112,7 @@ export const CadastroUsuario = ({ navigation }) => {
             <Input
               placeholder={"CPF:"}
               erro={erro}
-              value={cpf}
+              value={mask(cpf, mascaras[1])}
               maxLength={14}
               onChangeText={(txt) => setCpf(txt)}
               width="45%"

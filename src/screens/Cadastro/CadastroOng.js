@@ -74,7 +74,7 @@ export const CadastroOng = ({
                     "codRecupSenha": 0
                 }).then(async response => {
                     setErro(false);
-                        console.log(response.data.id);
+                        console.log(route.params);
                     try {
                         await api.post("Ong/CadastrarOng", {
                             "name": nomeOng,
