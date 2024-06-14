@@ -104,7 +104,6 @@ export const Route = () => {
           name="Sobre"
           component={Sobre}
         />
-
       </Stack.Navigator>
     </NavigationContainer>
   );
