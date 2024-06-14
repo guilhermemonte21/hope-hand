@@ -1,4 +1,7 @@
-import { ContainerMargin, ContainerScroll } from "../../components/Container/Style";
+import {
+  ContainerMargin,
+  ContainerScroll,
+} from "../../components/Container/Style";
 import { PerfilImageWhite } from "../../components/Perfil/ImagePerfil";
 import { ButtonUploadImage } from "../../components/Botao/Style";
 import { useEffect, useState } from "react";
@@ -7,9 +10,9 @@ import { Input } from "../../components/Input/Index";
 import { CardLocalizacao } from "../../components/CardLocalizacao/Index";
 import { SubtitleCard, TitleCard } from "../../components/CardLocalizacao/Style";
 import { Botao } from "./../../components/Botao/Index";
-import { Group } from "../../components/Group/Index"
+import { Group } from "../../components/Group/Index";
 import { ViewImageCircle } from "../../components/Perfil/ImagePerfil";
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { BotaoVoltar } from "../../components/BotaoVoltar/Index";
 import { CameraModal } from "../../components/Camera/CameraModal";
 import { ModalPhoto } from "../../components/Camera/ModalPhoto/ModalPhoto";
@@ -35,7 +38,7 @@ export const Perfil = ({ navigation, route }) => {
     name: "",
     cnpj: "",
     link: "",
-    description: ""
+    description: "",
   });
 
   const [locais, setLocais] = useState([]);
@@ -65,12 +68,25 @@ export const Perfil = ({ navigation, route }) => {
       setErroTexto("A Descrição deve ter entre 2 e 500 caracteres");
       return false;
     }
-
+  
     // Adicione outras verificações conforme necessário
     // ...
     setCarregando(false);
     setErro(false);
     return true;
+  }
+
+  // Carrega e Armazena os dados da API
+  async function profileLoad() {
+    const token = await userDecodeToken();
+
+    if (token != null) {
+      setOng(token);
+      setLogado(true);
+    } else {
+      console.log("Falha na Profile Load (Perfil.js)");
+    }
+
   }
 
   // Buscar Dados da Ong Pelo ID
@@ -94,17 +110,23 @@ export const Perfil = ({ navigation, route }) => {
     const token = await userDecodeToken();
 
     try {
-      await api.put(`/Ong/Editar`, {
-        id: ongId,
-        name: inputs.name,
-        cnpj: inputs.cnpj,
-        link: inputs.link,
-        description: inputs.description,
-      }, {
-        headers: {
-          'Authorization': `Bearer ${token.token}`
+      await api.put(
+        `Ong/Editar`,
+        {
+          ong: {
+            id: ongId,
+            name: inputs.name,
+            cnpj: inputs.cnpj,
+            link: inputs.link,
+            descripition: inputs.description,
+          },
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token.token}`,
+          },
         }
-      });
+      );
       GetOng();
     } catch (error) {
       console.log(error);
@@ -124,6 +146,7 @@ export const Perfil = ({ navigation, route }) => {
         uri: photo,
       });
 
+
       await api.put(`/Ong/AlterarFoto`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
@@ -139,12 +162,14 @@ export const Perfil = ({ navigation, route }) => {
   }
 
   useEffect(() => {
+    profileLoad();
     GetOng();
   }, []);
 
   async function getLocais() {
     try {
       const response = await api.get(`/Endereco/ListarPorOng?idOng=${ongId}`);
+      console.log(response.data);
       setLocais(response.data);
     } catch (error) {
       console.log(error);
@@ -152,7 +177,7 @@ export const Perfil = ({ navigation, route }) => {
   }
 
   useEffect(() => {
-    // getLocais();
+    getLocais();
   }, []);
 
   return showCamera ? (
@@ -185,15 +210,16 @@ export const Perfil = ({ navigation, route }) => {
       <TitleCard>{inputs && inputs.name ? inputs.name : 'Nome não encontrado!'}</TitleCard>
       <ContainerMargin>
         <SubtitleCard>
-          Acreditamos que todos merecem a chance de viver uma vida plena e digna.
-          Trabalhamos incansavelmente para criar oportunidades que permitam que
-          indivíduos e comunidades superem desafios e alcancem seu potencial
-          máximo. Através de nossas iniciativas, buscamos reduzir a desigualdade,
-          promover a justiça social e garantir que cada pessoa tenha acesso aos
-          recursos necessários para uma vida digna e saudável.
+          Acreditamos que todos merecem a chance de viver uma vida plena e
+          digna. Trabalhamos incansavelmente para criar oportunidades que
+          permitam que indivíduos e comunidades superem desafios e alcancem seu
+          potencial máximo. Através de nossas iniciativas, buscamos reduzir a
+          desigualdade, promover a justiça social e garantir que cada pessoa
+          tenha acesso aos recursos necessários para uma vida digna e saudável.
         </SubtitleCard>
 
-        {logado ? (
+        {!logado ? (
+
           <FlatList
             contentContainerStyle={{
               gap: 20,
@@ -205,12 +231,66 @@ export const Perfil = ({ navigation, route }) => {
             key={(item) => item.id}
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => (
-              <CardLocalizacao local={item} onPress={() => navigation.replace("Mapa", { local: item })} />
+              <CardLocalizacao
+                local={item}
+                onPress={() => navigation.replace("Mapa", { local: item })}
+              />
             )}
           />
-        ) :
-
+        ) : inputs != null ? (
+          <>
+            <Group>
+              <Input
+                value={inputs.name}
+                onChangeText={(txt) => setInputs({ ...inputs, name: txt })}
+                color={edit ? "black" : "gray"}
+                editable={edit}
+                width="100%"
+                border={edit}
+                height={65}
+              />
+              <Input
+                value={inputs.cnpj}
+                onChangeText={(txt) => setInputs({ ...inputs, cnpj: txt })}
+                color={edit ? "black" : "gray"}
+                editable={edit}
+                width="100%"
+                border={edit}
+                height={65}
+              />
+              <Input
+                value={inputs.link}
+                onChangeText={(txt) => setInputs({ ...inputs, link: txt })}
+                color={edit ? "black" : "gray"}
+                editable={edit}
+                width="100%"
+                border={edit}
+                height={75}
+              />
+              <Input
+                value={inputs.description}
+                onChangeText={(txt) =>
+                  setInputs({ ...inputs, description: txt })
+                }
+                color={edit ? "black" : "gray"}
+                editable={edit}
+                width="100%"
+                border={edit}
+                height={150}
+              />
+            </Group>
+            <Group>
+              <Botao
+                width="100%"
+                text={"Editar"}
+                bgColor={"#7BCAF7"}
+                onPress={() => {
+                  setEdit(!edit);
+                  edit ? PutOng() : null;
+                }} // Deve Mudar os inputs e Editar os Dados do Usuário
+              />
           inputs ? (
+            <>
             <Group>
 
               {
@@ -268,10 +348,7 @@ export const Perfil = ({ navigation, route }) => {
                 erro={erro}
               />
             </Group>
-          ) : <ActivityIndicator style={{ height: 200 }} />
-
-        }
-        <Group>
+<Group>
           <Botao
             width="100%"
             text={"Editar"}
@@ -290,6 +367,12 @@ export const Perfil = ({ navigation, route }) => {
             }}
           />
         </Group>
+</>
+          ) : <ActivityIndicator style={{ height: 200 }} />
+
+        }
+        
+
       </ContainerMargin>
       <InformationModal
         navigation={navigation}

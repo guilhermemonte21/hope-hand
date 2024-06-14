@@ -2,6 +2,7 @@ import { Image } from "react-native";
 import { HeaderStyled } from "./Style";
 import { Botao } from "../Botao/Index";
 
+// HEADER FIXADO NO TOPO PARA A PAGINA HOME
 export const Header = ({ navigation }) => {
   return (
     <HeaderStyled>
