@@ -63,7 +63,10 @@ export const Route = () => {
           component={ConfirmarPagamento}
         />
 
-        <Stack.Screen name="Sobre" component={Sobre} />
+        <Stack.Screen
+          name="Sobre"
+          component={Sobre}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

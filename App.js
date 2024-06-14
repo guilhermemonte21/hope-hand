@@ -25,7 +25,6 @@ export default function App() {
         <StatusBar translucent backgroundColor="transparent" />
 
         <Route />
-
       </>
     );
   }

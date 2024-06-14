@@ -28,20 +28,20 @@ export const CadastroUsuario = ({ navigation }) => {
   const [erro, setErro] = useState(false); // muda a cor dos inputs quando dá algum erro
   const [erroTexto, setErroTexto] = useState(""); // diz qual é o erro que está ocorrendo
 
-  const mascaras = ["99.999.999-9", "999.999.999-99", "99/99/9999"];
+  const mascaras = ["99.999.999-S", "999.999.999-99", "99/99/9999"];
 
   // FUNCTIONS
   const Cadastrar = async () => {
     setCarregando(true);
 
-    if (mask(rg, mascaras[0]).length != 12) {
+    if (rg.length != 11) {
       setErro(true);
 
-      setErroTexto("RG incompleto, tente novamente");
-    } else if (mask(cpf, mascaras[1]).length != 14) {
+      setErroTexto("RG incompleto");
+    } else if (cpf.length != 14) {
       setErro(true);
 
-      setErroTexto("CPF incompleto, tente novamente");
+      setErroTexto("CPF incompleto");
     } else if (nome == "") {
       setErro(true);
 
@@ -49,7 +49,7 @@ export const CadastroUsuario = ({ navigation }) => {
     } else if (dataNascimento == "") {
       setErro(true);
 
-      setErroTexto("Insira sua data de nascimento e tente novamente");
+      setErroTexto("Insira sua data de nascimento");
     } else if (email == "") {
       setErro(true);
 
@@ -65,9 +65,9 @@ export const CadastroUsuario = ({ navigation }) => {
     } else {
       navigation.replace("CadastroOng", {
         nome: nome,
-        dataNascimento: mask(dataNascimento, mascaras[2]).split("/").reverse().join("-"),
-        cpf: cpf,
-        rg: rg,
+        dataNascimento: dataNascimento.split("/").reverse().join("-"),
+        cpf: cpf.split(".").join("").split("-").join(""),
+        rg: rg.split(".").join("").split("-").join(""),
         email: email,
         senha: senha,
       });
@@ -77,8 +77,8 @@ export const CadastroUsuario = ({ navigation }) => {
 
   // EFFECTS
   useEffect(() => {
-    console.log(rg);
-  }, [dataNascimento]);
+  })
+
 
   return (
     <Container>

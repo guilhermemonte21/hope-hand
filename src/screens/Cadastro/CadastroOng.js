@@ -6,7 +6,6 @@ import { Input } from "../../components/Input/Index"
 import { Logo } from "../../components/Logo/Style"
 import { Titulo } from "../../components/Titulo/Index"
 import { Group } from "../../components/Group/Index"
-import { Circle } from "react-native-maps"
 
 // imports importantes
 import { useEffect, useState } from "react"
@@ -130,6 +129,17 @@ export const CadastroOng = ({
     useEffect(() => {
         AddressPicker()
     }, [cep])
+
+    useEffect(() => {
+        console.log(
+            cpf,
+            dataNascimento,
+            email,
+            nome,
+            rg,
+            senha
+        );
+    }, [])
 
 
     return (
