@@ -21,7 +21,6 @@ import { Sobre } from "../screens/Sobre/Sobre";
 import { ConfirmarPagamento } from "../screens/ConfirmarPagamento/ConfirmarPagamento";
 import { CadastroOng } from "../screens/Cadastro/CadastroOng";
 
-
 //instância do StackNavigator
 const Stack = createNativeStackNavigator();
 
@@ -32,79 +31,39 @@ export const Route = () => {
       <Stack.Navigator
         screenOptions={{
           animation: "fade_from_bottom",
-          headerShown: true
+          headerShown: true,
         }}
       >
-        <Stack.Screen
-          name="Navigation"
-          component={Navigation}
-        />
+        <Stack.Screen name="Inicio" component={Inicio} />
 
-        <Stack.Screen
-          name="Inicio"
-          component={Inicio}
-        />
+        <Stack.Screen name="Navigation" component={Navigation} />
 
-        <Stack.Screen
-          name="Login"
-          component={Login}
-        />
+        <Stack.Screen name="Login" component={Login} />
 
-        <Stack.Screen
-          name="CadastroUsuario"
-          component={CadastroUsuario}
-        />
+        <Stack.Screen name="CadastroUsuario" component={CadastroUsuario} />
 
-        <Stack.Screen
-          name="CadastroOng"
-          component={CadastroOng}
-        />
+        <Stack.Screen name="CadastroOng" component={CadastroOng} />
 
-        <Stack.Screen
-          name="RecuperarSenha"
-          component={RecuperarSenha}
-        />
+        <Stack.Screen name="RecuperarSenha" component={RecuperarSenha} />
 
-        <Stack.Screen
-          name="VerificarCodigo"
-          component={VerificarCodigo}
-        />
+        <Stack.Screen name="VerificarCodigo" component={VerificarCodigo} />
 
-        <Stack.Screen
-          name="AlterarSenha"
-          component={AlterarSenha}
-        />
+        <Stack.Screen name="AlterarSenha" component={AlterarSenha} />
 
-        <Stack.Screen
-          name="Home"
-          component={Home}
-        />
+        <Stack.Screen name="Home" component={Home} />
 
-        <Stack.Screen
-          name="Perfil"
-          component={Perfil}
-        />
+        <Stack.Screen name="Perfil" component={Perfil} />
 
-        <Stack.Screen
-          name="ListaOngs"
-          component={ListaOngs}
-        />
+        <Stack.Screen name="ListaOngs" component={ListaOngs} />
 
-        <Stack.Screen
-          name="Mapa"
-          component={Mapa}
-        />
+        <Stack.Screen name="Mapa" component={Mapa} />
 
         <Stack.Screen
           name="ConfirmarPagamento"
           component={ConfirmarPagamento}
         />
 
-        <Stack.Screen
-          name="Sobre"
-          component={Sobre}
-        />
-
+        <Stack.Screen name="Sobre" component={Sobre} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -19,10 +19,10 @@ export const CadastroOng = ({
     route
 }) => {
     // CONSTS
-    const [nomeOng, setNomeOng] = useState(""); // nome da ong
-    const [cnpj, setCnpj] = useState(""); // cnpj da ong
-    const [numero, setNumero] = useState(""); // número do local
-    const [cep, setCep] = useState(""); // cep do local
+    const [nomeOng, setNomeOng] = useState("Vasco da Gama"); // nome da ong
+    const [cnpj, setCnpj] = useState("12121212121212"); // cnpj da ong
+    const [numero, setNumero] = useState("12"); // número do local
+    const [cep, setCep] = useState("09351330"); // cep do local
     const [cidade, setCidade] = useState(""); // cidade do lugar
     const [uf, setUf] = useState(""); // estado do lugar
     const [carregando, setCarregando] = useState(false); // ativa o spinner do botão
@@ -37,11 +37,11 @@ export const CadastroOng = ({
     const senha = route.params.senha; // senha do usuário
 
 
-
+    
     // FUNCTIONS
     const Cadastrar = async () => {
         setCarregando(true);
-
+        
         if (nomeOng == "") {
             setErro(true);
 
@@ -49,21 +49,22 @@ export const CadastroOng = ({
         }
         else if (cnpj.length != 14) {
             setErro(true);
-
+            
             setErroTexto("O CNPJ completo é obrigatório, tente novamente")
         }
         else if (cep.length != 8) {
             setErro(true);
-
+            
             setErroTexto("CEP inválido, tente novamente")
         }
         else if (numero == "") {
             setErro(true);
-
+            
             setErroTexto("Informe o número do local da ONG")
         }
         else {
             try {
+                console.log(route.params);
                 await api.post("/Usuario/CriarConta", {
                     "name": nome,
                     "birth": dataNascimento,
@@ -74,8 +75,7 @@ export const CadastroOng = ({
                     "codRecupSenha": 0
                 }).then(async response => {
                     setErro(false);
-
-                    console.log(response.data.id);
+                        console.log(response.data.id);
                     try {
                         await api.post("Ong/CadastrarOng", {
                             "name": nomeOng,
@@ -116,7 +116,6 @@ export const CadastroOng = ({
         if (cep.length == 8) {
             await api.get(`https://viacep.com.br/ws/${cep}/json/`)
                 .then(response => {
-                    console.log(response.data);
 
                     setCidade(response.data.localidade);
 
@@ -129,7 +128,7 @@ export const CadastroOng = ({
 
     // EFFECTS
     useEffect(() => {
-        AddressPicker();
+        AddressPicker()
     }, [cep])
 
 
