@@ -72,9 +72,9 @@ export const CadastroUsuario = ({ navigation }) => {
         senha: senha,
       });
     }
-
     setCarregando(false);
   };
+}
 
   // EFFECTS
   

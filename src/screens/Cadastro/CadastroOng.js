@@ -76,20 +76,14 @@ export const CadastroOng = ({
                     setErro(false);
 
                     console.log(response.data.id);
-
-                    var form = new FormData();
-                    form.append("Name", nomeOng);
-                    form.append("Cnpj", cnpj);
-                    form.append("Number", numero);
-                    form.append("Cep", cep);
-                    form.append("UserId", response.data.id);
-                    console.log(form);
-
                     try {
-                        await api.post("Ong/CadastrarOng", form, {
-                            headers: {
-                                "Content-Type": "multipart/form-data",
-                            },
+                        await api.post("Ong/CadastrarOng", {
+                            "name": nomeOng,
+                            "cnpj": cnpj,
+                            "userId": response.data.id,
+                            "number": numero,
+                            "cep": cep,
+                            "address": "string"
                         })
                             .then(() => {
                                 setErro(false);
@@ -118,17 +112,33 @@ export const CadastroOng = ({
         setCarregando(false);
     }
 
+    const AddressPicker = async () => {
+        if (cep.length == 8) {
+            await api.get(`https://viacep.com.br/ws/${cep}/json/`)
+                .then(response => {
+                    console.log(response.data);
+
+                    setCidade(response.data.localidade);
+
+                    setUf(response.data.uf)
+                })
+        }
+    }
+
 
 
     // EFFECTS
+    useEffect(() => {
+        AddressPicker();
+    }, [cep])
 
-    
 
     return (
         <Container>
             <ContainerScroll
                 style={{
-                    width: "100%"
+                    width: "100%",
+                    paddingTop: 50
                 }}
                 showsVerticalScrollIndicator={false}
             >
@@ -141,7 +151,7 @@ export const CadastroOng = ({
                 />
 
                 <Titulo
-                    text={"Cadastro - ong"}
+                    text={"Cadastrar ong"}
                     fontSize={18}
                     textTransform={"uppercase"}
                 />
@@ -194,7 +204,6 @@ export const CadastroOng = ({
                     >
                         <Input
                             placeholder={"Cidade:"}
-                            maxLength={8}
                             width="60%"
                             value={cidade}
                             border={false}

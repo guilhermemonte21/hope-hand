@@ -47,8 +47,7 @@ export const VerificarCodigo = ({
     return (
         <Container>
             <BotaoVoltar
-                navigation={navigation}
-                route={"Login"}
+                onPress={() => navigation.replace("Login")}
             />
 
             <Logo
