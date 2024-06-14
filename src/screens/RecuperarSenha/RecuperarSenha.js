@@ -27,7 +27,6 @@ export const RecuperarSenha = ({
         }
 
         setCarregando(false)
-
     }
 
     // EFFECTS
@@ -37,8 +36,7 @@ export const RecuperarSenha = ({
     return (
         <Container>
             <BotaoVoltar
-                navigation={navigation}
-                route={"Login"}
+            onPress={() => navigation.replace("Login")}
             />
 
             <Logo

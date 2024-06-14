@@ -6,8 +6,10 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 
 export const BotaoPay = () => {
+  //BOTAO SELECIONADO (FICA COM COR MODIFICADA)
   const [selectedButton, setSelectedButton] = useState(null);
 
+  //FUNÇÃO QUE ALTERA A COR DO BOTÃO SELECIONADO
   const handleButtonPress = (index) => {
     setSelectedButton(index);
   };

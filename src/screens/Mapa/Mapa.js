@@ -3,8 +3,6 @@ import { Group } from "../../components/Group/Index";
 import { Input } from "../../components/Input/Index";
 import { Titulo } from "../../components/Titulo/Index";
 import { Botao } from "../../components/Botao/Index";
-import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
-import { BotaoVoltar } from "../../components/BotaoVoltar/Index";
 import { useEffect, useRef, useState } from "react";
 import {
   LocationAccuracy,
@@ -12,15 +10,21 @@ import {
   requestForegroundPermissionsAsync,
   watchPositionAsync,
 } from "expo-location";
-import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
-import MapViewDirections from "react-native-maps-directions";
-import { mapskey } from "../../utils/MapsKey";
+import {
+  ActivityIndicator,
+  Linking,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
+import { MapComponent } from "../../components/MapComponent/MapComponent";
 
+// TELA DE LOCALIZACAO
 export const Mapa = ({ navigation, route }) => {
   // CONSTS
-  const mapReference = useRef(null);
   const [initialPosition, setInitialPosition] = useState(null);
 
+  // LOCAL DA ONG PEGO PELO ROUTE PARAMS
   const finalPosition = {
     latitude: Number(route.params.local.latitude),
     longitude: Number(route.params.local.longitude),
@@ -38,6 +42,7 @@ export const Mapa = ({ navigation, route }) => {
     }
   };
 
+  // CARREGA O MAPA PROPORCIONANDO ENCAIXE DOS DOIS MARCADORES DE LOCAL 
   const RecarregarVisualizacaoMapa = async () => {
     if (mapReference.current && initialPosition) {
       await mapReference.current.fitToCoordinates(
@@ -98,48 +103,7 @@ export const Mapa = ({ navigation, route }) => {
       }}
     >
       {initialPosition != null ? (
-        <MapView
-          ref={mapReference}
-          provider={PROVIDER_GOOGLE}
-          style={styles.map}
-          initialRegion={{
-            latitude: initialPosition.coords.latitude,
-            longitude: initialPosition.coords.longitude,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
-          }}
-        >
-          <Marker
-            coordinate={{
-              latitude: initialPosition.coords.latitude,
-              longitude: initialPosition.coords.longitude,
-            }}
-            title="Localização atual"
-            description="Você está aqui"
-          />
-
-          <Marker
-            coordinate={{
-              latitude: finalPosition.latitude,
-              longitude: finalPosition.longitude,
-            }}
-            title="Localização atual"
-            description="Você está aqui"
-          />
-
-          <MapViewDirections
-            origin={initialPosition.coords}
-            destination={{
-              latitude: finalPosition.latitude,
-              longitude: finalPosition.longitude,
-              latitudeDelta: 0.005,
-              longitudeDelta: 0.005,
-            }}
-            apikey={mapskey}
-            strokeWidth={5}
-            strokeColor="red"
-          />
-        </MapView>
+        <MapComponent initialPosition={initialPosition} finalPosition={finalPosition} />
       ) : (
         <View style={styles.nonMap}>
           <Text style={styles.nonMapText}>Carregando mapa...</Text>
@@ -196,21 +160,22 @@ export const Mapa = ({ navigation, route }) => {
 
         <Group row>
           <Botao
-            onPress={() => {
-              navigation.replace("Perfil");
-            }}
+            onPress={() => navigation.replace("Perfil")}
             width="50%"
             text={"Voltar"}
             bgColor="#B0B0B0"
             radius={20}
           />
           <Botao
-            onPress={() => {
-              navigation.replace("Perfil");
-            }}
+            onPress={() =>
+              Linking.openURL(
+                `https://www.google.com/maps/place/${finalPosition.latitude}, ${finalPosition.longitude}
+
+                `
+              )
+            }
             width="50%"
-            text={"Voltar"}
-            bgColor="#B0B0B0"
+            text={"Abrir Maps"}
             radius={20}
           />
         </Group>
@@ -220,10 +185,6 @@ export const Mapa = ({ navigation, route }) => {
 };
 
 const styles = StyleSheet.create({
-  map: {
-    width: "100%",
-    height: 271,
-  },
 
   nonMap: {
     width: "100%",

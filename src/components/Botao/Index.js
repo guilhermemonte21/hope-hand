@@ -1,6 +1,7 @@
 import { ActivityIndicator } from "react-native";
 import { ButtonStyled, TextButton } from "./Style";
 
+//COMPONENTE BOTAO DINAMICO COM PROPS PARA ESTILIZAÇÃO
 export const Botao = ({
   text,
   onPress,

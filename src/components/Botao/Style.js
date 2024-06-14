@@ -9,11 +9,12 @@ export const ButtonStyled = styled.TouchableOpacity`
   align-items: center;
 `;
 
-// Extended button style for a shorter button
+// BOTAO MENOR
 export const ButtonShort = styled(ButtonStyled)`
   width: 30%;
 `;
 
+// BOTAO UPLOAD
 export const ButtonUploadImage = styled(ButtonStyled)`
   border: 1px solid #3FA7E4;
   padding: 10px;
@@ -29,6 +30,7 @@ export const ButtonUploadImage = styled(ButtonStyled)`
   backgroundColor: #7BCAF7;
 `;
 
+//TEXTO DO BOTAO
 export const TextButton = styled.Text`
   font-size: 14px;
   font-family: "Kanit_400Regular";

@@ -25,5 +25,6 @@ export const BoxInput = styled.View`
 
 export const InputStyled = styled.TextInput`
   text-align: start;
+  padding: 0 8px;
   font-size: 13px;
 `;

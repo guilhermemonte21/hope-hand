@@ -4,7 +4,6 @@ export const BotaoVoltar = ({
     onPress
 }) => {
     return (
-
         <IconBox onPress={onPress}>
             <Icon
                 source={require("../../assets/images/btvoltar.png")}

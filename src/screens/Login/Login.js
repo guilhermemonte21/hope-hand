@@ -13,16 +13,21 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // import da api
 import api from "../../service/Service";
+import Toast from "react-native-toast-message";
+import { ShowToastStyled } from "../../components/Toast/ToastStyled";
 
 export const Login = ({
     navigation
 }) => {
     // CONSTS
-    const [email, setEmail] = useState(""); // email do usuário
-    const [senha, setSenha] = useState(""); // senha do usuário
+    const [email, setEmail] = useState("mikaelsouza@gmail.com"); // email do usuário
+    const [senha, setSenha] = useState("Senai@134"); // senha do usuário
     const [carregando, setCarregando] = useState(false); // ativa o spinner do botão
     const [erro, setErro] = useState(false); // muda a cor dos inputs quando dá algum erro
     const [erroTexto, setErroTexto] = useState(""); // diz qual é o erro que está ocorrendo
+
+    const [contaErroToast, setContaErroToast] = useState(0); // seta se a notificação
+    const [indexErro, setIndexErro] = useState(0);
 
 
     // FUNCTIONS
@@ -38,12 +43,51 @@ export const Login = ({
 
                 await AsyncStorage.setItem("token", JSON.stringify(response.data));
 
+                ShowToastStyled({
+                    type: "success", // seta como estado de sucesso
+                })
+
                 navigation.replace("Home");
             })
         } catch (error) {
             setErro(true);
 
-            console.log(error);
+            if (contaErroToast == 3) {
+                setContaErroToast(0)
+
+                let subtext = [
+                    'Tente recuperar sua senha em "Esqueceu sua senha?"',
+                    "Se você não tem uma conta, cadastre-se já!"
+                ]
+
+                return (
+                    ShowToastStyled({
+                        type: "error", // seta como estado de erro
+                        text1: "Login não realizado", // título da notficação
+                        text2: subtext[indexErro], // subttítulo da notificação
+                        visibilityTime: 5000, // tempo de exibição da notificação
+                        swipeable: false // seta se a funcionalidade de mexer a notificação funciona
+                    }),
+                    indexErro == 0 ?
+                        setIndexErro(1)
+                        :
+                        setIndexErro(0),
+                    setTimeout(() => {
+                        setCarregando(false)
+                    }, 5000)
+                )
+            }
+
+            setContaErroToast(contaErroToast + 1);
+
+            // função para ativar a notificação toast e customizar ela
+            ShowToastStyled({
+                type: "error",
+                text1: "Login não realizado",
+                text2: "Verifique se o email e a senha estão corretos"
+            })
+
+            setErroTexto("Email ou senha incorretos")
         }
 
         setCarregando(false);
@@ -90,6 +134,17 @@ export const Login = ({
                 route={"RecuperarSenha"}
             />
 
+            {
+                erro ?
+                    <Titulo
+                        text={erroTexto}
+                        color={"#E34949"}
+                        textAlign={"center"}
+                    />
+                    :
+                    null
+            }
+
             <Botao
                 text={"Entrar"}
                 bgColor={"#7BCAF7"}
@@ -103,6 +158,8 @@ export const Login = ({
                 navigation={navigation}
                 route={"CadastroUsuario"}
             />
+
+            <Toast />
         </Container>
     );
 }
