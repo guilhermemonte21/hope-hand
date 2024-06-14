@@ -47,6 +47,7 @@ export const Perfil = ({ navigation, route }) => {
   const [locais, setLocais] = useState([]);
   const [ong, setOng] = useState(null);
 
+  // Passa o Id da Ong
   const ongId = route.params.ongId;
 
   // Função de Verificação
@@ -118,13 +119,11 @@ export const Perfil = ({ navigation, route }) => {
       await api.put(
         `Ong/Editar`,
         {
-          ong: {
             id: ongId,
             name: inputs.name,
             cnpj: inputs.cnpj,
             link: inputs.link,
             descripition: inputs.description,
-          },
         },
         {
           headers: {
@@ -183,6 +182,7 @@ export const Perfil = ({ navigation, route }) => {
     getLocais();
   }, []);
 
+  // Modal de Camera
   return showCamera ? (
     <CameraModal
       photo={photo}
@@ -194,6 +194,7 @@ export const Perfil = ({ navigation, route }) => {
       setInCamera={setShowCamera}
     />
   ) : (
+    // Tela de Perfil - Exibida quando a Camera está Fechada
     <ContainerScroll>
       <BotaoVoltar onPress={() => navigation.replace("Home")} />
 
@@ -300,7 +301,7 @@ export const Perfil = ({ navigation, route }) => {
                 onPress={() => {
                   setEdit(!edit);
                   edit ? PutOng() : null;
-                }} // Deve Mudar os inputs e Editar os Dados do Usuário
+                }}
                 carregando={carregando}
               />
 
@@ -309,8 +310,7 @@ export const Perfil = ({ navigation, route }) => {
                 text={"Sair da Conta"}
                 bgColor={"#7BCAF7"}
                 onPress={() => {
-                  // userTokenLogout(); Deve Deslogar
-                  navigation.replace("Login"); // Deve Voltar a Página de Login
+                  navigation.replace("Login");
                 }}
               />
             </Group>

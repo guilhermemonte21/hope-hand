@@ -21,7 +21,7 @@ export const ButtonUploadImage = styled(ButtonStyled)`
   alignItems: flex-start;
   justifyContent: center;
   position: absolute;
-  top: 25%;
+  top: 20%;
   left: 90%;
   borderTopLeftRadius: 12px;
   borderBottomLeftRadius: 12px;
