@@ -74,10 +74,9 @@ export const CadastroUsuario = ({ navigation }) => {
     }
     setCarregando(false);
   };
-}
 
   // EFFECTS
-  
+
   return (
     <Container>
       <ContainerScroll

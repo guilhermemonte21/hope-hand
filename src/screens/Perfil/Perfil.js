@@ -8,7 +8,10 @@ import { useEffect, useState } from "react";
 import { InformationModal } from "../../components/Modal/InformationModal/InformationModal";
 import { Input } from "../../components/Input/Index";
 import { CardLocalizacao } from "../../components/CardLocalizacao/Index";
-import { SubtitleCard, TitleCard } from "../../components/CardLocalizacao/Style";
+import {
+  SubtitleCard,
+  TitleCard,
+} from "../../components/CardLocalizacao/Style";
 import { Botao } from "./../../components/Botao/Index";
 import { Group } from "../../components/Group/Index";
 import { ViewImageCircle } from "../../components/Perfil/ImagePerfil";
@@ -30,7 +33,7 @@ export const Perfil = ({ navigation, route }) => {
   const [erroTexto, setErroTexto] = useState(""); // diz qual é o erro que está ocorrendo
 
   const [showInformationModal, setShowInformationModal] = useState(false); // Abre o modal de informações
-  const [photo, setPhoto] = useState(null); // Armazena a Foto 
+  const [photo, setPhoto] = useState(null); // Armazena a Foto
   const [showCamera, setShowCamera] = useState(false); // Abre o Modal de Camera
   const [modalOpen, setModalOpen] = useState(false); // Muda a visibilidade do Modal de Camera
   // Armazena os Dados
@@ -52,29 +55,32 @@ export const Perfil = ({ navigation, route }) => {
       setErro(true);
       setErroTexto("O Nome deve ter entre 2 e 40 caracteres!");
       return false;
-    }
-    else if (inputs.cnpj.trim().length < 14) {
+    } else if (inputs.cnpj.trim().length < 14) {
       setErro(true);
       setErroTexto("O CNPJ deve Conter 14 caracteres!");
       return false;
-    }
-    else if (inputs.link.trim().length < 2 || inputs.link.trim().length > 40) {
+    } else if (
+      inputs.link.trim().length < 2 ||
+      inputs.link.trim().length > 40
+    ) {
       setErro(true);
       setErroTexto("O Link deve ter entre 2 e 40 caracteres");
       return false;
-    }
-    else if (inputs.description.trim().length < 2 || inputs.description.trim().length > 500) {
+    } else if (
+      inputs.description.trim().length < 2 ||
+      inputs.description.trim().length > 500
+    ) {
       setErro(true);
       setErroTexto("A Descrição deve ter entre 2 e 500 caracteres");
       return false;
     }
-  
+
     // Adicione outras verificações conforme necessário
     // ...
     setCarregando(false);
     setErro(false);
     return true;
-  }
+  };
 
   // Carrega e Armazena os dados da API
   async function profileLoad() {
@@ -86,7 +92,6 @@ export const Perfil = ({ navigation, route }) => {
     } else {
       console.log("Falha na Profile Load (Perfil.js)");
     }
-
   }
 
   // Buscar Dados da Ong Pelo ID
@@ -139,23 +144,21 @@ export const Perfil = ({ navigation, route }) => {
     const token = await userDecodeToken();
     try {
       const formData = new FormData();
-      formData.append("IdOng", ongId)
+      formData.append("IdOng", ongId);
       formData.append("Arquivo", {
         name: `image.${photo.split(".")[1]}`,
         type: `image/${photo.split(".")[1]}`,
         uri: photo,
       });
 
-
       await api.put(`/Ong/AlterarFoto`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
-          "Authorization": `Bearer ${token.token}`
-        }
+          Authorization: `Bearer ${token.token}`,
+        },
       });
 
-      GetOng()
-
+      GetOng();
     } catch (error) {
       console.error("Deu Catch, falha na Ong Photo (Perfil.js)", error);
     }
@@ -195,19 +198,15 @@ export const Perfil = ({ navigation, route }) => {
       <BotaoVoltar onPress={() => navigation.replace("Home")} />
 
       <ViewImageCircle style={{ borderColor: erro ? "#E34949" : "#3FA7E4" }}>
-        {photo ? (
-          <PerfilImageWhite source={{ uri: photo }} />
-        ) : (
-          <PerfilImageWhite
-            source={require("../../assets/images/Perfil-White.png")}
-          />
-        )}
+        <PerfilImageWhite source={{ uri: photo }} />
       </ViewImageCircle>
 
       <ButtonUploadImage onPress={() => setShowCamera(true)}>
         <MaterialCommunityIcons name="camera-enhance" size={22} color="white" />
       </ButtonUploadImage>
-      <TitleCard>{inputs && inputs.name ? inputs.name : 'Nome não encontrado!'}</TitleCard>
+      <TitleCard>
+        {inputs && inputs.name ? inputs.name : "Nome não encontrado!"}
+      </TitleCard>
       <ContainerMargin>
         <SubtitleCard>
           Acreditamos que todos merecem a chance de viver uma vida plena e
@@ -219,7 +218,6 @@ export const Perfil = ({ navigation, route }) => {
         </SubtitleCard>
 
         {!logado ? (
-
           <FlatList
             contentContainerStyle={{
               gap: 20,
@@ -240,73 +238,17 @@ export const Perfil = ({ navigation, route }) => {
         ) : inputs != null ? (
           <>
             <Group>
-              <Input
-                value={inputs.name}
-                onChangeText={(txt) => setInputs({ ...inputs, name: txt })}
-                color={edit ? "black" : "gray"}
-                editable={edit}
-                width="100%"
-                border={edit}
-                height={65}
-              />
-              <Input
-                value={inputs.cnpj}
-                onChangeText={(txt) => setInputs({ ...inputs, cnpj: txt })}
-                color={edit ? "black" : "gray"}
-                editable={edit}
-                width="100%"
-                border={edit}
-                height={65}
-              />
-              <Input
-                value={inputs.link}
-                onChangeText={(txt) => setInputs({ ...inputs, link: txt })}
-                color={edit ? "black" : "gray"}
-                editable={edit}
-                width="100%"
-                border={edit}
-                height={75}
-              />
-              <Input
-                value={inputs.description}
-                onChangeText={(txt) =>
-                  setInputs({ ...inputs, description: txt })
-                }
-                color={edit ? "black" : "gray"}
-                editable={edit}
-                width="100%"
-                border={edit}
-                height={150}
-              />
-            </Group>
-            <Group>
-              <Botao
-                width="100%"
-                text={"Editar"}
-                bgColor={"#7BCAF7"}
-                onPress={() => {
-                  setEdit(!edit);
-                  edit ? PutOng() : null;
-                }} // Deve Mudar os inputs e Editar os Dados do Usuário
-              />
-          inputs ? (
-            <>
-            <Group>
-
-              {
-                erro ?
-                  <Titulo
-                    text={erroTexto}
-                    color={"#E34949"}
-                    textAlign={"center"}
-                  />
-                  :
-                  null
-              }
+              {erro ? (
+                <Titulo
+                  text={erroTexto}
+                  color={"#E34949"}
+                  textAlign={"center"}
+                />
+              ) : null}
 
               <Input
                 placeholder={inputs.name || "Nome Indefinido!"}
-                value={inputs.name} 
+                value={inputs.name}
                 onChangeText={(txt) => setInputs({ ...inputs, name: txt })}
                 color={edit ? "black" : "gray"}
                 editable={edit}
@@ -339,7 +281,9 @@ export const Perfil = ({ navigation, route }) => {
               />
               <Input
                 value={inputs.description || "Descrição Indefinida"}
-                onChangeText={(txt) => setInputs({ ...inputs, description: txt })}
+                onChangeText={(txt) =>
+                  setInputs({ ...inputs, description: txt })
+                }
                 color={edit ? "black" : "gray"}
                 editable={edit}
                 width="100%"
@@ -348,31 +292,32 @@ export const Perfil = ({ navigation, route }) => {
                 erro={erro}
               />
             </Group>
-<Group>
-          <Botao
-            width="100%"
-            text={"Editar"}
-            bgColor={"#7BCAF7"}
-            onPress={() => { setEdit(!edit); edit ? PutOng() : null }} // Deve Mudar os inputs e Editar os Dados do Usuário
-            carregando={carregando}
-          />
+            <Group>
+              <Botao
+                width="100%"
+                text={"Editar"}
+                bgColor={"#7BCAF7"}
+                onPress={() => {
+                  setEdit(!edit);
+                  edit ? PutOng() : null;
+                }} // Deve Mudar os inputs e Editar os Dados do Usuário
+                carregando={carregando}
+              />
 
-          <Botao
-            width="100%"
-            text={"Sair da Conta"}
-            bgColor={"#7BCAF7"}
-            onPress={() => {
-              // userTokenLogout(); Deve Deslogar
-              navigation.replace("Login"); // Deve Voltar a Página de Login
-            }}
-          />
-        </Group>
-</>
-          ) : <ActivityIndicator style={{ height: 200 }} />
-
-        }
-        
-
+              <Botao
+                width="100%"
+                text={"Sair da Conta"}
+                bgColor={"#7BCAF7"}
+                onPress={() => {
+                  // userTokenLogout(); Deve Deslogar
+                  navigation.replace("Login"); // Deve Voltar a Página de Login
+                }}
+              />
+            </Group>
+          </>
+        ) : (
+          <ActivityIndicator style={{ height: 200 }} />
+        )}
       </ContainerMargin>
       <InformationModal
         navigation={navigation}
