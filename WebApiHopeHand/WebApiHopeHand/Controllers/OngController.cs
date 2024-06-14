@@ -105,6 +105,31 @@ namespace WebApiHopeHand.Controllers
             }
         }
 
+        [HttpPost("BuscarPorIdUsuario")]
+        public IActionResult GetByUserId(UserIdViewModel user)
+        {
+            try
+            {
+                if (user.Id == null)
+                {
+                    return BadRequest("Preencha a propriedade de Id do usuário");
+                }
+
+                Ong ongSearched = ongRepository.BuscarOngPorIdUsurio(user.Id);
+
+                if (ongSearched == null)
+                {
+                    return NotFound("Não encontramos sua ong!");
+                }
+                return Ok(ongSearched);
+            }
+            catch (Exception exc)
+            {
+                return BadRequest(exc.Message);
+            }
+        }
+
+
         /// <summary>
         /// Deleta uma ONG do banco por Id
         /// </summary>

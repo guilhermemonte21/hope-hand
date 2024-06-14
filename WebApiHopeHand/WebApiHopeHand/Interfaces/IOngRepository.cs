@@ -15,6 +15,8 @@ namespace WebApiHopeHand.Interfaces
 
         public OngEnderecoViewModel BuscarPorId(Guid id);
 
+        public Ong BuscarOngPorIdUsurio(Guid? userId);
+
         public void AlterarFoto(Guid idOng, string newPhotoUri);
     }
 }

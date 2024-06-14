@@ -29,6 +29,22 @@ namespace WebApiHopeHand.Repositories
 
         }
 
+        /// <summary>
+        /// Busca uma ONG pelo Id do usuário
+        /// </summary>
+        /// <param name="userId">Id do usuário</param>
+        /// <returns>Objeto ONG</returns>
+        public Ong BuscarOngPorIdUsurio(Guid? userId)
+        {
+            Ong ongSearched = _context.Ongs.FirstOrDefault(o => o.UserId == userId)!;
+
+            if (ongSearched == null)
+            {
+                return null!;
+            }
+            return ongSearched;
+        }
+
         public void AlterarFoto(Guid ongId, string newPhotoUri)
         {
             Ong ongSearched = _context.Ongs.FirstOrDefault(ong => ong.Id == ongId)!;
