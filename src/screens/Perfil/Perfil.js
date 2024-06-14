@@ -1,4 +1,5 @@
 import {
+  Container,
   ContainerMargin,
   ContainerScroll,
 } from "../../components/Container/Style";
@@ -22,6 +23,7 @@ import { userDecodeToken } from "../../utils/Auth";
 import { ActivityIndicator, FlatList } from "react-native";
 import api from "../../service/Service";
 import { Titulo } from "../../components/Titulo/Index";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const Perfil = ({ navigation, route }) => {
   const [nome, setNome] = useState(""); // Exibe a Tela de Acordo com o Usuário
@@ -43,8 +45,6 @@ export const Perfil = ({ navigation, route }) => {
   });
 
   const [locais, setLocais] = useState([]);
-
-  const ongId = route.params.ongId;
 
   // Função de Verificação
   const verificarInputs = () => {
@@ -89,12 +89,33 @@ export const Perfil = ({ navigation, route }) => {
       console.log("Falha na Profile Load (Perfil.js)");
     }
   }
+  //busca a ong do administrador
+  async function getMyOng() {
+    const token = await userDecodeToken();
+    if (token != null) {
+      try {
+        const response = await api.post("/Ong/BuscarPorIdUsuario", {
+          id: token.id,
+        });
+        setInputs(response.data);
+        setPhoto(response.data.photo);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
 
   // Buscar Dados da Ong Pelo ID
   async function GetOng() {
+    console.log("TESTANDO");
+    if (logado) {
+      return;
+    }
+    console.log("teste");
     try {
+      const ongId = route.params.ongId;
+
       const response = await api.get(`Ong/BuscarPorId?id=${ongId}`);
-      console.log(response.data);
       setInputs(response.data.ong);
       setPhoto(response.data.ong.photo); // Atualiza a URL da foto
     } catch (error) {
@@ -135,10 +156,17 @@ export const Perfil = ({ navigation, route }) => {
     }
   }
 
+  async function userTokenLogout() {
+    await AsyncStorage.removeItem("token");
+    navigation.navigate("Inicio");
+  }
+
   // Altera a Photo no Blob Storage
   async function OngPhoto() {
     const token = await userDecodeToken();
     try {
+      const ongId = route.params.ongId;
+
       const formData = new FormData();
       formData.append("IdOng", ongId);
       formData.append("Arquivo", {
@@ -162,15 +190,21 @@ export const Perfil = ({ navigation, route }) => {
 
   useEffect(() => {
     profileLoad();
+    getMyOng();
     GetOng();
     getLocais();
   }, []);
 
   //buscar locais da ong
   async function getLocais() {
+    console.log("TESTE");
+    if (logado) {
+      return;
+    }
     try {
+      const ongId = route.params.ongId;
+
       const response = await api.get(`/Endereco/ListarPorOng?idOng=${ongId}`);
-      console.log(response.data);
       setLocais(response.data);
     } catch (error) {
       console.log(error);
@@ -187,9 +221,11 @@ export const Perfil = ({ navigation, route }) => {
       inCamera={showCamera}
       setInCamera={setShowCamera}
     />
-  ) : (
+  ) : logado ? (
     <ContainerScroll style={{ paddingTop: 20 }}>
-      <BotaoVoltar onPress={() => !logado ? navigation.goBack() : navigation.goBack()} />
+      <BotaoVoltar
+        onPress={() => (!logado ? navigation.goBack() : navigation.goBack())}
+      />
 
       <ViewImageCircle style={{ borderColor: erro ? "#E34949" : "#3FA7E4" }}>
         <PerfilImageWhite source={{ uri: photo }} />
@@ -201,35 +237,14 @@ export const Perfil = ({ navigation, route }) => {
       <TitleCard>
         {inputs && inputs.name ? inputs.name : "Nome não encontrado!"}
       </TitleCard>
-      <ContainerMargin style={{ paddingBottom: 30}}>
+      <ContainerMargin style={{ paddingBottom: 30 }}>
         <SubtitleCard>
-          Acreditamos que todos merecem a chance de viver uma vida plena e
-          digna. Trabalhamos incansavelmente para criar oportunidades que
-          permitam que indivíduos e comunidades superem desafios e alcancem seu
-          potencial máximo. Através de nossas iniciativas, buscamos reduzir a
-          desigualdade, promover a justiça social e garantir que cada pessoa
-          tenha acesso aos recursos necessários para uma vida digna e saudável.
+          {inputs.description != ""
+            ? inputs.description
+            : "Descrição Indefinida!"}
         </SubtitleCard>
 
-        {!logado ? (
-          <FlatList
-            contentContainerStyle={{
-              gap: 20,
-              alignItems: "center",
-              width: "100%",
-              padding: "5%",
-            }}
-            data={locais}
-            key={(item) => item.id}
-            keyExtractor={(item) => item.id}
-            renderItem={({ item }) => (
-              <CardLocalizacao
-                local={item}
-                onPress={() => navigation.replace("Mapa", { local: item })}
-              />
-            )}
-          />
-        ) : inputs != null ? (
+        {inputs != null ? (
           <>
             <Group>
               {erro ? (
@@ -303,7 +318,7 @@ export const Perfil = ({ navigation, route }) => {
                 text={"Sair da Conta"}
                 bgColor={"#7BCAF7"}
                 onPress={() => {
-                  // userTokenLogout(); Deve Deslogar
+                  userTokenLogout();
                   navigation.replace("Login"); // Deve Voltar a Página de Login
                 }}
               />
@@ -322,5 +337,46 @@ export const Perfil = ({ navigation, route }) => {
         carregando={carregando}
       />
     </ContainerScroll>
+  ) : (
+    <Container>
+      <BotaoVoltar
+        onPress={() => (!logado ? navigation.goBack() : navigation.goBack())}
+      />
+
+      <ViewImageCircle style={{ borderColor: erro ? "#E34949" : "#3FA7E4" }}>
+        <PerfilImageWhite source={{ uri: photo }} />
+      </ViewImageCircle>
+
+      <ButtonUploadImage onPress={() => setShowCamera(true)}>
+        <MaterialCommunityIcons name="camera-enhance" size={22} color="white" />
+      </ButtonUploadImage>
+      <TitleCard>
+        {inputs && inputs.name ? inputs.name : "Nome não encontrado!"}
+      </TitleCard>
+      <ContainerMargin style={{ paddingBottom: 30 }}>
+        <SubtitleCard>
+          {inputs.description != ""
+            ? inputs.description
+            : "Descrição Indefinida!"}
+        </SubtitleCard>
+      </ContainerMargin>
+      <FlatList
+        contentContainerStyle={{
+          gap: 20,
+          alignItems: "center",
+          width: "100%",
+          padding: "5%",
+        }}
+        data={locais}
+        key={(item) => item.id}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <CardLocalizacao
+            local={item}
+            onPress={() => navigation.replace("Mapa", { local: item })}
+          />
+        )}
+      />
+    </Container>
   );
 };

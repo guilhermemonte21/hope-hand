@@ -34,24 +34,24 @@ export const Home = ({ navigation }) => {
       console.log("Falha na Profile Load (Perfil.js)");
     }
   }
-  
+
   //OBTEM NOTICIA PELA API GRATUITA DO IBGE
   async function getNoticias() {
     try {
       const response = await axios.get(
         "https://servicodados.ibge.gov.br/api/v3/noticias/?qtd=5"
-        );
-        setNoticias(response.data.items);
+      );
+      setNoticias(response.data.items);
     } catch (error) {
       console.log(error);
     }
   }
-  
+
   useEffect(() => {
     getNoticias();
-    profileLoad()
+    profileLoad();
   }, []);
-  
+
   return (
     <>
       <Header navigation={navigation} />
@@ -65,28 +65,28 @@ export const Home = ({ navigation }) => {
             image={require("../../assets/images/rs.png")}
           />
           <Group row>
-            <Group>
-              <Botao
-                width={80}
-                height={80}
-                radius={30}
-                onPress={() => navigation.navigate("Perfil")}
-                text={<Ionicons name="business" size={24} color="white" />}
-              />
-              <Titulo fontSize={12} text={"Perfil ONG"} />
-            </Group>
-            {logado ? null : (
-              
-            <Group>
-              <Botao
-                width={80}
-                height={80}
-                onPress={() => navigation.navigate("ListaOngs")}
-                radius={30}
-                text={<FontAwesome name="list-ul" size={24} color="white" />}
-              />
-              <Titulo fontSize={12} text={"ONGs"} />
-            </Group>
+            {logado ? (
+              <Group>
+                <Botao
+                  width={80}
+                  height={80}
+                  radius={30}
+                  onPress={() => navigation.navigate("Perfil")}
+                  text={<Ionicons name="business" size={24} color="white" />}
+                />
+                <Titulo fontSize={12} text={"Perfil ONG"} />
+              </Group>
+            ) : (
+              <Group>
+                <Botao
+                  width={80}
+                  height={80}
+                  onPress={() => navigation.navigate("ListaOngs")}
+                  radius={30}
+                  text={<FontAwesome name="list-ul" size={24} color="white" />}
+                />
+                <Titulo fontSize={12} text={"ONGs"} />
+              </Group>
             )}
             <Group>
               <Botao
