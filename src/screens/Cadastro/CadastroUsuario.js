@@ -14,6 +14,8 @@ import { useEffect, useState } from "react";
 // importe da api
 import { Group } from "../../components/Group/Index";
 import { mask } from "remask";
+import Toast from "react-native-toast-message";
+import { ShowToastStyled } from "../../components/Toast/ToastStyled";
 
 export const CadastroUsuario = ({ navigation }) => {
   // CONSTS
@@ -28,56 +30,150 @@ export const CadastroUsuario = ({ navigation }) => {
   const [erro, setErro] = useState(false); // muda a cor dos inputs quando dá algum erro
   const [erroTexto, setErroTexto] = useState(""); // diz qual é o erro que está ocorrendo
 
-  const mascaras = ["99.999.999-S", "999.999.999-99", "99/99/9999"];
+  const mascaras = ["99.999.999-S", "999.999.999-99", "99/99/9999"]; // máscaras para formatação de informações
 
   // FUNCTIONS
   const Cadastrar = async () => {
     setCarregando(true);
 
-    if (rg.length != 11) {
+    if (rg.length != 11) { // se o rg não tiver 11 dígitos (conta a pontuação)
       setErro(true);
 
-      setErroTexto("RG incompleto");
-    } else if (cpf.length != 14) {
+      ShowToastStyled({
+        type: "error",
+        text1: "RG incompleto",
+        text1Style: {
+          color: "#E34949"
+        },
+        text2: "Complete o RG e tente novamente",
+      }),
+
+        setErroTexto("RG incompleto");
+
+      setCarregando(false);
+    } else if (cpf.length != 14) { // e se o cpf não tiver 14 dígitos (também conta pontuação)
       setErro(true);
+
+      ShowToastStyled({
+        type: "error",
+        text1: "CPF incompleto",
+        text1Style: {
+          color: "#E34949"
+        },
+        text2: "Complete o CPF e tente novamente",
+      });
 
       setErroTexto("CPF incompleto");
-    } else if (nome == "") {
+
+      setCarregando(false);
+    } else if (nome == "") { // e se o nome estiver vazio
       setErro(true);
 
-      setErroTexto("Usuário deve conter um nome");
-    } else if (dataNascimento == "") {
-      setErro(true);
-
-      setErroTexto("Insira sua data de nascimento");
-    } else if (email == "") {
-      setErro(true);
-
-      setErroTexto("Insira um email válido!");
-    } else if (senha.length < 6 || senha.length > 16) {
-      setErro(true);
-
-      setErroTexto("Senha deve conter 6 a 16 dígitos!");
-    } else if (senha != confirmaSenha) {
-      setErro(true);
-
-      setErroTexto("As senhas devem ser iguais, tente novamente");
-    } else {
-      navigation.replace("CadastroOng", {
-        nome: nome,
-        dataNascimento: dataNascimento.split("/").reverse().join("-"),
-        cpf: cpf.split(".").join("").split("-").join(""),
-        rg: rg.split(".").join("").split("-").join(""),
-        email: email,
-        senha: senha,
+      ShowToastStyled({
+        type: "error",
+        text1: "Usuário sem nome",
+        text1Style: {
+          color: "#E34949"
+        },
+        text2: "Insira o nome de usuário e tente novamente",
       });
+
+      setErroTexto("Usuário sem nome");
+
+      setCarregando(false);
+    } else if (dataNascimento.length != 10) { // e se a data não tiver os dígitos necessários
+      setErro(true);
+
+      ShowToastStyled({
+        type: "error",
+        text1: "Data de nascimento incompleta",
+        text1Style: {
+          color: "#E34949"
+        },
+        text2: "Insira a data completa (dd/mm/aaaa)",
+      });
+
+      setErroTexto("Data de nascimento incompleta");
+
+      setCarregando(false);
+    } else if (email == "") { // e se o email estiver vazio
+      setErro(true);
+
+      ShowToastStyled({
+        type: "error",
+        text1: "Email inválido",
+        text1Style: {
+          color: "#E34949"
+        },
+        text2: "Insira um email válido!",
+      });
+
+      setErroTexto("Email inválido");
+
+      setCarregando(false);
+    } else if (senha.length < 6 || senha.length > 16) { // e se senha não tiver o mínimo ou o máximo de dígitos
+      setErro(true);
+
+      ShowToastStyled({
+        type: "error",
+        text1: "Senha não aceita",
+        text1Style: {
+          color: "#E34949"
+        },
+        text2: "A senha deve conter 6 a 16 dígitos. Tente novamente",
+      });
+
+      setErroTexto("Senha não aceita");
+
+      setCarregando(false);
+
+    } else if (senha != confirmaSenha) { // e se senha e confirmar senha não estiverem iguais
+      setErro(true);
+
+      ShowToastStyled({
+        type: "error",
+        text1: "Confirmação de senha inválida",
+        text1Style: {
+          color: "#E34949"
+        },
+        text2: "Verifique se as senhas estão iguais e tente novamente",
+      });
+
+      setErroTexto("Confirmação de senha inválida");
+
+      setCarregando(false);
+    } else { // caso não haja nenhum problema com nada disso, prossiga
+      setErro(false);
+
+      ShowToastStyled({
+        type: "success", // seta como estado de sucesso
+        text1: "Redirecionando para cadastro de ong", // título da notificação
+        text1Style: {
+          color: "#7bcaf7"
+        }, // estiliza o título da notificação
+        visibilityTime: 3000, // tempo de exibição da notificação
+        swipeable: false // seta se a funcionalidade de mexer a notificação funciona
+      });
+
+      setTimeout(() => {
+        setCarregando(false);
+
+        navigation.replace("CadastroOng", {
+          nome: nome,
+          dataNascimento: dataNascimento.split("/").reverse().join("-"),
+          cpf: cpf.split(".").join("").split("-").join(""),
+          rg: rg.split(".").join("").split("-").join(""),
+          email: email,
+          senha: senha,
+        });
+      }, 3000);
     }
-    setCarregando(false);
-  };
+  }; // deixa o usuário pronto para ser cadastrado
+
+
 
   // EFFECTS
-  useEffect(() => {
-  })
+
 
 
   return (
@@ -93,7 +189,7 @@ export const CadastroUsuario = ({ navigation }) => {
         <Logo source={require("../../assets/images/logo-whand.png")} />
 
         <Titulo
-          text={"Cadastro - usuário"}
+          text={"Cadastrar usuário"}
           fontSize={18}
           textTransform={"uppercase"}
         />
@@ -177,6 +273,8 @@ export const CadastroUsuario = ({ navigation }) => {
           />
         </ContainerMargin>
       </ContainerScroll>
+
+      <Toast />
     </Container>
   );
 };

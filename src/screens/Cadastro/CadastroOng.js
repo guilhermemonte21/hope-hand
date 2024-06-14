@@ -6,12 +6,14 @@ import { Input } from "../../components/Input/Index"
 import { Logo } from "../../components/Logo/Style"
 import { Titulo } from "../../components/Titulo/Index"
 import { Group } from "../../components/Group/Index"
+import Toast from "react-native-toast-message"
 
 // imports importantes
 import { useEffect, useState } from "react"
 
 // api importada
 import api from "../../service/Service"
+import { ShowToastStyled } from "../../components/Toast/ToastStyled"
 
 export const CadastroOng = ({
     navigation,
@@ -44,22 +46,66 @@ export const CadastroOng = ({
         if (nomeOng == "") {
             setErro(true);
 
-            setErroTexto("ONG precisa de um nome")
+            ShowToastStyled({
+                type: "error",
+                text1: "ONG sem nome",
+                text1Style: {
+                    color: "#E34949"
+                },
+                text2: "Dê um nome para sua ONG",
+            });
+
+            setErroTexto("ONG sem nome");
+
+            setCarregando(false);
         }
         else if (cnpj.length != 14) {
             setErro(true);
 
-            setErroTexto("O CNPJ completo é obrigatório, tente novamente")
+            ShowToastStyled({
+                type: "error",
+                text1: "CNPJ incompleto",
+                text1Style: {
+                    color: "#E34949"
+                },
+                text2: "O CNPJ completo da ONG é obrigatório",
+            });
+
+            setErroTexto("CNPJ incompleto");
+
+            setCarregando(false);
         }
         else if (cep.length != 8) {
             setErro(true);
 
-            setErroTexto("CEP inválido, tente novamente")
+            ShowToastStyled({
+                type: "error",
+                text1: "CEP inválido",
+                text1Style: {
+                    color: "#E34949"
+                },
+                text2: "Insira um CEP válido",
+            });
+
+            setErroTexto("CEP inválido");
+
+            setCarregando(false);
         }
         else if (numero == "") {
             setErro(true);
 
-            setErroTexto("Informe o número do local da ONG")
+            ShowToastStyled({
+                type: "error",
+                text1: "Número obrigatório",
+                text1Style: {
+                    color: "#E34949"
+                },
+                text2: "Informe o número do local da ONG",
+            });
+
+            setErroTexto("Número obrigatório");
+
+            setCarregando(false);
         }
         else {
             try {
@@ -72,9 +118,6 @@ export const CadastroOng = ({
                     "password": senha,
                     "codRecupSenha": 0
                 }).then(async response => {
-                    setErro(false);
-
-                    console.log(response.data.id);
                     try {
                         await api.post("Ong/CadastrarOng", {
                             "name": nomeOng,
@@ -87,36 +130,68 @@ export const CadastroOng = ({
                             .then(() => {
                                 setErro(false);
 
-                                console.log("Sucesso!");
+                                ShowToastStyled({
+                                    type: "success",
+                                    text1: "Usuário cadastrado com sucesso!",
+                                    text1Style: {
+                                        color: "#7BCAF7"
+                                    },
+                                    swipeable: false,
+                                    visibilityTime: 3000
+                                });
 
-                                navigation.replace("Login");
+                                setTimeout(() => {
+                                    setCarregando(false);
+
+                                    navigation.replace("Login");
+                                }, 3000);
                             })
                     } catch (error) {
                         setErro(true);
 
-                        setErroTexto("Erro ao cadastrar, tente novamente");
+                        ShowToastStyled({
+                            type: "error",
+                            text1: "Redirecionando para cadastro de usuário",
+                            text1Style: {
+                                color: "#E34949"
+                            },
+                        });
 
-                        console.log(error);
+                        setErroTexto("Cadastro inválido");
+
+                        setTimeout(() => {
+                            setCarregando(false);
+
+                            navigation.replace("CadastroUsuario");
+                        }, 3000);
                     }
                 })
             } catch (error) {
-                console.log(error);
-
                 setErro(true);
 
-                setErroTexto("Informações do usuário inválidas, tente cadastrar novamente");
+                ShowToastStyled({
+                    type: "error",
+                    text1: "Redirecionando para cadastro de usuário",
+                    text1Style: {
+                        color: "#E34949"
+                    },
+                });
+
+                setErroTexto("Cadastro inválido");
+
+                setTimeout(() => {
+                    setCarregando(false);
+
+                    navigation.replace("CadastroUsuario");
+                }, 3000);
             }
         }
-
-        setCarregando(false);
     }
 
     const AddressPicker = async () => {
         if (cep.length == 8) {
             await api.get(`https://viacep.com.br/ws/${cep}/json/`)
                 .then(response => {
-                    console.log(response.data);
-
                     setCidade(response.data.localidade);
 
                     setUf(response.data.uf)
@@ -131,16 +206,6 @@ export const CadastroOng = ({
         AddressPicker();
     }, [cep])
 
-    useEffect(() => {
-        console.log(
-            cpf,
-            dataNascimento,
-            email,
-            nome,
-            rg,
-            senha
-        );
-    }, [])
 
 
     return (
@@ -248,6 +313,8 @@ export const CadastroOng = ({
                     />
                 </ContainerMargin>
             </ContainerScroll>
+
+            <Toast />
         </Container>
     )
 }
