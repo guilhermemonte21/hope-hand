@@ -13,7 +13,11 @@ import { useEffect, useState } from "react";
 
 // importe da api
 import { Group } from "../../components/Group/Index";
-import { mask } from "remask";
+import { mask, unmask } from "remask";
+
+import DatePicker from 'react-native-modern-datepicker'
+import { Modal } from "react-native";
+import { DateInputModal } from "../../components/Modal/DateInputModal/DateInputModal";
 
 export const CadastroUsuario = ({ navigation }) => {
   // CONSTS
@@ -75,6 +79,22 @@ export const CadastroUsuario = ({ navigation }) => {
     setCarregando(false);
   };
 
+
+  const [open, setOpen] = useState(false); // Abre/fecha o modal do calendário
+  const [date, setDate] = useState(false); // Var Date
+
+  function handleOnPress() {
+    setOpen(!open);
+  }
+
+  function handleChange(propDate) {
+    // 2024/06/26
+    const x = propDate.split('/');
+    const dateFormated = `${x[2]}${x[1]}${x[0]}`
+    // 26062024
+    setDataNascimento(dateFormated);
+  }
+
   // EFFECTS
 
   return (
@@ -100,7 +120,7 @@ export const CadastroUsuario = ({ navigation }) => {
               placeholder={"RG:"}
               erro={erro}
               value={mask(rg, mascaras[0])}
-              onChangeText={(txt) => setRg(txt)}
+              onChangeText={(txt) => setRg(unmask(txt))}
               width="45%"
               maxLength={12}
             />
@@ -110,7 +130,7 @@ export const CadastroUsuario = ({ navigation }) => {
               erro={erro}
               value={mask(cpf, mascaras[1])}
               maxLength={14}
-              onChangeText={(txt) => setCpf(txt)}
+              onChangeText={(txt) => setCpf(unmask(txt))}
               width="45%"
               keyboardType={"number-pad"}
             />
@@ -124,14 +144,23 @@ export const CadastroUsuario = ({ navigation }) => {
             onChangeText={(txt) => setNome(txt)}
             width="100%"
           />
+
+          {/* Data de nascimento INPUT e MODAL */}
           <Input
             placeholder={"Data de nascimento:"}
             width="100%"
-            keyboardType={"numeric"}
             value={mask(dataNascimento, mascaras[2])}
             onChangeText={(txt) => setDataNascimento(txt)}
             erro={erro}
             maxLength={10}
+
+            onFocus={handleOnPress}
+          />
+          <DateInputModal
+            dataNascimento={dataNascimento}
+            open={open}
+            handleChange={handleChange}
+            handleOnPress={handleOnPress}
           />
 
           <Input

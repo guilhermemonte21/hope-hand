@@ -16,6 +16,7 @@ export const Input = ({
   erro,
   keyboardType,
   maxLength,
+  onFocus
 }) => {
   return (
     <BoxInput
@@ -41,6 +42,7 @@ export const Input = ({
         keyboardType={keyboardType}
         autoCapitalize={autoCapitalize}
         maxLength={maxLength}
+        onFocus={onFocus}
       />
     </BoxInput>
   );
