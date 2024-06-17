@@ -92,7 +92,7 @@ export const CadastroUsuario = ({ navigation }) => {
     const x = propDate.split('/');
     const dateFormated = `${x[2]}${x[1]}${x[0]}`
     // 26062024
-    setDataNascimento(dateFormated);
+    setDataNascimento(mask(dateFormated, mascaras[2]));
   }
 
   // EFFECTS
