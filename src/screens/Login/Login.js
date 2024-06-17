@@ -26,8 +26,8 @@ export const Login = ({
     const [erro, setErro] = useState(false); // muda a cor dos inputs quando dá algum erro
     const [erroTexto, setErroTexto] = useState(""); // diz qual é o erro que está ocorrendo
 
-    const [contaErroToast, setContaErroToast] = useState(0); // seta se a notificação
-    const [indexErro, setIndexErro] = useState(0);
+    const [contaErroToast, setContaErroToast] = useState(0); // seta se a notificação é repetida demais
+    const [indexErro, setIndexErro] = useState(0); // index da mensagem de erro
 
 
     // FUNCTIONS
@@ -109,9 +109,9 @@ export const Login = ({
                     color: "#E34949"
                 },
                 text2: "Verifique se o email e a senha estão corretos"
-            })
+            });
 
-            setErroTexto("Email ou senha incorretos")
+            setErroTexto("Email ou senha incorretos");
 
             setCarregando(false);
         }
