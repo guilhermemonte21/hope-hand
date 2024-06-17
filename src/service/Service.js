@@ -15,6 +15,8 @@ const ipMikael = "172.16.39.92";
 const ipLucasCasa = "192.168.0.234";
 
 // Definir URL padrão
+
+// const apiUrllocal = `http://${ipLucas}:${portaApiLucas}/api`;
 const apiUrllocal = `http://${ipSampaio}:${portaApi}/api`;
 // const apiUrllocal = `http://${ipHenrique}:${portaApi}/api`;
 

@@ -13,7 +13,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // import da api
 import api from "../../service/Service";
-import Toast from "react-native-toast-message";
+import Toast from "react-native-toast-message"
 import { ShowToastStyled } from "../../components/Toast/ToastStyled";
 
 export const Login = ({

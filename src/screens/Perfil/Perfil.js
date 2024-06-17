@@ -25,6 +25,23 @@ import api from "../../service/Service";
 import { Titulo } from "../../components/Titulo/Index";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+// Verificação de Inputs
+const verificarInputs = (inputs) => {
+  if (inputs.name.trim().length < 2 || inputs.name.trim().length > 40) {
+    return "O Nome deve ter entre 2 e 40 caracteres!";
+  }
+  if (inputs.cnpj.trim().length !== 14) {
+    return "O CNPJ deve conter 14 caracteres!";
+  }
+  if (inputs.link.trim().length < 2 || inputs.link.trim().length > 40) {
+    return "O Link deve ter entre 2 e 40 caracteres!";
+  }
+  if (inputs.description.trim().length < 2 || inputs.description.trim().length > 500) {
+    return "A Descrição deve ter entre 2 e 500 caracteres!";
+  }
+  return "";
+};
+
 export const Perfil = ({ navigation, route }) => {
   const [nome, setNome] = useState(""); // Exibe a Tela de Acordo com o Usuário
   const [logado, setLogado] = useState(false); // Exibe a Tela de Acordo com o Usuário
@@ -45,37 +62,22 @@ export const Perfil = ({ navigation, route }) => {
   });
 
   const [locais, setLocais] = useState([]);
+  
+  const [ong, setOng] = useState(null);
+
+  const ongId = route.params.ongId;
+
 
   // Função de Verificação
-  const verificarInputs = () => {
-    if (inputs.name.trim().length < 2 || inputs.name.trim().length > 40) {
+  const handleVerifyInputs = () => {
+    const error = verificarInputs(inputs);
+    if (error) {
       setErro(true);
-      setErroTexto("O Nome deve ter entre 2 e 40 caracteres!");
-      return false;
-    } else if (inputs.cnpj.trim().length < 14) {
-      setErro(true);
-      setErroTexto("O CNPJ deve Conter 14 caracteres!");
-      return false;
-    } else if (
-      inputs.link.trim().length < 2 ||
-      inputs.link.trim().length > 40
-    ) {
-      setErro(true);
-      setErroTexto("O Link deve ter entre 2 e 40 caracteres");
-      return false;
-    } else if (
-      inputs.description.trim().length < 2 ||
-      inputs.description.trim().length > 500
-    ) {
-      setErro(true);
-      setErroTexto("A Descrição deve ter entre 2 e 500 caracteres");
+      setErroTexto(error);
       return false;
     }
-
-    // Adicione outras verificações conforme necessário
-    // ...
-    setCarregando(false);
     setErro(false);
+    setErroTexto("");
     return true;
   };
 
@@ -125,7 +127,7 @@ export const Perfil = ({ navigation, route }) => {
 
   // Edita os Dados Recebidos da Ong
   async function PutOng() {
-    if (!verificarInputs()) {
+    if (!handleVerifyInputs()) {
       return;
     }
 
@@ -135,13 +137,11 @@ export const Perfil = ({ navigation, route }) => {
       await api.put(
         `Ong/Editar`,
         {
-          ong: {
-            id: ongId,
-            name: inputs.name,
-            cnpj: inputs.cnpj,
-            link: inputs.link,
-            descripition: inputs.description,
-          },
+          id: ongId,
+          name: inputs.name,
+          cnpj: inputs.cnpj,
+          link: inputs.link,
+          description: inputs.description,
         },
         {
           headers: {
@@ -211,6 +211,7 @@ export const Perfil = ({ navigation, route }) => {
     }
   }
 
+
   return showCamera ? (
     <CameraModal
       photo={photo}
@@ -221,11 +222,13 @@ export const Perfil = ({ navigation, route }) => {
       inCamera={showCamera}
       setInCamera={setShowCamera}
     />
+
   ) : logado ? (
     <ContainerScroll style={{ paddingTop: 20 }}>
       <BotaoVoltar
         onPress={() => (!logado ? navigation.goBack() : navigation.goBack())}
       />
+
 
       <ViewImageCircle style={{ borderColor: erro ? "#E34949" : "#3FA7E4" }}>
         <PerfilImageWhite source={{ uri: photo }} />
@@ -247,13 +250,13 @@ export const Perfil = ({ navigation, route }) => {
         {inputs != null ? (
           <>
             <Group>
-              {erro ? (
+              {erro && (
                 <Titulo
                   text={erroTexto}
                   color={"#E34949"}
                   textAlign={"center"}
                 />
-              ) : null}
+              )}
 
               <Input
                 placeholder={inputs.name || "Nome Indefinido!"}
@@ -309,7 +312,7 @@ export const Perfil = ({ navigation, route }) => {
                 onPress={() => {
                   setEdit(!edit);
                   edit ? PutOng() : null;
-                }} // Deve Mudar os inputs e Editar os Dados do Usuário
+                }}
                 carregando={carregando}
               />
 

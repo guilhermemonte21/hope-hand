@@ -15,7 +15,7 @@ import {
   GestureHandlerRootView,
   PinchGestureHandler,
 } from "react-native-gesture-handler";
-import { ActivityIndicator, Image, Modal, View } from "react-native";
+import { ActivityIndicator, Image, Modal, StyleSheet, View } from "react-native";
 
 const CloseCamera = styled(AntDesign)`
   position: absolute;
@@ -64,6 +64,7 @@ export const CameraModal = ({
   setInCamera,
   inCamera,
   getMediaLibrary = false,
+  visible,
 
 }) => {
   const cameraRef = useRef(null);
@@ -149,90 +150,116 @@ export const CameraModal = ({
     }
   };
 
+  const [loading, setLoading] = useState(true); // Novo estado de carregamento
+
+  useEffect(() => {
+    if (visible) {
+      // Simula o tempo de carregamento da câmera
+      setTimeout(() => setLoading(false), 3000); // Ajuste o tempo conforme necessário
+    } else {
+      setLoading(true); // Reseta o estado quando a câmera é fechada
+    }
+  }, [visible]);
+
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <PinchGestureHandler onGestureEvent={(event) => changeZoom(event)}>
-        <Camera
-          autoFocus={Camera.Constants.AutoFocus.on}
-          zoom={zoom}
-          flashMode={flash}
-          isIma
-          ref={cameraRef}
-          type={type}
-          ratio="15:9"
-          style={{
-            flex: 1,
-          }}
-        >
-          <CloseCamera
-            name="closecircle"
-            size={30}
-            color="#3FA7E4"
-            onPress={() => {
-              setInCamera(false);
+        {loading ? (
+          <ActivityIndicator style={styles.spinnerContainer} size="large" color="#0000ff" />
+        ) : (
+          <Camera
+            autoFocus={Camera.Constants.AutoFocus.on}
+            zoom={zoom}
+            flashMode={flash}
+            isIma
+            ref={cameraRef}
+            type={type}
+            ratio="15:9"
+            style={{
+              flex: 1,
             }}
-          />
-          <ToggleCamera
-            onPress={() =>
-              setType(
-                type === CameraType.front ? CameraType.back : CameraType.front
-              )
-            }
           >
-            <FontAwesome6 name="camera-rotate" size={30} color="#3FA7E4" />
-          </ToggleCamera>
-          <FlashIcon
-            onPress={() =>
-              setFlash(
+            <CloseCamera
+              name="closecircle"
+              size={30}
+              color="#3FA7E4"
+              onPress={() => {
+                setInCamera(false);
+              }}
+            />
+            <ToggleCamera
+              onPress={() =>
+                setType(
+                  type === CameraType.front ? CameraType.back : CameraType.front
+                )
+              }
+            >
+              <FontAwesome6 name="camera-rotate" size={30} color="#3FA7E4" />
+            </ToggleCamera>
+            <FlashIcon
+              onPress={() =>
+                setFlash(
+                  flash === Camera.Constants.FlashMode.off
+                    ? Camera.Constants.FlashMode.on
+                    : flash === Camera.Constants.FlashMode.on
+                      ? Camera.Constants.FlashMode.torch
+                      : Camera.Constants.FlashMode.off
+                )
+              }
+              name={
                 flash === Camera.Constants.FlashMode.off
-                  ? Camera.Constants.FlashMode.on
-                  : flash === Camera.Constants.FlashMode.on
-                    ? Camera.Constants.FlashMode.torch
-                    : Camera.Constants.FlashMode.off
-              )
-            }
-            name={
-              flash === Camera.Constants.FlashMode.off
-                ? "flash-off"
-                : flash === Camera.Constants.FlashMode.torch
-                  ? "flashlight"
-                  : "flash"
-            }
-            size={30}
-            color="#3FA7E4"
-          />
-          <TakePhoto
-            onPress={() => {
-              setCarregando(true);
-              CapturePhoto();
-              setIsPhotoSaved(false);
-            }}
-          // carregando={carregando}
-          >
-            {
-              carregando ?
-                <ActivityIndicator
-                  color={"#3FA7E4"}
-                  size={24}
+                  ? "flash-off"
+                  : flash === Camera.Constants.FlashMode.torch
+                    ? "flashlight"
+                    : "flash"
+              }
+              size={30}
+              color="#3FA7E4"
+            />
+            <TakePhoto
+              onPress={() => {
+                setCarregando(true);
+                CapturePhoto();
+                setIsPhotoSaved(false);
+              }}
+            // carregando={carregando}
+            >
+              {
+                carregando ?
+                  <ActivityIndicator
+                    color={"#3FA7E4"}
+                    size={24}
+                  />
+                  :
+                  <FontAwesome name="camera" size={50} color="#3FA7E4" />
+              }
+            </TakePhoto>
+            {lastPhoto != null ? (
+              <LastPhoto onPress={() => SelectImageGallery()}>
+                <Image
+                  borderRadius={5}
+                  width={60}
+                  height={60}
+                  marginBottom={20}
+                  source={{ uri: lastPhoto }}
                 />
-                :
-                <FontAwesome name="camera" size={50} color="#3FA7E4" />
-            }
-          </TakePhoto>
-          {lastPhoto != null ? (
-            <LastPhoto onPress={() => SelectImageGallery()}>
-              <Image
-                borderRadius={5}
-                width={60}
-                height={60}
-                marginBottom={20}
-                source={{ uri: lastPhoto }}
-              />
-            </LastPhoto>
-          ) : null}
-        </Camera>
+              </LastPhoto>
+            ) : null}
+          </Camera>
+        )}
       </PinchGestureHandler>
     </GestureHandlerRootView>
 
   );
 };
+
+const styles = StyleSheet.create({
+  spinnerContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Fundo semitransparente
+    width: '100%',
+    height: '100%',
+  },
+});
