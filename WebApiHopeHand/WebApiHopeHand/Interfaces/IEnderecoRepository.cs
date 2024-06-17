@@ -20,10 +20,10 @@ namespace WebApiHopeHand.Interfaces
         public Endereco AtualizarEndereco(Guid id, Endereco endereco);
 
         /// <summary>
-        /// Busca todos endereços por cidade
+        /// Busca todos endereços por Ong
         /// </summary>
-        /// <param name="endereco">Nome cidade</param>
+        /// <param name="idOng">Id da Ong</param>
         /// <returns>Lista de objetos Endereco</returns>
-        public List<Endereco> ListarPorCidade(string endereco);
+        public List<Endereco> ListarPorOng(Guid idOng);
     }
 }
