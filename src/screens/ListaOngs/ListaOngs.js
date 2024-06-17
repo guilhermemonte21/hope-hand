@@ -39,17 +39,20 @@ export const ListaOngs = ({ navigation }) => {
     const removeAccents = (str) =>
       str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     if (searchOngText != null && searchOngText != undefined) {
+
       setOngsSearched(
         ongs.filter(
-          // Busca pelo nome das ONGs - sofre tratamento antes da pesquisa (deixa em minúsculo e retira acentos)
           (ong) =>
-            removeAccents(ong.ong.name.toLowerCase()).includes(
-              removeAccents(searchOngText.toLowerCase())
-            ) ||
-            // Busca pela cidade das ONGs - sofre tratamento antes da pesquisa (deixa em minúsculo e retira acentos)
-            removeAccents(ong.endereco.city.toLowerCase()).includes(
-              removeAccents(searchOngText.toLowerCase())
-            )
+            ong.ong != null
+              ? (
+                // Busca pelo nome das ONGs - sofre tratamento antes da pesquisa (deixa em minúsculo e retira acentos)
+                removeAccents(ong.ong.name.toLowerCase()).includes(removeAccents(searchOngText.toLowerCase()))
+              ) : null
+                || ong.endereco != null ?
+                // Busca pela cidade das ONGs - sofre tratamento antes da pesquisa (deixa em minúsculo e retira acentos)
+                removeAccents(ong.endereco.city.toLowerCase()).includes(
+                  removeAccents(searchOngText.toLowerCase())
+                ) : null
         )
       );
     }
