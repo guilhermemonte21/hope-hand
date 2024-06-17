@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import api from "./../../service/Service";
 import { ContainerMargin } from "./../../components/Container/Style";
 import { Input } from "../../components/Input/Index";
+import { BotaoVoltar } from "./../../components/BotaoVoltar/Index";
 
 export const ListaOngs = ({ navigation }) => {
   const [carregando, setCarregando] = useState(false);
@@ -35,7 +36,8 @@ export const ListaOngs = ({ navigation }) => {
   // Busca as ONGs no banco pelo Nome ou Cidade dela, com base nos valores inseridos no input de busca
   function filterAndSearchOngs() {
     // Função para retirada de acentos dos textos
-    const removeAccents = str => str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    const removeAccents = (str) =>
+      str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     if (searchOngText != null && searchOngText != undefined) {
 
       setOngsSearched(
@@ -59,11 +61,12 @@ export const ListaOngs = ({ navigation }) => {
   // Executado toda vez que for alterado o valor do input de busca
   useEffect(() => {
     filterAndSearchOngs();
-  }, [searchOngText])
+  }, [searchOngText]);
 
   return (
     <Container>
-      <ContainerMargin>
+      <BotaoVoltar onPress={() => navigation.goBack()} />
+      <ContainerMargin style={{ paddingTop: 20 }}>
         <Titulo text={"Escolha uma ONG para doar"} fontSize={20} />
 
         <Input
@@ -74,7 +77,9 @@ export const ListaOngs = ({ navigation }) => {
           onChangeText={(txt) => setSearchOngText(txt)}
         />
 
-        <Titulo color={"gray"} textAlign={"center"}
+        <Titulo
+          color={"gray"}
+          textAlign={"center"}
           text={
             "Essas são as Ongs que optaram por usar o nosso aplicativo para impulsionar suas doações"
           }
@@ -92,7 +97,11 @@ export const ListaOngs = ({ navigation }) => {
             width: "100%",
             padding: "5%",
           }}
-          data={searchOngText == undefined || ongsSearched == [] ? ongs : ongsSearched}
+          data={
+            searchOngText == undefined || ongsSearched == []
+              ? ongs
+              : ongsSearched
+          }
           key={(item) => item.ong.id}
           keyExtractor={(item) => item.ong.id}
           renderItem={({ item }) => (

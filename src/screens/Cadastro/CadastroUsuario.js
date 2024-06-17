@@ -21,18 +21,18 @@ import { DateInputModal } from "../../components/Modal/DateInputModal/DateInputM
 
 export const CadastroUsuario = ({ navigation }) => {
   // CONSTS
-  const [rg, setRg] = useState(""); // rg do usuário
-  const [cpf, setCpf] = useState(""); // cpf do usuário
-  const [nome, setNome] = useState(""); // nome do usuário
-  const [email, setEmail] = useState(""); // email do usuário
-  const [senha, setSenha] = useState(""); // senha do usuário
-  const [dataNascimento, setDataNascimento] = useState(""); // data de nascimento do usuário
-  const [confirmaSenha, setConfirmaSenha] = useState(""); // confirmação de senha
+  const [rg, setRg] = useState("432435345"); // rg do usuário
+  const [cpf, setCpf] = useState("12123123124"); // cpf do usuário
+  const [nome, setNome] = useState("teste"); // nome do usuário
+  const [email, setEmail] = useState("gabrielsampaio1216@gmail.com"); // email do usuário
+  const [senha, setSenha] = useState("teste123"); // senha do usuário
+  const [dataNascimento, setDataNascimento] = useState("12122000"); // data de nascimento do usuário
+  const [confirmaSenha, setConfirmaSenha] = useState("teste123"); // confirmação de senha
   const [carregando, setCarregando] = useState(false); // ativa o spinner do botão
   const [erro, setErro] = useState(false); // muda a cor dos inputs quando dá algum erro
   const [erroTexto, setErroTexto] = useState(""); // diz qual é o erro que está ocorrendo
 
-  const mascaras = ["99.999.999-9", "999.999.999-99", "99/99/9999"];
+  const mascaras = ["99.999.999-S", "999.999.999-99", "99/99/9999"];
 
   // FUNCTIONS
   const Cadastrar = async () => {
@@ -41,11 +41,11 @@ export const CadastroUsuario = ({ navigation }) => {
     if (rg.length != 9) {
       setErro(true);
 
-      setErroTexto("RG incompleto, tente novamente");
+      setErroTexto("RG incompleto");
     } else if (cpf.length != 11) {
       setErro(true);
 
-      setErroTexto("CPF incompleto, tente novamente");
+      setErroTexto("CPF incompleto");
     } else if (nome == "") {
       setErro(true);
 
@@ -53,7 +53,7 @@ export const CadastroUsuario = ({ navigation }) => {
     } else if (dataNascimento == "") {
       setErro(true);
 
-      setErroTexto("Insira sua data de nascimento e tente novamente");
+      setErroTexto("Insira sua data de nascimento");
     } else if (email == "") {
       setErro(true);
 
@@ -69,9 +69,9 @@ export const CadastroUsuario = ({ navigation }) => {
     } else {
       navigation.replace("CadastroOng", {
         nome: nome,
-        dataNascimento: dataNascimento.split("/").reverse().join("-"),
-        cpf: cpf,
-        rg: rg,
+        dataNascimento: mask(dataNascimento, mascaras[2]).split("/").reverse().join("-"),
+        cpf: cpf.split(".").join("").split("-").join(""),
+        rg: rg.split(".").join("").split("-").join(""),
         email: email,
         senha: senha,
       });
@@ -96,6 +96,10 @@ export const CadastroUsuario = ({ navigation }) => {
   }
 
   // EFFECTS
+  useEffect(() => {
+    console.log(rg.length);
+  },[])
+
 
   return (
     <Container>

@@ -18,6 +18,7 @@ export const ButtonShort = styled(ButtonStyled)`
 export const ButtonUploadImage = styled(ButtonStyled)`
   border: 1px solid #3FA7E4;
   padding: 10px;
+  z-index: 2;
   alignItems: flex-start;
   justifyContent: center;
   position: absolute;
