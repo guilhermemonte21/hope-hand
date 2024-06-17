@@ -339,9 +339,7 @@ export const Perfil = ({ navigation, route }) => {
     </ContainerScroll>
   ) : (
     <Container>
-      <BotaoVoltar
-        onPress={() => (!logado ? navigation.goBack() : navigation.goBack())}
-      />
+      <BotaoVoltar onPress={() => navigation.goBack()} />
 
       <ViewImageCircle style={{ borderColor: erro ? "#E34949" : "#3FA7E4" }}>
         <PerfilImageWhite source={{ uri: photo }} />
