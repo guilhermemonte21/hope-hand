@@ -20,14 +20,14 @@ export const Login = ({
     navigation
 }) => {
     // CONSTS
-    const [email, setEmail] = useState("mikaelsouza@gmail.com"); // email do usuário
-    const [senha, setSenha] = useState("Senai@134"); // senha do usuário
+    const [email, setEmail] = useState("gabrielsampaio1216@gmail.com"); // email do usuário
+    const [senha, setSenha] = useState("teste123"); // senha do usuário
     const [carregando, setCarregando] = useState(false); // ativa o spinner do botão
     const [erro, setErro] = useState(false); // muda a cor dos inputs quando dá algum erro
     const [erroTexto, setErroTexto] = useState(""); // diz qual é o erro que está ocorrendo
 
-    const [contaErroToast, setContaErroToast] = useState(0); // seta se a notificação
-    const [indexErro, setIndexErro] = useState(0);
+    const [contaErroToast, setContaErroToast] = useState(0); // seta se a notificação é repetida demais
+    const [indexErro, setIndexErro] = useState(0); // index da mensagem de erro
 
 
     // FUNCTIONS
@@ -43,11 +43,24 @@ export const Login = ({
 
                 await AsyncStorage.setItem("token", JSON.stringify(response.data));
 
+                // função para ativar a notificação toast e customizar ela;
+                // caso o usuário consiga logar
                 ShowToastStyled({
                     type: "success", // seta como estado de sucesso
+                    text1: "Login realizado", // título da notificação
+                    text1Style: {
+                        color: "#7bcaf7"
+                    }, // estiliza o título da notificação
+                    text2: "Boas vindas!", // subttítulo da notificação
+                    visibilityTime: 3000, // tempo de exibição da notificação
+                    swipeable: false // seta se a funcionalidade de mexer a notificação funciona
                 })
 
-                navigation.replace("Home");
+                setTimeout(() => {
+                    setCarregando(false);
+
+                    navigation.replace("Home");
+                }, 3000)
             })
         } catch (error) {
             setErro(true);
@@ -55,15 +68,22 @@ export const Login = ({
             if (contaErroToast == 3) {
                 setContaErroToast(0)
 
+                // array com uma respota simples, apenas para mais interação
                 let subtext = [
                     'Tente recuperar sua senha em "Esqueceu sua senha?"',
                     "Se você não tem uma conta, cadastre-se já!"
                 ]
 
                 return (
+                    // função para ativar a notificação toast e customizar ela;
+                    // caso o usuário não consiga logar;
+                    // caso o usuário tente se logar várias vezes sem parar
                     ShowToastStyled({
                         type: "error", // seta como estado de erro
-                        text1: "Login não realizado", // título da notficação
+                        text1: "Login não realizado", // título da notificação
+                        text1Style: {
+                            color: "#E34949"
+                        }, // estiliza o título da notificação
                         text2: subtext[indexErro], // subttítulo da notificação
                         visibilityTime: 5000, // tempo de exibição da notificação
                         swipeable: false // seta se a funcionalidade de mexer a notificação funciona
@@ -80,17 +100,21 @@ export const Login = ({
 
             setContaErroToast(contaErroToast + 1);
 
-            // função para ativar a notificação toast e customizar ela
+            // função para ativar a notificação toast e customizar ela;
+            // caso o usuário não consiga logar
             ShowToastStyled({
                 type: "error",
                 text1: "Login não realizado",
+                text1Style: {
+                    color: "#E34949"
+                },
                 text2: "Verifique se o email e a senha estão corretos"
-            })
+            });
 
-            setErroTexto("Email ou senha incorretos")
+            setErroTexto("Email ou senha incorretos");
+
+            setCarregando(false);
         }
-
-        setCarregando(false);
     }
 
 
@@ -159,7 +183,7 @@ export const Login = ({
                 route={"CadastroUsuario"}
             />
 
-            <Toast />
+            <Toast  />
         </Container>
     );
 }

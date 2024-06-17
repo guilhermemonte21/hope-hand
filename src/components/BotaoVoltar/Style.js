@@ -7,11 +7,12 @@ export const IconBox = styled.TouchableOpacity`
     justify-content: center;
     align-items: center;
 
+    z-index: 2;
     border-radius: 20px;
 
     position: absolute;
-    top: 30px;
-    left: 30px;
+    top: 50px;
+    left: 20px;
 `
 
 export const Icon = styled.Image`

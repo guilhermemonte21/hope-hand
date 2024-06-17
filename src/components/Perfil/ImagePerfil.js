@@ -8,11 +8,12 @@ export const PerfilImageWhite = styled.Image`
 
 export const ViewImageCircle = styled.View`
   align-items: center;
+  margin-top: 30px;
   justify-content: center;
   width: 180px;
   height: 180px;
   border-radius: 100px; /* metade da largura e altura */
   border: 2px solid #3FA7E4;
   overflow: hidden; /* para garantir que a imagem não transborde */
-  backgroundColor: transparent;
+  background-color: transparent;
 `;

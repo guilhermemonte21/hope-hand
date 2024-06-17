@@ -16,9 +16,24 @@ import { Group } from "./../../components/Group/Index";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Header } from "../../components/Header/Index";
+import { userDecodeToken } from "../../utils/Auth";
 
 export const Home = ({ navigation }) => {
   const [noticias, setNoticias] = useState([]);
+
+  const [logado, setLogado] = useState(false);
+
+  // Carrega e Armazena os dados da API
+  async function profileLoad() {
+    const token = await userDecodeToken();
+
+    console.log("teste");
+    if (token != null) {
+      setLogado(true);
+    } else {
+      console.log("Falha na Profile Load (Perfil.js)");
+    }
+  }
 
   //OBTEM NOTICIA PELA API GRATUITA DO IBGE
   async function getNoticias() {
@@ -34,13 +49,14 @@ export const Home = ({ navigation }) => {
 
   useEffect(() => {
     getNoticias();
+    profileLoad();
   }, []);
 
   return (
     <>
       <Header navigation={navigation} />
       <ContainerScroll>
-        <ContainerMargin style={{ marginTop: -20 }}>
+        <ContainerMargin>
           {/* NOTICIA MOCKADA SOBRE O RIO GRANDE DO SUL */}
           <Noticia
             link={"https://sosenchentes.rs.gov.br/inicial"}
@@ -49,26 +65,29 @@ export const Home = ({ navigation }) => {
             image={require("../../assets/images/rs.png")}
           />
           <Group row>
-            <Group>
-              <Botao
-                width={80}
-                height={80}
-                radius={30}
-                onPress={() => navigation.navigate("Perfil")}
-                text={<Ionicons name="business" size={24} color="white" />}
-              />
-              <Titulo fontSize={12} text={"Perfil ONG"} />
-            </Group>
-            <Group>
-              <Botao
-                width={80}
-                height={80}
-                onPress={() => navigation.navigate("ListaOngs")}
-                radius={30}
-                text={<FontAwesome name="list-ul" size={24} color="white" />}
-              />
-              <Titulo fontSize={12} text={"ONGs"} />
-            </Group>
+            {logado ? (
+              <Group>
+                <Botao
+                  width={80}
+                  height={80}
+                  radius={30}
+                  onPress={() => navigation.navigate("Perfil")}
+                  text={<Ionicons name="business" size={24} color="white" />}
+                />
+                <Titulo fontSize={12} text={"Perfil ONG"} />
+              </Group>
+            ) : (
+              <Group>
+                <Botao
+                  width={80}
+                  height={80}
+                  onPress={() => navigation.navigate("ListaOngs")}
+                  radius={30}
+                  text={<FontAwesome name="list-ul" size={24} color="white" />}
+                />
+                <Titulo fontSize={12} text={"ONGs"} />
+              </Group>
+            )}
             <Group>
               <Botao
                 width={80}
