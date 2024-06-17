@@ -51,7 +51,9 @@ namespace WebApiHopeHand.Controllers
                     Number = ongInserted.Number,
                     City = ongInserted.City,
                     State = ongInserted.State,
-                    IdOng = newOng.Id
+                    IdOng = newOng.Id,
+                    Latitude = ongInserted.Latitude,
+                    Longitude = ongInserted.Longitude,
                 };
 
                 // Cadastra a ONG
