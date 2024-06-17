@@ -13,19 +13,25 @@ import { useEffect, useState } from "react";
 
 // importe da api
 import { Group } from "../../components/Group/Index";
-import { mask } from "remask";
+
 import Toast from "react-native-toast-message";
 import { ShowToastStyled } from "../../components/Toast/ToastStyled";
 
+import { mask, unmask } from "remask";
+
+import DatePicker from 'react-native-modern-datepicker'
+import { Modal } from "react-native";
+import { DateInputModal } from "../../components/Modal/DateInputModal/DateInputModal";
+
 export const CadastroUsuario = ({ navigation }) => {
   // CONSTS
-  const [rg, setRg] = useState(""); // rg do usuário
-  const [cpf, setCpf] = useState(""); // cpf do usuário
-  const [nome, setNome] = useState(""); // nome do usuário
-  const [email, setEmail] = useState(""); // email do usuário
-  const [senha, setSenha] = useState(""); // senha do usuário
-  const [dataNascimento, setDataNascimento] = useState(""); // data de nascimento do usuário
-  const [confirmaSenha, setConfirmaSenha] = useState(""); // confirmação de senha
+  const [rg, setRg] = useState("432435345"); // rg do usuário
+  const [cpf, setCpf] = useState("12123123124"); // cpf do usuário
+  const [nome, setNome] = useState("teste"); // nome do usuário
+  const [email, setEmail] = useState("gabrielsampaio1216@gmail.com"); // email do usuário
+  const [senha, setSenha] = useState("teste123"); // senha do usuário
+  const [dataNascimento, setDataNascimento] = useState("12122000"); // data de nascimento do usuário
+  const [confirmaSenha, setConfirmaSenha] = useState("teste123"); // confirmação de senha
   const [carregando, setCarregando] = useState(false); // ativa o spinner do botão
   const [erro, setErro] = useState(false); // muda a cor dos inputs quando dá algum erro
   const [erroTexto, setErroTexto] = useState(""); // diz qual é o erro que está ocorrendo
@@ -170,11 +176,20 @@ export const CadastroUsuario = ({ navigation }) => {
     }
   }; // deixa o usuário pronto para ser cadastrado
 
+  const [open, setOpen] = useState(false); // Abre/fecha o modal do calendário
+  const [date, setDate] = useState(false); // Var Date
 
+  function handleOnPress() {
+    setOpen(!open);
+  }
 
-  // EFFECTS
-
-
+  function handleChange(propDate) {
+    // 2024/06/26
+    const x = propDate.split('/');
+    const dateFormated = `${x[2]}${x[1]}${x[0]}`
+    // 26062024
+    setDataNascimento(mask(dateFormated, mascaras[2]));
+  }
 
   return (
     <Container>
@@ -199,7 +214,7 @@ export const CadastroUsuario = ({ navigation }) => {
               placeholder={"RG:"}
               erro={erro}
               value={mask(rg, mascaras[0])}
-              onChangeText={(txt) => setRg(txt)}
+              onChangeText={(txt) => setRg(unmask(txt))}
               width="45%"
               maxLength={12}
             />
@@ -209,7 +224,7 @@ export const CadastroUsuario = ({ navigation }) => {
               erro={erro}
               value={mask(cpf, mascaras[1])}
               maxLength={14}
-              onChangeText={(txt) => setCpf(txt)}
+              onChangeText={(txt) => setCpf(unmask(txt))}
               width="45%"
               keyboardType={"number-pad"}
             />
@@ -223,14 +238,23 @@ export const CadastroUsuario = ({ navigation }) => {
             onChangeText={(txt) => setNome(txt)}
             width="100%"
           />
+
+          {/* Data de nascimento INPUT e MODAL */}
           <Input
             placeholder={"Data de nascimento:"}
             width="100%"
-            keyboardType={"numeric"}
             value={mask(dataNascimento, mascaras[2])}
             onChangeText={(txt) => setDataNascimento(txt)}
             erro={erro}
             maxLength={10}
+
+            onFocus={handleOnPress}
+          />
+          <DateInputModal
+            dataNascimento={dataNascimento}
+            open={open}
+            handleChange={handleChange}
+            handleOnPress={handleOnPress}
           />
 
           <Input

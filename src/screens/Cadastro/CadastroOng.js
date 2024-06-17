@@ -1,15 +1,18 @@
 // import de componentes
-import { Botao } from "../../components/Botao/Index"
-import { BotaoVoltar } from "../../components/BotaoVoltar/Index"
-import { Container, ContainerMargin, ContainerScroll } from "../../components/Container/Style"
-import { Input } from "../../components/Input/Index"
-import { Logo } from "../../components/Logo/Style"
-import { Titulo } from "../../components/Titulo/Index"
-import { Group } from "../../components/Group/Index"
-import Toast from "react-native-toast-message"
+import { Botao } from "../../components/Botao/Index";
+import { BotaoVoltar } from "../../components/BotaoVoltar/Index";
+import {
+  Container,
+  ContainerMargin,
+  ContainerScroll,
+} from "../../components/Container/Style";
+import { Input } from "../../components/Input/Index";
+import { Logo } from "../../components/Logo/Style";
+import { Titulo } from "../../components/Titulo/Index";
+import { Group } from "../../components/Group/Index";
 
 // imports importantes
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 
 // api importada
 import api from "../../service/Service"
@@ -36,8 +39,7 @@ export const CadastroOng = ({
     const rg = route.params.rg; // rg do usuário
     const email = route.params.email; // email do usuário
     const senha = route.params.senha; // senha do usuário
-
-
+const [local, setLocal] = useState({ latitude: 0, longitude: 0 });
 
     // FUNCTIONS
     const Cadastrar = async () => {
@@ -107,99 +109,79 @@ export const CadastroOng = ({
 
             setCarregando(false);
         }
-        else {
+  
+
+    } else {
+      try {
+        console.log(route.params);
+        await api
+          .post("/Usuario/CriarConta", {
+            name: nome,
+            birth: dataNascimento,
+            cpf: cpf,
+            rg: rg,
+            email: email,
+            password: senha,
+            codRecupSenha: 0,
+          })
+          .then(async (response) => {
+            setErro(false);
             try {
-                await api.post("/Usuario/CriarConta", {
-                    "name": nome,
-                    "birth": dataNascimento,
-                    "cpf": cpf,
-                    "rg": rg,
-                    "email": email,
-                    "password": senha,
-                    "codRecupSenha": 0
-                }).then(async response => {
-                    try {
-                        await api.post("Ong/CadastrarOng", {
-                            "name": nomeOng,
-                            "cnpj": cnpj,
-                            "userId": response.data.id,
-                            "number": numero,
-                            "cep": cep,
-                            "address": "string"
-                        })
-                            .then(() => {
-                                setErro(false);
-
-                                ShowToastStyled({
-                                    type: "success",
-                                    text1: "Usuário cadastrado com sucesso!",
-                                    text1Style: {
-                                        color: "#7BCAF7"
-                                    },
-                                    swipeable: false,
-                                    visibilityTime: 3000
-                                });
-
-                                setTimeout(() => {
-                                    setCarregando(false);
-
-                                    navigation.replace("Login");
-                                }, 3000);
-                            })
-                    } catch (error) {
-                        setErro(true);
-
-                        ShowToastStyled({
-                            type: "error",
-                            text1: "Redirecionando para cadastro de usuário",
-                            text1Style: {
-                                color: "#E34949"
-                            },
-                        });
-
-                        setErroTexto("Cadastro inválido");
-
-                        setTimeout(() => {
-                            setCarregando(false);
-
-                            navigation.replace("CadastroUsuario");
-                        }, 3000);
-                    }
+              console.log(local);
+              await api
+                .post("Ong/CadastrarOng", {
+                  name: nomeOng,
+                  cnpj: cnpj,
+                  userId: response.data.id,
+                  number: numero,
+                  city: cidade,
+                  state: uf,
+                  cep: cep,
+                  address: "string",
+                  latitude: local.latitude,
+                  longitude: local.longitude,
                 })
-            } catch (error) {
-                setErro(true);
+                .then(() => {
+                  setErro(false);
 
-                ShowToastStyled({
-                    type: "error",
-                    text1: "Redirecionando para cadastro de usuário",
-                    text1Style: {
-                        color: "#E34949"
-                    },
+                  console.log("Sucesso!");
+
+                  navigation.replace("Login");
                 });
+            } catch (error) {
+              setErro(true);
 
-                setErroTexto("Cadastro inválido");
+              setErroTexto("Erro ao cadastrar, tente novamente");
 
-                setTimeout(() => {
-                    setCarregando(false);
-
-                    navigation.replace("CadastroUsuario");
-                }, 3000);
+              console.log(error);
             }
-        }
+          });
+      } catch (error) {
+        console.log(error);
+
+        setErro(true);
+
+        setErroTexto(
+          "Informações do usuário inválidas, tente cadastrar novamente"
+        );
+      }
     }
 
+  
     const AddressPicker = async () => {
-        if (cep.length == 8) {
-            await api.get(`https://viacep.com.br/ws/${cep}/json/`)
-                .then(response => {
-                    setCidade(response.data.localidade);
-
-                    setUf(response.data.uf)
-                })
-        }
+    if (cep.length == 8) {
+      await api
+        .get(`https://cep.awesomeapi.com.br/json/${cep}`)
+        .then((response) => {
+          setCidade(response.data.city);
+          setLocal({
+            latitude: response.data.lat,
+            longitude: response.data.lng,
+          });
+          setUf(response.data.state);
+        });
     }
-
-
+  };
 
     // EFFECTS
     useEffect(() => {
@@ -318,3 +300,4 @@ export const CadastroOng = ({
         </Container>
     )
 }
+
