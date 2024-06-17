@@ -24,6 +24,7 @@ import { ActivityIndicator, FlatList } from "react-native";
 import api from "../../service/Service";
 import { Titulo } from "../../components/Titulo/Index";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { PayModal } from "./../../components/Modal/PayModal/PayModal";
 
 // Verificação de Inputs
 const verificarInputs = (inputs) => {
@@ -33,12 +34,12 @@ const verificarInputs = (inputs) => {
   if (inputs.cnpj.trim().length !== 14) {
     return "O CNPJ deve conter 14 caracteres!";
   }
-  if (inputs.link.trim().length < 2 || inputs.link.trim().length > 40) {
-    return "O Link deve ter entre 2 e 40 caracteres!";
-  }
-  if (inputs.description.trim().length < 2 || inputs.description.trim().length > 500) {
-    return "A Descrição deve ter entre 2 e 500 caracteres!";
-  }
+  // if (inputs.link.trim().length < 2 || inputs.link.trim().length > 40) {
+  //   return "O Link deve ter entre 2 e 40 caracteres!";
+  // }
+  // if (inputs.description.trim().length < 2 || inputs.description.trim().length > 500) {
+  //   return "A Descrição deve ter entre 2 e 500 caracteres!";
+  // }
   return "";
 };
 
@@ -49,7 +50,7 @@ export const Perfil = ({ navigation, route }) => {
   const [carregando, setCarregando] = useState(false); // ativa o spinner do botão
   const [erro, setErro] = useState(false); // muda a cor dos inputs quando dá algum erro
   const [erroTexto, setErroTexto] = useState(""); // diz qual é o erro que está ocorrendo
-
+  const [showModalPayment, setShowModalPayment] = useState(false);
   const [photo, setPhoto] = useState(null); // Armazena a Foto
   const [showCamera, setShowCamera] = useState(false); // Abre o Modal de Camera
   const [modalOpen, setModalOpen] = useState(false); // Muda a visibilidade do Modal de Camera
@@ -62,11 +63,6 @@ export const Perfil = ({ navigation, route }) => {
   });
 
   const [locais, setLocais] = useState([]);
-  
-  const [ong, setOng] = useState(null);
-
-  const ongId = route.params.ongId;
-
 
   // Função de Verificação
   const handleVerifyInputs = () => {
@@ -83,40 +79,23 @@ export const Perfil = ({ navigation, route }) => {
 
   // Carrega e Armazena os dados da API
   async function profileLoad() {
-    const token = await userDecodeToken();
-
-    if (token != null) {
+    if ((await AsyncStorage.getItem("token")) != null) {
       setLogado(true);
     } else {
-      console.log("Falha na Profile Load (Perfil.js)");
-    }
-  }
-  //busca a ong do administrador
-  async function getMyOng() {
-    const token = await userDecodeToken();
-    if (token != null) {
-      try {
-        const response = await api.post("/Ong/BuscarPorIdUsuario", {
-          id: token.id,
-        });
-        setInputs(response.data);
-        setPhoto(response.data.photo);
-      } catch (error) {
-        console.log(error);
-      }
+      setLogado(false);
     }
   }
 
   // Buscar Dados da Ong Pelo ID
   async function GetOng() {
-    console.log("TESTANDO");
-    if (logado) {
-      return;
+    let ongId;
+    if ((await AsyncStorage.getItem("token")) == null) {
+      ongId = route.params.ongId;
+    } else {
+      const token = await userDecodeToken();
+      ongId = token.ongId;
     }
-    console.log("teste");
     try {
-      const ongId = route.params.ongId;
-
       const response = await api.get(`Ong/BuscarPorId?id=${ongId}`);
       setInputs(response.data.ong);
       setPhoto(response.data.ong.photo); // Atualiza a URL da foto
@@ -128,16 +107,16 @@ export const Perfil = ({ navigation, route }) => {
   // Edita os Dados Recebidos da Ong
   async function PutOng() {
     if (!handleVerifyInputs()) {
+      console.log("teste");
       return;
     }
 
-    const token = await userDecodeToken();
-
     try {
+      const token = await userDecodeToken();
       await api.put(
         `Ong/Editar`,
         {
-          id: ongId,
+          id: token.ongId,
           name: inputs.name,
           cnpj: inputs.cnpj,
           link: inputs.link,
@@ -165,7 +144,7 @@ export const Perfil = ({ navigation, route }) => {
   async function OngPhoto() {
     const token = await userDecodeToken();
     try {
-      const ongId = route.params.ongId;
+      const ongId = token.ongId;
 
       const formData = new FormData();
       formData.append("IdOng", ongId);
@@ -190,15 +169,15 @@ export const Perfil = ({ navigation, route }) => {
 
   useEffect(() => {
     profileLoad();
-    getMyOng();
     GetOng();
     getLocais();
+    console.log(logado);
   }, []);
 
   //buscar locais da ong
   async function getLocais() {
-    console.log("TESTE");
-    if (logado) {
+    if ((await AsyncStorage.getItem("token")) != null) {
+      console.log("caiu aqui");
       return;
     }
     try {
@@ -207,10 +186,9 @@ export const Perfil = ({ navigation, route }) => {
       const response = await api.get(`/Endereco/ListarPorOng?idOng=${ongId}`);
       setLocais(response.data);
     } catch (error) {
-      console.log(error);
+      console.log(error, "locais");
     }
   }
-
 
   return showCamera ? (
     <CameraModal
@@ -222,18 +200,15 @@ export const Perfil = ({ navigation, route }) => {
       inCamera={showCamera}
       setInCamera={setShowCamera}
     />
-
   ) : logado ? (
     <ContainerScroll style={{ paddingTop: 20 }}>
       <BotaoVoltar
         onPress={() => (!logado ? navigation.goBack() : navigation.goBack())}
       />
 
-
       <ViewImageCircle style={{ borderColor: erro ? "#E34949" : "#3FA7E4" }}>
         <PerfilImageWhite source={{ uri: photo }} />
       </ViewImageCircle>
-
       <ButtonUploadImage onPress={() => setShowCamera(true)}>
         <MaterialCommunityIcons name="camera-enhance" size={22} color="white" />
       </ButtonUploadImage>
@@ -259,8 +234,8 @@ export const Perfil = ({ navigation, route }) => {
               )}
 
               <Input
-                placeholder={inputs.name || "Nome Indefinido!"}
                 value={inputs.name}
+                placeholder={"Nome Indefinido!"}
                 onChangeText={(txt) => setInputs({ ...inputs, name: txt })}
                 color={edit ? "black" : "gray"}
                 editable={edit}
@@ -271,7 +246,8 @@ export const Perfil = ({ navigation, route }) => {
               />
 
               <Input
-                value={inputs.cnpj || "CNPJ Indefinido!"}
+                value={inputs.cnpj}
+                placeholder={"CNPJ Indefinido!"}
                 onChangeText={(txt) => setInputs({ ...inputs, cnpj: txt })}
                 color={edit ? "black" : "gray"}
                 editable={edit}
@@ -282,7 +258,8 @@ export const Perfil = ({ navigation, route }) => {
               />
 
               <Input
-                value={inputs.link || "Link Indefinido"}
+                value={inputs.link}
+                placeholder={"Link Indefinido"}
                 onChangeText={(txt) => setInputs({ ...inputs, link: txt })}
                 color={edit ? "black" : "gray"}
                 editable={edit}
@@ -292,7 +269,8 @@ export const Perfil = ({ navigation, route }) => {
                 erro={erro}
               />
               <Input
-                value={inputs.description || "Descrição Indefinida"}
+                value={inputs.description}
+                placeholder={"Descrição Indefinida"}
                 onChangeText={(txt) =>
                   setInputs({ ...inputs, description: txt })
                 }
@@ -348,9 +326,6 @@ export const Perfil = ({ navigation, route }) => {
         <PerfilImageWhite source={{ uri: photo }} />
       </ViewImageCircle>
 
-      <ButtonUploadImage onPress={() => setShowCamera(true)}>
-        <MaterialCommunityIcons name="camera-enhance" size={22} color="white" />
-      </ButtonUploadImage>
       <TitleCard>
         {inputs && inputs.name ? inputs.name : "Nome não encontrado!"}
       </TitleCard>
@@ -374,9 +349,19 @@ export const Perfil = ({ navigation, route }) => {
         renderItem={({ item }) => (
           <CardLocalizacao
             local={item}
-            onPress={() => navigation.replace("Mapa", { local: item })}
+            onPress={() =>
+              navigation.replace("Mapa", {
+                local: item,
+                ongId: route.params.ongId,
+              })
+            }
           />
         )}
+      />
+      <Botao text={"Doar"}  />
+      <PayModal
+        visible={showModalPayment}
+        setShowInformationModal={setShowModalPayment}
       />
     </Container>
   );

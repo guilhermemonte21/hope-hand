@@ -18,9 +18,12 @@ import {
   View,
 } from "react-native";
 import { MapComponent } from "../../components/MapComponent/MapComponent";
+import { PayModal } from './../../components/Modal/PayModal/PayModal';
 
 // TELA DE LOCALIZACAO
 export const Mapa = ({ navigation, route }) => {
+
+  const [showModal, setShowModal] = useState(false);
   // CONSTS
   const [initialPosition, setInitialPosition] = useState(null);
 
@@ -48,12 +51,12 @@ export const Mapa = ({ navigation, route }) => {
       await mapReference.current.fitToCoordinates(
         [
           {
-            latitude: initialPosition.coords.latitude,
-            longitude: initialPosition.coords.longitude,
-          },
-          {
             latitude: finalPosition.latitude,
             longitude: finalPosition.longitude,
+          },
+          {
+            latitude: initialPosition.coords.latitude,
+            longitude: initialPosition.coords.longitude,
           },
         ],
         {
@@ -94,7 +97,7 @@ export const Mapa = ({ navigation, route }) => {
 
   useEffect(() => {
     RecarregarVisualizacaoMapa();
-  }, [initialPosition]);
+  }, []);
 
   return (
     <Container
@@ -160,7 +163,7 @@ export const Mapa = ({ navigation, route }) => {
 
         <Group row>
           <Botao
-            onPress={() => navigation.replace("Perfil")}
+            onPress={() => navigation.replace("Perfil", { ongId: route.params.ongId})}
             width="50%"
             text={"Voltar"}
             bgColor="#B0B0B0"
@@ -180,6 +183,7 @@ export const Mapa = ({ navigation, route }) => {
           />
         </Group>
       </ContainerMargin>
+      <PayModal setShowInformationModal={setShowModal} visible={showModal}/> 
     </Container>
   );
 };

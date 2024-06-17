@@ -11,7 +11,7 @@ export const BottomBox = styled.View`
   overflow: hidden;
 `;
 
-export const ButtonTree = styled.TouchableOpacity`
+export const ButtonTree = styled.Pressable`
   flex-grow: 1;
   height: 50px;
   align-items: center;

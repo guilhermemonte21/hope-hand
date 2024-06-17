@@ -183,7 +183,7 @@ export const Login = ({
                 route={"CadastroUsuario"}
             />
 
-            <Toast  />
+            <Toast />
         </Container>
     );
 }

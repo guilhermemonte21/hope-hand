@@ -1,9 +1,27 @@
 import { Image } from "react-native";
 import { HeaderStyled } from "./Style";
 import { Botao } from "../Botao/Index";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useEffect, useState } from "react";
 
 // HEADER FIXADO NO TOPO PARA A PAGINA HOME
 export const Header = ({ navigation }) => {
+  const [logado, setLogado] = useState(false);
+
+  async function profileLoad() {
+    if ((await AsyncStorage.getItem("token")) != null) {
+      setLogado(true);
+    } else {
+      setLogado(false);
+    }
+
+    console.log(await AsyncStorage.getItem("token"));
+  }
+
+  useEffect(() => {
+    profileLoad();
+  }, []);
+
   return (
     <HeaderStyled>
       <Image
@@ -12,9 +30,13 @@ export const Header = ({ navigation }) => {
       />
 
       <Botao
-        onPress={() => navigation.navigate("ListaOngs")}
+        onPress={() => {
+          logado
+            ? (navigation.navigate("Inicio"), AsyncStorage.removeItem("token"))
+            : navigation.navigate("ListaOngs");
+        }}
         width={100}
-        text={"DOAR"}
+        text={logado ? "SAIR" : "DOAR"}
       />
     </HeaderStyled>
   );

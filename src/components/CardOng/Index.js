@@ -2,12 +2,12 @@ import { CardStyled, CardImage, CardTitle } from "./Style";
 import { Botao } from "./../Botao/Index";
 
 import { Group } from "../Group/Index";
-import { Titulo } from './../Titulo/Index';
+import { Titulo } from "./../Titulo/Index";
 
 export const CardOng = ({ ong, navigation }) => {
   return (
     <CardStyled>
-      <CardImage source={ong.photo} />
+      <CardImage source={{ uri: ong.photo }} />
       <Group>
         <CardTitle>{ong.name}</CardTitle>
         <Botao

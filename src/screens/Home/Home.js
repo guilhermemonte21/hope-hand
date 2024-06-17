@@ -77,16 +77,30 @@ export const Home = ({ navigation }) => {
                 <Titulo fontSize={12} text={"Perfil ONG"} />
               </Group>
             ) : (
-              <Group>
-                <Botao
-                  width={80}
-                  height={80}
-                  onPress={() => navigation.navigate("ListaOngs")}
-                  radius={30}
-                  text={<FontAwesome name="list-ul" size={24} color="white" />}
-                />
-                <Titulo fontSize={12} text={"ONGs"} />
-              </Group>
+              <>
+                <Group>
+                  <Botao
+                    width={80}
+                    height={80}
+                    onPress={() => navigation.navigate("Inicio")}
+                    radius={30}
+                    text={<AntDesign name="back" size={24} color="white" />}
+                  />
+                  <Titulo fontSize={12} text={"Voltar"} />
+                </Group>
+                <Group>
+                  <Botao
+                    width={80}
+                    height={80}
+                    onPress={() => navigation.navigate("ListaOngs")}
+                    radius={30}
+                    text={
+                      <FontAwesome name="list-ul" size={24} color="white" />
+                    }
+                  />
+                  <Titulo fontSize={12} text={"ONGs"} />
+                </Group>
+              </>
             )}
             <Group>
               <Botao

@@ -32,10 +32,23 @@ export const userDecodeToken = async () => {
     console.log(error);
   }
 
+  let ongId;
+  //busca a ong do administrador
+  try {
+    const response = await api.post("/Ong/BuscarPorIdUsuario", {
+      id: decoded.jti,
+    });
+
+    ongId = response.data.id;
+  } catch (error) {
+    console.log(error);
+  }
+
   return {
     id: decoded.jti,
     email: decoded.email,
     token: user,
     foto: fotoUsuario,
+    ongId: ongId,
   };
 };

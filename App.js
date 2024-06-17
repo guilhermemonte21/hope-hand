@@ -1,5 +1,5 @@
 // imports
-import { StatusBar } from "react-native";
+import { LogBox, StatusBar } from "react-native";
 import { Route } from "./src/routes/Routes";
 
 // fontes
@@ -9,6 +9,9 @@ import {
   Kanit_400Regular,
 } from "@expo-google-fonts/kanit";
 import { Poppins_400Regular } from "@expo-google-fonts/poppins";
+
+LogBox.ignoreLogs(["Warning: ..."]);
+LogBox.ignoreAllLogs();
 
 export default function App() {
   const [fontsLoaded, fontsError] = useFonts({
