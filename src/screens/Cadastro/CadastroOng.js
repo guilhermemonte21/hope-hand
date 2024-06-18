@@ -18,6 +18,7 @@ import { useEffect, useState } from "react";
 import api from "../../service/Service";
 import { ShowToastStyled } from "../../components/Toast/ToastStyled";
 import Toast from "react-native-toast-message";
+import { mask } from "remask";
 
 export const CadastroOng = ({ navigation, route }) => {
   // CONSTS
@@ -37,7 +38,14 @@ export const CadastroOng = ({ navigation, route }) => {
   const rg = route.params.rg; // rg do usuário
   const email = route.params.email; // email do usuário
   const senha = route.params.senha; // senha do usuário
-  const [local, setLocal] = useState({ latitude: 0, longitude: 0 });
+  const [local, setLocal] = useState({
+    latitude: 0,
+    longitude: 0,
+    address: "",
+  });
+
+  const cnpjMask = "SS.SSS.SSS/SSSS-SS";
+  const cepMask = "99999-999";
 
   // FUNCTIONS
   const Cadastrar = async () => {
@@ -57,8 +65,7 @@ export const CadastroOng = ({ navigation, route }) => {
 
       setErroTexto("ONG sem nome");
 
-      setCarregando(false);
-    } else if (cnpj.length != 14) {
+    } else if (cnpj.length != 18) {
       setErro(true);
 
       ShowToastStyled({
@@ -72,8 +79,7 @@ export const CadastroOng = ({ navigation, route }) => {
 
       setErroTexto("CNPJ incompleto");
 
-      setCarregando(false);
-    } else if (cep.length != 8) {
+    } else if (cep.length != 9) {
       setErro(true);
 
       ShowToastStyled({
@@ -87,7 +93,6 @@ export const CadastroOng = ({ navigation, route }) => {
 
       setErroTexto("CEP inválido");
 
-      setCarregando(false);
     } else if (numero == "") {
       setErro(true);
 
@@ -102,10 +107,8 @@ export const CadastroOng = ({ navigation, route }) => {
 
       setErroTexto("Número obrigatório");
 
-      setCarregando(false);
     } else {
       try {
-        console.log(route.params);
         await api
           .post("/Usuario/CriarConta", {
             name: nome,
@@ -119,16 +122,15 @@ export const CadastroOng = ({ navigation, route }) => {
           .then(async (response) => {
             setErro(false);
             try {
-              console.log(local);
               await api
                 .post("Ong/CadastrarOng", {
                   name: nomeOng,
-                  cnpj: cnpj,
+                  cnpj: cnpj.split(".").join("").split("/").join("").split("-").join(""),
                   userId: response.data.id,
                   number: numero,
                   city: cidade,
                   state: uf,
-                  cep: cep,
+                  cep: cep.split("-").join(""),
                   address: local.address,
                   latitude: local.latitude,
                   longitude: local.longitude,
@@ -158,18 +160,19 @@ export const CadastroOng = ({ navigation, route }) => {
         );
       }
     }
+    setCarregando(false);
   };
 
   const AddressPicker = async () => {
-    if (cep.length == 8) {
+    if (cep.length == 9) {
       await api
-        .get(`https://cep.awesomeapi.com.br/json/${cep}`)
+        .get(`https://cep.awesomeapi.com.br/json/${cep.split("-").join("")}`)
         .then((response) => {
           setCidade(response.data.city);
           setLocal({
             latitude: response.data.lat,
             longitude: response.data.lng,
-            endereco: response.data.address
+            address: response.data.address,
           });
           setUf(response.data.state);
         });
@@ -183,6 +186,7 @@ export const CadastroOng = ({ navigation, route }) => {
 
   return (
     <Container>
+      <BotaoVoltar onPress={() => navigation.replace("CadastroUsuario")} />
       <ContainerScroll
         style={{
           width: "100%",
@@ -190,7 +194,6 @@ export const CadastroOng = ({ navigation, route }) => {
         }}
         showsVerticalScrollIndicator={false}
       >
-        <BotaoVoltar onPress={() => navigation.replace("CadastroUsuario")} />
 
         <Logo source={require("../../assets/images/logo-whand.png")} />
 
@@ -214,26 +217,28 @@ export const CadastroOng = ({ navigation, route }) => {
             placeholder={"CNPJ:"}
             autoCapitalize={"none"}
             erro={erro}
+            keyboardType={"number-pad"}
             onChangeText={(txt) => setCnpj(txt)}
-            value={cnpj}
-            maxLength={14}
+            value={mask(cnpj,cnpjMask)}
+            maxLength={18}
           />
 
           <Group row justifyContent="space-between">
             <Input
               placeholder={"CEP:"}
-              maxLength={8}
+              maxLength={9}
               keyboardType={"number-pad"}
-              width="45%"
-              value={cep}
+              width="100%"
+              value={mask(cep, cepMask)}
               erro={erro}
               onChangeText={(txt) => setCep(txt)}
             />
 
             <Input
               placeholder={"Número:"}
-              width="45%"
+              width="100%"
               value={numero}
+              keyboardType={"number-pad"}
               erro={erro}
               onChangeText={(txt) => setNumero(txt)}
             />
@@ -242,7 +247,7 @@ export const CadastroOng = ({ navigation, route }) => {
           <Group row justifyContent="space-between">
             <Input
               placeholder={"Cidade:"}
-              width="60%"
+              width="100%"
               value={cidade}
               border={false}
               editable={false}
@@ -250,12 +255,19 @@ export const CadastroOng = ({ navigation, route }) => {
 
             <Input
               placeholder={"UF:"}
-              width="35%"
+              width="100%"
               editable={false}
               border={false}
               value={uf}
             />
           </Group>
+          <Input
+            placeholder={"Rua:"}
+            width="100%"
+            editable={false}
+            border={false}
+            value={local.address}
+          />
 
           {erro ? (
             <Titulo text={erroTexto} color={"#E34949"} textAlign={"center"} />

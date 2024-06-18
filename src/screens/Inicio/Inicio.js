@@ -26,7 +26,7 @@ export const Inicio = ({ navigation }) => {
         <Botao
           height={80}
           text={"Entrar como Doador"}
-          onPress={() => navigation.replace("Home")}
+          onPress={() => navigation.navigate("Home")}
         />
       </Group>
 

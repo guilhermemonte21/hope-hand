@@ -48,10 +48,16 @@ export const PayModal = ({
               width="90%"
               text={"Confirmar Doação"}
               bgColor={"#7BCAF7"}
-              onPress={() => navigation.navigate("ConfirmarPagamento")}
+              onPress={() => {
+                navigation.navigate("ConfirmarPagamento");
+                setShowInformationModal(false);
+              }}
             />
           </Group>
-        <BotaoVoltar onPress={() => setShowInformationModal(false)} />
+          <BotaoVoltar
+            top={20}
+            onPress={() => setShowInformationModal(false)}
+          />
         </ModalForm>
       </InfoModal>
     </Modal>

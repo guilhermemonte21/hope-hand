@@ -118,7 +118,6 @@ export const CameraModal = ({
 
       const fotoTirada = await cameraRef.current.takePictureAsync(options);
       await setPhoto(fotoTirada.uri);
-      console.log(photo);
       setInCamera(false)
       setModalOpen(true);
       setCarregando(false);

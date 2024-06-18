@@ -14,9 +14,10 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 
 import { Group } from "./../../components/Group/Index";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Header } from "../../components/Header/Index";
-import { userDecodeToken } from "../../utils/Auth";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useFocusEffect } from "@react-navigation/native";
 
 export const Home = ({ navigation }) => {
   const [noticias, setNoticias] = useState([]);
@@ -25,13 +26,12 @@ export const Home = ({ navigation }) => {
 
   // Carrega e Armazena os dados da API
   async function profileLoad() {
-    const token = await userDecodeToken();
-
-    console.log("teste");
-    if (token != null) {
+    if ((await AsyncStorage.getItem("token")) != null) {
+      console.log("logado");
       setLogado(true);
     } else {
-      console.log("Falha na Profile Load (Perfil.js)");
+      console.log("deslogado");
+      setLogado(false);
     }
   }
 
@@ -51,6 +51,12 @@ export const Home = ({ navigation }) => {
     getNoticias();
     profileLoad();
   }, []);
+
+  useFocusEffect(
+    useCallback(() => {
+      profileLoad();
+    }, [])
+  );
 
   return (
     <>

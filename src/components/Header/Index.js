@@ -2,7 +2,8 @@ import { Image } from "react-native";
 import { HeaderStyled } from "./Style";
 import { Botao } from "../Botao/Index";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { useFocusEffect } from "@react-navigation/native";
 
 // HEADER FIXADO NO TOPO PARA A PAGINA HOME
 export const Header = ({ navigation }) => {
@@ -14,13 +15,17 @@ export const Header = ({ navigation }) => {
     } else {
       setLogado(false);
     }
-
-    console.log(await AsyncStorage.getItem("token"));
   }
 
   useEffect(() => {
     profileLoad();
   }, []);
+
+  useFocusEffect(
+    useCallback(() => {
+      profileLoad();
+    }, [])
+  );
 
   return (
     <HeaderStyled>

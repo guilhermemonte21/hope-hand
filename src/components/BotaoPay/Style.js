@@ -16,7 +16,6 @@ export const ButtonTree = styled.Pressable`
   height: 50px;
   align-items: center;
   justify-content: center;
-  //LOGICA PARA TROCAR A COR DO BOTAO QUANDO SELECIONADO
   background-color: ${(props) => (props.isSelected ? "#3FA7E4" : "#FFFFFF")};
   border-right-width: 1px;
   border-right-color: #7bcaf7;

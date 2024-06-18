@@ -1,3 +1,4 @@
+import { Titulo } from "../Titulo/Index";
 import { BoxInput, InputStyled } from "./Style";
 
 // COMPONENTE INPUT DINAMICO COM PROPS PARA ESTILIZAR
@@ -14,25 +15,26 @@ export const Input = ({
   color = "rgba(50,48,48, 1)",
   autoCapitalize,
   erro,
+  label = "",
   keyboardType,
   maxLength,
-  onFocus
+  onFocus,
 }) => {
   return (
-    <BoxInput
-      style={{
-        maxWidth: width,
-        minHeight: height,
-        maxHeight: height,
-        backgroundColor: border ? "transparent" : "#E8E8E8",
-        borderColor: erro ? "#E34949" : border ? "#7ccfff" : "transparent",
-        color: color,
-        fontFamily: fontFamily,
-      }}
-    >
+    <BoxInput style={{ height: label != "" ? height + 10 : height }}>
+      {label != "" && (
+        <Titulo text={label} fontSize={14} alignSelf={"flex-start"} />
+      )}
       <InputStyled
         style={{
+          maxWidth: width,
+          minHeight: height,
+          maxHeight: height,
+          alignSelf: "center",
+          backgroundColor: border ? "transparent" : "#E8E8E8",
           color: color,
+          fontFamily: fontFamily,
+          borderColor: erro ? "#E34949" : border ? "#7ccfff" : "transparent",
         }}
         placeholder={placeholder}
         editable={editable}

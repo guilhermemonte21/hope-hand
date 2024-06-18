@@ -12,7 +12,7 @@ export const ShowToastStyled = ({
         color: "#323030",
         fontFamily: "Poppins_400Regular"
     },
-    swipeable,
+    swipeable = false,
 }) => {
     Toast.show({
         type: type,

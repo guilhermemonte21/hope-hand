@@ -27,6 +27,11 @@ export const RecuperarSenha = ({ navigation }) => {
       setErro(false);
 
       await api.post(`/RecuperarSenha?email=${email}`).then(() => {
+        ShowToastStyled({
+          type: "success", 
+          text1: "Sucesso"
+        })
+
         setCarregando(false);
 
         navigation.replace("VerificarCodigo", { email: email });

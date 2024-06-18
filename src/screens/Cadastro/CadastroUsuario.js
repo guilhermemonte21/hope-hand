@@ -9,7 +9,7 @@ import {
 import { Input } from "../../components/Input/Index";
 import { Logo } from "../../components/Logo/Style";
 import { Titulo } from "../../components/Titulo/Index";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 // importe da api
 import { Group } from "../../components/Group/Index";
@@ -19,8 +19,6 @@ import { ShowToastStyled } from "../../components/Toast/ToastStyled";
 
 import { mask, unmask } from "remask";
 
-import DatePicker from 'react-native-modern-datepicker'
-import { Modal } from "react-native";
 import { DateInputModal } from "../../components/Modal/DateInputModal/DateInputModal";
 
 export const CadastroUsuario = ({ navigation }) => {
@@ -30,7 +28,13 @@ export const CadastroUsuario = ({ navigation }) => {
   const [nome, setNome] = useState("teste"); // nome do usuário
   const [email, setEmail] = useState("gabrielsampaio1216@gmail.com"); // email do usuário
   const [senha, setSenha] = useState("teste123"); // senha do usuário
-  const [dataNascimento, setDataNascimento] = useState("12122000"); // data de nascimento do usuário
+  const [dataNascimento, setDataNascimento] = useState(
+    new Date(
+      new Date().getFullYear() - 16,
+      new Date().getMonth(),
+      new Date().getDate()
+    ).toISOString().split("T")[0].split("-").reverse().join("/")
+  ); // data de nascimento do usuário
   const [confirmaSenha, setConfirmaSenha] = useState("teste123"); // confirmação de senha
   const [carregando, setCarregando] = useState(false); // ativa o spinner do botão
   const [erro, setErro] = useState(false); // muda a cor dos inputs quando dá algum erro
@@ -42,29 +46,30 @@ export const CadastroUsuario = ({ navigation }) => {
   const Cadastrar = async () => {
     setCarregando(true);
 
-    if (rg.length != 11) { // se o rg não tiver 11 dígitos (conta a pontuação)
+    if (rg.length != 9) {
+      // se o rg não tiver 9 dígitos (conta a pontuação)
       setErro(true);
 
       ShowToastStyled({
         type: "error",
         text1: "RG incompleto",
         text1Style: {
-          color: "#E34949"
+          color: "#E34949",
         },
         text2: "Complete o RG e tente novamente",
       }),
-
         setErroTexto("RG incompleto");
 
       setCarregando(false);
-    } else if (cpf.length != 14) { // e se o cpf não tiver 14 dígitos (também conta pontuação)
+    } else if (cpf.length != 11) {
+      // e se o cpf não tiver 11 dígitos (também conta pontuação)
       setErro(true);
 
       ShowToastStyled({
         type: "error",
         text1: "CPF incompleto",
         text1Style: {
-          color: "#E34949"
+          color: "#E34949",
         },
         text2: "Complete o CPF e tente novamente",
       });
@@ -72,14 +77,15 @@ export const CadastroUsuario = ({ navigation }) => {
       setErroTexto("CPF incompleto");
 
       setCarregando(false);
-    } else if (nome == "") { // e se o nome estiver vazio
+    } else if (nome == "") {
+      // e se o nome estiver vazio
       setErro(true);
 
       ShowToastStyled({
         type: "error",
         text1: "Usuário sem nome",
         text1Style: {
-          color: "#E34949"
+          color: "#E34949",
         },
         text2: "Insira o nome de usuário e tente novamente",
       });
@@ -87,14 +93,15 @@ export const CadastroUsuario = ({ navigation }) => {
       setErroTexto("Usuário sem nome");
 
       setCarregando(false);
-    } else if (dataNascimento.length != 10) { // e se a data não tiver os dígitos necessários
+    } else if (dataNascimento.length != 10) {
+      // e se a data não tiver os dígitos necessários
       setErro(true);
 
       ShowToastStyled({
         type: "error",
         text1: "Data de nascimento incompleta",
         text1Style: {
-          color: "#E34949"
+          color: "#E34949",
         },
         text2: "Insira a data completa (dd/mm/aaaa)",
       });
@@ -102,14 +109,15 @@ export const CadastroUsuario = ({ navigation }) => {
       setErroTexto("Data de nascimento incompleta");
 
       setCarregando(false);
-    } else if (email == "") { // e se o email estiver vazio
+    } else if (email == "") {
+      // e se o email estiver vazio
       setErro(true);
 
       ShowToastStyled({
         type: "error",
         text1: "Email inválido",
         text1Style: {
-          color: "#E34949"
+          color: "#E34949",
         },
         text2: "Insira um email válido!",
       });
@@ -117,14 +125,15 @@ export const CadastroUsuario = ({ navigation }) => {
       setErroTexto("Email inválido");
 
       setCarregando(false);
-    } else if (senha.length < 6 || senha.length > 16) { // e se senha não tiver o mínimo ou o máximo de dígitos
+    } else if (senha.length < 6 || senha.length > 16) {
+      // e se senha não tiver o mínimo ou o máximo de dígitos
       setErro(true);
 
       ShowToastStyled({
         type: "error",
         text1: "Senha não aceita",
         text1Style: {
-          color: "#E34949"
+          color: "#E34949",
         },
         text2: "A senha deve conter 6 a 16 dígitos. Tente novamente",
       });
@@ -132,15 +141,15 @@ export const CadastroUsuario = ({ navigation }) => {
       setErroTexto("Senha não aceita");
 
       setCarregando(false);
-
-    } else if (senha != confirmaSenha) { // e se senha e confirmar senha não estiverem iguais
+    } else if (senha != confirmaSenha) {
+      // e se senha e confirmar senha não estiverem iguais
       setErro(true);
 
       ShowToastStyled({
         type: "error",
         text1: "Confirmação de senha inválida",
         text1Style: {
-          color: "#E34949"
+          color: "#E34949",
         },
         text2: "Verifique se as senhas estão iguais e tente novamente",
       });
@@ -148,17 +157,18 @@ export const CadastroUsuario = ({ navigation }) => {
       setErroTexto("Confirmação de senha inválida");
 
       setCarregando(false);
-    } else { // caso não haja nenhum problema com nada disso, prossiga
+    } else {
+      // caso não haja nenhum problema com nada disso, prossiga
       setErro(false);
 
       ShowToastStyled({
         type: "success", // seta como estado de sucesso
         text1: "Redirecionando para cadastro de ong", // título da notificação
         text1Style: {
-          color: "#7bcaf7"
+          color: "#7bcaf7",
         }, // estiliza o título da notificação
         visibilityTime: 3000, // tempo de exibição da notificação
-        swipeable: false // seta se a funcionalidade de mexer a notificação funciona
+        swipeable: false, // seta se a funcionalidade de mexer a notificação funciona
       });
 
       setTimeout(() => {
@@ -177,7 +187,6 @@ export const CadastroUsuario = ({ navigation }) => {
   }; // deixa o usuário pronto para ser cadastrado
 
   const [open, setOpen] = useState(false); // Abre/fecha o modal do calendário
-  const [date, setDate] = useState(false); // Var Date
 
   function handleOnPress() {
     setOpen(!open);
@@ -185,21 +194,22 @@ export const CadastroUsuario = ({ navigation }) => {
 
   function handleChange(propDate) {
     // 2024/06/26
-    const x = propDate.split('/');
-    const dateFormated = `${x[2]}${x[1]}${x[0]}`
     // 26062024
+    const x = propDate.split("/");
+    const dateFormated = `${x[2]}/${x[1]}/${x[0]}`;
     setDataNascimento(mask(dateFormated, mascaras[2]));
   }
 
   return (
     <Container>
+      <BotaoVoltar onPress={() => navigation.replace("Login")} />
       <ContainerScroll
         style={{
           width: "100%",
+          paddingTop: 60
         }}
         showsVerticalScrollIndicator={false}
       >
-        <BotaoVoltar onPress={() => navigation.replace("Login")} />
 
         <Logo source={require("../../assets/images/logo-whand.png")} />
 
@@ -215,7 +225,7 @@ export const CadastroUsuario = ({ navigation }) => {
               erro={erro}
               value={mask(rg, mascaras[0])}
               onChangeText={(txt) => setRg(unmask(txt))}
-              width="45%"
+              width="100%"
               maxLength={12}
             />
 
@@ -225,7 +235,7 @@ export const CadastroUsuario = ({ navigation }) => {
               value={mask(cpf, mascaras[1])}
               maxLength={14}
               onChangeText={(txt) => setCpf(unmask(txt))}
-              width="45%"
+              width="100%"
               keyboardType={"number-pad"}
             />
           </Group>
@@ -247,7 +257,6 @@ export const CadastroUsuario = ({ navigation }) => {
             onChangeText={(txt) => setDataNascimento(txt)}
             erro={erro}
             maxLength={10}
-
             onFocus={handleOnPress}
           />
           <DateInputModal

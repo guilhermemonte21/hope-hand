@@ -8,7 +8,7 @@ import { BotaoVoltar } from './../../components/BotaoVoltar/Index';
 export const Sobre = ({ navigation }) => {
   return (
     <Container>
-      <BotaoVoltar onPress={() => navigation.goBack()} />
+      <BotaoVoltar onPress={() => navigation.replace("Home")} />
       <Image
         source={require("../../assets/images/logo-whand.png")}
         style={{ width: 70, height: 35 }}

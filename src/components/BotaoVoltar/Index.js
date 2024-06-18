@@ -1,10 +1,11 @@
 import { Icon, IconBox } from "./Style";
 
 export const BotaoVoltar = ({
-    onPress
+    onPress,
+    top = 50
 }) => {
     return (
-        <IconBox onPress={onPress}>
+        <IconBox style={{top: top}} onPress={onPress}>
             <Icon
                 source={require("../../assets/images/btvoltar.png")}
             />

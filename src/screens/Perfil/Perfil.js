@@ -44,7 +44,6 @@ const verificarInputs = (inputs) => {
 };
 
 export const Perfil = ({ navigation, route }) => {
-  const [nome, setNome] = useState(""); // Exibe a Tela de Acordo com o Usuário
   const [logado, setLogado] = useState(false); // Exibe a Tela de Acordo com o Usuário
   const [edit, setEdit] = useState(false); // Muda os Inputs Caso sejam editaveis ou não
   const [carregando, setCarregando] = useState(false); // ativa o spinner do botão
@@ -100,6 +99,7 @@ export const Perfil = ({ navigation, route }) => {
       setInputs(response.data.ong);
       setPhoto(response.data.ong.photo); // Atualiza a URL da foto
     } catch (error) {
+      console.log(error);
       console.log("Deu Catch, falha na Get Ong (Perfil.js)");
     }
   }
@@ -107,7 +107,6 @@ export const Perfil = ({ navigation, route }) => {
   // Edita os Dados Recebidos da Ong
   async function PutOng() {
     if (!handleVerifyInputs()) {
-      console.log("teste");
       return;
     }
 
@@ -171,13 +170,11 @@ export const Perfil = ({ navigation, route }) => {
     profileLoad();
     GetOng();
     getLocais();
-    console.log(logado);
   }, []);
 
   //buscar locais da ong
   async function getLocais() {
     if ((await AsyncStorage.getItem("token")) != null) {
-      console.log("caiu aqui");
       return;
     }
     try {
@@ -186,7 +183,7 @@ export const Perfil = ({ navigation, route }) => {
       const response = await api.get(`/Endereco/ListarPorOng?idOng=${ongId}`);
       setLocais(response.data);
     } catch (error) {
-      console.log(error, "locais");
+      console.log(error);
     }
   }
 
@@ -358,8 +355,9 @@ export const Perfil = ({ navigation, route }) => {
           />
         )}
       />
-      <Botao text={"Doar"}  />
+      <Botao text={"Doar"} onPress={() => setShowModalPayment(true)} />
       <PayModal
+        navigation={navigation}
         visible={showModalPayment}
         setShowInformationModal={setShowModalPayment}
       />

@@ -18,11 +18,10 @@ import {
   View,
 } from "react-native";
 import { MapComponent } from "../../components/MapComponent/MapComponent";
-import { PayModal } from './../../components/Modal/PayModal/PayModal';
+import { PayModal } from "./../../components/Modal/PayModal/PayModal";
 
 // TELA DE LOCALIZACAO
 export const Mapa = ({ navigation, route }) => {
-
   const [showModal, setShowModal] = useState(false);
   // CONSTS
   const [initialPosition, setInitialPosition] = useState(null);
@@ -45,7 +44,7 @@ export const Mapa = ({ navigation, route }) => {
     }
   };
 
-  // CARREGA O MAPA PROPORCIONANDO ENCAIXE DOS DOIS MARCADORES DE LOCAL 
+  // CARREGA O MAPA PROPORCIONANDO ENCAIXE DOS DOIS MARCADORES DE LOCAL
   const RecarregarVisualizacaoMapa = async () => {
     if (mapReference.current && initialPosition) {
       await mapReference.current.fitToCoordinates(
@@ -106,7 +105,10 @@ export const Mapa = ({ navigation, route }) => {
       }}
     >
       {initialPosition != null ? (
-        <MapComponent initialPosition={initialPosition} finalPosition={finalPosition} />
+        <MapComponent
+          initialPosition={initialPosition}
+          finalPosition={finalPosition}
+        />
       ) : (
         <View style={styles.nonMap}>
           <Text style={styles.nonMapText}>Carregando mapa...</Text>
@@ -125,6 +127,7 @@ export const Mapa = ({ navigation, route }) => {
       <ContainerMargin>
         <Group row justifyContent="space-between">
           <Input
+            label="CEP"
             width="100%"
             editable={false}
             value={route.params.local.cep}
@@ -132,6 +135,7 @@ export const Mapa = ({ navigation, route }) => {
           />
 
           <Input
+            label="Número"
             width="100%"
             editable={false}
             value={route.params.local.number.toString()}
@@ -139,6 +143,7 @@ export const Mapa = ({ navigation, route }) => {
           />
         </Group>
         <Input
+          label="Estado"
           width="100%"
           editable={false}
           value={route.params.local.state}
@@ -146,6 +151,7 @@ export const Mapa = ({ navigation, route }) => {
         />
 
         <Input
+          label="Cidade"
           width="100%"
           editable={false}
           value={route.params.local.city}
@@ -153,17 +159,20 @@ export const Mapa = ({ navigation, route }) => {
         />
 
         <Input
+          label="Rua"
           width="100%"
           editable={false}
           value={route.params.local.address}
           fontFamily={"Kanit_400Regular"}
         />
 
-        <Botao width="100%" radius={20} text={"Doar"} />
+        <Botao width="100%" radius={20} onPress={() => setShowModal(true)} text={"Doar"} />
 
         <Group row>
           <Botao
-            onPress={() => navigation.replace("Perfil", { ongId: route.params.ongId})}
+            onPress={() =>
+              navigation.replace("Perfil", { ongId: route.params.ongId })
+            }
             width="50%"
             text={"Voltar"}
             bgColor="#B0B0B0"
@@ -183,13 +192,16 @@ export const Mapa = ({ navigation, route }) => {
           />
         </Group>
       </ContainerMargin>
-      <PayModal setShowInformationModal={setShowModal} visible={showModal}/> 
+      <PayModal
+        navigation={navigation}
+        setShowInformationModal={setShowModal}
+        visible={showModal}
+      />
     </Container>
   );
 };
 
 const styles = StyleSheet.create({
-
   nonMap: {
     width: "100%",
     height: 271,
