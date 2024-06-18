@@ -23,19 +23,24 @@ import { DateInputModal } from "../../components/Modal/DateInputModal/DateInputM
 
 export const CadastroUsuario = ({ navigation }) => {
   // CONSTS
-  const [rg, setRg] = useState("432435345"); // rg do usuário
-  const [cpf, setCpf] = useState("12123123124"); // cpf do usuário
-  const [nome, setNome] = useState("teste"); // nome do usuário
-  const [email, setEmail] = useState("gabrielsampaio1216@gmail.com"); // email do usuário
-  const [senha, setSenha] = useState("teste123"); // senha do usuário
+  const [rg, setRg] = useState(""); // rg do usuário
+  const [cpf, setCpf] = useState(""); // cpf do usuário
+  const [nome, setNome] = useState(""); // nome do usuário
+  const [email, setEmail] = useState(""); // email do usuário
+  const [senha, setSenha] = useState(""); // senha do usuário
   const [dataNascimento, setDataNascimento] = useState(
     new Date(
       new Date().getFullYear() - 16,
       new Date().getMonth(),
       new Date().getDate()
-    ).toISOString().split("T")[0].split("-").reverse().join("/")
+    )
+      .toISOString()
+      .split("T")[0]
+      .split("-")
+      .reverse()
+      .join("/")
   ); // data de nascimento do usuário
-  const [confirmaSenha, setConfirmaSenha] = useState("teste123"); // confirmação de senha
+  const [confirmaSenha, setConfirmaSenha] = useState(""); // confirmação de senha
   const [carregando, setCarregando] = useState(false); // ativa o spinner do botão
   const [erro, setErro] = useState(false); // muda a cor dos inputs quando dá algum erro
   const [erroTexto, setErroTexto] = useState(""); // diz qual é o erro que está ocorrendo
@@ -206,11 +211,10 @@ export const CadastroUsuario = ({ navigation }) => {
       <ContainerScroll
         style={{
           width: "100%",
-          paddingTop: 60
+          paddingTop: 60,
         }}
         showsVerticalScrollIndicator={false}
       >
-
         <Logo source={require("../../assets/images/logo-whand.png")} />
 
         <Titulo
@@ -277,6 +281,7 @@ export const CadastroUsuario = ({ navigation }) => {
           />
 
           <Input
+            secureTextEntry
             placeholder={"Senha:"}
             autoCapitalize={"none"}
             erro={erro}
@@ -286,6 +291,7 @@ export const CadastroUsuario = ({ navigation }) => {
           />
 
           <Input
+            secureTextEntry
             placeholder={"Confirme a senha:"}
             autoCapitalize={"none"}
             erro={erro}

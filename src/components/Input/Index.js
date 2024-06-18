@@ -15,6 +15,7 @@ export const Input = ({
   color = "rgba(50,48,48, 1)",
   autoCapitalize,
   erro,
+  secureTextEntry = false,
   label = "",
   keyboardType,
   maxLength,
@@ -26,6 +27,7 @@ export const Input = ({
         <Titulo text={label} fontSize={14} alignSelf={"flex-start"} />
       )}
       <InputStyled
+      secureTextEntry={secureTextEntry}
         style={{
           maxWidth: width,
           minHeight: height,
