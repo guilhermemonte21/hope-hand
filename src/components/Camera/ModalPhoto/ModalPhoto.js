@@ -9,7 +9,7 @@ export const ModalPhoto = ({ visible, photo, setInCamera, setOpenModal, OngPhoto
             <InfoModal>
                 <ModalForm>
                     <ContainerMargin>
-                        <Image source={{ uri: photo }} style={{ width: "70%", height: "70%", margin: 20 }} />
+                        <Image source={{ uri: photo }} style={{ width: 200, height: 200, margin: 20, borderRadius: 20 }} />
                         <Botao
                             width="100%"
                             text={"Confirmar"}
