@@ -8,7 +8,8 @@ align-items: center;
 export const ModalForm = styled.SafeAreaView`
   ${Modal}
   width: 90%;
-  height: 80%;
+  padding-bottom: 20px;
+  height: auto;
   borderRadius: 20px;
   backgroundColor: #FFFFFF;
 `;
