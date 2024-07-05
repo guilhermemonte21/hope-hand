@@ -1,0 +1,16 @@
+import styled from "styled-components";
+
+export const RodapeStyled = styled.View`
+  border-radius: 25px 25px 0 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #7bcaf7;
+  padding: 12px;
+`;
+
+export const RodapeText = styled.Text`
+  color: white;
+  text-align: center;
+  font-family: "Kanit_400Regular";
+`;
